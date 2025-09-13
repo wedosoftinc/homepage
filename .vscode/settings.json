@@ -1,3 +1,11 @@
 {
-    "kiroAgent.configureMCP": "Enabled"
+    "kiroAgent.configureMCP": "Enabled",
+    // Tailwind CSS IntelliSense에 명시적으로 설정 파일 경로 제공
+    "tailwindCSS.experimental.configFile": "tailwind.config.js",
+    "tailwindCSS.emmetCompletions": true,
+    // 잡음 줄이기
+    "search.exclude": {
+        "**/.next": true,
+        "**/node_modules": true
+    }
 }
