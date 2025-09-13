@@ -1,13 +1,39 @@
 # AGENTS.md - We Do Soft Homepage Project
 
+## 🧩 XML 기반 비즈니스 분석 및 shadcn/ui 방향성
+
+### XML 분석 요약
+WordPress.2025-09-11.xml을 기반으로 위두소프트의 비즈니스 모델은 다음과 같습니다:
+
+- **B2B SaaS 전문 기업**: Google Workspace, Freshworks, Monday.com 등 글로벌 SaaS 솔루션을 국내외 기업에 공급
+- **주요 타겟**: 기업, 조직, IT 관리자, 협업 및 생산성 향상에 관심 있는 고객
+- **주요 서비스**: 고객 경험 관리, 협업/생산성, IT 인프라, 컨설팅/구축/교육
+- **브랜드 가치**: 신뢰성, 전문성, 글로벌 파트너십, 최신 IT 트렌드
+
+### shadcn/ui 적용 전략
+- **디자인 시스템**: shadcn/ui의 HSL 기반 색상 팔레트와 컴포넌트 시스템을 활용해, 글로벌 SaaS 기업에 어울리는 신뢰감과 전문성 강조
+- **추천 색상**: Blue 테마(신뢰, 안정, 글로벌 IT 표준) + 기본/중성 색상(콘텐츠 집중)
+- **컴포넌트 구조**: 메가메뉴, 제품/서비스 카드, 가격 테이블, CTA 등 B2B SaaS에 최적화된 UI 설계
+- **접근성/반응성**: shadcn/ui의 접근성 표준과 반응형 디자인을 적극 활용
+- **브랜드 일관성**: Google Workspace, Freshworks 등 파트너사와의 색상/스타일 조화
+
+### 프로젝트 핵심 방향
+1. **B2B SaaS 전문성**이 드러나는 UI/UX
+2. **신뢰와 안정감**을 주는 색상(Blue, Neutral)
+3. **글로벌 표준 컴포넌트**(shadcn/ui 기반)
+4. **기업 고객 중심 정보구조**(메가메뉴, 제품군별 섹션)
+5. **확장성/유지보수성** 높은 Next.js 구조
+
+---
+
 ## 📋 프로젝트 개요
 
 ### 프로젝트 목표
-WordPress 기반 사이트를 GitHub Pages 기반 Next.js로 리뉴얼하는 프로젝트입니다. Linear.app의 디자인 시스템을 차용하여 모던하고 세련된 글로벌 SaaS 솔루션 판매 사이트를 구축했습니다.
+WordPress 기반 사이트를 GitHub Pages 기반 Next.js로 리뉴얼하는 프로젝트입니다. shadcn/ui 디자인 시스템을 기반으로 모던하고 세련된 글로벌 SaaS 솔루션 판매 사이트를 구축했습니다.
 
 ### 주요 특징
 - **기술 스택**: Next.js 15 + TypeScript + shadcn/ui + Tailwind CSS
-- **디자인 시스템**: Linear.app 기반 OKLCH 색상 팔레트
+- **디자인 시스템**: shadcn/ui 기반 HSL 색상 팔레트
 - **콘텐츠**: WordPress XML에서 추출한 한국어 콘텐츠
 - **컴포넌트**: 재사용 가능한 모듈화된 컴포넌트 시스템
 
@@ -35,7 +61,7 @@ homepage/
 ├── lib/
 │   └── utils.ts                 # shadcn 유틸리티
 ├── styles/
-│   └── global.css               # 커스텀 CSS 변수 (Linear.app 기반)
+│   └── global.css               # shadcn/ui 기반 CSS 변수
 ├── WordPress.2025-09-11.xml     # 원본 콘텐츠
 ├── wedosoft.WordPress.2025-09-11.xml # 원본 콘텐츠
 └── components.json              # shadcn 설정
@@ -45,19 +71,24 @@ homepage/
 
 ## 🎨 디자인 시스템
 
-### 색상 팔레트 (Linear.app 기반)
-프로젝트는 Linear.app의 디자인을 Playwright로 실제 분석하여 추출한 정확한 색상값을 사용합니다.
+### 색상 팔레트 (shadcn/ui 기반)
+프로젝트는 shadcn/ui의 표준 색상 시스템을 사용하여 일관성 있고 접근성이 뛰어난 UI를 제공합니다.
 
-**주요 색상 (OKLCH 형식):**
-- `--background`: oklch(0.139 0.0029 246.26) - 메인 배경
-- `--foreground`: oklch(0.9784 0.0011 197.14) - 메인 텍스트
-- `--primary`: oklch(0.5674 0.1585 275.21) - 브랜드 컬러
-- `--secondary`: oklch(0.6488 0.0146 262.36) - 보조 컬러
+**주요 색상 (HSL 형식):**
+- **Light Mode:**
+  - `--background`: 0 0% 100% - 메인 배경 (흰색)
+  - `--foreground`: 222.2 84% 4.9% - 메인 텍스트 (진한 회색)
+  - `--primary`: 222.2 47.4% 11.2% - 브랜드 컬러 (진한 파랑)
+
+- **Dark Mode:**
+  - `--background`: 222.2 84% 4.9% - 메인 배경 (진한 회색)
+  - `--foreground`: 210 40% 98% - 메인 텍스트 (밝은 회색)
+  - `--primary`: 210 40% 98% - 브랜드 컬러 (밝은 파랑)
 
 **위치**: `/styles/global.css` 파일에 모든 CSS 변수 정의
 
 ### 컴포넌트 라이브러리
-- **shadcn/ui**: 기본 UI 컴포넌트
+- **shadcn/ui**: 기본 UI 컴포넌트 시스템
 - **Lucide React**: 아이콘 시스템 (이모지 사용 금지)
 - **Tailwind CSS**: 스타일링 유틸리티
 
@@ -165,7 +196,7 @@ npm run build
 
 ### 2. HeroSection (`components/sections/hero-section.tsx`)
 **기능:**
-- Linear.app 스타일 3D 효과
+- shadcn/ui 스타일 3D 효과
 - 그라디언트 배경
 - 페이드아웃 효과
 - 플로팅 카드 요소
@@ -221,13 +252,14 @@ npm run build
 ### 현재 완료된 작업
 1. ✅ WordPress XML 분석 및 콘텐츠 추출
 2. ✅ Next.js + shadcn/ui 프로젝트 설정
-3. ✅ Linear.app 디자인 시스템 분석 및 적용
+3. ✅ shadcn/ui 디자인 시스템 적용
 4. ✅ 네비게이션 컴포넌트 (메가메뉴 포함)
 5. ✅ 히어로 섹션 (3D 효과)
 6. ✅ 제품 소개 섹션
 7. ✅ 가격 테이블 (4개 탭)
 8. ✅ CTA 섹션
-9. ✅ 컴포넌트 갤러리 페이지 (`/components`)
+9. ✅ 인터랙티브 컴포넌트 갤러리 페이지 (`/components`)
+10. ✅ 다크/라이트 모드 지원
 
 ### 앞으로 해야 할 작업
 1. **이미지 교체**: 히어로 섹션 샘플 이미지를 실제 이미지로 교체
@@ -336,7 +368,7 @@ npm run dev
 - [Next.js Documentation](https://nextjs.org/docs)
 - [shadcn/ui Documentation](https://ui.shadcn.com)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Linear.app](https://linear.app) - 디자인 참조
+- [shadcn/ui Themes](https://ui.shadcn.com/themes) - 디자인 참조
 - [Lucide Icons](https://lucide.dev) - 아이콘 검색
 
 ### 프로젝트 파일 위치
@@ -367,5 +399,5 @@ npm run dev
 
 *이 문서는 프로젝트의 현재 상태를 정확히 반영하며, 새로운 개발자가 빠르게 프로젝트를 이해하고 개발을 이어갈 수 있도록 작성되었습니다.*
 
-**Last Updated**: 2025년 9월 12일  
-**Project Status**: 기본 컴포넌트 구현 완료, 추가 페이지 및 기능 개발 필요
+**Last Updated**: 2025년 1월 15일  
+**Project Status**: shadcn/ui 기반 컴포넌트 시스템 완료, 추가 페이지 및 기능 개발 필요
