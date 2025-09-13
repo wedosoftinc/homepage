@@ -1,0 +1,310 @@
+{
+    "site_info": {
+        "title": "We Do Soft",
+        "description": "기업의 디지털 혁신을 위한 최적의 파트너",
+        "url": "https://www.wedosoft.net",
+        "language": "ko-KR"
+    },
+    "business_model": {
+        "type": "B2B SaaS Solutions Provider",
+        "description": "글로벌 SaaS 솔루션을 국내외 기업에 공급하는 전문 기업",
+        "target_audience": [
+            "기업",
+            "조직",
+            "IT 관리자",
+            "협업 및 생산성 향상에 관심 있는 고객"
+        ],
+        "brand_values": [
+            "신뢰성",
+            "전문성",
+            "글로벌 파트너십",
+            "최신 IT 트렌드"
+        ]
+    },
+    "product_categories": [
+        {
+            "id": "customer-experience",
+            "title": "고객 경험 & 세일즈 관리",
+            "description": "CX 플랫폼과 CRM 솔루션으로 고객 관계 관리를 혁신하세요",
+            "products": [
+                {
+                    "name": "Freshdesk",
+                    "description": "고객 지원 헬프데스크 솔루션",
+                    "category": "freshdesk",
+                    "type": "Customer Support"
+                },
+                {
+                    "name": "Freshsales",
+                    "description": "CRM 및 세일즈 관리 솔루션",
+                    "category": "freshsales",
+                    "type": "CRM"
+                },
+                {
+                    "name": "Freshchat",
+                    "description": "실시간 채팅 및 고객 소통",
+                    "category": "freshchat",
+                    "type": "Live Chat"
+                },
+                {
+                    "name": "Freddy AI",
+                    "description": "AI 기반 고객 서비스 어시스턴트",
+                    "category": "freshworks",
+                    "type": "AI Assistant"
+                }
+            ]
+        },
+        {
+            "id": "collaboration-productivity",
+            "title": "협업 및 생산성 향상",
+            "description": "팀워크와 프로젝트 관리를 위한 통합 솔루션",
+            "products": [
+                {
+                    "name": "Monday Work Management",
+                    "description": "프로젝트 및 업무 관리 플랫폼",
+                    "category": "monday",
+                    "type": "Work Management"
+                },
+                {
+                    "name": "Monday Dev",
+                    "description": "개발팀을 위한 프로젝트 관리",
+                    "category": "monday",
+                    "type": "Development Management"
+                },
+                {
+                    "name": "Monday Sales CRM",
+                    "description": "세일즈 파이프라인 관리",
+                    "category": "monday",
+                    "type": "Sales Management"
+                },
+                {
+                    "name": "Monday Service",
+                    "description": "AI 기반 서비스 혁신 솔루션",
+                    "category": "monday",
+                    "type": "Service Management"
+                },
+                {
+                    "name": "Google Workspace",
+                    "description": "구글의 협업 및 생산성 도구",
+                    "category": "google-workspace",
+                    "type": "Productivity Suite"
+                }
+            ]
+        },
+        {
+            "id": "it-infrastructure",
+            "title": "IT 인프라 관리",
+            "description": "IT 서비스 관리와 원격 접속 솔루션",
+            "products": [
+                {
+                    "name": "Freshservice",
+                    "description": "IT 서비스 관리 솔루션",
+                    "category": "freshservice",
+                    "type": "ITSM"
+                },
+                {
+                    "name": "Splashtop",
+                    "description": "원격 접속 및 지원 솔루션",
+                    "category": "splashtop",
+                    "type": "Remote Access"
+                }
+            ]
+        }
+    ],
+    "services": [
+        {
+            "id": "consulting",
+            "title": "컨설팅 서비스",
+            "description": "전문 컨설턴트의 맞춤형 솔루션 설계"
+        },
+        {
+            "id": "implementation",
+            "title": "구축 & 구현",
+            "description": "체계적인 도입과 안정적인 구현"
+        },
+        {
+            "id": "education",
+            "title": "교육 & 지원",
+            "description": "사용자 교육과 지속적인 기술 지원"
+        }
+    ],
+    "navigation_menu": {
+        "main_menu": [
+            {
+                "label": "솔루션",
+                "type": "megamenu",
+                "submenu": [
+                    {
+                        "category": "먼데이닷컴",
+                        "items": [
+                            {
+                                "label": "Monday Service",
+                                "url": "/monday-service",
+                                "page_id": 2
+                            },
+                            {
+                                "label": "Monday Sales CRM",
+                                "url": "/monday-sales-crm",
+                                "page_id": 8193
+                            },
+                            {
+                                "label": "Monday Dev",
+                                "url": "/monday-dev",
+                                "page_id": 8714
+                            },
+                            {
+                                "label": "Monday Work Management",
+                                "url": "/monday-work-management"
+                            }
+                        ]
+                    },
+                    {
+                        "category": "Freshworks",
+                        "items": [
+                            {
+                                "label": "Freshdesk",
+                                "url": "/freshdesk"
+                            },
+                            {
+                                "label": "Freshsales",
+                                "url": "/freshsales"
+                            },
+                            {
+                                "label": "Freshchat",
+                                "url": "/freshchat"
+                            },
+                            {
+                                "label": "Freshservice",
+                                "url": "/freshservice"
+                            }
+                        ]
+                    },
+                    {
+                        "category": "기타 솔루션",
+                        "items": [
+                            {
+                                "label": "Google Workspace",
+                                "url": "/google-workspace"
+                            },
+                            {
+                                "label": "Splashtop",
+                                "url": "/splashtop"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": "서비스",
+                "type": "megamenu",
+                "submenu": [
+                    {
+                        "label": "컨설팅 서비스",
+                        "url": "/services/consulting"
+                    },
+                    {
+                        "label": "구축 & 구현",
+                        "url": "/services/implementation"
+                    },
+                    {
+                        "label": "교육 & 지원",
+                        "url": "/services/education"
+                    }
+                ]
+            },
+            {
+                "label": "가격",
+                "url": "/pricing"
+            },
+            {
+                "label": "회사소개",
+                "url": "/company"
+            }
+        ]
+    },
+    "pages": [
+        {
+            "id": 2,
+            "title": "Monday Service",
+            "slug": "monday-service",
+            "type": "page",
+            "status": "published"
+        },
+        {
+            "id": 3,
+            "title": "개인정보 처리방침",
+            "slug": "privacy-policy",
+            "type": "page",
+            "status": "published"
+        },
+        {
+            "id": 8193,
+            "title": "Monday Sales CRM",
+            "slug": "monday-sales-crm",
+            "type": "page",
+            "status": "published"
+        },
+        {
+            "id": 8714,
+            "title": "Monday Dev",
+            "slug": "monday-dev",
+            "type": "page",
+            "status": "published"
+        }
+    ],
+    "categories": [
+        {
+            "id": 11,
+            "name": "Freshworks",
+            "slug": "freshworks"
+        },
+        {
+            "id": 61,
+            "name": "Google Workspace",
+            "slug": "google-workspace"
+        },
+        {
+            "id": 17,
+            "name": "Splashtop",
+            "slug": "splashtop"
+        },
+        {
+            "id": 67,
+            "name": "Freshdesk",
+            "slug": "freshdesk"
+        },
+        {
+            "id": 84,
+            "name": "Freshsales",
+            "slug": "freshsales"
+        },
+        {
+            "id": 91,
+            "name": "Freshchat",
+            "slug": "freshchat"
+        },
+        {
+            "id": 72,
+            "name": "Freshservice",
+            "slug": "freshservice"
+        },
+        {
+            "id": 3,
+            "name": "구글 드라이브",
+            "slug": "google-drive"
+        },
+        {
+            "id": 5,
+            "name": "구글 지메일",
+            "slug": "gmail"
+        },
+        {
+            "id": 4,
+            "name": "구글 캘린더",
+            "slug": "google-calendar"
+        }
+    ],
+    "contact_info": {
+        "email": "support@wedosoft.net",
+        "company_name": "(주)위두소프트"
+    }
+}
