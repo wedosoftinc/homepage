@@ -15,7 +15,8 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import siteData from "@/data/site-structure.json"
 
 export function MainNavigation() {
@@ -118,18 +119,14 @@ export function MainNavigation() {
 
                         {/* 기타 메뉴 */}
                         <NavigationMenuItem>
-                            <Link href="/pricing" legacyBehavior passHref>
-                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                    가격
-                                </NavigationMenuLink>
-                            </Link>
+                            <NavigationMenuLink href="/pricing" className={navigationMenuTriggerStyle()}>
+                                가격
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <Link href="/company" legacyBehavior passHref>
-                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                    회사소개
-                                </NavigationMenuLink>
-                            </Link>
+                            <NavigationMenuLink href="/company" className={navigationMenuTriggerStyle()}>
+                                회사소개
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
@@ -140,6 +137,7 @@ export function MainNavigation() {
                         {/* 검색이나 기타 요소를 여기에 추가할 수 있습니다 */}
                     </div>
                     <nav className="flex items-center space-x-2">
+                        <ThemeToggle />
                         <Button variant="ghost" size="sm" asChild className="hidden md:inline-flex">
                             <Link href="/contact">상담 신청</Link>
                         </Button>
@@ -161,6 +159,9 @@ export function MainNavigation() {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="pr-0">
+                        <SheetHeader>
+                            <SheetTitle>메뉴</SheetTitle>
+                        </SheetHeader>
                         <MobileNav onClose={() => setIsOpen(false)} />
                     </SheetContent>
                 </Sheet>
