@@ -31,7 +31,7 @@ export function MainNavigation() {
 
     // 현재 테마에 따라 로고 결정 (마운트 전에는 light 로고 사용)
     const currentTheme = mounted ? (resolvedTheme || theme) : 'light'
-    const logoSrc = currentTheme === 'dark' ? '/logo-dark.png' : '/logo-light.png'
+    const logoSrc = currentTheme === 'dark' ? '/logo-dark.webp' : '/logo-light.webp'
 
     // 실제 메뉴 구조에 맞게 솔루션 메뉴 데이터 구성
     const solutionsByCategory = {

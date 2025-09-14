@@ -6,12 +6,12 @@ const nextConfig = {
     return [
       {
         source: '/img/logo-dark.svg',
-        destination: '/logo-dark.png',
+        destination: '/logo-dark.webp',
         permanent: true,
       },
       {
         source: '/img/logo-light.svg',
-        destination: '/logo-light.png',
+        destination: '/logo-light.webp',
         permanent: true,
       },
     ]
