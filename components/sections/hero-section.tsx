@@ -1,26 +1,16 @@
 'use client'
 
-import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Play, CheckCircle, TrendingUp, Users, Building2 } from "lucide-react"
 
 export function HeroSection() {
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
-
-    if (!mounted) {
-        return null
-    }
 
     return (
         <section className="relative overflow-hidden bg-background py-20 sm:py-32">
-            {/* 배경 패턴 */}
-            <div className="absolute inset-0 bg-muted/20 [mask-image:linear-gradient(0deg,transparent,rgba(255,255,255,0.6))] -z-10" />
+            {/* 워드프레스 원본 스타일 적용 */}
+            <div className="absolute inset-0 -z-10 custom-grid-bg" />
 
             <div className="container relative mx-auto px-4">
                 <div className="mx-auto max-w-6xl">

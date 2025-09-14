@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { useTheme } from "next-themes"
-import siteData from "@/data/site-structure.json"
 
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
@@ -32,23 +31,37 @@ export function MainNavigation() {
 
     // 현재 테마에 따라 로고 결정 (마운트 전에는 light 로고 사용)
     const currentTheme = mounted ? (resolvedTheme || theme) : 'light'
-    const logoSrc = currentTheme === 'dark' ? '/logo-dark.png' : '/logo-light.png'    // 솔루션 메뉴 데이터 구성
+    const logoSrc = currentTheme === 'dark' ? '/logo-dark.png' : '/logo-light.png'
+
+    // 실제 메뉴 구조에 맞게 솔루션 메뉴 데이터 구성
     const solutionsByCategory = {
-        "먼데이닷컴": siteData.product_categories
-            .find(cat => cat.id === "collaboration-productivity")
-            ?.products.filter(p => p.category === "monday") || [],
-        "Freshworks": siteData.product_categories
-            .find(cat => cat.id === "customer-experience")
-            ?.products.filter(p => p.category.startsWith("fresh")) || [],
-        "기타 솔루션": [
-            ...(siteData.product_categories
-                .find(cat => cat.id === "collaboration-productivity")
-                ?.products.filter(p => p.category === "google-workspace") || []),
-            ...(siteData.product_categories
-                .find(cat => cat.id === "it-infrastructure")
-                ?.products || [])
+        "고객 경험 & 세일즈 관리": [
+            { name: "Freshdesk", href: "/solutions/customer-experience/freshdesk" },
+            { name: "Freshdesk Omni", href: "/solutions/customer-experience/freshdesk-omni" },
+            { name: "Freshchat", href: "/solutions/customer-experience/freshchat" },
+            { name: "Freddy AI", href: "/solutions/customer-experience/freddy-ai" },
+            { name: "Freshsales", href: "/solutions/customer-experience/freshsales" },
+            { name: "Monday Sales CRM", href: "/solutions/customer-experience/monday-sales-crm" }
+        ],
+        "협업 & 업무 생산성": [
+            { name: "Monday Work Management", href: "/solutions/collaboration/monday-work-management" },
+            { name: "Monday Dev", href: "/solutions/collaboration/monday-dev" },
+            { name: "Monday Service", href: "/solutions/collaboration/monday-service" },
+            { name: "Google Workspace", href: "/solutions/collaboration/google-workspace" }
+        ],
+        "IT 인프라 관리": [
+            { name: "Freshservice", href: "/solutions/it-infrastructure/freshservice" },
+            { name: "Splashtop", href: "/solutions/it-infrastructure/splashtop" }
         ]
     }
+
+    // 서비스 메뉴 구조
+    const services = [
+        { name: "컨설팅", href: "/services/consulting" },
+        { name: "구축", href: "/services/implementation" },
+        { name: "교육", href: "/services/training" },
+        { name: "유지보수", href: "/services/maintenance" }
+    ]
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -74,30 +87,25 @@ export function MainNavigation() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>솔루션</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                                <div className="grid grid-cols-3 gap-6 p-6 w-[800px]">
                                     {Object.entries(solutionsByCategory).map(([category, products]) => (
                                         <div key={category} className="space-y-3">
-                                            <h4 className="text-sm font-medium text-muted-foreground">
+                                            <h4 className="text-sm font-semibold text-foreground border-b border-border pb-2">
                                                 {category}
                                             </h4>
-                                            <div className="space-y-2">
+                                            <div className="space-y-1">
                                                 {products.map((product) => (
                                                     <NavigationMenuLink
                                                         key={product.name}
                                                         asChild
                                                     >
                                                         <Link
-                                                            href={`/solutions/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                                            href={product.href}
                                                             className={cn(
-                                                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                                                "block select-none rounded-md px-3 py-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                                             )}
                                                         >
-                                                            <div className="text-sm font-medium leading-none">
-                                                                {product.name}
-                                                            </div>
-                                                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                                                {product.description}
-                                                            </p>
+                                                            {product.name}
                                                         </Link>
                                                     </NavigationMenuLink>
                                                 ))}
@@ -112,21 +120,16 @@ export function MainNavigation() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>서비스</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
-                                    {siteData.services.map((service) => (
-                                        <NavigationMenuLink key={service.id} asChild>
+                                <div className="grid grid-cols-4 gap-4 p-6 w-[600px]">
+                                    {services.map((service) => (
+                                        <NavigationMenuLink key={service.name} asChild>
                                             <Link
-                                                href={`/services/${service.id}`}
+                                                href={service.href}
                                                 className={cn(
-                                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                                    "block select-none rounded-md px-3 py-4 text-center text-sm font-medium leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                                 )}
                                             >
-                                                <div className="text-sm font-medium leading-none">
-                                                    {service.title}
-                                                </div>
-                                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                                    {service.description}
-                                                </p>
+                                                {service.name}
                                             </Link>
                                         </NavigationMenuLink>
                                     ))}
@@ -199,50 +202,76 @@ export function MainNavigation() {
 }
 
 function MobileNav({ onClose }: { onClose: () => void }) {
+    // 동일한 메뉴 구조 사용
+    const solutionsByCategory = {
+        "고객 경험 & 세일즈 관리": [
+            { name: "Freshdesk", href: "/solutions/customer-experience/freshdesk" },
+            { name: "Freshdesk Omni", href: "/solutions/customer-experience/freshdesk-omni" },
+            { name: "Freshchat", href: "/solutions/customer-experience/freshchat" },
+            { name: "Freddy AI", href: "/solutions/customer-experience/freddy-ai" },
+            { name: "Freshsales", href: "/solutions/customer-experience/freshsales" },
+            { name: "Monday Sales CRM", href: "/solutions/customer-experience/monday-sales-crm" }
+        ],
+        "협업 & 업무 생산성": [
+            { name: "Monday Work Management", href: "/solutions/collaboration/monday-work-management" },
+            { name: "Monday Dev", href: "/solutions/collaboration/monday-dev" },
+            { name: "Monday Service", href: "/solutions/collaboration/monday-service" },
+            { name: "Google Workspace", href: "/solutions/collaboration/google-workspace" }
+        ],
+        "IT 인프라 관리": [
+            { name: "Freshservice", href: "/solutions/it-infrastructure/freshservice" },
+            { name: "Splashtop", href: "/solutions/it-infrastructure/splashtop" }
+        ]
+    }
+
+    const services = [
+        { name: "컨설팅", href: "/services/consulting" },
+        { name: "구축", href: "/services/implementation" },
+        { name: "교육", href: "/services/training" },
+        { name: "유지보수", href: "/services/maintenance" }
+    ]
+
     return (
         <div className="flex flex-col space-y-3">
-            {/* 로고 */}
-            <Link
-                href="/"
-                className="flex items-center space-x-2 pb-6"
-                onClick={onClose}
-            >
-                <span className="font-bold text-xl">We Do Soft</span>
-            </Link>
             {/* 솔루션 섹션 */}
             <div className="space-y-3">
                 <h4 className="font-medium">솔루션</h4>
-                <div className="space-y-2 pl-4">
-                    {siteData.product_categories.map((category) =>
-                        category.products.map((product) => (
-                            <Link
-                                key={product.name}
-                                href={`/solutions/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="block py-2 text-sm text-muted-foreground hover:text-foreground"
-                                onClick={onClose}
-                            >
-                                {product.name}
-                            </Link>
-                        ))
-                    )}
-                </div>
+                {Object.entries(solutionsByCategory).map(([category, products]) => (
+                    <div key={category} className="space-y-2 pl-4">
+                        <h5 className="text-sm font-medium text-muted-foreground">{category}</h5>
+                        <div className="space-y-1 pl-2">
+                            {products.map((product) => (
+                                <Link
+                                    key={product.name}
+                                    href={product.href}
+                                    className="block py-1 text-sm text-muted-foreground hover:text-foreground"
+                                    onClick={onClose}
+                                >
+                                    {product.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
+
             {/* 서비스 섹션 */}
             <div className="space-y-3">
                 <h4 className="font-medium">서비스</h4>
                 <div className="space-y-2 pl-4">
-                    {siteData.services.map((service) => (
+                    {services.map((service) => (
                         <Link
-                            key={service.id}
-                            href={`/services/${service.id}`}
+                            key={service.name}
+                            href={service.href}
                             className="block py-2 text-sm text-muted-foreground hover:text-foreground"
                             onClick={onClose}
                         >
-                            {service.title}
+                            {service.name}
                         </Link>
                     ))}
                 </div>
             </div>
+
             {/* 기타 메뉴 */}
             <div className="space-y-2">
                 <Link
