@@ -29,9 +29,30 @@ export function MainNavigation() {
         setMounted(true)
     }, [])
 
-    // 현재 테마에 따라 로고 결정 (마운트 전에는 light 로고 사용)
-    const currentTheme = mounted ? (resolvedTheme || theme) : 'light'
-    const logoSrc = currentTheme === 'dark' ? '/logo-dark.webp' : '/logo-light.webp'
+    // 로고 렌더링 최적화: CSS로 테마별 로고 전환
+    const logoComponent = mounted ? (
+        <div className="relative h-8 w-auto">
+            <Image
+                src="/logo-light.webp"
+                alt="WeDoSoft"
+                width={120}
+                height={32}
+                className="h-8 w-auto dark:hidden"
+                priority
+            />
+            <Image
+                src="/logo-dark.webp"
+                alt="WeDoSoft"
+                width={120}
+                height={32}
+                className="h-8 w-auto hidden dark:block"
+                priority
+            />
+        </div>
+    ) : (
+        // SSR 시 기본 로고 (빈 공간 방지)
+        <div className="h-8 w-[120px] bg-muted animate-pulse rounded" />
+    )
 
     // 실제 메뉴 구조에 맞게 솔루션 메뉴 데이터 구성
     const solutionsByCategory = {
@@ -69,14 +90,7 @@ export function MainNavigation() {
                 {/* 로고 */}
                 <div className="mr-4 flex">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Image
-                            src={logoSrc}
-                            alt="WeDoSoft"
-                            width={140}
-                            height={40}
-                            className="h-10 w-auto object-contain transition-all duration-200"
-                            priority
-                        />
+                        {logoComponent}
                     </Link>
                 </div>
 
@@ -184,13 +198,7 @@ export function MainNavigation() {
                     <SheetContent side="left" className="pr-0">
                         <SheetHeader>
                             <SheetTitle className="flex items-center">
-                                <Image
-                                    src={logoSrc}
-                                    alt="WeDoSoft"
-                                    width={120}
-                                    height={35}
-                                    className="h-8 w-auto object-contain transition-all duration-200"
-                                />
+                                {logoComponent}
                             </SheetTitle>
                         </SheetHeader>
                         <MobileNav onClose={() => setIsOpen(false)} />
