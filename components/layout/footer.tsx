@@ -5,49 +5,51 @@ export function Footer() {
     return (
         <footer className="bg-secondary/80 dark:bg-muted border-t">
             <div className="container px-4 py-12">
-                {/* 원본 사이트와 동일한 4컬럼 구조 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* PRODUCT */}
-                    <div className="space-y-4">
-                        <h3 className="font-semibold text-foreground">PRODUCT</h3>
-                        <nav className="space-y-1">
-                            <div className="text-sm text-muted-foreground">Freshworks</div>
-                            <div className="text-sm text-muted-foreground">Google Workspace</div>
-                            <div className="text-sm text-muted-foreground">Monday.com</div>
-                            <div className="text-sm text-muted-foreground">Splashtop</div>
-                        </nav>
-                    </div>
+                {/* 원본 사이트와 동일한 4컬럼 구조 - 중앙 배치 */}
+                <div className="max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
+                        {/* PRODUCT */}
+                        <div className="space-y-4">
+                            <h3 className="font-semibold text-foreground">PRODUCT</h3>
+                            <nav className="space-y-1">
+                                <div className="text-sm text-muted-foreground">Freshworks</div>
+                                <div className="text-sm text-muted-foreground">Google Workspace</div>
+                                <div className="text-sm text-muted-foreground">Monday.com</div>
+                                <div className="text-sm text-muted-foreground">Splashtop</div>
+                            </nav>
+                        </div>
 
-                    {/* SOLUTIONS */}
-                    <div className="space-y-4">
-                        <h3 className="font-semibold text-foreground">SOLUTIONS</h3>
-                        <nav className="space-y-1">
-                            <div className="text-sm text-muted-foreground">고객 경험 관리</div>
-                            <div className="text-sm text-muted-foreground">업무 생산성</div>
-                            <div className="text-sm text-muted-foreground">IT 인프라 관리</div>
-                        </nav>
-                    </div>
+                        {/* SOLUTIONS */}
+                        <div className="space-y-4">
+                            <h3 className="font-semibold text-foreground">SOLUTIONS</h3>
+                            <nav className="space-y-1">
+                                <div className="text-sm text-muted-foreground">고객 경험 관리</div>
+                                <div className="text-sm text-muted-foreground">업무 생산성</div>
+                                <div className="text-sm text-muted-foreground">IT 인프라 관리</div>
+                            </nav>
+                        </div>
 
-                    {/* SERVICES */}
-                    <div className="space-y-4">
-                        <h3 className="font-semibold text-foreground">SERVICES</h3>
-                        <nav className="space-y-1">
-                            <div className="text-sm text-muted-foreground">컨설팅</div>
-                            <div className="text-sm text-muted-foreground">솔루션 구축</div>
-                            <div className="text-sm text-muted-foreground">교육</div>
-                            <div className="text-sm text-muted-foreground">유지보수</div>
-                        </nav>
-                    </div>
+                        {/* SERVICES */}
+                        <div className="space-y-4">
+                            <h3 className="font-semibold text-foreground">SERVICES</h3>
+                            <nav className="space-y-1">
+                                <div className="text-sm text-muted-foreground">컨설팅</div>
+                                <div className="text-sm text-muted-foreground">솔루션 구축</div>
+                                <div className="text-sm text-muted-foreground">교육</div>
+                                <div className="text-sm text-muted-foreground">유지보수</div>
+                            </nav>
+                        </div>
 
-                    {/* RESOURCES */}
-                    <div className="space-y-4">
-                        <h3 className="font-semibold text-foreground">RESOURCES</h3>
-                        <nav className="space-y-1">
-                            <div className="text-sm text-muted-foreground">고객센터</div>
-                            <div className="text-sm text-muted-foreground">문서 포털</div>
-                            <div className="text-sm text-muted-foreground">블로그</div>
-                            <div className="text-sm text-muted-foreground">개발자 포털</div>
-                        </nav>
+                        {/* RESOURCES */}
+                        <div className="space-y-4">
+                            <h3 className="font-semibold text-foreground">RESOURCES</h3>
+                            <nav className="space-y-1">
+                                <div className="text-sm text-muted-foreground">고객센터</div>
+                                <div className="text-sm text-muted-foreground">문서 포털</div>
+                                <div className="text-sm text-muted-foreground">블로그</div>
+                                <div className="text-sm text-muted-foreground">개발자 포털</div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
 

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -17,12 +18,21 @@ import {
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { useTheme } from "next-themes"
 import siteData from "@/data/site-structure.json"
 
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
+    const { theme, resolvedTheme } = useTheme()
+    const [mounted, setMounted] = React.useState(false)
 
-    // 솔루션 메뉴 데이터 구성
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    // 현재 테마에 따라 로고 결정 (마운트 전에는 light 로고 사용)
+    const currentTheme = mounted ? (resolvedTheme || theme) : 'light'
+    const logoSrc = currentTheme === 'dark' ? '/logo-dark.png' : '/logo-light.png'    // 솔루션 메뉴 데이터 구성
     const solutionsByCategory = {
         "먼데이닷컴": siteData.product_categories
             .find(cat => cat.id === "collaboration-productivity")
@@ -31,12 +41,12 @@ export function MainNavigation() {
             .find(cat => cat.id === "customer-experience")
             ?.products.filter(p => p.category.startsWith("fresh")) || [],
         "기타 솔루션": [
-            ...siteData.product_categories
+            ...(siteData.product_categories
                 .find(cat => cat.id === "collaboration-productivity")
-                ?.products.filter(p => p.category === "google-workspace") || [],
-            ...siteData.product_categories
+                ?.products.filter(p => p.category === "google-workspace") || []),
+            ...(siteData.product_categories
                 .find(cat => cat.id === "it-infrastructure")
-                ?.products || []
+                ?.products || [])
         ]
     }
 
@@ -46,7 +56,14 @@ export function MainNavigation() {
                 {/* 로고 */}
                 <div className="mr-4 flex">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <span className="font-bold text-xl">We Do Soft</span>
+                        <Image
+                            src={logoSrc}
+                            alt="WeDoSoft"
+                            width={140}
+                            height={40}
+                            className="h-10 w-auto object-contain transition-all duration-200"
+                            priority
+                        />
                     </Link>
                 </div>
 
@@ -139,6 +156,9 @@ export function MainNavigation() {
                     <nav className="flex items-center space-x-2">
                         <ThemeToggle />
                         <Button variant="ghost" size="sm" asChild className="hidden md:inline-flex">
+                            <Link href="/components-demo">컴포넌트</Link>
+                        </Button>
+                        <Button variant="ghost" size="sm" asChild className="hidden md:inline-flex">
                             <Link href="/contact">상담 신청</Link>
                         </Button>
                         <Button size="sm" asChild>
@@ -160,14 +180,22 @@ export function MainNavigation() {
                     </SheetTrigger>
                     <SheetContent side="left" className="pr-0">
                         <SheetHeader>
-                            <SheetTitle>메뉴</SheetTitle>
+                            <SheetTitle className="flex items-center">
+                                <Image
+                                    src={logoSrc}
+                                    alt="WeDoSoft"
+                                    width={120}
+                                    height={35}
+                                    className="h-8 w-auto object-contain transition-all duration-200"
+                                />
+                            </SheetTitle>
                         </SheetHeader>
                         <MobileNav onClose={() => setIsOpen(false)} />
                     </SheetContent>
                 </Sheet>
             </div>
         </header>
-    )
+    );
 }
 
 function MobileNav({ onClose }: { onClose: () => void }) {
@@ -181,7 +209,6 @@ function MobileNav({ onClose }: { onClose: () => void }) {
             >
                 <span className="font-bold text-xl">We Do Soft</span>
             </Link>
-
             {/* 솔루션 섹션 */}
             <div className="space-y-3">
                 <h4 className="font-medium">솔루션</h4>
@@ -200,7 +227,6 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     )}
                 </div>
             </div>
-
             {/* 서비스 섹션 */}
             <div className="space-y-3">
                 <h4 className="font-medium">서비스</h4>
@@ -217,7 +243,6 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     ))}
                 </div>
             </div>
-
             {/* 기타 메뉴 */}
             <div className="space-y-2">
                 <Link
@@ -241,7 +266,14 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                 >
                     상담 신청
                 </Link>
+                <Link
+                    href="/components-demo"
+                    className="block py-2 font-medium hover:text-primary"
+                    onClick={onClose}
+                >
+                    컴포넌트 데모
+                </Link>
             </div>
         </div>
-    )
+    );
 }

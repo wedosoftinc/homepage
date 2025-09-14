@@ -249,5 +249,5 @@ export function ProductsSection() {
                 </Tabs>
             </div>
         </section>
-    )
+    );
 }
