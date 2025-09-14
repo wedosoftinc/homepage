@@ -88,8 +88,7 @@ export function Footer() {
                                             <li key={link.label}>
                                                 <Link
                                                     href={link.href}
-                                                    className="text-sm text-slate-300 hover:text-white transition-colors"
-                                                >
+                                                    className="text-sm text-slate-300 hover:text-white transition-colors">
                                                     {link.label}
                                                 </Link>
                                             </li>
@@ -132,5 +131,5 @@ export function Footer() {
                 </div>
             </div>
         </footer>
-    )
+    );
 }
