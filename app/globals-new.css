@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    /* 🌙 다크 테마 - 기본 테마 */
+    :root {
+        --background: 222 84% 5%;
+        /* Deep navy background */
+        --foreground: 210 40% 98%;
+        /* Almost white text */
+
+        --card: 222 47% 11%;
+        /* Dark navy cards */
+        --card-foreground: 210 40% 98%;
+        /* Light card text */
+
+        --popover: 222 47% 11%;
+        /* Dark navy popovers */
+        --popover-foreground: 210 40% 98%;
+        /* Light popover text */
+
+        --primary: 215 35% 65%;
+        /* 더 명료한 blue-gray */
+        --primary-foreground: 222 84% 5%;
+        /* Dark text on blue */
+
+        --secondary: 217 32% 17%;
+        /* Medium dark blue-gray */
+        --secondary-foreground: 210 40% 98%;
+        /* Light text */
+
+        --muted: 217 32% 17%;
+        /* Medium dark for muted areas */
+        --muted-foreground: 215 20% 65%;
+        /* Medium light gray */
+
+        --accent: 215 25% 60%;
+        /* Blue-gray accent */
+        --accent-foreground: 222 84% 5%;
+        /* Dark text on accent */
+
+        --destructive: 0 84% 60%;
+        /* Red for errors */
+        --destructive-foreground: 210 40% 98%;
+        /* Light text */
+
+        --border: 217 32% 17%;
+        /* Medium dark borders */
+        --input: 217 32% 17%;
+        /* Input borders */
+        --ring: 210 100% 56%;
+        /* Focus rings */
+
+        --radius: 0.5rem;
+        /* 8px border radius */
+    }
+
+    /* ☀️ 라이트 테마 */
+    .light {
+        --background: 0 0% 100%;
+        /* White background */
+        --foreground: 222 84% 5%;
+        /* Dark text */
+
+        --card: 0 0% 100%;
+        /* White cards */
+        --card-foreground: 222 84% 5%;
+        /* Dark card text */
+
+        --popover: 0 0% 100%;
+        /* White popovers */
+        --popover-foreground: 222 84% 5%;
+        /* Dark popover text */
+
+        --primary: 215 45% 45%;
+        /* 라이트 모드: 더 선명한 blue-gray */
+        --primary-foreground: 0 0% 100%;
+        /* White text on blue */
+
+        --secondary: 210 40% 94%;
+        /* Light blue-gray */
+        --secondary-foreground: 222 84% 5%;
+        /* Dark text */
+
+        --muted: 210 40% 96%;
+        /* Very light background */
+        --muted-foreground: 215 20% 35%;
+        /* 더 진한 색상으로 가독성 향상 */
+
+        --accent: 210 40% 94%;
+        /* Light accent */
+        --accent-foreground: 222 84% 5%;
+        /* Dark text */
+
+        --destructive: 0 84% 60%;
+        /* Red for errors */
+        --destructive-foreground: 0 0% 100%;
+        /* White text */
+
+        --border: 214 32% 91%;
+        /* Light borders */
+        --input: 214 32% 91%;
+        /* Input borders */
+        --ring: 210 100% 56%;
+        /* Focus rings */
+    }
+
+    /* 기본 스타일 */
+    * {
+        border-color: hsl(var(--border));
+    }
+
+    body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+    }
+}

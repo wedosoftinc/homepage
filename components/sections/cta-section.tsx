@@ -88,15 +88,15 @@ export function CTASection() {
                     {/* 통계 및 신뢰도 정보 */}
                     <div className="grid md:grid-cols-4 gap-6 mb-12">
                         <div className="text-center">
-                            <div className="text-3xl font-bold mb-2">500+</div>
+                            <div className="text-3xl font-bold text-primary mb-2">500+</div>
                             <div className="text-sm text-muted-foreground">기업 고객</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl font-bold mb-2">10,000+</div>
+                            <div className="text-3xl font-bold text-accent mb-2">10,000+</div>
                             <div className="text-sm text-muted-foreground">활성 사용자</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl font-bold mb-2">95%</div>
+                            <div className="text-3xl font-bold text-primary mb-2">95%</div>
                             <div className="text-sm text-muted-foreground">고객 만족도</div>
                         </div>
                         <div className="text-center">

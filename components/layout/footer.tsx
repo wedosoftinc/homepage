@@ -74,14 +74,14 @@ export function Footer() {
                         <div className="flex items-center space-x-4">
                             <a
                                 href="mailto:support@wedosoft.net"
-                                className="text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-muted-foreground hover:text-primary transition-colors"
                                 aria-label="Email"
                             >
                                 <Mail className="h-5 w-5" />
                             </a>
                             <a
                                 href="tel:+82-2-2135-3071"
-                                className="text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-muted-foreground hover:text-accent transition-colors"
                                 aria-label="Phone"
                             >
                                 <Phone className="h-5 w-5" />
@@ -90,7 +90,7 @@ export function Footer() {
                                 href="https://www.linkedin.com/in/wedosoft/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-muted-foreground hover:text-primary transition-colors"
                                 aria-label="LinkedIn"
                             >
                                 <Linkedin className="h-5 w-5" />

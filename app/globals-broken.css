@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    /* 🌙 WeDoSoft 기본 다크 테마 */
+    :root {
+        /* 배경 */
+        --background: 222 84% 5%;
+        /* Deep navy background */
+        --foreground: 210 40% 98%;
+        /* Almost white text */
+
+        /* 카드 */
+        --card: 222 47% 11%;
+        /* Dark navy cards */
+        --card-foreground: 210 40% 98%;
+        /* Light card text */
+
+        /* 팝오버 */
+        --popover: 222 47% 11%;
+        /* Dark navy popovers */
+        --popover-foreground: 210 40% 98%;
+        /* Light popover text */
+
+        /* 🔵 Primary - Deep Ocean Blue */
+        --primary: 215 35% 65%;
+        /* 더 명료한 blue-gray */
+        --primary-foreground: 222 84% 5%;
+        /* Dark text on blue */
+
+        /* 🔗 Secondary */
+        --secondary: 217 32% 17%;
+        /* Medium dark blue-gray */
+        --secondary-foreground: 210 40% 98%;
+        /* Light text */
+
+        /* 🎯 Muted */
+        --muted: 217 32% 17%;
+        /* Medium dark for muted areas */
+        --muted-foreground: 215 20% 65%;
+        /* Medium light gray */
+
+        /* ✨ Accent */
+        --accent: 215 25% 60%;
+        /* Blue-gray accent */
+        --accent-foreground: 222 84% 5%;
+        /* Dark text on accent */
+
+        /* ⚠️ Destructive */
+        --destructive: 0 84% 60%;
+        /* Red for errors */
+        --destructive-foreground: 210 40% 98%;
+        /* Light text */
+
+        /* 🔲 Borders */
+        --border: 217 32% 17%;
+        /* Medium dark borders */
+        --input: 217 32% 17%;
+        /* Input borders */
+        --ring: 210 100% 56%;
+        /* Focus rings - same as primary */
+
+        /* 📏 Radius */
+        --radius: 0.5rem;
+        /* 8px border radius */
+    }
+
+    /* ☀️ 라이트 테마 (세컨드 테마) */
+    .light {
+        /* 배경 */
+        --background: 0 0% 100%;
+        /* White background */
+        --foreground: 222 84% 5%;
+        /* Dark text */
+
+        /* 카드 */
+        --card: 0 0% 100%;
+        /* White cards */
+        --card-foreground: 222 84% 5%;
+        /* Dark card text */
+
+        /* 팝오버 */
+        --popover: 0 0% 100%;
+        /* White popovers */
+        --popover-foreground: 222 84% 5%;
+        /* Dark popover text */
+
+        /* 🔵 Primary - Deep Ocean Blue (라이트 모드용) */
+        --primary: 215 45% 45%;
+        /* 라이트 모드: 더 선명한 blue-gray */
+        --primary-foreground: 0 0% 100%;
+        /* White text on blue */
+
+        /* 🔗 Secondary */
+        --secondary: 210 40% 94%;
+        /* Light blue-gray */
+        --secondary-foreground: 222 84% 5%;
+        /* Dark text */
+
+        /* 🎯 Muted */
+        --muted: 210 40% 96%;
+        /* Very light background */
+        --muted-foreground: 215 20% 35%;
+        /* Medium gray text */
+
+        /* ✨ Accent */
+        --accent: 210 40% 96%;
+        /* Light accent background */
+        --accent-foreground: 222 84% 5%;
+        /* Dark text on accent */
+
+        /* ⚠️ Destructive */
+        --destructive: 0 84% 60%;
+        /* Red for errors */
+        --destructive-foreground: 0 0% 100%;
+        /* White text */
+
+        /* 🔲 Borders */
+        --border: 214 32% 91%;
+        /* Light borders */
+        --input: 214 32% 91%;
+        /* Input borders */
+        --ring: 210 100% 56%;
+        /* Focus rings - same as primary */
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
