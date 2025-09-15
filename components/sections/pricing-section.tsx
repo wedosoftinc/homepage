@@ -5,7 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Star, ArrowRight, Zap } from "lucide-react"
+import { Star, ArrowRight, Zap } from "lucide-react"
+import {
+    MetricCard,
+    FeatureList,
+    CTAButtonGroup,
+    BadgeGroup
+} from "@/components/common"
 
 const pricingData = [
     {
@@ -180,10 +186,15 @@ export function PricingSection() {
             <div className="container mx-auto px-4">
                 {/* 섹션 헤더 */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <Badge variant="secondary" className="mb-4">
-                        <Zap className="h-3 w-3 mr-1" />
-                        가격
-                    </Badge>
+                    <BadgeGroup
+                        badges={[{
+                            text: "가격",
+                            variant: "secondary",
+                            icon: Zap
+                        }]}
+                        layout="horizontal"
+                        className="mb-4 justify-center"
+                    />
                     <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                         투명하고 합리적인
                         <span className="text-primary">
@@ -244,14 +255,11 @@ export function PricingSection() {
 
                                         <CardContent className="space-y-6">
                                             {/* 기능 리스트 */}
-                                            <ul className="space-y-3">
-                                                {plan.features.map((feature, i) => (
-                                                    <li key={i} className="flex items-start gap-3">
-                                                        <Check className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
-                                                        <span className="text-sm">{feature}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <FeatureList
+                                                features={plan.features.map(feature => ({ text: feature }))}
+                                                size="sm"
+                                                iconColor="text-accent"
+                                            />
 
                                             {/* CTA 버튼 */}
                                             <div className="pt-6">
@@ -276,20 +284,16 @@ export function PricingSection() {
                             <div className="mt-12 text-center space-y-4">
                                 <div className="bg-background rounded-lg p-6 max-w-4xl mx-auto">
                                     <h3 className="text-lg font-semibold mb-4">포함된 서비스</h3>
-                                    <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
-                                        <div className="flex items-center gap-2">
-                                            <Check className="h-4 w-4 text-green-600" />
-                                            무료 마이그레이션 지원
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <Check className="h-4 w-4 text-green-600" />
-                                            온보딩 교육 제공
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <Check className="h-4 w-4 text-green-600" />
-                                            24/7 기술 지원
-                                        </div>
-                                    </div>
+                                    <FeatureList
+                                        features={[
+                                            { text: "무료 마이그레이션 지원" },
+                                            { text: "온보딩 교육 제공" },
+                                            { text: "24/7 기술 지원" }
+                                        ]}
+                                        size="sm"
+                                        iconColor="text-green-600"
+                                        className="grid md:grid-cols-3 gap-4"
+                                    />
                                 </div>
 
                                 <p className="text-sm text-muted-foreground">

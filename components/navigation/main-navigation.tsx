@@ -343,6 +343,11 @@ export function MainNavigation() {
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
+                            <NavigationMenuLink href="/blog" className={navigationMenuTriggerStyle()}>
+                                블로그
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
                             <NavigationMenuLink href="/company" className={navigationMenuTriggerStyle()}>
                                 회사소개
                             </NavigationMenuLink>

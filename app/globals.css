@@ -135,8 +135,13 @@
         --ring: 215 62% 52%;
         /* #3284D6 focus rings - primary와 동일 */
 
+        /* 🎯 Linear.app 스타일 적용 - 버튼 크기별 radius */
         --radius: 0.5rem;
-        /* 8px border radius */
+        /* 8px - 작은 버튼용 (Linear sm) */
+        --radius-lg: 0.625rem;
+        /* 10px - 기본/큰 버튼용 (Linear default) */
+        --radius-sm: 0.375rem;
+        /* 6px - 매우 작은 요소용 */
     }
 
     /* ☀️ 라이트 테마 */
