@@ -63,6 +63,12 @@ module.exports = {
 				}
 			},
 			borderRadius: {
+				// Linear.app 스타일 적용
+				'linear-lg': 'var(--radius-lg)',    // 10px - 기본/큰 버튼용
+				'linear': 'var(--radius)',          // 8px - 작은 버튼용
+				'linear-sm': 'var(--radius-sm)',    // 6px - 매우 작은 요소용
+
+				// shadcn/ui 기본값 유지 (호환성)
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'

@@ -6,7 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, CheckCircle, Users, Headphones, MessageSquare, Bot, Calendar, Wrench, Monitor, Shield } from "lucide-react"
+import { ArrowRight, Headphones, MessageSquare, Bot, Calendar, Wrench, Monitor, Shield, Users } from "lucide-react"
+import {
+    MetricCard,
+    FeatureList,
+    CTAButtonGroup,
+    BadgeGroup
+} from "@/components/common"
 
 const productCategories = [
     {
@@ -126,9 +132,11 @@ export function ProductsSection() {
             <div className="container mx-auto px-4">
                 {/* 섹션 헤더 */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <Badge variant="secondary" className="mb-4">
-                        솔루션
-                    </Badge>
+                    <BadgeGroup
+                        badges={[{ text: "솔루션", variant: "secondary" }]}
+                        layout="horizontal"
+                        className="mb-4 justify-center"
+                    />
                     <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                         귀하의 비즈니스에 맞는
                         <span className="text-primary">
@@ -194,14 +202,11 @@ export function ProductsSection() {
                                             {/* 주요 기능 */}
                                             <div className="space-y-2">
                                                 <h4 className="font-medium text-sm">주요 기능</h4>
-                                                <ul className="space-y-1">
-                                                    {product.features.map((feature, i) => (
-                                                        <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                            <CheckCircle className="h-3 w-3 text-accent flex-shrink-0" />
-                                                            {feature}
-                                                        </li>
-                                                    ))}
-                                                </ul>
+                                                <FeatureList
+                                                    features={product.features.map(feature => ({ text: feature }))}
+                                                    size="sm"
+                                                    iconColor="text-accent"
+                                                />
                                             </div>
 
                                             {/* 가격 */}
@@ -233,15 +238,21 @@ export function ProductsSection() {
                                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                                         전문 컨설턴트와 상담을 통해 귀하의 비즈니스에 최적화된 솔루션을 찾아보세요
                                     </p>
-                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                        <Button size="lg">
-                                            무료 상담 신청
-                                            <ArrowRight className="ml-2 h-4 w-4" />
-                                        </Button>
-                                        <Button variant="outline" size="lg">
-                                            데모 요청
-                                        </Button>
-                                    </div>
+                                    <CTAButtonGroup
+                                        buttons={[
+                                            {
+                                                text: "무료 상담 신청",
+                                                variant: "default",
+                                                size: "lg"
+                                            },
+                                            {
+                                                text: "데모 요청",
+                                                variant: "outline",
+                                                size: "lg"
+                                            }
+                                        ]}
+                                        align="center"
+                                    />
                                 </div>
                             </div>
                         </TabsContent>
