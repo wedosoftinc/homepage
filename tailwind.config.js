@@ -63,15 +63,16 @@ module.exports = {
 				}
 			},
 			borderRadius: {
-				// Linear.app 스타일 적용
-				'linear-lg': 'var(--radius-lg)',    // 10px - 기본/큰 버튼용
-				'linear': 'var(--radius)',          // 8px - 작은 버튼용
-				'linear-sm': 'var(--radius-sm)',    // 6px - 매우 작은 요소용
-
-				// shadcn/ui 기본값 유지 (호환성)
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				// 🎯 Linear.app 기반 중앙 집중식 radius 시스템
+				DEFAULT: 'var(--radius)',           // 8px - 기본값 (Linear 스타일)
+				'xs': 'var(--radius-sm)',           // 6px - 매우 작은 요소 (뱃지)
+				'sm': 'var(--radius)',              // 8px - 작은 버튼, 인풋
+				'md': 'var(--radius)',              // 8px - 기본 요소들
+				'lg': 'var(--radius-lg)',           // 10px - 큰 버튼, 카드
+				'xl': 'calc(var(--radius-lg) + 2px)', // 12px - 모달
+				'2xl': 'calc(var(--radius-lg) + 6px)', // 16px - 대형 패널
+				'3xl': 'calc(var(--radius-lg) + 10px)', // 20px - 컨테이너
+				'full': '9999px'                    // 원형 (아바타, 점)
 			},
 			keyframes: {
 				'accordion-down': {

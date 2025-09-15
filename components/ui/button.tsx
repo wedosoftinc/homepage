@@ -21,11 +21,11 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        // Linear.app 스타일 적용: 실제 측정값 기반
-        sm: "h-8 px-3 py-1 text-xs rounded-linear font-normal",        // 32px height, 8px radius
-        default: "h-10 px-4 py-2 text-sm rounded-linear-lg font-normal", // 40px height, 10px radius  
-        lg: "h-11 px-6 py-2.5 text-base rounded-linear-lg font-normal",  // 44px height, 10px radius
-        icon: "h-9 w-9 rounded-linear",                                  // 36px square, 8px radius
+        // 🎯 Linear.app 스타일 - 중앙 설정 사용
+        sm: "h-8 px-3 py-1 text-xs rounded-sm font-normal",    // 32px height, 8px radius
+        default: "h-10 px-4 py-2 text-sm rounded-lg font-normal", // 40px height, 10px radius  
+        lg: "h-11 px-6 py-2.5 text-base rounded-lg font-normal",  // 44px height, 10px radius
+        icon: "h-9 w-9 rounded-sm",                             // 36px square, 8px radius
       },
     },
     defaultVariants: {

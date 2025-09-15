@@ -4,18 +4,18 @@
  */
 
 export const designTokens = {
-    // Linear.app 스타일 Border Radius (실제 측정값 기반)
+    // 🎯 Linear.app 기반 중앙 집중식 Border Radius 시스템
     radius: {
-        none: '0px',
-        xs: '4px',     // 작은 요소 (뱃지, 아이콘)
-        sm: '6px',     // Supabase 스타일 (매우 작은 버튼)
-        md: '8px',     // Linear 작은 버튼 (32px height)
-        lg: '10px',    // Linear 기본 버튼 (40px height) - 기본값
-        xl: '12px',    // 카드, 패널
-        '2xl': '16px', // 모달, 대형 카드
-        '3xl': '20px', // 히어로 섹션 요소
-        '4xl': '24px', // 대형 컨테이너
-        full: '9999px' // 원형 (아바타, 상태 인디케이터)
+        none: '0px',     // 모서리 없음
+        xs: '6px',       // 매우 작은 요소 (뱃지, 아이콘) - Supabase 스타일
+        sm: '8px',       // 작은 버튼, 인풋 - Linear 작은 버튼 (32px height)
+        md: '8px',       // 기본 요소들 - 통일성을 위해 sm과 동일
+        lg: '10px',      // 큰 버튼, 카드 - Linear 기본 버튼 (40px height)
+        xl: '12px',      // 모달, 패널
+        '2xl': '16px',   // 대형 카드
+        '3xl': '20px',   // 컨테이너
+        '4xl': '24px',   // 히어로 섹션 요소
+        full: '9999px'   // 원형 (아바타, 상태 인디케이터)
     },
 
     // 글로벌 SaaS 표준 간격 (Linear 스타일 패딩 적용)
