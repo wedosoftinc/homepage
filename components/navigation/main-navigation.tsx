@@ -191,7 +191,7 @@ export function MainNavigation() {
                     <NavigationMenuList>
                         {/* 솔루션 메가메뉴 */}
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger className="h-10 px-4 py-2">솔루션</NavigationMenuTrigger>
+                            <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">솔루션</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <div className="w-[650px] p-4">
                                     <div className="grid grid-cols-3 gap-4">
@@ -201,11 +201,11 @@ export function MainNavigation() {
                                                 <div className="bg-primary/5 border border-primary/10 rounded-lg p-2.5">
                                                     <div className="flex items-center space-x-2 mb-1">
                                                         <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-                                                        <h4 className="text-xs font-semibold text-primary uppercase tracking-wide">
+                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
                                                             {category}
                                                         </h4>
                                                     </div>
-                                                    <p className="text-xs text-muted-foreground leading-tight">
+                                                    <p className="text-sm text-muted-foreground leading-tight">
                                                         {category === "고객 경험 & 세일즈" && "고객 지원부터 영업까지"}
                                                         {category === "협업 & 생산성" && "팀워크와 효율성 극대화"}
                                                         {category === "IT 인프라" && "안전하고 유연한 IT 환경"}
@@ -228,10 +228,10 @@ export function MainNavigation() {
                                                             >
                                                                 <div className="flex items-center justify-between">
                                                                     <div className="flex-1 min-w-0">
-                                                                        <div className="font-medium text-foreground text-xs group-hover:text-primary transition-colors truncate">
+                                                                        <div className="font-medium text-foreground text-sm group-hover:text-primary transition-colors truncate">
                                                                             {product.name}
                                                                         </div>
-                                                                        <p className="text-xs text-muted-foreground leading-tight mt-0.5 truncate">
+                                                                        <p className="text-sm text-muted-foreground leading-tight mt-0.5 truncate">
                                                                             {product.description}
                                                                         </p>
                                                                     </div>
@@ -248,7 +248,7 @@ export function MainNavigation() {
                                     </div>
                                     <div className="mt-3 pt-3 border-t border-border/20">
                                         <div className="flex items-center justify-between">
-                                            <div className="text-xs text-muted-foreground">
+                                            <div className="text-sm text-muted-foreground">
                                                 <span className="inline-flex items-center space-x-1">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
                                                     <span className="font-medium text-foreground">새소식:</span>
@@ -258,7 +258,7 @@ export function MainNavigation() {
                                             <Link
                                                 href="/solutions"
                                                 className={cn(
-                                                    "inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md",
+                                                    "inline-flex items-center px-2.5 py-1 text-sm font-medium rounded-md",
                                                     "bg-primary text-primary-foreground hover:bg-primary/90",
                                                     "transition-colors duration-200"
                                                 )}
@@ -273,18 +273,18 @@ export function MainNavigation() {
 
                         {/* 서비스 메가메뉴 */}
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger className="h-10 px-4 py-2">서비스</NavigationMenuTrigger>
+                            <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">서비스</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <div className="w-[480px] p-4">
                                     <div className="mb-3">
                                         <div className="bg-primary/5 border border-primary/10 rounded-lg p-2.5">
                                             <div className="flex items-center space-x-2 mb-1">
                                                 <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-                                                <h3 className="text-xs font-semibold text-primary uppercase tracking-wide">
+                                                <h3 className="text-sm font-semibold text-primary uppercase tracking-wide">
                                                     전문 서비스
                                                 </h3>
                                             </div>
-                                            <p className="text-xs text-muted-foreground leading-tight">
+                                            <p className="text-sm text-muted-foreground leading-tight">
                                                 도입부터 운영까지 25년 실무 경험
                                             </p>
                                         </div>
@@ -305,10 +305,10 @@ export function MainNavigation() {
                                                             {service.icon}
                                                         </div>
                                                         <div className="flex-1 min-w-0">
-                                                            <div className="font-medium text-foreground text-xs group-hover:text-primary transition-colors">
+                                                            <div className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
                                                                 {service.name}
                                                             </div>
-                                                            <p className="text-xs text-muted-foreground leading-tight mt-0.5 line-clamp-2">
+                                                            <p className="text-sm text-muted-foreground leading-tight mt-0.5 line-clamp-2">
                                                                 {service.description}
                                                             </p>
                                                         </div>
@@ -324,7 +324,7 @@ export function MainNavigation() {
                                         <Link
                                             href="/services"
                                             className={cn(
-                                                "inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md",
+                                                "inline-flex items-center px-2.5 py-1 text-sm font-medium rounded-md",
                                                 "bg-primary text-primary-foreground hover:bg-primary/90",
                                                 "transition-colors duration-200"
                                             )}
@@ -338,17 +338,17 @@ export function MainNavigation() {
 
                         {/* 기타 메뉴 */}
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/pricing" className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink href="/pricing" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 가격
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/blog" className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink href="/blog" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 블로그
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/company" className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink href="/company" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 회사소개
                             </NavigationMenuLink>
                         </NavigationMenuItem>
@@ -579,7 +579,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                         <div className="space-y-3 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
                             {Object.entries(solutionsByCategory).map(([category, products]) => (
                                 <div key={category} className="space-y-1">
-                                    <h4 className="text-xs font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
+                                    <h4 className="text-sm font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
                                         {category}
                                     </h4>
                                     <div className="space-y-0.5">
@@ -590,8 +590,8 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                                                 className="block py-1.5 px-2 text-sm hover:bg-accent/50 rounded-md transition-colors"
                                                 onClick={onClose}
                                             >
-                                                <div className="font-medium text-foreground text-xs">{product.name}</div>
-                                                <div className="text-xs text-muted-foreground leading-tight">{product.description}</div>
+                                                <div className="font-medium text-foreground text-sm">{product.name}</div>
+                                                <div className="text-sm text-muted-foreground leading-tight">{product.description}</div>
                                             </Link>
                                         ))}
                                     </div>
@@ -621,7 +621,7 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                         <div className="space-y-3 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
                             {Object.entries(servicesByCategory).map(([category, services]) => (
                                 <div key={category} className="space-y-1">
-                                    <h4 className="text-xs font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
+                                    <h4 className="text-sm font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
                                         {category}
                                     </h4>
                                     <div className="space-y-0.5">
@@ -632,8 +632,8 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                                                 className="block py-1.5 px-2 text-sm hover:bg-accent/50 rounded-md transition-colors"
                                                 onClick={onClose}
                                             >
-                                                <div className="font-medium text-foreground text-xs">{service.name}</div>
-                                                <div className="text-xs text-muted-foreground leading-tight">{service.description}</div>
+                                                <div className="font-medium text-foreground text-sm">{service.name}</div>
+                                                <div className="text-sm text-muted-foreground leading-tight">{service.description}</div>
                                             </Link>
                                         ))}
                                     </div>
