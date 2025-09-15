@@ -197,7 +197,7 @@ export function ProductsSection() {
                                                 <ul className="space-y-1">
                                                     {product.features.map((feature, i) => (
                                                         <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                            <CheckCircle className="h-3 w-3 text-primary flex-shrink-0" />
+                                                            <CheckCircle className="h-3 w-3 text-accent flex-shrink-0" />
                                                             {feature}
                                                         </li>
                                                     ))}
