@@ -43,34 +43,38 @@ export function HeroSection() {
                             <BadgeGroup
                                 badges={[
                                     {
-                                        text: "B2B SaaS 전문 기업",
+                                        text: "25년 실무 경험",
                                         variant: "secondary"
                                     },
                                     {
-                                        text: "글로벌 파트너십",
+                                        text: "글로벌 SaaS 파트너",
                                         variant: "outline"
                                     }
                                 ]}
-                            />                            {/* 메인 타이틀 */}
+                            />
+
+                            {/* 메인 타이틀 */}
                             <div className="space-y-4">
                                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                                    기업의 디지털 혁신을 위한{" "}
                                     <span className="text-primary">
-                                        최적의 파트너
+                                        SaaS는 도입보다,
                                     </span>
+                                    <br />
+                                    그 이후가 더 중요합니다
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl">
-                                    Monday.com, Freshworks, Google Workspace 등 글로벌 SaaS 솔루션으로
-                                    귀하의 비즈니스를 혁신하세요. 전문 컨설팅부터 구축, 교육까지 원스톱 서비스를 제공합니다.
+                                    툴보다 일하는 방식을 바꾸는 파트너. Google Workspace, Freshworks, Monday.com 등
+                                    글로벌 SaaS 솔루션의 성공적인 도입과 정착을 위한 전문 컨설팅부터 구축, 교육까지 원스톱 서비스를 제공합니다.
                                 </p>
                             </div>
 
                             {/* 주요 기능 리스트 */}
                             <FeatureList
                                 features={[
-                                    { text: "글로벌 SaaS 솔루션 공급 전문" },
-                                    { text: "맞춤형 컨설팅 및 구축 서비스" },
-                                    { text: "24/7 기술 지원 및 사용자 교육" }
+                                    { text: "25년 IT 컨설팅 실무 경험" },
+                                    { text: "4단계 체계적 서비스 프로세스" },
+                                    { text: "도입 후 정착까지 전문 지원" },
+                                    { text: "글로벌 파트너사 직접 인증" }
                                 ]}
                                 iconColor="text-accent"
                             />
@@ -84,7 +88,7 @@ export function HeroSection() {
                                         iconPosition: "right"
                                     },
                                     {
-                                        text: "데모 영상 보기",
+                                        text: "성공사례 보기",
                                         variant: "outline",
                                         icon: Play,
                                         iconPosition: "left"
@@ -337,13 +341,6 @@ export function HeroSection() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            {/* 스크롤 인디케이터 */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-                    <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-pulse" />
                 </div>
             </div>
         </section>
