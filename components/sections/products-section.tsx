@@ -10,6 +10,10 @@ import {
     Shield,
     CheckCircle2
 } from "lucide-react"
+import { FreshworksLogo } from "@/components/logos/freshworks-logo"
+import { GoogleWorkspaceLogo } from "@/components/logos/google-workspace-logo"
+import { MondayLogo } from "@/components/logos/monday-logo"
+import { SplashtopLogo } from "@/components/logos/splashtop-logo"
 
 export function ProductsSection() {
     // 원본 화면 기반 3개 솔루션
@@ -125,8 +129,8 @@ export function ProductsSection() {
                                 업계별 글로벌 SaaS 솔루션 포트폴리오
                             </h3>
                             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                                부동산부터 각종 업계별로 검증된 솔루션과 실시간 전 세계 최고의 소프트웨어를
-                                숙련된 위두소프트가 귀하의 비즈니스에 각 분야별 맞춤으로 최적화 시킵니다.
+                                위두소프트가 업계별 최고의 글로벌 SaaS 솔루션을 소개합니다. 각 분야에서 검증된 이
+                                솔루션들은 귀사의 특정 요구사항에 맞게 최적화됩니다.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Button size="lg" className="text-lg px-8" asChild>
@@ -141,6 +145,68 @@ export function ProductsSection() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* 4개 브랜드 솔루션 섹션 - 원본 화면과 동일 */}
+            <div className="container mx-auto px-4 pt-20">
+                <div className="max-w-7xl mx-auto">
+                    {/** 원본 사이트 레이아웃과 동일한 2열 카드: 상단 좌측 텍스트, 하단 중앙 로고, 큰 라운드, 균일한 높이 **/}
+                    {(() => {
+                        const brandSolutions = [
+                            {
+                                title: "고객 경험 혁신의 완성",
+                                description: "고객 지원, 영업, IT 서비스를 통합한 완벽한 고객 경험 관리로 A.I 기반 자동화를 통해 더 나은 서비스를 제공합니다.",
+                                logo: <FreshworksLogo className="h-20 w-auto" />
+                            },
+                            {
+                                title: "클라우드 협업의 새로운 기준",
+                                description: "실시간 문서 협업, 화상 회의, 클라우드 저장소가 하나로 연결된 업무 환경. 언제 어디서나 팀과 함께 효율적으로 일할 수 있습니다.",
+                                logo: <GoogleWorkspaceLogo className="h-14 w-auto" />
+                            },
+                            {
+                                title: "프로젝트 관리의 혁신",
+                                description: "직관적인 워크플로우로 복잡한 프로젝트를 명확하게 관리. 실시간 진행 상황 파악과 팀 협업으로 업무 완수율을 높입니다.",
+                                logo: <MondayLogo className="h-14 w-auto" />
+                            },
+                            {
+                                title: "안전한 원격 업무 솔루션",
+                                description: "강력한 보안과 고성능 원격 접속으로 어디서나 업무 연속성 보장. 재택근무와 하이브리드 업무 환경에 최적화되었습니다.",
+                                logo: <SplashtopLogo className="h-18 w-auto" />
+                            }
+                        ]
+
+                        return (
+                            <div className="grid gap-10 md:grid-cols-2">
+                                {brandSolutions.map((item, i) => (
+                                    <div
+                                        key={i}
+                                        className="group relative flex flex-col justify-between bg-white dark:bg-card border rounded-[48px] p-8 min-h-[240px] md:min-h-[260px] shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+                                    >
+                                        {/* 상단 텍스트 */}
+                                        <div className="pr-2">
+                                            <h3 className="text-lg font-bold mb-4 text-foreground tracking-tight">
+                                                {item.title}
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed max-w-[520px]">
+                                                {item.description}
+                                            </p>
+                                        </div>
+
+                                        {/* 하단 로고 (중앙 정렬) */}
+                                        <div className="pt-8 flex justify-center items-end">
+                                            <div className="opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                                                {item.logo}
+                                            </div>
+                                        </div>
+
+                                        {/* 배경 장식 (호버 시 은은한 강조) */}
+                                        <div className="pointer-events-none absolute inset-0 rounded-[48px] bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    })()}
                 </div>
             </div>
         </section>
