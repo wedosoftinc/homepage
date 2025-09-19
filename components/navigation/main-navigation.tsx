@@ -271,6 +271,13 @@ export function MainNavigation() {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
 
+                        {/* 제품 메뉴 */}
+                        <NavigationMenuItem>
+                            <NavigationMenuLink href="/products" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
+                                제품
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+
                         {/* 서비스 메가메뉴 */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">서비스</NavigationMenuTrigger>
@@ -642,6 +649,15 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                         </div>
                     </div>
                 </div>
+
+                {/* 제품 메뉴 */}
+                <Link
+                    href="/products"
+                    className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
+                    onClick={onClose}
+                >
+                    제품
+                </Link>
 
                 {/* 가격 메뉴 */}
                 <Link
