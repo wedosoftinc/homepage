@@ -1,5 +1,7 @@
 # AGENTS.md - We Do Soft Homepage Project
 
+## [CRITICAL] 모든 소통은 반드시 한국어로만 한다.
+
 ## 🧩 XML 기반 비즈니스 분석 및 shadcn/ui 방향성
 
 ### XML 분석 요약
