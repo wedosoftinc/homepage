@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-import { ArrowRight, Play, TrendingUp, CheckCircle, Bell, Settings, Filter, MoreHorizontal } from "lucide-react"
+import { ArrowRight, Play, TrendingUp, CheckCircle, Bell, Settings, Filter, MoreHorizontal, Calendar, Cog, Headphones, Award } from "lucide-react"
 import {
     MetricCard,
     FeatureList,
@@ -71,12 +71,12 @@ export function HeroSection() {
                             {/* 주요 기능 리스트 */}
                             <FeatureList
                                 features={[
-                                    { text: "25년 IT 컨설팅 실무 경험" },
-                                    { text: "4단계 체계적 서비스 프로세스" },
-                                    { text: "도입 후 정착까지 전문 지원" },
-                                    { text: "글로벌 파트너사 직접 인증" }
+                                    { text: "25년 IT 컨설팅 실무 경험", icon: Calendar },
+                                    { text: "4단계 체계적 서비스 프로세스", icon: Cog },
+                                    { text: "도입 후 정착까지 전문 지원", icon: Headphones },
+                                    { text: "글로벌 파트너사 직접 인증", icon: Award }
                                 ]}
-                                iconColor="text-accent"
+                                iconColor="text-primary"
                             />
 
                             {/* CTA 버튼들 */}

@@ -23,7 +23,7 @@ export function ProductsSection() {
     // 원본 화면 기반 3개 솔루션
     const solutions = [
         {
-            icon: <Headphones className="h-12 w-12 text-blue-600" />,
+            icon: <Headphones className="h-12 w-12 text-primary" />,
             title: "고객 경험 관리",
             description: "고객 지원과 CRM을 통합한 완벽한 고객 경험 관리로 A.I 기반 자동화를 통해 더 나은 서비스를 제공합니다.",
             features: [
@@ -35,7 +35,7 @@ export function ProductsSection() {
             link: "/solutions/customer-experience"
         },
         {
-            icon: <Calendar className="h-12 w-12 text-green-600" />,
+            icon: <Calendar className="h-12 w-12 text-primary" />,
             title: "협업 및 생산성 향상",
             description: "팀워크와 업무 효율성을 극대화하는 통합 협업 플랫폼으로 원격 근무 시대에 맞는 새로운 업무 방식을 경험하세요.",
             features: [
@@ -47,7 +47,7 @@ export function ProductsSection() {
             link: "/solutions/collaboration"
         },
         {
-            icon: <Shield className="h-12 w-12 text-purple-600" />,
+            icon: <Shield className="h-12 w-12 text-primary" />,
             title: "IT 인프라 최적화",
             description: "안정적이고 효율적인 IT 인프라 관리를 통해 비즈니스 연속성을 보장하고, 원격 지원을 통해 신속한 문제 해결을 제공합니다.",
             features: [
@@ -61,7 +61,7 @@ export function ProductsSection() {
     ]
 
     return (
-        <section className="py-20 bg-gradient-to-b from-background to-muted/20">
+        <section className="py-20 bg-muted/20">
             <div className="container mx-auto px-4">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
@@ -130,7 +130,7 @@ export function ProductsSection() {
             </div>
 
             {/* 업계별 글로벌 SaaS 솔루션 포트폴리오 섹션 */}
-            <div className="container mx-auto px-4 pt-20">
+            <div className="container mx-auto px-4 pt-20 pb-20">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
                     <div className="text-center mb-16">
@@ -203,7 +203,7 @@ export function ProductsSection() {
             </div>
 
             {/* SaaS 도입부터 운영까지 섹션 - 원본 사이트와 동일 */}
-            <div className="bg-muted/30 py-20">
+            <div className="bg-muted/40 py-24">
                 <div className="container mx-auto px-4">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
@@ -218,119 +218,274 @@ export function ProductsSection() {
                             </p>
                         </div>
 
-                        {/* 4단계 서비스 프로세스 (원본 사이트와 동일한 2열 구조) */}
-                        <div className="grid gap-8 lg:grid-cols-2">
-                            {/* 왼쪽 컬럼 */}
-                            <div className="space-y-8">
-                                {/* 컨설팅 */}
-                                <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        {/* 메인 컨텐츠 - 왼쪽 큰 카드 + 오른쪽 2x2 그리드 */}
+                        <div className="grid gap-8 lg:grid-cols-3">
+                            {/* 왼쪽 큰 카드 - 메인 메시지 */}
+                            <div className="lg:col-span-1">
+                                <Card className="h-full group relative overflow-hidden border-0 shadow-xl bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                    <CardHeader className="relative pb-4">
-                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-yellow-100 to-yellow-200 mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            <Lightbulb className="h-8 w-8 text-yellow-600" />
+                                    <CardContent className="relative p-8 h-full flex flex-col justify-center">
+                                        <div className="space-y-6">
+                                            <h3 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight text-center">
+                                                SaaS는 도입보다,{" "}
+                                                <span className="text-primary">그 이후가 더 중요합니다</span>.
+                                            </h3>
+
+                                            <div className="space-y-4 text-muted-foreground">
+                                                <p className="leading-relaxed">
+                                                    툴을 도입하는 것만으로는 일하는 방식이 바뀌지 않아요.
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    우리는 단순한 리셀러가 아닌,{" "}
+                                                    <span className="font-semibold text-foreground">고객의 상황을 함께 고민하고, 도입부터 운영까지 함께하는 파트너</span>입니다.
+                                                </p>
+                                                <p className="leading-relaxed">
+                                                    복잡한 설정부터 사용자 교육, 도입 후 운영 지원까지 —{" "}
+                                                    <span className="font-semibold text-foreground">한 번 맡기면 끝까지 책임지는 서비스</span>를 경험해보세요.
+                                                </p>
+                                            </div>
+
+                                            <div className="pt-4">
+                                                <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200">
+                                                    지금 상담해보기
+                                                    <ArrowRight className="h-4 w-4" />
+                                                </button>
+                                            </div>
                                         </div>
-
-                                        <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                                            <strong>컨설팅</strong>
-                                        </CardTitle>
-
-                                        <CardDescription className="text-foreground font-medium text-base leading-relaxed mb-4">
-                                            <strong>도입 전에 물어야 할 질문들을, 대신 생각해드립니다.</strong>
-                                        </CardDescription>
-                                    </CardHeader>
-
-                                    <CardContent className="relative">
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            우리 팀에 맞는 툴은 뭘까? 예산 안에서 가능한 최선은 뭘까?<br />
-                                            업무 흐름과 니즈를 분석해,{" "}
-                                            <strong>실제로 잘 맞는 SaaS 조합</strong>을 제안합니다.
-                                        </p>
-                                    </CardContent>
-                                </Card>
-
-                                {/* 교육 */}
-                                <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                    <CardHeader className="relative pb-4">
-                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-100 to-green-200 mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            <GraduationCap className="h-8 w-8 text-green-600" />
-                                        </div>
-
-                                        <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                                            <strong>교육</strong>
-                                        </CardTitle>
-
-                                        <CardDescription className="text-foreground font-medium text-base leading-relaxed mb-4">
-                                            <strong>잘 도입했다면, 잘 쓰게 만들어야죠.</strong>
-                                        </CardDescription>
-                                    </CardHeader>
-
-                                    <CardContent className="relative">
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            관리자와 사용자 대상 맞춤형 교육을 제공하고,<br />
-                                            필요하면 영상, 문서, 실습 자료까지 준비해드립니다.<br />
-                                            <strong>모두가 제대로 쓸 수 있어야 진짜 도입입니다.</strong>
-                                        </p>
                                     </CardContent>
                                 </Card>
                             </div>
 
-                            {/* 오른쪽 컬럼 */}
-                            <div className="space-y-8">
-                                {/* 구축 */}
-                                <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            {/* 오른쪽 2x2 그리드 - 4가지 서비스 (간단한 배경 스타일) */}
+                            <div className="lg:col-span-2">
+                                <div className="grid gap-8 sm:grid-cols-2">
+                                    {/* 컨설팅 */}
+                                    <div className="group p-6 rounded-lg hover:bg-muted/30 transition-colors duration-300">
+                                        <div className="flex items-start space-x-4">
+                                            <div className="flex-shrink-0">
+                                                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300">
+                                                    <Lightbulb className="h-6 w-6 text-primary" />
+                                                </div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                    컨설팅
+                                                </h3>
+                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                    도입 전에 물어야 할 질문들을, 대신 생각해드립니다.
+                                                </p>
+                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                    우리 팀에 맞는 툴은 뭘까? 예산 안에서 가능한 최선은 뭘까? 업무 흐름과 니즈를 분석해, 실제로 잘 맞는 SaaS 조합을 제안합니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <CardHeader className="relative pb-4">
-                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            <Settings className="h-8 w-8 text-blue-600" />
+                                    {/* 구축 */}
+                                    <div className="group p-6 rounded-lg hover:bg-muted/30 transition-colors duration-300">
+                                        <div className="flex items-start space-x-4">
+                                            <div className="flex-shrink-0">
+                                                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300">
+                                                    <Settings className="h-6 w-6 text-primary" />
+                                                </div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                    구축
+                                                </h3>
+                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                    기술적인 설정은 우리 몫입니다.
+                                                </p>
+                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                    계정 생성, 데이터 마이그레이션, SSO 연동, 자동화 설정 등 빠르고 오류 없이 시작할 수 있도록 환경을 완성해드립니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 교육 */}
+                                    <div className="group p-6 rounded-lg hover:bg-muted/30 transition-colors duration-300">
+                                        <div className="flex items-start space-x-4">
+                                            <div className="flex-shrink-0">
+                                                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300">
+                                                    <GraduationCap className="h-6 w-6 text-primary" />
+                                                </div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                    교육
+                                                </h3>
+                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                    잘 도입했다면, 잘 쓰게 만들어야죠.
+                                                </p>
+                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                    관리자와 사용자 대상 맞춤형 교육을 제공하고, 필요하면 영상, 문서, 실습 자료까지 준비해드립니다. 모두가 제대로 쓸 수 있어야 진짜 도입입니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 운영지원 */}
+                                    <div className="group p-6 rounded-lg hover:bg-muted/30 transition-colors duration-300">
+                                        <div className="flex items-start space-x-4">
+                                            <div className="flex-shrink-0">
+                                                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300">
+                                                    <Wrench className="h-6 w-6 text-primary" />
+                                                </div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                    운영지원
+                                                </h3>
+                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                    도입 이후에도 계속 곁에 있습니다.
+                                                </p>
+                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                    계정 변경, 정책 수정, 오류 대응, 신규 기능 안내까지 운영팀이 없어도 괜찮도록 지속적인 지원 체계를 제공합니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 회사 소개 인사이트 섹션 - 특별한 디자인 */}
+            <div className="py-24 bg-background relative overflow-hidden">
+                {/* 미묘한 배경 패턴 */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.primary/0.02)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.primary/0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="max-w-7xl mx-auto">
+                        {/* 섹션 헤더 */}
+                        <div className="text-center mb-20">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+                                왜 위두소프트인가요?
+                            </h2>
+                            <div className="space-y-3 text-xl text-muted-foreground max-w-4xl mx-auto">
+                                <p>25년의 실무 경험과 수백 건의 전문 SaaS 프로젝트,</p>
+                                <p>우리는 단지 파는 회사가 아니라 <strong className="text-primary">직접 실행하는 파트너</strong>입니다.</p>
+                                <p>직접 믿어보세요, 그래서 더 깊게 함께합니다.</p>
+                            </div>
+                        </div>
+
+                        {/* 메인 히어로 메시지 */}
+                        <div className="relative mb-20">
+                            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white">
+                                {/* 배경 패턴 */}
+                                <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.white/0.1)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.white/0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+                                {/* 플로팅 요소들 */}
+                                <div className="absolute top-8 right-12 w-32 h-32 bg-white/20 rounded-full blur-3xl animate-pulse" />
+                                <div className="absolute bottom-8 left-12 w-24 h-24 bg-white/15 rounded-full blur-2xl animate-pulse delay-1000" />
+
+                                <div className="relative p-12 lg:p-16 text-center">
+                                    <div className="max-w-4xl mx-auto space-y-8">
+                                        <div className="text-sm text-primary-foreground/80 tracking-widest uppercase font-medium">
+                                            우리는 다릅니다
                                         </div>
 
-                                        <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                                            <strong>구축</strong>
-                                        </CardTitle>
+                                        <h3 className="text-3xl lg:text-5xl font-bold leading-tight">
+                                            툴보다, 일하는 방식을<br />
+                                            바꾸는 파트너입니다.
+                                        </h3>
 
-                                        <CardDescription className="text-foreground font-medium text-base leading-relaxed mb-4">
-                                            <strong>기술적인 설정은 우리 몫입니다.</strong>
-                                        </CardDescription>
-                                    </CardHeader>
-
-                                    <CardContent className="relative">
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            계정 생성, 데이터 마이그레이션, SSO 연동, 자동화 설정 등{" "}
-                                            <strong>빠르고 오류 없이 시작할 수 있도록 환경을 완성해드립니다.</strong>
+                                        <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed">
+                                            25년간 도입하고, 운영하고, 실패도 해봤습니다.<br />
+                                            그래서 진짜 필요한 걸 압니다.
                                         </p>
-                                    </CardContent>
-                                </Card>
 
-                                {/* 운영지원 */}
-                                <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                    <CardHeader className="relative pb-4">
-                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-purple-200 mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            <Wrench className="h-8 w-8 text-purple-600" />
+                                        <div className="pt-4">
+                                            <button className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/95 transition-all duration-300 hover:scale-105 shadow-lg">
+                                                회사소개 보기
+                                                <ArrowRight className="h-5 w-5" />
+                                            </button>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                                        <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                                            <strong>운영지원</strong>
-                                        </CardTitle>
+                        {/* 통계 섹션 - 인라인 스타일 */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                            {/* SaaS 구축 */}
+                            <div className="group text-center">
+                                <div className="relative mb-6">
+                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
+                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                    </div>
+                                    {/* 장식 요소 */}
+                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping" />
+                                </div>
 
-                                        <CardDescription className="text-foreground font-medium text-base leading-relaxed mb-4">
-                                            <strong>도입 이후에도 계속 곁에 있습니다.</strong>
-                                        </CardDescription>
-                                    </CardHeader>
+                                <h4 className="text-2xl font-bold mb-2 text-foreground">SaaS 구축</h4>
+                                <p className="text-muted-foreground mb-6">
+                                    중소기업부터 교육기관까지,<br />
+                                    현장 중심으로 성공적으로 완성
+                                </p>
 
-                                    <CardContent className="relative">
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            계정 변경, 정책 수정, 오류 대응, 신규 기능 안내까지<br />
-                                            운영팀이 없어도 괜찮도록{" "}
-                                            <strong>지속적인 지원 체계</strong>를 제공합니다.
-                                        </p>
-                                    </CardContent>
-                                </Card>
+                                <div className="relative">
+                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
+                                        200<span className="text-3xl">+</span>
+                                    </div>
+                                    <div className="text-sm text-muted-foreground font-medium">건의 프로젝트</div>
+                                </div>
+                            </div>
+
+                            {/* 평균 1차 응답 속도 */}
+                            <div className="group text-center">
+                                <div className="relative mb-6">
+                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
+                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping delay-300" />
+                                </div>
+
+                                <h4 className="text-2xl font-bold mb-2 text-foreground">평균 1차 응답 속도</h4>
+                                <p className="text-muted-foreground mb-6">
+                                    도입 문의부터 질문 이후까지,<br />
+                                    실제 도움이 되는 답변을 지향합니다
+                                </p>
+
+                                <div className="relative">
+                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
+                                        4<span className="text-3xl">hr</span>
+                                    </div>
+                                    <div className="text-sm text-muted-foreground font-medium">빠른 응답</div>
+                                </div>
+                            </div>
+
+                            {/* 파트너십 유지율 */}
+                            <div className="group text-center">
+                                <div className="relative mb-6">
+                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
+                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                        </svg>
+                                    </div>
+                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping delay-500" />
+                                </div>
+
+                                <h4 className="text-2xl font-bold mb-2 text-foreground">파트너십 유지율</h4>
+                                <p className="text-muted-foreground mb-6">
+                                    도입만 하고 끝나지 않습니다.<br />
+                                    10개 중 8개 이상이 지속 함께하고 있습니다
+                                </p>
+
+                                <div className="relative">
+                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
+                                        85<span className="text-3xl">%</span>
+                                    </div>
+                                    <div className="text-sm text-muted-foreground font-medium">높은 신뢰도</div>
+                                </div>
                             </div>
                         </div>
                     </div>
