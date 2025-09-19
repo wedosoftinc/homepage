@@ -362,47 +362,46 @@ export function ProductsSection() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
-                        <div className="text-center mb-20">
+                        <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold mb-8">
                                 왜 위두소프트인가요?
                             </h2>
                             <div className="space-y-3 text-xl text-muted-foreground max-w-4xl mx-auto">
                                 <p>25년의 실무 경험과 수백 건의 전문 SaaS 프로젝트,</p>
                                 <p>우리는 단지 파는 회사가 아니라 <strong className="text-primary">직접 실행하는 파트너</strong>입니다.</p>
-                                <p>직접 믿어보세요, 그래서 더 깊게 함께합니다.</p>
                             </div>
                         </div>
 
-                        {/* 메인 히어로 메시지 */}
+                        {/* 메인 히어로 메시지 - 부드러운 디자인 */}
                         <div className="relative mb-20">
-                            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white">
-                                {/* 배경 패턴 */}
-                                <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.white/0.1)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.white/0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/80 via-primary/70 to-primary/60 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900 text-white shadow-xl">
+                                {/* 배경 패턴 - 더 미묘하게 */}
+                                <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.white/0.05)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.white/0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,theme(colors.white/0.02)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.white/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-                                {/* 플로팅 요소들 */}
-                                <div className="absolute top-8 right-12 w-32 h-32 bg-white/20 rounded-full blur-3xl animate-pulse" />
-                                <div className="absolute bottom-8 left-12 w-24 h-24 bg-white/15 rounded-full blur-2xl animate-pulse delay-1000" />
+                                {/* 플로팅 요소들 - 더 부드럽게 */}
+                                <div className="absolute top-12 right-16 w-24 h-24 bg-white/10 dark:bg-slate-400/10 rounded-full blur-2xl animate-pulse" />
+                                <div className="absolute bottom-12 left-16 w-20 h-20 bg-white/8 dark:bg-slate-400/8 rounded-full blur-xl animate-pulse delay-1000" />
 
-                                <div className="relative p-12 lg:p-16 text-center">
-                                    <div className="max-w-4xl mx-auto space-y-8">
-                                        <div className="text-sm text-primary-foreground/80 tracking-widest uppercase font-medium">
+                                <div className="relative p-10 lg:p-14 text-center">
+                                    <div className="max-w-4xl mx-auto space-y-6">
+                                        <div className="text-xs text-primary-foreground/70 dark:text-white/80 tracking-widest uppercase font-medium">
                                             우리는 다릅니다
                                         </div>
 
-                                        <h3 className="text-3xl lg:text-5xl font-bold leading-tight">
+                                        <h3 className="text-2xl lg:text-4xl font-bold leading-tight text-white">
                                             툴보다, 일하는 방식을<br />
                                             바꾸는 파트너입니다.
                                         </h3>
 
-                                        <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed">
+                                        <p className="text-lg text-primary-foreground/85 dark:text-white/90 max-w-2xl mx-auto leading-relaxed">
                                             25년간 도입하고, 운영하고, 실패도 해봤습니다.<br />
                                             그래서 진짜 필요한 걸 압니다.
                                         </p>
 
-                                        <div className="pt-4">
-                                            <button className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/95 transition-all duration-300 hover:scale-105 shadow-lg">
+                                        <div className="pt-3">
+                                            <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg">
                                                 회사소개 보기
-                                                <ArrowRight className="h-5 w-5" />
+                                                <ArrowRight className="h-4 w-4" />
                                             </button>
                                         </div>
                                     </div>
@@ -410,83 +409,79 @@ export function ProductsSection() {
                             </div>
                         </div>
 
-                        {/* 통계 섹션 - 인라인 스타일 */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                        {/* 통계 섹션 - 카드 스타일 */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {/* SaaS 구축 */}
-                            <div className="group text-center">
-                                <div className="relative mb-6">
-                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
-                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl dark:shadow-primary/10 dark:hover:shadow-primary/20 transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-primary/10 dark:to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <CardContent className="p-8 text-center relative">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                         </svg>
                                     </div>
-                                    {/* 장식 요소 */}
-                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping" />
-                                </div>
 
-                                <h4 className="text-2xl font-bold mb-2 text-foreground">SaaS 구축</h4>
-                                <p className="text-muted-foreground mb-6">
-                                    중소기업부터 교육기관까지,<br />
-                                    현장 중심으로 성공적으로 완성
-                                </p>
+                                    <h4 className="text-xl font-bold mb-3 text-foreground">SaaS 구축</h4>
+                                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                                        중소기업부터 교육기관까지,<br />
+                                        현장 중심으로 성공적으로 완성
+                                    </p>
 
-                                <div className="relative">
-                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                                        200<span className="text-3xl">+</span>
+                                    <div className="text-4xl font-black text-primary mb-1">
+                                        200<span className="text-2xl">+</span>
                                     </div>
-                                    <div className="text-sm text-muted-foreground font-medium">건의 프로젝트</div>
-                                </div>
-                            </div>
+                                    <div className="text-xs text-muted-foreground font-medium">건의 프로젝트</div>
+                                </CardContent>
+                            </Card>
 
                             {/* 평균 1차 응답 속도 */}
-                            <div className="group text-center">
-                                <div className="relative mb-6">
-                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
-                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl dark:shadow-primary/10 dark:hover:shadow-primary/20 transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-primary/10 dark:to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <CardContent className="p-8 text-center relative">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     </div>
-                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping delay-300" />
-                                </div>
 
-                                <h4 className="text-2xl font-bold mb-2 text-foreground">평균 1차 응답 속도</h4>
-                                <p className="text-muted-foreground mb-6">
-                                    도입 문의부터 질문 이후까지,<br />
-                                    실제 도움이 되는 답변을 지향합니다
-                                </p>
+                                    <h4 className="text-xl font-bold mb-3 text-foreground">평균 1차 응답 속도</h4>
+                                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                                        도입 문의부터 질문 이후까지,<br />
+                                        실제 도움이 되는 답변을 지향합니다
+                                    </p>
 
-                                <div className="relative">
-                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                                        4<span className="text-3xl">hr</span>
+                                    <div className="text-4xl font-black text-primary mb-1">
+                                        4<span className="text-2xl">hr</span>
                                     </div>
-                                    <div className="text-sm text-muted-foreground font-medium">빠른 응답</div>
-                                </div>
-                            </div>
+                                    <div className="text-xs text-muted-foreground font-medium">빠른 응답</div>
+                                </CardContent>
+                            </Card>
 
                             {/* 파트너십 유지율 */}
-                            <div className="group text-center">
-                                <div className="relative mb-6">
-                                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300 group-hover:scale-110">
-                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl dark:shadow-primary/10 dark:hover:shadow-primary/20 transition-all duration-500 hover:scale-[1.02] bg-white dark:bg-card">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-primary/10 dark:to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <CardContent className="p-8 text-center relative">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                         </svg>
                                     </div>
-                                    <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/30 rounded-full animate-ping delay-500" />
-                                </div>
 
-                                <h4 className="text-2xl font-bold mb-2 text-foreground">파트너십 유지율</h4>
-                                <p className="text-muted-foreground mb-6">
-                                    도입만 하고 끝나지 않습니다.<br />
-                                    10개 중 8개 이상이 지속 함께하고 있습니다
-                                </p>
+                                    <h4 className="text-xl font-bold mb-3 text-foreground">파트너십 유지율</h4>
+                                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                                        도입만 하고 끝나지 않습니다.<br />
+                                        10개 중 8개 이상이 지속 함께하고 있습니다
+                                    </p>
 
-                                <div className="relative">
-                                    <div className="text-6xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                                        85<span className="text-3xl">%</span>
+                                    <div className="text-4xl font-black text-primary mb-1">
+                                        85<span className="text-2xl">%</span>
                                     </div>
-                                    <div className="text-sm text-muted-foreground font-medium">높은 신뢰도</div>
-                                </div>
-                            </div>
+                                    <div className="text-xs text-muted-foreground font-medium">높은 신뢰도</div>
+                                </CardContent>
+                            </Card>
                         </div>
                     </div>
                 </div>
