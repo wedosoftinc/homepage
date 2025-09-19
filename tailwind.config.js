@@ -17,9 +17,6 @@ module.exports = {
 			}
 		},
 		extend: {
-			fontFamily: {
-				'nanum-square': ['NanumSquare', 'sans-serif'],
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

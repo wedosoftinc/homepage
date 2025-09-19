@@ -19,13 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko" suppressHydrationWarning>
-            <head>
-                <link
-                    href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-                    rel="stylesheet"
-                />
-            </head>
-            <body className="font-nanum-square">
+            <body>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"

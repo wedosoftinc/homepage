@@ -12,7 +12,7 @@ import {
 
 export function CTASection() {
     return (
-        <section className="py-24 bg-background">
+        <section className="pb-24 bg-muted/20">
             <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                     {/* 메인 CTA */}
@@ -51,84 +51,8 @@ export function CTASection() {
                         />
                     </div>
 
-                    {/* 연락 방법 카드들 */}
-                    <div className="grid md:grid-cols-3 gap-6 mb-16">
-                        <Card>
-                            <CardContent className="p-6 text-center">
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <Phone className="h-6 w-6 text-primary" />
-                                </div>
-                                <h3 className="text-lg font-semibold mb-2">전화 상담</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    전문 컨설턴트와 직접 통화로 상담받으세요
-                                </p>
-                                <Button variant="outline" className="w-full">
-                                    02-1234-5678
-                                </Button>
-                            </CardContent>
-                        </Card>
-
-                        <Card>
-                            <CardContent className="p-6 text-center">
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <Mail className="h-6 w-6 text-primary" />
-                                </div>
-                                <h3 className="text-lg font-semibold mb-2">이메일 문의</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    상세한 문의사항을 이메일로 보내주세요
-                                </p>
-                                <Button variant="outline" className="w-full">
-                                    contact@wedosoft.net
-                                </Button>
-                            </CardContent>
-                        </Card>
-
-                        <Card>
-                            <CardContent className="p-6 text-center">
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <MessageCircle className="h-6 w-6 text-primary" />
-                                </div>
-                                <h3 className="text-lg font-semibold mb-2">실시간 채팅</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    웹사이트에서 실시간으로 문의하세요
-                                </p>
-                                <Button variant="outline" className="w-full">
-                                    채팅 시작하기
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* 통계 및 신뢰도 정보 */}
-                    <div className="grid md:grid-cols-4 gap-6 mb-12">
-                        <MetricCard
-                            value="500+"
-                            label="기업 고객"
-                            variant="default"
-                            size="md"
-                        />
-                        <MetricCard
-                            value="10,000+"
-                            label="활성 사용자"
-                            variant="success"
-                            size="md"
-                        />
-                        <MetricCard
-                            value="95%"
-                            label="고객 만족도"
-                            variant="default"
-                            size="md"
-                        />
-                        <MetricCard
-                            value="24/7"
-                            label="기술 지원"
-                            variant="info"
-                            size="md"
-                        />
-                    </div>
-
                     {/* 추가 정보 */}
-                    <div className="grid md:grid-cols-3 gap-6 text-center">
+                    <div className="grid md:grid-cols-4 gap-6 text-center">
                         <div className="space-y-2">
                             <Clock className="h-8 w-8 mx-auto text-primary" />
                             <h4 className="font-semibold">빠른 구축</h4>
@@ -143,6 +67,13 @@ export function CTASection() {
                             <TrendingUp className="h-8 w-8 mx-auto text-primary" />
                             <h4 className="font-semibold">성과 보장</h4>
                             <p className="text-sm text-muted-foreground">평균 40% 효율성 향상</p>
+                        </div>
+                        <div className="space-y-2">
+                            <svg className="h-8 w-8 mx-auto text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h4 className="font-semibold">25년 경험</h4>
+                            <p className="text-sm text-muted-foreground">축적된 노하우와 신뢰</p>
                         </div>
                     </div>
                 </div>
