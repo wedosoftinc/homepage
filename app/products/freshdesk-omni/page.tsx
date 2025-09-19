@@ -19,12 +19,11 @@ const freshdeskOmniData: ProductPageData = {
     subtitle: "옴니채널 고객 지원의 새로운 기준",
     description: "티켓팅, 채팅 상담, 고객 관리를 편리하게 넘나드는 Freshdesk Omni. AI 자동화로 에이전트 없이 모든 채널에서 완벽한 고객 응대를 제공합니다.",
     category: "고객 경험 & 세일즈 관리",
+    slug: "freshdesk-omni",
     heroCTA: {
         primary: { text: "무료 체험 시작", href: "https://www.freshworks.com/ko/freshdesk/omnichannel-signup/?source=freshdeskpricing&medium=fdomnigrowth" },
         secondary: { text: "상담 문의", href: "/contact" }
-    },
-
-    keyFeatures: [
+    }, keyFeatures: [
         {
             icon: "globe",
             title: "옴니채널 통합",

@@ -19,6 +19,7 @@ const mondayServiceData: ProductPageData = {
     subtitle: "AI 기반 서비스 관리의 혁신",
     description: "AI 기반의 혁신적인 기능과 맞춤형 워크플로우로, 효율적인 서비스 운영과 뛰어난 고객 경험을 제공합니다.",
     category: "협업 및 생산성 향상",
+    slug: "monday-service",
     heroCTA: {
         primary: { text: "무료 체험 시작", href: "/contact?product=monday-service" },
         secondary: { text: "상담 문의", href: "/contact" }
