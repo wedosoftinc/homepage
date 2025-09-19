@@ -7,7 +7,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import {
     CheckCircle, ArrowRight, Star, Users, Zap, Shield,
     MessageSquare, BarChart3, Settings, Headphones, Globe,
-    Phone, Mail, FileText, Clock, Target, Briefcase
+    Phone, Mail, FileText, Clock, Target, Briefcase,
+    ChevronRight, Home, Share2
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -70,13 +71,18 @@ export interface ProductPageData {
     faqs: {
         question: string
         answer: string
-    }[]    // 최종 CTA
+    }[]
+
+    // 최종 CTA
     finalCTA: {
         title: string
         description: string
         primaryButton: { text: string; href: string }
         secondaryButton: { text: string; href: string }
     }
+
+    // 추가: 브레드크럼을 위한 슬러그
+    slug?: string
 }
 
 interface ProductPageTemplateProps {
@@ -86,13 +92,50 @@ interface ProductPageTemplateProps {
 export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
     return (
         <div className="min-h-screen">
+            {/* Breadcrumb Navigation */}
+            <section className="py-4 border-b">
+                <div className="container mx-auto px-4">
+                    <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+                        <Link href="/" className="hover:text-foreground">
+                            <Home className="h-4 w-4" />
+                        </Link>
+                        <ChevronRight className="h-4 w-4" />
+                        <Link href="/products" className="hover:text-foreground">
+                            제품
+                        </Link>
+                        <ChevronRight className="h-4 w-4" />
+                        <span className="text-foreground font-medium">{data.name}</span>
+                    </nav>
+                </div>
+            </section>
+
             {/* Hero Section */}
             <section className="bg-gradient-to-br from-primary/5 via-background to-primary/5 py-16 lg:py-24">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto text-center">
-                        <Badge variant="outline" className="mb-4">
-                            {data.category}
-                        </Badge>
+                        <div className="flex justify-between items-start mb-4">
+                            <Badge variant="outline">
+                                {data.category}
+                            </Badge>
+
+                            {/* Share Button */}
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => {
+                                    if (navigator.share) {
+                                        navigator.share({
+                                            title: data.name,
+                                            text: data.subtitle,
+                                            url: window.location.href
+                                        })
+                                    }
+                                }}
+                            >
+                                <Share2 className="h-4 w-4 mr-2" />
+                                공유
+                            </Button>
+                        </div>
 
                         <h1 className="text-4xl lg:text-6xl font-bold mb-6">
                             {data.name}

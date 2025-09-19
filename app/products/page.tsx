@@ -28,6 +28,38 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {/* 고객 경험 & 세일즈 관리 */}
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
+                            <CardTitle>Freshdesk</CardTitle>
+                            <CardDescription>
+                                고객 지원의 새로운 기준
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freshdesk">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
+                            <CardTitle>Freshdesk Omni</CardTitle>
+                            <CardDescription>
+                                옴니채널 고객 지원의 새로운 기준
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freshdesk-omni">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    {/* 협업 및 생산성 향상 */}
                     <Card>
                         <CardHeader>
                             <Badge className="w-fit mb-2">협업 및 생산성</Badge>
@@ -45,15 +77,31 @@ export default function ProductsPage() {
 
                     <Card>
                         <CardHeader>
-                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
-                            <CardTitle>Freshdesk Omni</CardTitle>
+                            <Badge className="w-fit mb-2">협업 및 생산성</Badge>
+                            <CardTitle>Google Workspace</CardTitle>
                             <CardDescription>
-                                옴니채널 고객 지원의 새로운 기준
+                                클라우드 기반 협업의 완성
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Button asChild className="w-full">
-                                <Link href="/products/freshdesk-omni">자세히 보기</Link>
+                                <Link href="/products/google-workspace">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    {/* IT 인프라 관리 */}
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">IT 인프라 관리</Badge>
+                            <CardTitle>Freshservice</CardTitle>
+                            <CardDescription>
+                                IT 서비스 관리의 혁신
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freshservice">자세히 보기</Link>
                             </Button>
                         </CardContent>
                     </Card>
