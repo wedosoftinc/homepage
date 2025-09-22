@@ -39,15 +39,22 @@ export function MainNavigation() {
             const query = searchQuery.toLowerCase().trim()
 
             // 솔루션/제품 관련 검색
-            if (query.includes('freshdesk') || query.includes('고객지원') || query.includes('헬프데스크')) {
-                window.location.href = '/solutions/freshdesk'
+            if (query.includes('freshdesk omni') || query.includes('옴니채널')) {
+                window.location.href = '/products/freshdesk-omni'
+            } else if (query.includes('freshdesk') || query.includes('고객지원') || query.includes('헬프데스크')) {
+                window.location.href = '/products/freshdesk'
             } else if (query.includes('freshsales') || query.includes('crm') || query.includes('세일즈')) {
-                window.location.href = '/solutions/freshsales'
+                window.location.href = '/products/freshsales'
             } else if (query.includes('freshchat') || query.includes('채팅') || query.includes('실시간')) {
-                window.location.href = '/solutions/freshchat'
+                window.location.href = '/products/freshchat'
+            } else if (query.includes('freddy') || query.includes('ai') || query.includes('인공지능')) {
+                window.location.href = '/products/freddy-ai'
+            } else if (query.includes('freshservice') || query.includes('it서비스') || query.includes('헬프데스크')) {
+                window.location.href = '/products/freshservice'
             } else if (query.includes('google workspace') || query.includes('구글') || query.includes('워크스페이스')) {
-                window.location.href = '/solutions/google-workspace'
+                window.location.href = '/products/google-workspace'
             } else if (query.includes('monday') || query.includes('먼데이') || query.includes('프로젝트')) {
+                window.location.href = '/products/monday-service'
                 window.location.href = '/solutions/monday'
             } else if (query.includes('가격') || query.includes('요금') || query.includes('price') || query.includes('플랜')) {
                 window.location.href = '/pricing'
@@ -93,56 +100,46 @@ export function MainNavigation() {
         "고객 경험 & 세일즈": [
             {
                 name: "Freshdesk",
-                href: "/freshdesk/",
+                href: "/products/freshdesk",
                 description: "통합 고객지원 플랫폼"
             },
             {
+                name: "Freshdesk Omni",
+                href: "/products/freshdesk-omni",
+                description: "옴니채널 고객 지원"
+            },
+            {
                 name: "Freshsales",
-                href: "/freshsales/",
+                href: "/products/freshsales",
                 description: "스마트 CRM 솔루션"
             },
             {
                 name: "Freshchat",
-                href: "/freshchat/",
+                href: "/products/freshchat",
                 description: "실시간 고객 상담"
             },
             {
                 name: "Freddy AI",
-                href: "/freddy-ai/",
+                href: "/products/freddy-ai",
                 description: "AI 기반 업무 자동화"
             }
         ],
         "협업 & 생산성": [
             {
                 name: "Google Workspace",
-                href: "/google-workspace/",
+                href: "/products/google-workspace",
                 description: "클라우드 협업 도구"
             },
             {
-                name: "Monday.com",
-                href: "/monday/",
+                name: "Monday Service",
+                href: "/products/monday-service",
                 description: "프로젝트 관리 플랫폼"
-            },
-            {
-                name: "Monday Dev",
-                href: "/monday-dev/",
-                description: "개발팀 전용 워크플로우"
-            },
-            {
-                name: "Monday Sales CRM",
-                href: "/monday-sales/",
-                description: "세일즈 파이프라인 관리"
             }
         ],
         "IT 인프라": [
             {
-                name: "Splashtop",
-                href: "/splashtop/",
-                description: "원격 접속 솔루션"
-            },
-            {
                 name: "Freshservice",
-                href: "/freshservice/",
+                href: "/products/freshservice",
                 description: "IT 서비스 관리"
             }
         ]

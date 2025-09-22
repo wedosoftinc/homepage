@@ -357,7 +357,7 @@ export function ProductsSection() {
             {/* 회사 소개 인사이트 섹션 - 특별한 디자인 */}
             <div className="py-24 bg-background relative overflow-hidden">
                 {/* 미묘한 배경 패턴 */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.primary/0.02)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.primary/0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+                <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px]" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-7xl mx-auto">
