@@ -1,6 +1,44 @@
 // 가격 테이블 구조 예시 - 솔루션 카테고리 우선 방식
+// TypeScript 인터페이스 정의
 
-export const pricingStructure = {
+export interface PricingPlan {
+    name: string;
+    monthly: number;
+    annual: number;
+    popular?: boolean;
+    userLimit?: string;
+    minSeats?: number;
+    features: string[];
+}
+
+export interface Product {
+    name: string;
+    description: string;
+    plans: PricingPlan[];
+}
+
+export interface VendorGroup {
+    vendor: string;
+    productGroup: string;
+    products: Product[];
+}
+
+export interface Category {
+    id: string;
+    title: string;
+    description: string;
+    products: VendorGroup[];
+}
+
+export interface PricingStructure {
+    billingToggle: {
+        monthly: string;
+        annual: string;
+    };
+    categories: Category[];
+}
+
+export const pricingStructure: PricingStructure = {
     // 전역 월/연간 토글
     billingToggle: {
         monthly: "월간 결제",
@@ -125,103 +163,6 @@ export const pricingStructure = {
     ]
 };
 
-// UI 컴포넌트 구조
-const PricingPage = () => {
-    const [billingCycle, setBillingCycle] = useState('annual');
-    const [activeCategory, setActiveCategory] = useState('customer-experience');
-
-    return (
-        <div className="max-w-7xl mx-auto px-4 py-12">
-            {/* 전역 월/연간 토글 */}
-            <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold mb-4">요금제</h1>
-                <BillingToggle value={billingCycle} onChange={setBillingCycle} />
-            </div>
-
-            {/* 솔루션 카테고리 탭 */}
-            <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-                <TabsList className="grid w-full grid-cols-4">
-                    {categories.map(category => (
-                        <TabsTrigger key={category.id} value={category.id}>
-                            {category.title}
-                        </TabsTrigger>
-                    ))}
-                </TabsList>
-
-                {categories.map(category => (
-                    <TabsContent key={category.id} value={category.id}>
-                        <div className="mb-8 text-center">
-                            <h2 className="text-2xl font-semibold mb-2">{category.title}</h2>
-                            <p className="text-muted-foreground">{category.description}</p>
-                        </div>
-
-                        {/* 벤더별 제품 그룹 */}
-                        {category.products.map(vendorGroup => (
-                            <div key={vendorGroup.vendor} className="mb-12">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <VendorLogo vendor={vendorGroup.vendor} />
-                                    <div>
-                                        <h3 className="text-xl font-semibold">{vendorGroup.vendor}</h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            {vendorGroup.productGroup}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* 제품별 가격 카드 그리드 */}
-                                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                    {vendorGroup.products.map(product => (
-                                        <ProductPricingCard
-                                            key={product.name}
-                                            product={product}
-                                            billingCycle={billingCycle}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </TabsContent>
-                ))}
-            </Tabs>
-        </div>
-    );
-};
-
-// 개별 제품 가격 카드 컴포넌트
-const ProductPricingCard = ({ product, billingCycle }) => {
-    return (
-        <Card className="relative">
-            <CardHeader>
-                <CardTitle className="text-lg">{product.name}</CardTitle>
-                <CardDescription>{product.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-                {/* 플랜별 가격 표시 - 아코디언이나 미니 테이블 */}
-                <div className="space-y-4">
-                    {product.plans.map(plan => (
-                        <div key={plan.name} className={`p-4 rounded-lg border ${plan.popular ? 'border-primary bg-primary/5' : ''}`}>
-                            <div className="flex justify-between items-center mb-2">
-                                <span className="font-medium">{plan.name}</span>
-                                {plan.popular && <Badge>인기</Badge>}
-                            </div>
-                            <div className="text-2xl font-bold">
-                                ${billingCycle === 'monthly' ? plan.monthly : Math.round(plan.annual / 12)}
-                                <span className="text-sm font-normal text-muted-foreground">
-                                    /user/month
-                                </span>
-                            </div>
-                            {billingCycle === 'annual' && (
-                                <div className="text-sm text-green-600">
-                                    연간 결제 시 할인 적용
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </CardContent>
-            <CardFooter>
-                <Button className="w-full">무료 체험 시작</Button>
-            </CardFooter>
-        </Card>
-    );
-};
+// 이 파일은 가격 테이블 UI 구조 설계를 위한 TypeScript 인터페이스와 
+// 데이터 구조 예시를 포함합니다.
+// 실제 구현은 /app/pricing/page.tsx에서 확인하세요.
