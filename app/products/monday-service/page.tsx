@@ -13,117 +13,168 @@ export const metadata: Metadata = {
     },
 }
 
-// XML에서 추출한 실제 콘텐츠 기반 데이터
+// XML에서 추출한 실제 콘텐츠 기반 데이터 (docs 기반)
 const mondayServiceData: ProductPageData = {
     name: "Monday Service",
-    subtitle: "AI 기반 서비스 관리의 혁신",
-    description: "AI 기반의 혁신적인 기능과 맞춤형 워크플로우로, 효율적인 서비스 운영과 뛰어난 고객 경험을 제공합니다.",
+    subtitle: "AI, at your service",
+    description: "강력한 AI와 유연한 플랫폼으로 서비스 효율을 대규모로 제공할 수 있도록 지원합니다.",
     category: "협업 및 생산성 향상",
     slug: "monday-service",
     heroCTA: {
-        primary: { text: "무료 체험 시작", href: "/contact?product=monday-service" },
-        secondary: { text: "상담 문의", href: "/contact" }
+        primary: { text: "데모 신청하기", href: "/contact?demo=monday-service" },
+        secondary: { text: "자세히 보기", href: "/contact?product=monday-service" }
     },
 
     keyFeatures: [
         {
-            icon: "zap",
-            title: "AI 제안 기능",
-            description: "인공지능이 서비스 패턴을 분석하여 최적화된 업무 방식을 자동으로 제안합니다."
+            icon: "barChart3",
+            title: "명확한 가시성",
+            description: "서비스 성능에 대한 명확한 가시성과 인사이트를 제공하여 데이터 기반의 의사결정 제공"
         },
         {
             icon: "settings",
-            title: "맞춤형 워크플로우",
-            description: "팀의 업무 스타일에 맞춰 유연하게 조정할 수 있는 워크플로우를 제공합니다."
+            title: "유연한 통합 플랫폼",
+            description: "몇 분 안에 서비스 워크플로우를 구축하고 커스터마이징이 가능. 티켓팅, 지식 관리, 운영 등 모든 것을 하나의 플랫폼으로 통합 관리"
         },
         {
-            icon: "users",
-            title: "고객 포털",
-            description: "고객이 직접 요청을 제출하고 진행 상황을 확인할 수 있는 전용 포털을 제공합니다."
-        },
-        {
-            icon: "barChart3",
-            title: "실시간 분석",
-            description: "서비스 성과와 팀 효율성을 실시간으로 모니터링하고 개선점을 파악합니다."
-        },
-        {
-            icon: "messageSquare",
-            title: "통합 커뮤니케이션",
-            description: "팀 내부 및 고객과의 모든 소통을 하나의 플랫폼에서 관리합니다."
-        },
-        {
-            icon: "headphones",
-            title: "24/7 지원",
-            description: "AI 기반 자동 응답과 에스컬레이션으로 연중무휴 고객 지원을 제공합니다."
+            icon: "zap",
+            title: "강력한 AI 기반의 자동화",
+            description: "AI를 활용하여 티켓 해결을 가속화하고 반복적인 수동 작업을 자동화하여 서비스 효율성을 극대화"
         }
     ],
 
-    // 탭 기반 세부 기능
+    // 탭 기반 세부 기능 (6개 - docs 기반)
     detailedFeatureTabs: [
         {
-            id: "automation",
-            label: "AI 자동화",
-            title: "AI 기반 서비스 자동화",
-            description: "인공지능이 반복적인 서비스 요청을 자동으로 처리하고 복잡한 케이스는 적절한 담당자에게 배정합니다.",
+            id: "ai-service-agent",
+            label: "AI 서비스 에이전트",
+            title: "AI 서비스 에이전트",
+            description: "내장된 AI 에이전트가 티켓 기록과 지식 베이스를 활용합니다.",
             feature: {
-                title: "스마트 요청 처리 시스템",
-                description: "AI가 서비스 요청을 분석하여 자동으로 분류하고 우선순위를 설정합니다.",
+                title: "개인화되고 정확한 솔루션을 즉시 제시",
+                description: "고객 문의에 대해 빠른 문제 해결을 돕습니다.",
                 items: [
-                    "AI 기반 자동 분류",
-                    "스마트 우선순위 설정",
-                    "자동 담당자 배정",
-                    "예측적 리소스 할당"
+                    "티켓 기록 분석",
+                    "지식 베이스 활용",
+                    "개인화된 솔루션 제시",
+                    "즉시 문제 해결 지원"
                 ]
             },
             interactiveArea: {
-                type: "workflow",
-                title: "AI 자동화 워크플로우",
-                description: "요청 접수부터 해결까지 AI가 관리하는 전체 프로세스를 확인하세요",
-                placeholder: "AI 기반 서비스 요청 처리 과정"
+                type: "demo" as const,
+                title: "AI 서비스 에이전트",
+                description: "AI가 고객 문의를 분석하고 최적의 솔루션을 제시하는 과정을 확인하세요",
+                placeholder: "AI 서비스 에이전트 시뮬레이션"
             }
         },
         {
-            id: "tracking",
-            label: "실시간 추적",
-            title: "실시간 서비스 추적 및 모니터링",
-            description: "모든 서비스 요청의 진행 상황을 실시간으로 추적하고 SLA 준수를 보장합니다.",
+            id: "auto-classification",
+            label: "자동 분류",
+            title: "자동 분류",
+            description: "AI 기반의 시스템을 활용하여 문의 유형, 우선순위 등에 따라 티켓을 자동으로 분류합니다.",
             feature: {
-                title: "통합 서비스 대시보드",
-                description: "진행 중인 모든 서비스를 한 화면에서 모니터링하고 관리할 수 있습니다.",
+                title: "지능적인 티켓 분류 시스템",
+                description: "문의 유형과 우선순위를 자동으로 판단하여 효율적인 처리를 지원합니다.",
                 items: [
-                    "실시간 진행 상황 추적",
-                    "SLA 위반 조기 경고",
-                    "팀 워크로드 분산",
-                    "성과 지표 모니터링"
+                    "AI 기반 문의 유형 분석",
+                    "자동 우선순위 설정",
+                    "카테고리별 자동 분류",
+                    "처리 시간 예측"
                 ]
             },
             interactiveArea: {
-                type: "dashboard",
-                title: "서비스 관리 대시보드",
-                description: "팀의 서비스 현황과 성과를 실시간으로 확인하세요",
-                placeholder: "실시간 서비스 현황 대시보드"
+                type: "demo" as const,
+                title: "자동 분류 시스템",
+                description: "들어오는 티켓이 AI에 의해 자동으로 분류되는 과정을 체험하세요",
+                placeholder: "AI 자동 분류 인터페이스"
             }
         },
         {
-            id: "collaboration",
-            label: "팀 협업",
-            title: "효율적인 팀 협업 도구",
-            description: "팀원 간의 원활한 소통과 협업을 통해 서비스 품질을 향상시킵니다.",
+            id: "smart-routing",
+            label: "스마트 라우팅",
+            title: "스마트 라우팅",
+            description: "AI를 활용하여 적절한 담당자에게 자동으로 티켓을 할당합니다.",
             feature: {
-                title: "통합 커뮤니케이션 허브",
-                description: "서비스 관련 모든 소통을 중앙화하여 정보 손실을 방지하고 투명성을 보장합니다.",
+                title: "최적의 라우팅으로 해결 시간 단축 및 서비스 품질 향상",
+                description: "각 담당자의 전문성과 업무량을 고려한 지능적인 할당 시스템입니다.",
                 items: [
-                    "실시간 팀 채팅",
-                    "서비스별 토론 스레드",
-                    "파일 공유 및 버전 관리",
-                    "고객과의 직접 소통"
+                    "담당자 전문성 매칭",
+                    "업무량 균등 배분",
+                    "자동 티켓 할당",
+                    "해결 시간 최적화"
                 ]
             },
             interactiveArea: {
-                type: "demo",
-                title: "팀 협업 시뮬레이션",
-                description: "실제 서비스 시나리오에서의 팀 협업 과정을 경험해보세요",
-                placeholder: "팀 협업 인터페이스"
+                type: "dashboard" as const,
+                title: "스마트 라우팅 대시보드",
+                description: "AI가 티켓을 적절한 담당자에게 배정하는 과정을 확인하세요",
+                placeholder: "스마트 라우팅 관리 대시보드"
+            }
+        },
+        {
+            id: "ai-suggestions",
+            label: "AI 제안",
+            title: "AI 제안",
+            description: "티켓 해결에 필요한 지능적인 제안을 제공합니다.",
+            feature: {
+                title: "업무 처리 속도를 높입니다",
+                description: "과거 데이터와 지식 베이스 기반으로 효과적인 해결책을 제시합니다.",
+                items: [
+                    "과거 데이터 분석",
+                    "지식 베이스 검색",
+                    "해결책 자동 제안",
+                    "처리 시간 단축"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "AI 제안 시스템",
+                description: "AI가 문제 해결을 위한 최적의 제안을 제공하는 과정을 경험하세요",
+                placeholder: "AI 제안 인터페이스"
+            }
+        },
+        {
+            id: "service-workflow",
+            label: "서비스 워크플로우",
+            title: "서비스 워크플로우",
+            description: "팀의 필요에 맞추어 맞춤형 서비스 프로세스를 구축하고 자동화할 수 있습니다.",
+            feature: {
+                title: "팀 맞춤형 프로세스 자동화",
+                description: "각 팀의 업무 스타일에 맞는 워크플로우를 쉽게 설정하고 관리할 수 있습니다.",
+                items: [
+                    "맞춤형 프로세스 구축",
+                    "워크플로우 자동화",
+                    "단계별 진행 관리",
+                    "성과 추적 및 분석"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "워크플로우 빌더",
+                description: "드래그 앤 드롭으로 나만의 서비스 워크플로우를 구축해보세요",
+                placeholder: "서비스 워크플로우 설계 도구"
+            }
+        },
+        {
+            id: "customer-portal",
+            label: "고객 포털",
+            title: "고객 포털",
+            description: "고객이 직접 요청을 제출하고, 티켓 상태를 실시간으로 확인할 수 있는 맞춤형 포털을 제공합니다.",
+            feature: {
+                title: "셀프 서비스 및 실시간 상태 확인",
+                description: "고객이 스스로 문제를 해결하고 진행 상황을 투명하게 확인할 수 있습니다.",
+                items: [
+                    "요청 제출 인터페이스",
+                    "실시간 상태 추적",
+                    "셀프 서비스 리소스",
+                    "피드백 및 평가 시스템"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "고객 포털 인터페이스",
+                description: "고객이 사용하는 포털의 실제 모습을 확인해보세요",
+                placeholder: "고객 서비스 포털"
             }
         }
     ],
@@ -191,32 +242,32 @@ const mondayServiceData: ProductPageData = {
 
     faqs: [
         {
+            question: "어떤 팀/기업에 적합한가요?",
+            answer: "IT 및 지원 팀, 고객 서비스 부서를 포함해, 서비스 운영 효율성 및 통합을 원하는 모든 기업에 최적화되어 있습니다."
+        },
+        {
             question: "Monday Service의 AI 기능은 어떤 도움을 주나요?",
-            answer: "Monday Service의 AI는 서비스 패턴을 분석하여 업무 우선순위를 자동으로 설정하고, 과거 데이터를 기반으로 해결책을 제안하며, 반복적인 작업을 자동화합니다. 또한 고객 만족도를 예측하고 개선 방안을 추천해줍니다."
+            answer: "AI 에이전트, 자동 분류, 스마트 라우팅, AI 제안 등을 통해 티켓 해결을 가속화하고 수동 작업을 자동화하여 서비스 효율을 극대화합니다."
         },
         {
-            question: "기존 시스템과 연동이 가능한가요?",
-            answer: "네, Monday Service는 다양한 third-party 도구들과 연동 가능합니다. API를 통해 기존 CRM, ERP, 커뮤니케이션 도구들과 seamless하게 연결할 수 있어 기존 워크플로우를 그대로 유지하면서 효율성을 높일 수 있습니다."
+            question: "다른 Monday 제품이나 외부 도구와 연동되나요?",
+            answer: "네, monday work management 플랫폼과 완벽 통합되며, API를 통해 다양한 외부 도구와의 유연한 연동 및 확장을 지원합니다."
         },
         {
-            question: "팀 규모에 제한이 있나요?",
-            answer: "Monday Service는 소규모 팀부터 대기업까지 모든 규모의 조직에 적합합니다. 사용자 수와 요구사항에 따라 유연하게 확장 가능하며, 각 팀의 워크플로우에 맞춰 커스터마이징할 수 있습니다."
+            question: "서비스 운영 현황을 어떻게 파악하고 개선할 수 있나요?",
+            answer: "명확한 서비스 성능 가시성과 실시간 서비스 분석으로 데이터 기반의 의사결정을 지원하며, 병목 현상을 제거하여 지속적인 개선을 돕습니다."
         },
         {
-            question: "도입 과정은 얼마나 걸리나요?",
-            answer: "기본 설정은 1-2주 내에 완료할 수 있습니다. 복잡한 워크플로우나 third-party 연동이 필요한 경우 4-6주 정도 소요됩니다. 위두소프트의 전문 컨설턴트가 전 과정을 지원하여 빠르고 안전한 도입을 보장합니다."
-        },
-        {
-            question: "교육 및 지원은 어떻게 제공되나요?",
-            answer: "포괄적인 온보딩 교육, 맞춤형 워크숍, 온라인 리소스를 제공합니다. 도입 후에도 지속적인 기술 지원과 정기적인 최적화 컨설팅을 통해 Monday Service의 효과를 극대화할 수 있도록 도와드립니다."
+            question: "고객들이 직접 문의하고 정보를 찾을 수 있는 기능이 있나요?",
+            answer: "네, 맞춤형 고객 포털에서 고객이 요청 제출, 티켓 상태 확인, 셀프 서비스 리소스 접근을 통해 편리하게 정보를 얻을 수 있습니다."
         }
     ],
 
     finalCTA: {
-        title: "Monday Service로 서비스 효율을 극대화하세요",
-        description: "강력한 AI와 유연한 워크플로우로 서비스 운영을 혁신하고, 뛰어난 고객 경험을 제공하세요. 지금 바로 시작하세요.",
-        primaryButton: { text: "무료 체험 신청", href: "/contact?product=monday-service" },
-        secondaryButton: { text: "상담 문의", href: "/contact" }
+        title: "AI 기반의 서비스 혁신 경험하세요",
+        description: "Monday Service는 강력한 AI와 유연한 워크플로우로 서비스 효율을 극대화하고, 뛰어난 고객 경험을 제공합니다. 지금 바로 혁신적인 서비스 운영을 시작하세요.",
+        primaryButton: { text: "가격표 보기", href: "/contact?product=monday-service" },
+        secondaryButton: { text: "데모 신청하기", href: "/contact?demo=monday-service" }
     }
 }
 

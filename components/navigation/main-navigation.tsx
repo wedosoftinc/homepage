@@ -271,27 +271,6 @@ export function MainNavigation() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="mt-3 pt-3 border-t border-border/20">
-                                        <div className="flex items-center justify-between">
-                                            <div className="text-sm text-muted-foreground">
-                                                <span className="inline-flex items-center space-x-1">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                                                    <span className="font-medium text-foreground">새소식:</span>
-                                                    <span>Freshworks 파트너 프로그램 갱신</span>
-                                                </span>
-                                            </div>
-                                            <Link
-                                                href="/solutions"
-                                                className={cn(
-                                                    "inline-flex items-center px-2.5 py-1 text-sm font-medium rounded-md",
-                                                    "bg-primary text-primary-foreground hover:bg-primary/90",
-                                                    "transition-colors duration-200"
-                                                )}
-                                            >
-                                                전체 보기
-                                            </Link>
-                                        </div>
-                                    </div>
                                 </div>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
