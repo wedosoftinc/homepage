@@ -13,117 +13,151 @@ export const metadata: Metadata = {
     },
 }
 
-// XML에서 추출한 실제 콘텐츠 기반 데이터
+// docs에서 추출한 실제 콘텐츠 기반 데이터
 const freshserviceData: ProductPageData = {
     name: "Freshservice",
-    subtitle: "IT 서비스 관리의 혁신",
-    description: "ITIL 기반의 종합적인 IT 서비스 관리 플랫폼으로 IT 운영의 효율성을 극대화하고 사용자 만족도를 높이세요.",
-    category: "IT 인프라 관리",
+    subtitle: "모든 비즈니스를 위한 엔터프라이즈급 ITSM 솔루션",
+    description: "티켓부터 자산, 변경 관리까지 모든 IT 서비스를 하나의 플랫폼에서 자동화 운영하세요. IT 팀의 업무 부담을 줄이고, 직원들의 문제 해결 속도와 만족도를 높입니다.",
+    category: "IT SERVICE MANAGEMENT",
     slug: "freshservice",
     heroCTA: {
-        primary: { text: "무료 체험 시작", href: "https://www.freshworks.com/ko/freshservice/signup/" },
-        secondary: { text: "상담 문의", href: "/contact" }
+        primary: { text: "데모 신청하기", href: "/contact?demo=freshservice" },
+        secondary: { text: "자세히 보기", href: "/contact" }
     },
 
     keyFeatures: [
         {
-            icon: "headphones",
-            title: "IT 헬프데스크",
-            description: "직관적인 인터페이스로 모든 IT 요청과 사고를 효율적으로 관리하고 추적합니다."
-        },
-        {
             icon: "settings",
-            title: "자산 관리 (CMDB)",
-            description: "하드웨어, 소프트웨어, 클라우드 자산을 통합적으로 관리하고 라이프사이클을 추적합니다."
-        },
-        {
-            icon: "zap",
-            title: "변경 관리",
-            description: "IT 변경 사항을 체계적으로 승인, 계획, 구현하여 시스템 안정성을 보장합니다."
-        },
-        {
-            icon: "fileText",
-            title: "지식 관리",
-            description: "IT 문서와 절차를 체계화하여 셀프서비스와 팀 지식 공유를 활성화합니다."
-        },
-        {
-            icon: "barChart3",
-            title: "분석 및 리포팅",
-            description: "상세한 성과 지표와 SLA 모니터링으로 IT 서비스 품질을 지속적으로 개선합니다."
+            title: "IT 서비스 관리",
+            description: "AI 기반 자동화와 셀프서비스 포털을 통해 IT 팀의 업무 부담을 줄이고, 직원들의 문제 해결 속도와 만족도를 높입니다"
         },
         {
             icon: "users",
-            title: "셀프서비스 포털",
-            description: "직원들이 스스로 IT 요청을 제출하고 상태를 확인할 수 있는 사용자 친화적 포털을 제공합니다."
+            title: "통합 워크스페이스",
+            description: "IT, 운영 및 비즈니스 등 다양한 팀이 하나의 플랫폼에서 협업하며, 조직 전체의 생산성이 향상됩니다."
+        },
+        {
+            icon: "shield",
+            title: "리스크 관리",
+            description: "업무 중단 리스크를 사전에 식별하고 변경 관련 사고를 40% 이상 감소시킵니다."
         }
     ],
 
-    // 탭 기반 세부 기능
+    // docs 원본 콘텐츠 기반 5개 탭
     detailedFeatureTabs: [
         {
-            id: "itsm",
-            label: "ITSM 핵심 기능",
-            title: "ITIL 기반 IT 서비스 관리",
-            description: "ITIL 프레임워크를 기반으로 한 완전한 IT 서비스 관리 솔루션으로 체계적인 IT 운영을 실현합니다.",
+            id: "change-release",
+            label: "변경 및 릴리즈 관리",
+            title: "변경 및 릴리즈 관리 체계화",
+            description: "변경 요청부터 승인, 배포까지 전 과정을 체계적으로 추적하고 관리합니다. 리스크를 사전에 식별하고 업무 중단 가능성을 최소화하는 프로세스를 구현합니다.",
             feature: {
-                title: "통합 ITSM 플랫폼",
-                description: "사고, 문제, 변경, 자산 관리 등 모든 ITSM 프로세스를 하나의 플랫폼에서 관리합니다.",
+                title: "체계적인 변경 관리 프로세스",
+                description: "변경 관련 사고가 40% 이상 감소하며, 안정적인 서비스 운영이 가능합니다.",
                 items: [
-                    "ITIL 표준 준수 프로세스",
-                    "자동화된 SLA 관리",
-                    "통합 CMDB",
-                    "변경 승인 워크플로우"
+                    "변경 요청 표준화",
+                    "승인 워크플로우 자동화",
+                    "리스크 사전 식별",
+                    "배포 일정 관리",
+                    "변경 이력 추적"
                 ]
             },
             interactiveArea: {
                 type: "workflow",
-                title: "ITSM 프로세스 플로우",
-                description: "사고부터 해결까지의 전체 ITSM 프로세스를 시각화합니다",
-                placeholder: "ITIL 기반 서비스 관리 프로세스"
+                title: "변경 관리 워크플로우",
+                description: "요청부터 배포까지의 전체 변경 관리 과정을 시각화합니다",
+                placeholder: "변경 관리 프로세스 플로우"
             }
         },
         {
-            id: "automation",
-            label: "자동화 및 AI",
-            title: "AI 기반 IT 운영 자동화",
-            description: "인공지능과 자동화 기술로 반복적인 IT 작업을 자동화하고 운영 효율성을 극대화합니다.",
+            id: "self-service",
+            label: "셀프서비스 포털",
+            title: "셀프서비스 포털 활용률 향상",
+            description: "직원들이 FAQ나 워크플로우를 통해 직접 문제를 해결하여, 티켓 발생률을 최대 30% 감소시킵니다.",
             feature: {
-                title: "Freddy AI IT 어시스턴트",
-                description: "AI가 IT 요청을 분석하고 자동으로 해결책을 제안하거나 적절한 담당자에게 배정합니다.",
+                title: "지능형 셀프서비스 시스템",
+                description: "사용자가 스스로 문제를 해결할 수 있는 직관적인 포털을 제공합니다.",
                 items: [
-                    "AI 기반 자동 분류",
-                    "지능형 문제 해결 제안",
-                    "예측적 분석",
-                    "자동화된 응답"
+                    "지능형 FAQ 검색",
+                    "자동화된 워크플로우",
+                    "요청 상태 실시간 추적",
+                    "개인화된 서비스 카탈로그",
+                    "모바일 최적화 인터페이스"
                 ]
             },
             interactiveArea: {
                 type: "demo",
-                title: "AI 자동화 데모",
-                description: "Freddy AI가 IT 요청을 처리하는 과정을 실시간으로 확인하세요",
-                placeholder: "AI 기반 IT 요청 처리 시뮬레이션"
+                title: "셀프서비스 포털 데모",
+                description: "직원들이 직접 문제를 해결하는 과정을 체험하세요",
+                placeholder: "셀프서비스 포털 시뮬레이션"
             }
         },
         {
-            id: "analytics",
-            label: "분석 및 보고",
-            title: "고급 IT 성과 분석",
-            description: "상세한 IT 성과 지표와 비즈니스 인사이트로 데이터 기반의 IT 의사결정을 지원합니다.",
+            id: "asset-management",
+            label: "통합 자산 관리",
+            title: "통합 자산 관리",
+            description: "하드웨어, 소프트웨어 자산을 하나의 플랫폼에서 통합 관리하여 자산 현황을 실시간으로 파악합니다.",
             feature: {
-                title: "IT 성과 대시보드",
-                description: "IT 서비스의 모든 KPI를 실시간으로 모니터링하고 트렌드를 분석할 수 있습니다.",
+                title: "CMDB 기반 자산 관리",
+                description: "모든 IT 자산의 라이프사이클을 추적하고 최적화된 자산 운영을 지원합니다.",
                 items: [
-                    "실시간 SLA 모니터링",
-                    "IT 자산 활용도 분석",
-                    "사용자 만족도 추적",
-                    "비용 최적화 인사이트"
+                    "자동 자산 탐지",
+                    "라이선스 관리",
+                    "자산 관계 매핑",
+                    "감가상각 추적",
+                    "구매 및 계약 관리"
                 ]
             },
             interactiveArea: {
                 type: "dashboard",
-                title: "IT 성과 분석 대시보드",
-                description: "핵심 IT 지표와 트렌드를 한눈에 확인할 수 있는 대시보드입니다",
-                placeholder: "IT 서비스 성과 대시보드"
+                title: "자산 관리 대시보드",
+                description: "IT 자산 현황을 실시간으로 확인하고 관리하세요",
+                placeholder: "통합 자산 관리 대시보드"
+            }
+        },
+        {
+            id: "automation-workflow",
+            label: "자동화 워크플로우",
+            title: "자동화된 승인 및 워크플로우",
+            description: "Freddy AI가 들어오는 티켓을 자동으로 분류하고 중요도에 따라 우선순위를 지정합니다. 이를 통해 반복적인 수작업을 줄여보세요.",
+            feature: {
+                title: "AI 기반 티켓 분류 및 자동 응답",
+                description: "Freddy AI가 티켓을 자동 분류하고 우선순위를 지정하여, 처리 시간을 최대 80% 단축시킵니다.",
+                items: [
+                    "AI 기반 자동 분류",
+                    "우선순위 자동 지정",
+                    "지능형 티켓 라우팅",
+                    "자동 응답 생성",
+                    "SLA 자동 관리"
+                ]
+            },
+            interactiveArea: {
+                type: "workflow",
+                title: "AI 자동화 워크플로우",
+                description: "Freddy AI가 티켓을 처리하는 자동화 과정을 확인하세요",
+                placeholder: "AI 기반 자동화 프로세스"
+            }
+        },
+        {
+            id: "multi-team",
+            label: "멀티팀 협업",
+            title: "멀티팀 협업 지원",
+            description: "HR, 총무, 시설관리 등 비IT 부서도 동일한 서비스 포털을 활용해 요청을 처리할 수 있습니다. 하나의 플랫폼에서 협업하며, 조직 전체의 생산성이 향상됩니다.",
+            feature: {
+                title: "통합 협업 플랫폼",
+                description: "IT 팀뿐만 아니라 모든 부서가 함께 사용할 수 있는 통합 서비스 관리 플랫폼입니다.",
+                items: [
+                    "부서별 서비스 카탈로그",
+                    "크로스 팀 협업 도구",
+                    "통합 승인 프로세스",
+                    "역할 기반 접근 제어",
+                    "조직 전체 대시보드"
+                ]
+            },
+            interactiveArea: {
+                type: "feature-map",
+                title: "멀티팀 협업 구조",
+                description: "다양한 부서가 하나의 플랫폼에서 협업하는 구조를 확인하세요",
+                placeholder: "조직 전체 협업 생태계"
             }
         }
     ],
@@ -206,32 +240,28 @@ const freshserviceData: ProductPageData = {
 
     faqs: [
         {
-            question: "Freshservice는 ITIL을 완전히 지원하나요?",
-            answer: "네, Freshservice는 ITIL v4 프레임워크를 완전히 지원하며, 사고 관리, 문제 관리, 변경 관리, 자산 관리 등 모든 ITIL 프로세스를 포함합니다."
+            question: "Freshservice의 자산관리 및 기타 데이터는 어떻게 이관하나요?",
+            answer: "CSV 업로드로 손쉽게 자산 데이터를 가져오세요. 데이터 필드를 Freshservice 필드와 동일하게 매핑하고 태그도 추가할 수 있습니다. 가져오기 진행 상황과 발생 오류도 실시간으로 안내드립니다."
         },
         {
-            question: "기존 IT 도구들과 연동이 가능한가요?",
-            answer: "네, Active Directory, LDAP, SCCM, VMware, AWS, Azure 등 주요 IT 도구들과 기본 연동을 제공하며, REST API를 통한 커스텀 연동도 가능합니다."
+            question: "서비스 관리가 실제로 효과적인 이유는 무엇일까요?",
+            answer: "Freshservice를 사용하는 100개 이상의 국가와 9,000개 이상의 조직에 걸쳐 14개 산업의 주요 정보를 토대로 구식 도구 개선 및 IT 효율성 향상을 통해 6개월 이내에 356%의 ROI 달성, 자동화된 워크플로를 통해 평균 해결 시간(ART) 26.63% 단축 등의 효과를 제공합니다."
         },
         {
-            question: "클라우드와 온프레미스 환경을 모두 지원하나요?",
-            answer: "Freshservice는 클라우드 기반 SaaS 솔루션이지만, 에이전트를 통해 온프레미스 자산도 완벽하게 관리할 수 있습니다."
+            question: "ITSM에서 요청자와 승인자란?",
+            answer: "Freshservice에서 요청자는 IT 서비스나 자원을 요청하는 사용자입니다. 예를 들어, 새로운 하드웨어 장비나 소프트웨어 설치를 요청하는 사람이 요청자가 됩니다. 승인자는 해당 요청에 대해 승인이나 거부 결정을 내리는 역할을 합니다. 보통 팀 리더나 관리자급 사용자가 승인자로 설정됩니다."
         },
         {
-            question: "모바일에서도 사용할 수 있나요?",
-            answer: "네, iOS와 Android 전용 앱을 제공하며, 웹 인터페이스도 모바일에 최적화되어 있어 언제 어디서나 IT 서비스를 관리할 수 있습니다."
-        },
-        {
-            question: "도입 교육과 지원은 어떻게 받을 수 있나요?",
-            answer: "위두소프트에서 Freshservice 전문 컨설팅과 교육을 제공하며, 도입부터 운영까지 전 과정을 지원합니다. 온라인 교육 자료와 커뮤니티도 제공됩니다."
+            question: "마켓플레이스에서 Freshservice와의 연동을 지원하는 대표적인 앱은?",
+            answer: "Freshservice는 대표적으로 다음 앱과 연동을 지원합니다: Slack, Microsoft Teams, Github, Splashtop 등 다수의 비즈니스 도구와 연동 가능합니다."
         }
     ],
 
     finalCTA: {
-        title: "Freshservice로 IT 운영을 혁신하세요",
-        description: "전 세계 13,000개 이상의 기업이 신뢰하는 Freshservice로 IT 서비스 관리를 현대화하고 비즈니스 가치를 창출하세요.",
-        primaryButton: { text: "무료 체험 시작", href: "https://www.freshworks.com/ko/freshservice/signup/" },
-        secondaryButton: { text: "IT 컨설팅 받기", href: "/contact?product=freshservice" }
+        title: "IT 운영 전반을 혁신합니다",
+        description: "Freshservice로 IT 팀의 업무 부담을 줄이고, 직원들의 문제 해결 속도와 만족도를 높여보세요. AI 자동화, 셀프서비스, 자산 및 워크플로우 관리로 반복 업무를 줄이고 처리 시간을 단축합니다.",
+        primaryButton: { text: "데모 신청하기", href: "/contact?demo=freshservice" },
+        secondaryButton: { text: "가격표 보기", href: "/contact?product=freshservice" }
     }
 }
 
