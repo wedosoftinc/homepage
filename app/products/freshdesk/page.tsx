@@ -58,6 +58,76 @@ const freshdeskData: ProductPageData = {
         }
     ],
 
+    // 탭 기반 세부 기능
+    detailedFeatureTabs: [
+        {
+            id: "ticketing",
+            label: "티켓 관리",
+            title: "스마트 티켓 관리 시스템",
+            description: "모든 고객 문의를 체계적으로 관리하고 효율적으로 처리할 수 있는 완전한 솔루션입니다.",
+            feature: {
+                title: "자동 티켓 생성 및 분류",
+                description: "이메일, 웹폼, 채팅, 전화 등 모든 채널의 문의를 자동으로 티켓으로 변환하고 AI가 자동 분류합니다.",
+                items: [
+                    "다채널 자동 티켓 생성",
+                    "AI 기반 자동 분류",
+                    "우선순위 자동 설정",
+                    "상담원 자동 배정"
+                ]
+            },
+            interactiveArea: {
+                type: "workflow",
+                title: "티켓 처리 워크플로우",
+                description: "문의 접수부터 해결까지의 전체 과정을 시각화합니다",
+                placeholder: "티켓 생명주기 프로세스"
+            }
+        },
+        {
+            id: "automation",
+            label: "자동화",
+            title: "AI 기반 자동화 솔루션",
+            description: "반복적인 업무를 자동화하고 AI가 상담원을 지원하여 업무 효율성을 극대화합니다.",
+            feature: {
+                title: "Freddy AI 자동 응답",
+                description: "AI가 고객 문의를 분석하고 적절한 답변을 자동으로 생성하거나 상담원에게 답변을 제안합니다.",
+                items: [
+                    "자동 응답 생성",
+                    "감정 분석",
+                    "지식베이스 연동",
+                    "에스컬레이션 자동화"
+                ]
+            },
+            interactiveArea: {
+                type: "demo",
+                title: "AI 자동 응답 데모",
+                description: "Freddy AI가 실시간으로 고객 응답을 생성하는 과정을 확인하세요",
+                placeholder: "AI 응답 생성 시뮬레이션"
+            }
+        },
+        {
+            id: "analytics",
+            label: "분석 및 보고",
+            title: "고급 분석 및 보고서",
+            description: "상세한 성과 분석과 맞춤형 보고서로 고객 지원 품질을 지속적으로 개선할 수 있습니다.",
+            feature: {
+                title: "실시간 성과 대시보드",
+                description: "고객 지원팀의 성과를 실시간으로 모니터링하고 데이터 기반으로 의사결정을 내릴 수 있습니다.",
+                items: [
+                    "실시간 KPI 모니터링",
+                    "고객 만족도 추적",
+                    "상담원 성과 분석",
+                    "맞춤형 보고서 생성"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard",
+                title: "성과 분석 대시보드",
+                description: "주요 지표와 트렌드를 한눈에 확인할 수 있는 대시보드입니다",
+                placeholder: "실시간 분석 대시보드"
+            }
+        }
+    ],
+
     benefits: [
         {
             title: "고객 만족도 향상",

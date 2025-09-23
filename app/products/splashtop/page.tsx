@@ -51,6 +51,76 @@ const splashtopData = {
         }
     ],
 
+    // 탭 기반 세부 기능
+    detailedFeatureTabs: [
+        {
+            id: "performance",
+            label: "고성능 기술",
+            title: "고성능 원격 접속 기술",
+            description: "독자적인 고성능 스트리밍 엔진으로 지연 시간을 최소화하고 네이티브와 같은 경험을 제공합니다.",
+            feature: {
+                title: "고성능 스트리밍 엔진",
+                description: "4K UHD 해상도와 60fps 스트리밍으로 원격에서도 로컬과 같은 성능을 경험할 수 있습니다.",
+                items: [
+                    "4K UHD 해상도 지원",
+                    "초당 60프레임 스트리밍",
+                    "저대역폭 환경 최적화",
+                    "멀티 모니터 지원"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "고성능 스트리밍 데모",
+                description: "실제 원격 접속 화질과 성능을 직접 체험해보세요",
+                placeholder: "고성능 원격 데스크톱 화면"
+            }
+        },
+        {
+            id: "security",
+            label: "보안 및 제어",
+            title: "엔터프라이즈급 보안 시스템",
+            description: "다층 보안 시스템과 세밀한 접근 제어로 기업 환경에 최적화된 보안을 제공합니다.",
+            feature: {
+                title: "통합 보안 및 관리 시스템",
+                description: "256비트 암호화부터 SSO 연동까지 포괄적인 보안 기능을 제공합니다.",
+                items: [
+                    "256비트 AES 암호화",
+                    "2단계 인증 (2FA)",
+                    "SSO (Single Sign-On) 연동",
+                    "장치 인증 및 접근 제어"
+                ]
+            },
+            interactiveArea: {
+                type: "feature-map" as const,
+                title: "보안 기능 구성도",
+                description: "Splashtop의 다층 보안 시스템을 시각적으로 확인하세요",
+                placeholder: "보안 아키텍처 다이어그램"
+            }
+        },
+        {
+            id: "management",
+            label: "중앙 관리",
+            title: "중앙 집중식 관리 시스템",
+            description: "IT 관리자를 위한 포괄적인 관리 콘솔로 모든 원격 접속을 효율적으로 제어할 수 있습니다.",
+            feature: {
+                title: "통합 관리 콘솔",
+                description: "사용자 관리부터 보안 정책 설정까지 모든 원격 접속 환경을 중앙에서 관리합니다.",
+                items: [
+                    "사용자 및 그룹 관리",
+                    "접속 로그 및 감사 추적",
+                    "정책 기반 접근 제어",
+                    "실시간 세션 모니터링"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard" as const,
+                title: "관리자 대시보드",
+                description: "실시간 접속 현황과 보안 상태를 한눈에 확인할 수 있습니다",
+                placeholder: "중앙 관리 대시보드"
+            }
+        }
+    ],
+
     detailedFeatures: [
         {
             title: "고성능 스트리밍 기술",

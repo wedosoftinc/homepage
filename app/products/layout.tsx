@@ -1,3 +1,4 @@
+import { MainNavigation } from '@/components/navigation/main-navigation'
 import { Footer } from '@/components/layout/footer'
 
 export default function ProductsLayout({
@@ -7,6 +8,7 @@ export default function ProductsLayout({
 }) {
     return (
         <div className="min-h-screen">
+            <MainNavigation />
             <main>{children}</main>
             <Footer />
         </div>

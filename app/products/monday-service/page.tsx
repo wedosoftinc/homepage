@@ -56,7 +56,79 @@ const mondayServiceData: ProductPageData = {
             title: "24/7 지원",
             description: "AI 기반 자동 응답과 에스컬레이션으로 연중무휴 고객 지원을 제공합니다."
         }
-    ], benefits: [
+    ],
+
+    // 탭 기반 세부 기능
+    detailedFeatureTabs: [
+        {
+            id: "automation",
+            label: "AI 자동화",
+            title: "AI 기반 서비스 자동화",
+            description: "인공지능이 반복적인 서비스 요청을 자동으로 처리하고 복잡한 케이스는 적절한 담당자에게 배정합니다.",
+            feature: {
+                title: "스마트 요청 처리 시스템",
+                description: "AI가 서비스 요청을 분석하여 자동으로 분류하고 우선순위를 설정합니다.",
+                items: [
+                    "AI 기반 자동 분류",
+                    "스마트 우선순위 설정",
+                    "자동 담당자 배정",
+                    "예측적 리소스 할당"
+                ]
+            },
+            interactiveArea: {
+                type: "workflow",
+                title: "AI 자동화 워크플로우",
+                description: "요청 접수부터 해결까지 AI가 관리하는 전체 프로세스를 확인하세요",
+                placeholder: "AI 기반 서비스 요청 처리 과정"
+            }
+        },
+        {
+            id: "tracking",
+            label: "실시간 추적",
+            title: "실시간 서비스 추적 및 모니터링",
+            description: "모든 서비스 요청의 진행 상황을 실시간으로 추적하고 SLA 준수를 보장합니다.",
+            feature: {
+                title: "통합 서비스 대시보드",
+                description: "진행 중인 모든 서비스를 한 화면에서 모니터링하고 관리할 수 있습니다.",
+                items: [
+                    "실시간 진행 상황 추적",
+                    "SLA 위반 조기 경고",
+                    "팀 워크로드 분산",
+                    "성과 지표 모니터링"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard",
+                title: "서비스 관리 대시보드",
+                description: "팀의 서비스 현황과 성과를 실시간으로 확인하세요",
+                placeholder: "실시간 서비스 현황 대시보드"
+            }
+        },
+        {
+            id: "collaboration",
+            label: "팀 협업",
+            title: "효율적인 팀 협업 도구",
+            description: "팀원 간의 원활한 소통과 협업을 통해 서비스 품질을 향상시킵니다.",
+            feature: {
+                title: "통합 커뮤니케이션 허브",
+                description: "서비스 관련 모든 소통을 중앙화하여 정보 손실을 방지하고 투명성을 보장합니다.",
+                items: [
+                    "실시간 팀 채팅",
+                    "서비스별 토론 스레드",
+                    "파일 공유 및 버전 관리",
+                    "고객과의 직접 소통"
+                ]
+            },
+            interactiveArea: {
+                type: "demo",
+                title: "팀 협업 시뮬레이션",
+                description: "실제 서비스 시나리오에서의 팀 협업 과정을 경험해보세요",
+                placeholder: "팀 협업 인터페이스"
+            }
+        }
+    ],
+
+    benefits: [
         {
             title: "서비스 효율성 극대화",
             description: "AI 자동화와 스마트 워크플로우로 서비스 처리 시간을 대폭 단축",
