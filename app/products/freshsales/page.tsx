@@ -13,126 +13,135 @@ export default function FreshsalesPage() {
             secondary: { text: '상담 문의', href: '/contact' }
         },
 
-        // 주요 기능 (10개 - 문서 원본 그대로)
+        // 주요 기능 (3개 - docs 기반)
         keyFeatures: [
             {
                 icon: 'users',
                 title: '고객 360° 뷰',
-                description: '고객의 모든 상호작용 기록을 통합 관리'
+                description: '이메일, 통화 기록, 채팅, 웹사이트 방문 이력 등 다양한 데이터를 한 화면에 통합해 고객을 입체적으로 파악할 수 있습니다. 이러한 전방위적 고객 이해를 바탕으로, 고객 니즈를 정확히 대응하고 분석합니다.'
             },
             {
                 icon: 'zap',
                 title: '영업 프로세스 간소화',
-                description: '복잡한 영업 단계를 직관적으로 관리'
-            },
-            {
-                icon: 'briefcase',
-                title: '거래 관리',
-                description: '영업 기회부터 계약 완료까지 전체 프로세스 추적'
-            },
-            {
-                icon: 'settings',
-                title: '영업 자동화 및 워크플로우',
-                description: '반복적인 영업 업무 자동화'
+                description: '세일즈 담당자는 수작업 없이도 가장 효과적인 다음 단계로 넘어갑니다. 반복 업무를 줄이고 리드 관리·후속 조치를 더 빠르게 실행합니다. 병목 구간을 사전에 방지하고 세일즈 사이클을 단축시킵니다.'
             },
             {
                 icon: 'barChart3',
-                title: '파이프라인 관리',
-                description: '시각적 파이프라인으로 거래 현황 실시간 파악'
-            },
-            {
-                icon: 'users',
-                title: '영업 조직 관리',
-                description: '팀별, 지역별, 제품별 영업 성과 관리'
-            },
-            {
-                icon: 'fileText',
-                title: '거래 폼 자동 생성',
-                description: '고객 정보 수집 및 리드 생성 자동화'
-            },
-            {
-                icon: 'target',
-                title: '스마트 마케팅 캠페인',
-                description: '타겟팅된 이메일 마케팅 및 리드 육성'
-            },
-            {
-                icon: 'messageSquare',
-                title: '고객 소통 채널 통합',
-                description: '이메일, 전화, SNS 등 모든 소통 기록 통합'
-            },
-            {
-                icon: 'barChart3',
-                title: '보고서 및 실시간 인사이트',
-                description: 'AI 기반 영업 성과 분석 및 예측'
+                title: '한눈에 파악하는 거래 관리',
+                description: 'Freshsales는 시각적인 파이프라인 보드를 통해 거래의 현재 단계, 예상 수익, 다음 조치 등을 한눈에 확인할 수 있도록 도와줍니다. 각 거래에 대한 커뮤니케이션 내역, 활동 기록, 관련 연락처 정보가 자동으로 연동됩니다.'
             }
         ],
 
-        // 탭 기반 세부 기능
+        // 탭 기반 세부 기능 (5개 - docs 기반)
         detailedFeatureTabs: [
             {
-                id: "crm",
-                label: "CRM 핵심",
-                title: "고객 관계 관리의 모든 것",
-                description: "360도 고객 뷰와 지능형 분석으로 고객과의 모든 상호작용을 체계적으로 관리합니다.",
-                feature: {
-                    title: "통합 고객 관리 시스템",
-                    description: "고객의 모든 정보와 상호작용 히스토리를 한 곳에서 관리하고 분석할 수 있습니다.",
-                    items: [
-                        "360도 고객 뷰",
-                        "상호작용 히스토리 추적",
-                        "고객 세그멘테이션",
-                        "라이프사이클 관리"
-                    ]
-                },
-                interactiveArea: {
-                    type: "dashboard" as const,
-                    title: "고객 관리 대시보드",
-                    description: "실제 CRM 인터페이스에서 고객 정보가 어떻게 관리되는지 확인하세요",
-                    placeholder: "고객 360도 뷰 대시보드"
-                }
-            },
-            {
-                id: "automation",
+                id: "sales-automation",
                 label: "영업 자동화",
-                title: "AI 기반 영업 프로세스 자동화",
-                description: "반복적인 영업 업무를 자동화하고 AI가 최적의 영업 전략을 제안합니다.",
+                title: "영업 자동화 및 워크플로우 설정",
+                description: "리드 생성, 알림 발송, 상태 변경 등 반복적인 업무를 자동화할 수 있습니다. 조건 기반 워크플로우를 통해 세일즈 과정을 효율적으로 운영해보세요.",
                 feature: {
-                    title: "Freddy AI 영업 어시스턴트",
-                    description: "AI가 리드 점수 산정, 거래 예측, 다음 액션 추천 등을 자동으로 수행합니다.",
+                    title: "업무 자동화로 시간은 줄이고, 고객 대응은 더 빨라집니다",
+                    description: "제품군, 팀, 지역에 따라 여러 개의 파이프라인을 구성해 거래를 체계적으로 관리할 수 있습니다. 각 단계별 거래 현황을 시각적으로 추적하고 병목 현상을 쉽게 발견할 수 있습니다.",
                     items: [
-                        "리드 스코어링 자동화",
-                        "거래 성사 확률 예측",
-                        "다음 액션 자동 추천",
-                        "최적 연락 시점 제안"
+                        "리드 생성 자동화",
+                        "알림 발송 자동화",
+                        "상태 변경 자동화",
+                        "조건 기반 워크플로우"
                     ]
                 },
                 interactiveArea: {
                     type: "demo" as const,
-                    title: "AI 영업 자동화 데모",
-                    description: "Freddy AI가 영업 프로세스를 어떻게 자동화하는지 체험해보세요",
-                    placeholder: "AI 영업 자동화 시뮬레이션"
+                    title: "자동화 워크플로우 설정",
+                    description: "Freshsales의 자동화 기능으로 영업 프로세스를 최적화하세요",
+                    placeholder: "영업 자동화 설정 패널"
                 }
             },
             {
-                id: "analytics",
-                label: "성과 분석",
-                title: "데이터 기반 영업 인사이트",
-                description: "상세한 영업 분석과 실시간 대시보드로 성과를 측정하고 개선점을 찾을 수 있습니다.",
+                id: "team-management",
+                label: "영업 조직 관리",
+                title: "영업 조직 관리",
+                description: "팀, 역할, 권한별로 영업조직을 체계화해 협업 효율성과 책임 분담을 명확히 합니다.",
                 feature: {
-                    title: "실시간 영업 성과 분석",
-                    description: "영업팀의 모든 활동과 성과를 실시간으로 추적하고 분석합니다.",
+                    title: "규모가 큰 세일즈 조직도 효율적으로 운영",
+                    description: "성과 데이터를 기반으로 리더는 팀의 활동을 효과적으로 관리할 수 있습니다.",
                     items: [
-                        "실시간 영업 파이프라인 분석",
-                        "개인/팀별 성과 추적",
-                        "예측 분석 및 트렌드",
-                        "맞춤형 보고서 생성"
+                        "팀별 권한 관리",
+                        "역할 기반 접근 제어",
+                        "성과 데이터 기반 관리",
+                        "협업 효율성 향상"
                     ]
                 },
                 interactiveArea: {
                     type: "dashboard" as const,
-                    title: "영업 성과 대시보드",
-                    description: "핵심 영업 지표와 성과를 실시간으로 확인할 수 있습니다",
-                    placeholder: "영업 성과 분석 대시보드"
+                    title: "팀 성과 관리 대시보드",
+                    description: "영업 조직의 성과를 실시간으로 모니터링하고 관리하세요",
+                    placeholder: "영업 팀 관리 대시보드"
+                }
+            },
+            {
+                id: "deal-forms",
+                label: "거래 폼 관리",
+                title: "거래 폼 자동 생성 및 추적",
+                description: "사용자 정의 거래 폼을 통해 정보를 표준화하고, 고객의 세부 요구사항을 빠짐없이 수집합니다.",
+                feature: {
+                    title: "세일즈 데이터의 일관성과 정확성을 동시에 확보",
+                    description: "폼에 입력된 내용은 자동으로 거래에 연동되어, 후속 조치가 간편해집니다.",
+                    items: [
+                        "사용자 정의 거래 폼",
+                        "정보 표준화",
+                        "자동 거래 연동",
+                        "후속 조치 간소화"
+                    ]
+                },
+                interactiveArea: {
+                    type: "demo" as const,
+                    title: "거래 폼 설정 도구",
+                    description: "맞춤형 거래 폼을 쉽게 생성하고 관리할 수 있습니다",
+                    placeholder: "거래 폼 빌더 인터페이스"
+                }
+            },
+            {
+                id: "marketing-campaigns",
+                label: "마케팅 캠페인",
+                title: "스마트 마케팅 캠페인",
+                description: "행동 기반 트리거, 세분화된 고객 타겟팅, 자동 이메일 캠페인 기능을 제공합니다.",
+                feature: {
+                    title: "마케팅과 세일즈가 자연스럽게 연결되어 전환을 유도",
+                    description: "고객이 메일을 확인했는지 등의 고객 행동을 추적하고 분석합니다. (개인 및 팀 메일함 연동 가능)",
+                    items: [
+                        "행동 기반 트리거",
+                        "세분화된 타겟팅",
+                        "자동 이메일 캠페인",
+                        "고객 행동 추적"
+                    ]
+                },
+                interactiveArea: {
+                    type: "dashboard" as const,
+                    title: "마케팅 캠페인 관리",
+                    description: "이메일 캠페인의 성과를 실시간으로 추적하고 최적화하세요",
+                    placeholder: "마케팅 캠페인 대시보드"
+                }
+            },
+            {
+                id: "communication",
+                label: "소통 채널 통합",
+                title: "고객 소통 채널 통합",
+                description: "이메일, 전화, 채팅, WhatsApp 등 다양한 커뮤니케이션 채널을 하나로 통합합니다.",
+                feature: {
+                    title: "채널 간 히스토리도 자동으로 연결되어 맥락 있는 대화를 지원",
+                    description: "모든 고객 응대를 동일한 플랫폼 내에서 관리해 누락 없이 빠르게 대응할 수 있습니다.",
+                    items: [
+                        "이메일 통합",
+                        "전화 연동",
+                        "채팅 플랫폼 연결",
+                        "WhatsApp 지원"
+                    ]
+                },
+                interactiveArea: {
+                    type: "demo" as const,
+                    title: "통합 커뮤니케이션 허브",
+                    description: "모든 고객 소통을 하나의 인터페이스에서 관리하세요",
+                    placeholder: "통합 커뮤니케이션 인터페이스"
                 }
             }
         ],
@@ -215,28 +224,32 @@ export default function FreshsalesPage() {
             }
         ],
 
-        // FAQ (3개 - 문서 원본 그대로)
+        // FAQ (4개 - docs 기반)
         faqs: [
             {
-                question: '기존 영업 데이터를 어떻게 이전하나요?',
-                answer: 'CSV, Excel 파일 가져오기 및 API 연동을 통해 데이터 손실 없이 마이그레이션됩니다.'
+                question: '개인/ 팀 메일함을 Freshsales에 연동할 수 있나요?',
+                answer: 'Freshsales는 개인 메일함과 팀 메일함을 연결할 수 있습니다. 세일즈 팀과 고객을 더욱 긴밀하게 연결하고 고객의 반응을 놓치지 않고 대응합니다.(Gmail 이나 Office365와 같은 사용자 지정 이메일을 연결할 수 있습니다.)'
             },
             {
-                question: '마케팅팀과의 연동은 어떻게 하나요?',
-                answer: 'Freshmarketer와 완벽 연동되어 마케팅에서 영업까지 통합 관리됩니다.'
+                question: 'Freshsales에서 견적서를 작성할 수 있나요?',
+                answer: '네, 가능합니다. Freshsales에서는 거래와 연동된 견적서를 생성하고, 이를 고객에게 전송할 수 있습니다. 또한, 전자서명 기능으로 문서 승인 절차를 간편하게 디지털로 처리할 수 있습니다.'
             },
             {
-                question: '모바일 앱의 기능은 어느 정도인가요?',
-                answer: '전화 걸기, 미팅 스케줄링, 거래 업데이트 등 핵심 영업 활동을 모두 지원합니다.'
+                question: 'Freshsales에서 전화를 걸 수 있나요?',
+                answer: '네, 가능합니다. Freshsales는 CTI(Computer Telephony Integration) 기능을 통해 전화 통화 기능을 연동할 수 있습니다. 이 기능은 애드온(추가 기능)으로 제공되며, 외부 전화 시스템(PBX, Twilio, Aircall 등)과 연결하여 앱 내에서 바로 통화하고, 통화 기록 및 메모도 남길 수 있습니다.'
+            },
+            {
+                question: '마케팅 이메일 전송은 제한이 있나요?',
+                answer: '요금제에 따라 일일 또는 월간 이메일 전송 한도가 설정되어 있습니다. 대량 이메일 캠페인을 계획하고 있다면, 요금제별 한도를 사전에 확인하는 것이 좋습니다.'
             }
         ],
 
-        // 최종 CTA
+        // 최종 CTA (docs 기반)
         finalCTA: {
-            title: 'Freshsales로 영업 성과를 극대화하세요',
-            description: '더 스마트한 영업 관리로 거래 성사 시간을 단축하고 매출을 늘려보세요. 전문가가 귀사에 최적화된 CRM 솔루션을 제안해드립니다.',
-            primaryButton: { text: '무료 체험 시작', href: '/contact' },
-            secondaryButton: { text: '도입 상담하기', href: '/contact' }
+            title: '더 스마트한 판매, 손쉬운 고객 관리',
+            description: 'Freshsales로 다양한 채널의 고객 데이터를 통합해 세일즈 프로세스를 단순화하세요.',
+            primaryButton: { text: '가격표 보기', href: '/contact?product=freshsales' },
+            secondaryButton: { text: '데모 신청하기', href: '/contact?demo=freshsales' }
         }
     }
 
