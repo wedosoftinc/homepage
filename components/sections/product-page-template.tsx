@@ -260,8 +260,8 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">주요 특징</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            티켓팅 – 채팅 상담 – 고객 관리를 편리하게 넘나드는 {data.name}.
-                            AI 자동화로 에이전트 없이 모든 채널에서 완벽한 고객 응대를 제공합니다.
+                            AI와 클라우드 기반의 강력한 도구로, {data.name}는 당신의 업무를 통합하고 혁신을 돕습니다.
+                            스마트하고 안전한 통합 워크스페이스로 비즈니스 성장을 이끌어 나가세요.
                         </p>
                     </div>
 
@@ -387,7 +387,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                             </p>
                         </div>
 
-                        <Tabs defaultValue={data.detailedFeatureTabs[0]?.id} className="w-full">
+                        <Tabs defaultValue={data.detailedFeatureTabs?.[0]?.id} className="w-full">
                             <TabsList className="grid w-full max-w-2xl mx-auto mb-12" style={{ gridTemplateColumns: `repeat(${data.detailedFeatureTabs.length}, 1fr)` }}>
                                 {data.detailedFeatureTabs.map((tab) => (
                                     <TabsTrigger key={tab.id} value={tab.id} className="text-sm">
