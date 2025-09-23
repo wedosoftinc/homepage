@@ -59,6 +59,51 @@ export default function ProductsPage() {
                         </CardContent>
                     </Card>
 
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
+                            <CardTitle>Freshsales</CardTitle>
+                            <CardDescription>
+                                CRM 및 세일즈 관리
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freshsales">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
+                            <CardTitle>Freshchat</CardTitle>
+                            <CardDescription>
+                                실시간 채팅 솔루션
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freshchat">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">고객 경험 관리</Badge>
+                            <CardTitle>Freddy AI</CardTitle>
+                            <CardDescription>
+                                GPT LLM 기반 고객 지원 자동화
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/freddy-ai">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
                     {/* 협업 및 생산성 향상 */}
                     <Card>
                         <CardHeader>
@@ -71,6 +116,51 @@ export default function ProductsPage() {
                         <CardContent>
                             <Button asChild className="w-full">
                                 <Link href="/products/monday-service">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">협업 및 생산성</Badge>
+                            <CardTitle>Monday Work Management</CardTitle>
+                            <CardDescription>
+                                팀 협업과 프로젝트 관리의 혁신
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/monday-work-management">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">협업 및 생산성</Badge>
+                            <CardTitle>Monday Sales CRM</CardTitle>
+                            <CardDescription>
+                                직관적인 세일즈 CRM 솔루션
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/monday-sales-crm">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">협업 및 생산성</Badge>
+                            <CardTitle>Monday Dev</CardTitle>
+                            <CardDescription>
+                                개발팀을 위한 프로젝트 관리
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/monday-dev">자세히 보기</Link>
                             </Button>
                         </CardContent>
                     </Card>
@@ -102,6 +192,21 @@ export default function ProductsPage() {
                         <CardContent>
                             <Button asChild className="w-full">
                                 <Link href="/products/freshservice">자세히 보기</Link>
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <Badge className="w-fit mb-2">IT 인프라 관리</Badge>
+                            <CardTitle>Splashtop</CardTitle>
+                            <CardDescription>
+                                원격 접속 및 지원 솔루션
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Button asChild className="w-full">
+                                <Link href="/products/splashtop">자세히 보기</Link>
                             </Button>
                         </CardContent>
                     </Card>
