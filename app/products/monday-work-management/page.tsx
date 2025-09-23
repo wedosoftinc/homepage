@@ -2,14 +2,14 @@ import { ProductPageTemplate } from "@/components/sections/product-page-template
 
 const mondayWorkManagementData = {
     name: "Monday Work Management",
-    subtitle: "올인원 워크 OS",
-    description: "팀의 모든 프로젝트와 업무를 하나의 플랫폼에서 관리하는 차세대 워크 관리 솔루션입니다.",
+    subtitle: "The All-in-One Visual OS",
+    description: "팀의 모든 업무를 통합하고 시각화하는 올인원 운영 체제",
     category: "협업 및 생산성 향상",
     slug: "monday-work-management",
 
     heroCTA: {
-        primary: { text: "무료 체험 시작", href: "/contact" },
-        secondary: { text: "상담 신청", href: "/contact" }
+        primary: { text: "데모 신청하기", href: "/contact?demo=monday-work-management" },
+        secondary: { text: "자세히 보기", href: "/contact?product=monday-work-management" }
     },
 
     heroMedia: {
@@ -21,198 +21,185 @@ const mondayWorkManagementData = {
     keyFeatures: [
         {
             icon: "settings" as const,
-            title: "프로젝트 관리",
-            description: "직관적인 칸반 보드와 간트 차트로 프로젝트 진행 상황을 한눈에 파악하고 관리합니다."
-        },
-        {
-            icon: "users" as const,
-            title: "팀 협업",
-            description: "실시간 업데이트와 댓글 시스템으로 팀원들과 원활하게 소통하고 협업합니다."
+            title: "직관적인 인터페이스",
+            description: "쉽고 직관적인 사용법으로 별도의 트레이닝이 필요 없어 팀이 빠르게 적응하고 생산성 증가 가능"
         },
         {
             icon: "zap" as const,
-            title: "자동화 워크플로우",
-            description: "반복적인 작업을 자동화하여 효율성을 극대화하고 실수를 방지합니다."
+            title: "유연한 워크플로우",
+            description: "몇 분 만에 이상적인 워크플로우를 만들거나, 200개 이상의 전문가 템플릿에서 선택하여 빠르게 시작 가능"
         },
         {
-            icon: "barChart3" as const,
-            title: "데이터 분석",
-            description: "실시간 대시보드와 보고서로 팀 성과를 분석하고 인사이트를 도출합니다."
-        },
-        {
-            icon: "globe" as const,
-            title: "통합 연동",
-            description: "200개 이상의 앱과 연동하여 기존 워크플로우에 자연스럽게 통합됩니다."
-        },
-        {
-            icon: "target" as const,
-            title: "목표 추적",
-            description: "개인 및 팀 목표를 설정하고 진행 상황을 실시간으로 추적합니다."
+            icon: "users" as const,
+            title: "통합된 협업 도구",
+            description: "팀원 및 외부 게스트와 원활하게 소통, 파일 첨부및 화상회의 연동으로 모든 협업을 한 곳에서 완성"
         }
     ],
 
-    // 탭 기반 세부 기능
+    // 탭 기반 세부 기능 (6개 - docs 기반)
     detailedFeatureTabs: [
         {
-            id: "project-management",
-            label: "프로젝트 관리",
-            title: "시각적 프로젝트 관리",
-            description: "직관적인 인터페이스와 다양한 뷰로 복잡한 프로젝트도 쉽게 관리할 수 있습니다.",
+            id: "custom-workflow",
+            label: "맞춤형 워크플로우",
+            title: "맞춤형 워크플로우",
+            description: "그룹, 아이템, 하위 아이템, 업데이트까지 모든 것을 실제 프로젝트 및 프로세스와 실시간으로 동기화하여 맞춤형 워크플로우를 구축합니다.",
             feature: {
-                title: "다중 뷰 프로젝트 관리",
-                description: "칸반, 간트, 타임라인, 달력 등 다양한 뷰로 프로젝트를 시각화하고 관리할 수 있습니다.",
+                title: "실제 업무에 맞춘 완벽한 워크플로우",
+                description: "팀의 실제 업무 프로세스를 그대로 반영한 워크플로우를 구축할 수 있습니다.",
                 items: [
-                    "다중 뷰 지원 (칸반, 간트, 타임라인, 달력)",
-                    "드래그 앤 드롭으로 쉬운 작업 관리",
-                    "마일스톤 및 종속성 설정",
-                    "프로젝트 템플릿 라이브러리"
+                    "그룹 및 아이템 구조화",
+                    "하위 아이템 계층 관리",
+                    "실시간 업데이트 동기화",
+                    "프로세스 맞춤 설정"
                 ]
             },
             interactiveArea: {
                 type: "demo" as const,
-                title: "프로젝트 뷰 전환 데모",
-                description: "다양한 프로젝트 뷰를 전환하며 최적의 관리 방식을 찾아보세요",
-                placeholder: "프로젝트 뷰 인터페이스"
+                title: "워크플로우 구축 도구",
+                description: "드래그 앤 드롭으로 나만의 워크플로우를 구축해보세요",
+                placeholder: "맞춤형 워크플로우 설계"
+            }
+        },
+        {
+            id: "status-management",
+            label: "상태 관리",
+            title: "상태 관리",
+            description: "팀의 실제 업무 진행 상황을 반영하는 상태 버튼으로 모든 업데이트 진행상황을 한눈에 파악하고 직관적으로 관리할 수 있습니다.",
+            feature: {
+                title: "직관적인 진행 상황 추적",
+                description: "시각적인 상태 표시로 업무 진행 상황을 즉시 파악할 수 있습니다.",
+                items: [
+                    "시각적 상태 버튼",
+                    "실시간 진행 상황 추적",
+                    "직관적인 상태 변경",
+                    "팀 전체 현황 파악"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard" as const,
+                title: "상태 관리 대시보드",
+                description: "팀의 모든 업무 상태를 한눈에 확인하고 관리하세요",
+                placeholder: "업무 상태 추적 대시보드"
+            }
+        },
+        {
+            id: "integrated-communication",
+            label: "통합 커뮤니케이션",
+            title: "통합 커뮤니케이션",
+            description: "각 업무 아이템 내에서 직접 대화하고 협업하여, 모든 대화가 업무 맥락에 맞춰 효율적으로 이루어집니다.",
+            feature: {
+                title: "업무 맥락에 맞춘 소통",
+                description: "업무별로 구분된 대화 공간에서 효율적인 커뮤니케이션이 가능합니다.",
+                items: [
+                    "업무별 대화 공간",
+                    "맥락 기반 협업",
+                    "실시간 소통",
+                    "효율적인 정보 공유"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "통합 커뮤니케이션 허브",
+                description: "업무와 연결된 대화 시스템을 경험해보세요",
+                placeholder: "업무별 커뮤니케이션 인터페이스"
             }
         },
         {
             id: "automation",
             label: "자동화",
-            title: "강력한 워크플로우 자동화",
-            description: "반복적인 작업을 자동화하여 팀이 더 중요한 업무에 집중할 수 있도록 지원합니다.",
+            title: "자동화",
+            description: "반복적인 작업을 자동화하여 팀의 시간을 절약하고, 생산성을 극대화합니다.",
             feature: {
-                title: "스마트 자동화 시스템",
-                description: "200개 이상의 자동화 템플릿으로 복잡한 워크플로우도 쉽게 자동화할 수 있습니다.",
+                title: "시간 절약과 생산성 극대화",
+                description: "반복 업무를 자동화하여 팀이 더 중요한 일에 집중할 수 있도록 지원합니다.",
                 items: [
-                    "200개 이상의 자동화 템플릿",
-                    "조건부 자동화 규칙 설정",
-                    "이메일 및 알림 자동화",
-                    "상태 변경 기반 자동 액션"
-                ]
-            },
-            interactiveArea: {
-                type: "workflow" as const,
-                title: "자동화 워크플로우 빌더",
-                description: "노코드 방식으로 복잡한 자동화 규칙을 쉽게 설정할 수 있습니다",
-                placeholder: "자동화 설정 인터페이스"
-            }
-        },
-        {
-            id: "collaboration",
-            label: "팀 협업",
-            title: "실시간 팀 협업 플랫폼",
-            description: "팀원들과 실시간으로 소통하고 협업할 수 있는 종합적인 도구를 제공합니다.",
-            feature: {
-                title: "통합 협업 허브",
-                description: "모든 팀 커뮤니케이션과 협업을 하나의 플랫폼에서 관리할 수 있습니다.",
-                items: [
-                    "실시간 업데이트 및 알림",
-                    "파일 공유 및 버전 관리",
-                    "댓글 및 멘션 시스템",
-                    "화상 회의 통합"
+                    "반복 작업 자동화",
+                    "시간 절약 솔루션",
+                    "생산성 최적화",
+                    "스마트 워크플로우"
                 ]
             },
             interactiveArea: {
                 type: "demo" as const,
-                title: "팀 협업 시뮬레이션",
-                description: "실제 팀 협업 시나리오를 통해 Monday.com의 협업 기능을 체험하세요",
-                placeholder: "실시간 협업 인터페이스"
+                title: "자동화 설정 도구",
+                description: "복잡한 자동화 규칙을 쉽게 설정하고 관리하세요",
+                placeholder: "자동화 워크플로우 빌더"
+            }
+        },
+        {
+            id: "data-visualization",
+            label: "데이터 시각화",
+            title: "데이터 시각화",
+            description: "다양한 보드, 컬럼, 뷰 기능으로 데이터를 원하는 방식으로 쉽게 시각화하여, 팀의 의사결정을 빠르게 지원합니다.",
+            feature: {
+                title: "빠른 의사결정을 위한 시각화",
+                description: "복잡한 데이터도 직관적인 형태로 변환하여 신속한 판단을 도와줍니다.",
+                items: [
+                    "다양한 보드 뷰",
+                    "커스텀 컬럼 설정",
+                    "유연한 데이터 표현",
+                    "의사결정 지원"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard" as const,
+                title: "데이터 시각화 도구",
+                description: "다양한 방식으로 데이터를 시각화하고 분석하세요",
+                placeholder: "데이터 시각화 대시보드"
+            }
+        },
+        {
+            id: "template-library",
+            label: "템플릿 라이브러리",
+            title: "템플릿 라이브러리",
+            description: "약 200개 이상의 전문 템플릿 제공으로 프로젝트, 캠페인 등의 업무를 복잡한 설정 없이 빠르게 시작할 수 있습니다.",
+            feature: {
+                title: "빠른 시작을 위한 전문 템플릿",
+                description: "업계 전문가들이 만든 템플릿으로 즉시 업무를 시작할 수 있습니다.",
+                items: [
+                    "200개 이상의 전문 템플릿",
+                    "복잡한 설정 불필요",
+                    "빠른 프로젝트 시작",
+                    "업종별 맞춤 템플릿"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "템플릿 갤러리",
+                description: "다양한 업무 템플릿을 둘러보고 선택해보세요",
+                placeholder: "템플릿 라이브러리 브라우저"
             }
         }
     ],
 
-    detailedFeatures: [
-        {
-            title: "시각적 프로젝트 관리",
-            description: "칸반, 간트, 타임라인, 달력 등 다양한 뷰로 프로젝트를 시각화하고 관리할 수 있습니다.",
-            features: [
-                "다중 뷰 지원 (칸반, 간트, 타임라인, 달력)",
-                "드래그 앤 드롭으로 쉬운 작업 관리",
-                "마일스톤 및 종속성 설정",
-                "프로젝트 템플릿 라이브러리"
-            ]
-        },
-        {
-            title: "강력한 자동화",
-            description: "반복적인 작업을 자동화하여 팀이 더 중요한 업무에 집중할 수 있도록 지원합니다.",
-            features: [
-                "200개 이상의 자동화 템플릿",
-                "조건부 자동화 규칙 설정",
-                "이메일 및 알림 자동화",
-                "상태 변경 기반 자동 액션"
-            ]
-        },
-        {
-            title: "실시간 협업",
-            description: "팀원들과 실시간으로 소통하고 협업할 수 있는 종합적인 도구를 제공합니다.",
-            features: [
-                "실시간 업데이트 및 알림",
-                "파일 공유 및 버전 관리",
-                "댓글 및 멘션 시스템",
-                "화상 회의 통합"
-            ]
-        },
-        {
-            title: "데이터 기반 인사이트",
-            description: "상세한 분석과 보고서로 팀 성과를 측정하고 개선점을 찾을 수 있습니다.",
-            features: [
-                "맞춤형 대시보드 생성",
-                "실시간 성과 추적",
-                "워크로드 분석",
-                "생산성 보고서"
-            ]
-        },
-        {
-            title: "광범위한 연동",
-            description: "기존에 사용하던 도구들과 완벽하게 연동하여 통합된 워크스페이스를 구축합니다.",
-            features: [
-                "Slack, Microsoft Teams 연동",
-                "Google Drive, Dropbox 연동",
-                "Zoom, Outlook 연동",
-                "개발자 도구 (GitHub, Jira) 연동"
-            ]
-        }
-    ],
-
-    integrations: {
-        title: "연동 가능한 플랫폼",
-        description: "200개 이상의 비즈니스 도구와 완벽하게 연동되어 기존 워크플로우에 자연스럽게 통합됩니다.",
-        platforms: [
-            { name: "Slack", logo: "/logos/slack.png", category: "협업 도구" },
-            { name: "Microsoft Teams", logo: "/logos/teams.png", category: "협업 도구" },
-            { name: "Google Drive", logo: "/logos/googledrive.png", category: "클라우드 저장소" },
-            { name: "Dropbox", logo: "/logos/dropbox.png", category: "클라우드 저장소" },
-            { name: "Zoom", logo: "/logos/zoom.png", category: "화상 회의" },
-            { name: "GitHub", logo: "/logos/github.png", category: "개발 도구" },
-            { name: "Jira", logo: "/logos/jira.png", category: "개발 도구" },
-            { name: "Outlook", logo: "/logos/outlook.png", category: "이메일" }
-        ]
-    },
-
     faqs: [
         {
-            question: "Monday Work Management는 어떤 규모의 팀에 적합한가요?",
-            answer: "소규모 스타트업부터 대기업까지 모든 규모의 팀에 적합합니다. 사용자 수에 따라 유연하게 확장할 수 있으며, 각 팀의 워크플로우에 맞게 커스터마이징이 가능합니다."
+            question: "Monday Work Management의 가격은 어떻게 되나요?",
+            answer: "Basic 플랜 월 $8/사용자부터 시작하며, Standard 플랜 월 $10/사용자, Pro 플랜 월 $16/사용자, Enterprise 플랜 월 $24/사용자까지 다양한 요금제를 제공합니다. 모든 플랜에서 14일 무료 체험이 가능합니다."
         },
         {
-            question: "기존 도구에서 데이터를 마이그레이션할 수 있나요?",
-            answer: "네, Excel, Trello, Asana, Jira 등 다양한 도구에서 데이터를 쉽게 가져올 수 있습니다. 전용 임포트 도구와 CSV 업로드 기능을 제공합니다."
+            question: "다른 툴과의 연동이 가능한가요?",
+            answer: "네, Slack, Microsoft Teams, Google Workspace, Outlook, Jira, Trello, Salesforce 등 40개 이상의 인기 도구와 연동이 가능합니다. API를 통한 커스텀 연동도 지원합니다."
         },
         {
-            question: "모바일에서도 사용할 수 있나요?",
-            answer: "iOS와 Android 전용 모바일 앱을 제공하여 언제 어디서나 프로젝트를 관리하고 팀과 소통할 수 있습니다. 모든 데스크톱 기능이 모바일에서도 지원됩니다."
+            question: "데이터 보안은 어떻게 보장되나요?",
+            answer: "SOC 2 Type II, ISO 27001 인증을 받았으며, 업계 최고 수준의 암호화와 보안 프로토콜을 사용합니다. GDPR 및 HIPAA 규정을 준수하여 데이터를 안전하게 보호합니다."
         },
         {
-            question: "보안은 어떻게 관리되나요?",
-            answer: "엔터프라이즈급 보안을 제공합니다. SOC 2 Type II 인증, ISO 27001 인증을 받았으며, 2단계 인증, IP 제한, SAML SSO 등의 고급 보안 기능을 지원합니다."
+            question: "팀원이 많은 조직에서도 사용할 수 있나요?",
+            answer: "네, 소규모 팀부터 수천 명의 대기업까지 모든 규모의 조직에서 사용할 수 있습니다. Enterprise 플랜에서는 고급 보안, 관리 기능, 전담 지원 등을 제공합니다."
+        },
+        {
+            question: "Monday Work Management를 사용하기 위해 특별한 교육이 필요한가요?",
+            answer: "직관적인 인터페이스로 누구나 쉽게 사용할 수 있습니다. 추가로 온라인 교육, 웨비나, 전담 고객 성공 관리자를 통한 지원도 제공하여 빠른 도입을 돕습니다."
         }
     ],
 
     finalCTA: {
-        title: "Monday Work Management로 팀의 생산성을 혁신하세요",
-        description: "직관적인 인터페이스와 강력한 기능으로 팀의 협업과 프로젝트 관리를 한 단계 업그레이드하세요. 지금 바로 무료 체험을 시작해보세요.",
+        title: "Monday Work Management로 업무 효율성을 혁신하세요",
+        description: "약 200개의 전문 템플릿과 강력한 자동화 기능으로 팀의 생산성을 극대화하고, 복잡한 프로젝트도 쉽게 관리할 수 있습니다. 지금 무료 체험으로 시작해보세요.",
         primaryButton: { text: "무료 체험 시작", href: "/contact" },
-        secondaryButton: { text: "상담 신청", href: "/contact" }
+        secondaryButton: { text: "전문가 상담", href: "/contact" }
     }
 }
 
