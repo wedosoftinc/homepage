@@ -43,7 +43,7 @@ const footerSections = [
 export function Footer() {
     return (
         <footer className="bg-slate-900 text-white">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6 md:px-8 lg:px-12">
                 {/* 메인 푸터 콘텐츠 */}
                 <div className="py-16">
                     <div className="grid lg:grid-cols-5 gap-8">

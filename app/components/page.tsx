@@ -244,7 +244,7 @@ export default function ComponentsPage() {
     return (
         <div className="min-h-screen bg-background">
             <div className="border-b bg-muted/30">
-                <div className="container mx-auto px-4 py-16">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16">
                     <div className="text-center space-y-6">
                         <div className="flex justify-center space-x-2 mb-4">
                             <Badge variant="secondary" className="px-3 py-1">
@@ -265,7 +265,7 @@ export default function ComponentsPage() {
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 py-16">
+            <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {componentExamples.map((example, index) => (
                         <Card key={index} className="flex flex-col h-full">

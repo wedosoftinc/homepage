@@ -33,7 +33,7 @@ export function HeroSection() {
                 />
             </div>
 
-            <div className="container relative z-10 mx-auto px-8 lg:px-12">
+            <div className="container relative z-10 mx-auto px-6 md:px-8 lg:px-12">
                 <div className="mx-auto max-w-6xl">
                     {/* 메인 히어로 콘텐츠 */}
                     <div className="grid lg:grid-cols-2 gap-16 items-start min-h-[600px] pt-16">

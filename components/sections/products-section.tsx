@@ -62,7 +62,7 @@ export function ProductsSection() {
 
     return (
         <section className="py-20 bg-muted/20">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6 md:px-8 lg:px-12">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
                     <div className="text-center mb-16">
@@ -130,7 +130,7 @@ export function ProductsSection() {
             </div>
 
             {/* 업계별 글로벌 SaaS 솔루션 포트폴리오 섹션 */}
-            <div className="container mx-auto px-4 pt-20 pb-20">
+            <div className="container mx-auto px-6 md:px-8 lg:px-12 pt-20 pb-20">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
                     <div className="text-center mb-16">
@@ -204,7 +204,7 @@ export function ProductsSection() {
 
             {/* SaaS 도입부터 운영까지 섹션 - 원본 사이트와 동일 */}
             <div className="bg-muted/40 py-24">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
                         <div className="text-center mb-16">
@@ -359,7 +359,7 @@ export function ProductsSection() {
                 {/* 미묘한 배경 패턴 */}
                 <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px]" />
 
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
                         <div className="text-center mb-12">

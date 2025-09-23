@@ -179,7 +179,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
         <div className="min-h-screen">
             {/* Breadcrumb Navigation */}
             <section className="py-4 border-b">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12">
                     <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
                         <Link href="/" className="hover:text-foreground">
                             <Home className="h-4 w-4" />
@@ -196,7 +196,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* Hero Section */}
             <section className="py-8 lg:py-12">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12">
                     <div className="max-w-4xl mx-auto text-center">
                         <div className="space-y-6">
                             <Badge variant="outline" className="mb-4">
@@ -256,7 +256,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* 주요 특징 Section (원본 구조) */}
             <section className="py-16 bg-muted/20">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">주요 특징</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -304,7 +304,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
             {/* 세부 기능 Section (원본 구조) */}
             {data.detailedFeatures && (
                 <section className="py-16">
-                    <div className="container mx-auto px-4">
+                    <div className="container mx-auto px-6 md:px-8 lg:px-12">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold mb-4">세부 기능</h2>
                             <p className="text-lg text-muted-foreground">
@@ -379,7 +379,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
             {/* 새로운 탭 기반 세부 기능 Section */}
             {data.detailedFeatureTabs && (
                 <section className="py-16">
-                    <div className="container mx-auto px-4">
+                    <div className="container mx-auto px-6 md:px-8 lg:px-12">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold mb-4">세부 기능</h2>
                             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -448,7 +448,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* FAQ Section */}
             <section className="py-16">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">FAQ</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -488,7 +488,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                     </div>
                 )}
 
-                <div className="container mx-auto px-4 relative">
+                <div className="container mx-auto px-6 md:px-8 lg:px-12 relative">
                     <div className="text-center space-y-8">
                         <div className="space-y-4">
                             <h2 className="text-3xl lg:text-4xl font-bold">

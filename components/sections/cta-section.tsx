@@ -13,7 +13,7 @@ import {
 export function CTASection() {
     return (
         <section className="pb-24 bg-muted/20">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6 md:px-8 lg:px-12">
                 <div className="max-w-6xl mx-auto">
                     {/* 메인 CTA */}
                     <div className="text-center mb-16">
