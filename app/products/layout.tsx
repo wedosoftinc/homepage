@@ -1,18 +1,14 @@
-import { MainNavigation } from "@/components/navigation/main-navigation"
-import { Footer } from "@/components/layout/footer"
+import { Footer } from '@/components/layout/footer'
 
-interface ProductsLayoutProps {
+export default function ProductsLayout({
+    children,
+}: {
     children: React.ReactNode
-}
-
-export default function ProductsLayout({ children }: ProductsLayoutProps) {
+}) {
     return (
-        <>
-            <MainNavigation />
-            <main className="min-h-screen">
-                {children}
-            </main>
+        <div className="min-h-screen">
+            <main>{children}</main>
             <Footer />
-        </>
+        </div>
     )
 }
