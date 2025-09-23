@@ -67,6 +67,76 @@ export default function FreshsalesPage() {
             }
         ],
 
+        // 탭 기반 세부 기능
+        detailedFeatureTabs: [
+            {
+                id: "crm",
+                label: "CRM 핵심",
+                title: "고객 관계 관리의 모든 것",
+                description: "360도 고객 뷰와 지능형 분석으로 고객과의 모든 상호작용을 체계적으로 관리합니다.",
+                feature: {
+                    title: "통합 고객 관리 시스템",
+                    description: "고객의 모든 정보와 상호작용 히스토리를 한 곳에서 관리하고 분석할 수 있습니다.",
+                    items: [
+                        "360도 고객 뷰",
+                        "상호작용 히스토리 추적",
+                        "고객 세그멘테이션",
+                        "라이프사이클 관리"
+                    ]
+                },
+                interactiveArea: {
+                    type: "dashboard" as const,
+                    title: "고객 관리 대시보드",
+                    description: "실제 CRM 인터페이스에서 고객 정보가 어떻게 관리되는지 확인하세요",
+                    placeholder: "고객 360도 뷰 대시보드"
+                }
+            },
+            {
+                id: "automation",
+                label: "영업 자동화",
+                title: "AI 기반 영업 프로세스 자동화",
+                description: "반복적인 영업 업무를 자동화하고 AI가 최적의 영업 전략을 제안합니다.",
+                feature: {
+                    title: "Freddy AI 영업 어시스턴트",
+                    description: "AI가 리드 점수 산정, 거래 예측, 다음 액션 추천 등을 자동으로 수행합니다.",
+                    items: [
+                        "리드 스코어링 자동화",
+                        "거래 성사 확률 예측",
+                        "다음 액션 자동 추천",
+                        "최적 연락 시점 제안"
+                    ]
+                },
+                interactiveArea: {
+                    type: "demo" as const,
+                    title: "AI 영업 자동화 데모",
+                    description: "Freddy AI가 영업 프로세스를 어떻게 자동화하는지 체험해보세요",
+                    placeholder: "AI 영업 자동화 시뮬레이션"
+                }
+            },
+            {
+                id: "analytics",
+                label: "성과 분석",
+                title: "데이터 기반 영업 인사이트",
+                description: "상세한 영업 분석과 실시간 대시보드로 성과를 측정하고 개선점을 찾을 수 있습니다.",
+                feature: {
+                    title: "실시간 영업 성과 분석",
+                    description: "영업팀의 모든 활동과 성과를 실시간으로 추적하고 분석합니다.",
+                    items: [
+                        "실시간 영업 파이프라인 분석",
+                        "개인/팀별 성과 추적",
+                        "예측 분석 및 트렌드",
+                        "맞춤형 보고서 생성"
+                    ]
+                },
+                interactiveArea: {
+                    type: "dashboard" as const,
+                    title: "영업 성과 대시보드",
+                    description: "핵심 영업 지표와 성과를 실시간으로 확인할 수 있습니다",
+                    placeholder: "영업 성과 분석 대시보드"
+                }
+            }
+        ],
+
         // 비즈니스 혜택 (4개 - 문서 원본 그대로)
         benefits: [
             {

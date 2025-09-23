@@ -51,6 +51,76 @@ const mondayWorkManagementData = {
         }
     ],
 
+    // 탭 기반 세부 기능
+    detailedFeatureTabs: [
+        {
+            id: "project-management",
+            label: "프로젝트 관리",
+            title: "시각적 프로젝트 관리",
+            description: "직관적인 인터페이스와 다양한 뷰로 복잡한 프로젝트도 쉽게 관리할 수 있습니다.",
+            feature: {
+                title: "다중 뷰 프로젝트 관리",
+                description: "칸반, 간트, 타임라인, 달력 등 다양한 뷰로 프로젝트를 시각화하고 관리할 수 있습니다.",
+                items: [
+                    "다중 뷰 지원 (칸반, 간트, 타임라인, 달력)",
+                    "드래그 앤 드롭으로 쉬운 작업 관리",
+                    "마일스톤 및 종속성 설정",
+                    "프로젝트 템플릿 라이브러리"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "프로젝트 뷰 전환 데모",
+                description: "다양한 프로젝트 뷰를 전환하며 최적의 관리 방식을 찾아보세요",
+                placeholder: "프로젝트 뷰 인터페이스"
+            }
+        },
+        {
+            id: "automation",
+            label: "자동화",
+            title: "강력한 워크플로우 자동화",
+            description: "반복적인 작업을 자동화하여 팀이 더 중요한 업무에 집중할 수 있도록 지원합니다.",
+            feature: {
+                title: "스마트 자동화 시스템",
+                description: "200개 이상의 자동화 템플릿으로 복잡한 워크플로우도 쉽게 자동화할 수 있습니다.",
+                items: [
+                    "200개 이상의 자동화 템플릿",
+                    "조건부 자동화 규칙 설정",
+                    "이메일 및 알림 자동화",
+                    "상태 변경 기반 자동 액션"
+                ]
+            },
+            interactiveArea: {
+                type: "workflow" as const,
+                title: "자동화 워크플로우 빌더",
+                description: "노코드 방식으로 복잡한 자동화 규칙을 쉽게 설정할 수 있습니다",
+                placeholder: "자동화 설정 인터페이스"
+            }
+        },
+        {
+            id: "collaboration",
+            label: "팀 협업",
+            title: "실시간 팀 협업 플랫폼",
+            description: "팀원들과 실시간으로 소통하고 협업할 수 있는 종합적인 도구를 제공합니다.",
+            feature: {
+                title: "통합 협업 허브",
+                description: "모든 팀 커뮤니케이션과 협업을 하나의 플랫폼에서 관리할 수 있습니다.",
+                items: [
+                    "실시간 업데이트 및 알림",
+                    "파일 공유 및 버전 관리",
+                    "댓글 및 멘션 시스템",
+                    "화상 회의 통합"
+                ]
+            },
+            interactiveArea: {
+                type: "demo" as const,
+                title: "팀 협업 시뮬레이션",
+                description: "실제 팀 협업 시나리오를 통해 Monday.com의 협업 기능을 체험하세요",
+                placeholder: "실시간 협업 인터페이스"
+            }
+        }
+    ],
+
     detailedFeatures: [
         {
             title: "시각적 프로젝트 관리",

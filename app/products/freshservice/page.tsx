@@ -58,6 +58,76 @@ const freshserviceData: ProductPageData = {
         }
     ],
 
+    // 탭 기반 세부 기능
+    detailedFeatureTabs: [
+        {
+            id: "itsm",
+            label: "ITSM 핵심 기능",
+            title: "ITIL 기반 IT 서비스 관리",
+            description: "ITIL 프레임워크를 기반으로 한 완전한 IT 서비스 관리 솔루션으로 체계적인 IT 운영을 실현합니다.",
+            feature: {
+                title: "통합 ITSM 플랫폼",
+                description: "사고, 문제, 변경, 자산 관리 등 모든 ITSM 프로세스를 하나의 플랫폼에서 관리합니다.",
+                items: [
+                    "ITIL 표준 준수 프로세스",
+                    "자동화된 SLA 관리",
+                    "통합 CMDB",
+                    "변경 승인 워크플로우"
+                ]
+            },
+            interactiveArea: {
+                type: "workflow",
+                title: "ITSM 프로세스 플로우",
+                description: "사고부터 해결까지의 전체 ITSM 프로세스를 시각화합니다",
+                placeholder: "ITIL 기반 서비스 관리 프로세스"
+            }
+        },
+        {
+            id: "automation",
+            label: "자동화 및 AI",
+            title: "AI 기반 IT 운영 자동화",
+            description: "인공지능과 자동화 기술로 반복적인 IT 작업을 자동화하고 운영 효율성을 극대화합니다.",
+            feature: {
+                title: "Freddy AI IT 어시스턴트",
+                description: "AI가 IT 요청을 분석하고 자동으로 해결책을 제안하거나 적절한 담당자에게 배정합니다.",
+                items: [
+                    "AI 기반 자동 분류",
+                    "지능형 문제 해결 제안",
+                    "예측적 분석",
+                    "자동화된 응답"
+                ]
+            },
+            interactiveArea: {
+                type: "demo",
+                title: "AI 자동화 데모",
+                description: "Freddy AI가 IT 요청을 처리하는 과정을 실시간으로 확인하세요",
+                placeholder: "AI 기반 IT 요청 처리 시뮬레이션"
+            }
+        },
+        {
+            id: "analytics",
+            label: "분석 및 보고",
+            title: "고급 IT 성과 분석",
+            description: "상세한 IT 성과 지표와 비즈니스 인사이트로 데이터 기반의 IT 의사결정을 지원합니다.",
+            feature: {
+                title: "IT 성과 대시보드",
+                description: "IT 서비스의 모든 KPI를 실시간으로 모니터링하고 트렌드를 분석할 수 있습니다.",
+                items: [
+                    "실시간 SLA 모니터링",
+                    "IT 자산 활용도 분석",
+                    "사용자 만족도 추적",
+                    "비용 최적화 인사이트"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard",
+                title: "IT 성과 분석 대시보드",
+                description: "핵심 IT 지표와 트렌드를 한눈에 확인할 수 있는 대시보드입니다",
+                placeholder: "IT 서비스 성과 대시보드"
+            }
+        }
+    ],
+
     benefits: [
         {
             title: "IT 운영 효율성 향상",

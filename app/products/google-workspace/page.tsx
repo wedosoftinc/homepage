@@ -91,6 +91,76 @@ const googleWorkspaceData: ProductPageData = {
         }
     ],
 
+    // 탭 기반 세부 기능 (템플릿 테스트용)
+    detailedFeatureTabs: [
+        {
+            id: "collaboration",
+            label: "협업 도구",
+            title: "협업 도구",
+            description: "실시간 공동 작업과 원활한 소통을 위한 Google의 협업 솔루션을 경험하세요.",
+            feature: {
+                title: "Google Docs 실시간 공동 편집",
+                description: "여러 사용자가 동시에 문서를 편집하고 실시간으로 변경사항을 확인할 수 있습니다.",
+                items: [
+                    "실시간 동시 편집",
+                    "댓글 및 제안 모드",
+                    "버전 기록 자동 저장",
+                    "오프라인 편집 지원"
+                ]
+            },
+            interactiveArea: {
+                type: "demo",
+                title: "Google Docs 협업 데모",
+                description: "실시간 문서 편집 협업을 직접 체험해보세요",
+                placeholder: "Google Docs 실시간 편집 화면"
+            }
+        },
+        {
+            id: "productivity",
+            label: "생산성 향상",
+            title: "생산성 향상",
+            description: "클라우드 기반의 강력한 생산성 도구로 업무 효율성을 극대화하세요.",
+            feature: {
+                title: "Google Drive 클라우드 저장소",
+                description: "안전한 클라우드 저장소로 어디서나 파일에 접근하고 공유할 수 있습니다.",
+                items: [
+                    "무제한 저장 공간",
+                    "고급 검색 기능",
+                    "파일 공유 권한 관리",
+                    "자동 백업"
+                ]
+            },
+            interactiveArea: {
+                type: "dashboard",
+                title: "Google Drive 대시보드",
+                description: "직관적인 파일 관리 인터페이스를 경험하세요",
+                placeholder: "Google Drive 파일 관리 화면"
+            }
+        },
+        {
+            id: "management",
+            label: "관리 및 보안",
+            title: "관리 및 보안",
+            description: "엔터프라이즈급 보안과 중앙화된 관리 기능으로 안전한 업무 환경을 구축하세요.",
+            feature: {
+                title: "관리 콘솔",
+                description: "중앙화된 관리 콘솔로 사용자, 보안, 설정을 효율적으로 관리할 수 있습니다.",
+                items: [
+                    "사용자 계정 관리",
+                    "보안 정책 설정",
+                    "사용량 분석",
+                    "감사 로그"
+                ]
+            },
+            interactiveArea: {
+                type: "feature-map",
+                title: "관리 콘솔 기능 맵",
+                description: "Google Workspace 관리 기능을 한눈에 확인하세요",
+                placeholder: "관리 콘솔 기능 구성도"
+            }
+        }
+    ],
+
     useCases: [
         {
             title: "스타트업과 중소기업",
