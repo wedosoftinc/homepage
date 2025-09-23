@@ -95,52 +95,72 @@ export function MainNavigation() {
         <div className="h-10 w-[140px] bg-muted animate-pulse rounded" />
     )
 
-    // Linear.app 스타일 적용한 3컬럼 솔루션 메뉴 (비즈니스 카테고리 보존)
+    // 3개 솔루션 카테고리 랜딩 페이지
     const solutionsByCategory = {
-        "고객 경험 & 세일즈": [
-            {
-                name: "Freshdesk",
-                href: "/products/freshdesk",
-                description: "통합 고객지원 플랫폼"
-            },
+        "고객 경험 관리": [
             {
                 name: "Freshdesk Omni",
                 href: "/products/freshdesk-omni",
-                description: "옴니채널 고객 지원"
+                description: "옴니채널 고객 지원의 완성"
+            },
+            {
+                name: "Freshdesk",
+                href: "/products/freshdesk",
+                description: "고객 지원의 새로운 기준"
             },
             {
                 name: "Freshsales",
                 href: "/products/freshsales",
-                description: "스마트 CRM 솔루션"
+                description: "CRM 및 세일즈 관리"
             },
             {
                 name: "Freshchat",
                 href: "/products/freshchat",
-                description: "실시간 고객 상담"
+                description: "실시간 채팅 솔루션"
             },
             {
                 name: "Freddy AI",
                 href: "/products/freddy-ai",
-                description: "AI 기반 업무 자동화"
+                description: "GPT LLM 기반 자동화"
             }
         ],
-        "협업 & 생산성": [
+        "협업 및 생산성 향상": [
             {
                 name: "Google Workspace",
                 href: "/products/google-workspace",
-                description: "클라우드 협업 도구"
+                description: "클라우드 기반 협업 솔루션"
+            },
+            {
+                name: "Monday Work Management",
+                href: "/products/monday-work-management",
+                description: "올인원 워크 OS"
             },
             {
                 name: "Monday Service",
                 href: "/products/monday-service",
-                description: "프로젝트 관리 플랫폼"
+                description: "AI 기반 서비스 관리"
+            },
+            {
+                name: "Monday Sales CRM",
+                href: "/products/monday-sales-crm",
+                description: "세일즈 파이프라인 관리"
             }
         ],
-        "IT 인프라": [
+        "IT 인프라 최적화": [
             {
                 name: "Freshservice",
                 href: "/products/freshservice",
-                description: "IT 서비스 관리"
+                description: "IT 서비스 관리의 혁신"
+            },
+            {
+                name: "Splashtop",
+                href: "/products/splashtop",
+                description: "안전한 원격 접속 솔루션"
+            },
+            {
+                name: "Monday Dev",
+                href: "/products/monday-dev",
+                description: "개발팀 전용 프로젝트 관리"
             }
         ]
     }
@@ -194,20 +214,28 @@ export function MainNavigation() {
                                     <div className="grid grid-cols-3 gap-4">
                                         {Object.entries(solutionsByCategory).map(([category, products]) => (
                                             <div key={category} className="space-y-2">
-                                                {/* 범주 헤더 - 배경색과 아이콘으로 구분 */}
-                                                <div className="bg-primary/5 border border-primary/10 rounded-lg p-2.5">
+                                                {/* 범주 헤더 - 클릭 가능한 링크로 변경 */}
+                                                <Link
+                                                    href={
+                                                        category === "고객 경험 관리" ? "/solutions/customer-experience" :
+                                                            category === "협업 및 생산성 향상" ? "/solutions/collaboration" :
+                                                                category === "IT 인프라 최적화" ? "/solutions/infrastructure" :
+                                                                    "/solutions"
+                                                    }
+                                                    className="block bg-primary/5 border border-primary/10 rounded-lg p-2.5 hover:bg-primary/10 transition-colors group"
+                                                >
                                                     <div className="flex items-center space-x-2 mb-1">
-                                                        <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
+                                                        <div className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary"></div>
+                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide group-hover:text-primary/80">
                                                             {category}
                                                         </h4>
                                                     </div>
                                                     <p className="text-sm text-muted-foreground leading-tight">
-                                                        {category === "고객 경험 & 세일즈" && "고객 지원부터 영업까지"}
-                                                        {category === "협업 & 생산성" && "팀워크와 효율성 극대화"}
-                                                        {category === "IT 인프라" && "안전하고 유연한 IT 환경"}
+                                                        {category === "고객 경험 관리" && "고객 지원부터 영업까지"}
+                                                        {category === "협업 및 생산성 향상" && "팀워크와 효율성 극대화"}
+                                                        {category === "IT 인프라 최적화" && "안전하고 유연한 IT 환경"}
                                                     </p>
-                                                </div>
+                                                </Link>
                                                 {/* 제품 리스트 - 컴팩트한 스타일 */}
                                                 <div className="space-y-0.5">
                                                     {products.map((product) => (
@@ -266,13 +294,6 @@ export function MainNavigation() {
                                     </div>
                                 </div>
                             </NavigationMenuContent>
-                        </NavigationMenuItem>
-
-                        {/* 제품 메뉴 */}
-                        <NavigationMenuItem>
-                            <NavigationMenuLink href="/products" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
-                                제품
-                            </NavigationMenuLink>
                         </NavigationMenuItem>
 
                         {/* 서비스 메가메뉴 */}
