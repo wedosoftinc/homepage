@@ -677,7 +677,71 @@ export default function CustomQuotePage() {
                         </Card>
                     )}
 
-                    {/* 3단계: 플랜 선택 */}
+                    {/* 3단계: 결제 주기 선택 */}
+                    {currentStep === 3 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">결제 주기를 선택해주세요</CardTitle>
+                                <CardDescription className="text-base">
+                                    연간 결제 시 최대 20% 할인 혜택을 받을 수 있습니다
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                                    {billingCycles.map((cycle) => {
+                                        const isSelected = quoteData.billingCycle === cycle.id
+                                        return (
+                                            <Card
+                                                key={cycle.id}
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md relative ${isSelected
+                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
+                                                    : 'border border-border hover:border-primary/50'
+                                                    }`}
+                                                onClick={() => handleBillingCycleSelect(cycle.id)}
+                                            >
+                                                {cycle.id === 'yearly' && (
+                                                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                                        <Badge className="bg-green-500 text-white">인기</Badge>
+                                                    </div>
+                                                )}
+                                                <CardContent className="p-6 text-center">
+                                                    <Calendar className={`h-8 w-8 mx-auto mb-3 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
+                                                    <h3 className="font-semibold text-lg mb-2">{cycle.label}</h3>
+                                                    {cycle.discount > 0 && (
+                                                        <div className="mb-2">
+                                                            <Badge variant="secondary" className="bg-green-50 text-green-700">
+                                                                {Math.round(cycle.discount * 100)}% 할인
+                                                            </Badge>
+                                                        </div>
+                                                    )}
+                                                    <p className="text-sm text-muted-foreground mb-4">
+                                                        {cycle.description}
+                                                    </p>
+                                                    {isSelected && (
+                                                        <div className="flex items-center justify-center text-sm text-primary">
+                                                            <CheckCircle className="h-4 w-4 mr-1" />
+                                                            선택됨
+                                                        </div>
+                                                    )}
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    })}
+                                </div>
+
+                                <div className="flex justify-between mt-8">
+                                    <Button variant="outline" onClick={prevStep} size="lg">
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
+                                    </Button>
+                                    <Button onClick={nextStep} size="lg">
+                                        제품 보기 <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {/* 3단계: 제품 추천 및 선택 */}
                     {currentStep === 3 && (
                         <Card className="p-8">
                             <CardHeader className="text-center pb-8">
