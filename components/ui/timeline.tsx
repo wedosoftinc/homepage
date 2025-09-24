@@ -27,17 +27,17 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  foundation: 'bg-blue-500',
-  project: 'bg-green-500', 
-  partnership: 'bg-purple-500',
-  milestone: 'bg-orange-500'
+  foundation: 'bg-muted-foreground',
+  project: 'bg-muted-foreground',
+  partnership: 'bg-muted-foreground',
+  milestone: 'bg-muted-foreground'
 }
 
 const categoryBadgeColors = {
-  foundation: 'bg-blue-50 text-blue-700 border-blue-200',
-  project: 'bg-green-50 text-green-700 border-green-200',
-  partnership: 'bg-purple-50 text-purple-700 border-purple-200',
-  milestone: 'bg-orange-50 text-orange-700 border-orange-200'
+  foundation: 'bg-muted text-muted-foreground border-muted',
+  project: 'bg-muted text-muted-foreground border-muted',
+  partnership: 'bg-muted text-muted-foreground border-muted',
+  milestone: 'bg-muted text-muted-foreground border-muted'
 }
 
 export function Timeline({ items, className }: TimelineProps) {
@@ -45,11 +45,11 @@ export function Timeline({ items, className }: TimelineProps) {
     <div className={cn("relative", className)}>
       {/* Timeline line */}
       <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
-      
+
       <div className="space-y-8">
         {items.map((item, index) => {
           const IconComponent = categoryIcons[item.category]
-          
+
           return (
             <div key={index} className="relative flex items-start gap-6">
               {/* Timeline dot with icon */}
@@ -59,7 +59,7 @@ export function Timeline({ items, className }: TimelineProps) {
               )}>
                 <IconComponent className="h-6 w-6 text-white" />
               </div>
-              
+
               {/* Content */}
               <div className="flex-1 min-w-0">
                 <Card className="border shadow-sm">
@@ -74,11 +74,11 @@ export function Timeline({ items, className }: TimelineProps) {
                         </h3>
                       </div>
                     </div>
-                    
+
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {item.description}
                     </p>
-                    
+
                     {item.highlights && item.highlights.length > 0 && (
                       <div className="space-y-2">
                         <h4 className="text-sm font-medium text-foreground">주요 성과</h4>
