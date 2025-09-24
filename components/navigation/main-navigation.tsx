@@ -329,18 +329,7 @@ export function MainNavigation() {
                                             </NavigationMenuLink>
                                         ))}
                                     </div>
-                                    <div className="mt-3 pt-3 border-t border-border/20">
-                                        <Link
-                                            href="/services"
-                                            className={cn(
-                                                "inline-flex items-center px-2.5 py-1 text-sm font-medium rounded-md",
-                                                "bg-primary text-primary-foreground hover:bg-primary/90",
-                                                "transition-colors duration-200"
-                                            )}
-                                        >
-                                            전체 보기
-                                        </Link>
-                                    </div>
+
                                 </div>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
