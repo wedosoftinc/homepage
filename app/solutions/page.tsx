@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { CurrencyConverter } from '@/components/ui/currency-converter'
 import Link from 'next/link'
 import {
     Users,
@@ -252,6 +253,70 @@ export default function SolutionsPage() {
                             <div className="text-lg font-semibold mb-2">고객 만족도</div>
                             <p className="text-muted-foreground">전문 컨설팅과 지속적인 지원으로 높은 만족도 달성</p>
                         </Card>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Information Section */}
+            <section className="py-20 bg-muted/30">
+                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                            투명한 가격 정책
+                        </h2>
+                        <p className="text-xl text-muted-foreground">
+                            실시간 환율을 적용한 정확한 한국 원화 가격을 확인하세요
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        {/* 고객 경험 관리 솔루션 예시 가격 */}
+                        <div className="space-y-4">
+                            <div className="text-center">
+                                <h3 className="text-lg font-semibold mb-2">고객 경험 관리</h3>
+                                <p className="text-sm text-muted-foreground mb-4">Freshdesk Professional 기준</p>
+                            </div>
+                            <CurrencyConverter
+                                usdPrice={79}
+                                productName="Freshdesk Professional"
+                            />
+                        </div>
+
+                        {/* 협업 및 생산성 솔루션 예시 가격 */}
+                        <div className="space-y-4">
+                            <div className="text-center">
+                                <h3 className="text-lg font-semibold mb-2">협업 및 생산성</h3>
+                                <p className="text-sm text-muted-foreground mb-4">Google Workspace Business 기준</p>
+                            </div>
+                            <CurrencyConverter
+                                usdPrice={18}
+                                productName="Google Workspace Business"
+                            />
+                        </div>
+
+                        {/* IT 인프라 솔루션 예시 가격 */}
+                        <div className="space-y-4">
+                            <div className="text-center">
+                                <h3 className="text-lg font-semibold mb-2">IT 인프라 최적화</h3>
+                                <p className="text-sm text-muted-foreground mb-4">Freshservice Pro 기준</p>
+                            </div>
+                            <CurrencyConverter
+                                usdPrice={89}
+                                productName="Freshservice Pro"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="text-center mt-16">
+                        <div className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg inline-block">
+                            <h4 className="font-semibold mb-2">💰 맞춤 견적 서비스</h4>
+                            <p className="text-sm text-muted-foreground mb-4">
+                                귀사의 사용자 수와 요구사항에 맞는 정확한 견적을 제공해드립니다
+                            </p>
+                            <Button>
+                                무료 견적 요청하기
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </section>

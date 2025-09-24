@@ -72,6 +72,15 @@ export default function CustomerExperiencePage() {
             icon: TrendingUp,
             features: ['AI 음성봇', '글로벌 번호', '통화 분석'],
             href: '/products/freshcaller'
+        },
+        {
+            name: 'Freshsales',
+            slug: 'freshsales',
+            description: 'AI 기반 스마트 CRM으로 고객 관계 최적화',
+            badge: 'AI 영업',
+            icon: Users,
+            features: ['AI 리드 스코어링', '영업 파이프라인', '고객 인사이트'],
+            href: '/products/freshsales'
         }
     ]
 

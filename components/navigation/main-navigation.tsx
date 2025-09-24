@@ -56,7 +56,7 @@ export function MainNavigation() {
             } else if (query.includes('monday') || query.includes('먼데이') || query.includes('프로젝트')) {
                 window.location.href = '/products/monday-service'
                 window.location.href = '/solutions/monday'
-            } else if (query.includes('가격') || query.includes('요금') || query.includes('price') || query.includes('플랜')) {
+            } else if (query.includes('가격') || query.includes('요금') || query.includes('price') || query.includes('플랜') || query.includes('견적') || query.includes('맞춤')) {
                 window.location.href = '/pricing'
             } else if (query.includes('상담') || query.includes('문의') || query.includes('contact')) {
                 window.location.href = '/contact'
@@ -122,6 +122,11 @@ export function MainNavigation() {
                 name: "Freddy AI",
                 href: "/products/freddy-ai",
                 description: "GPT LLM 기반 자동화"
+            },
+            {
+                name: "Freshsales",
+                href: "/products/freshsales",
+                description: "AI 기반 스마트 CRM"
             }
         ],
         "협업 및 생산성 향상": [
@@ -343,7 +348,7 @@ export function MainNavigation() {
                         {/* 기타 메뉴 */}
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/pricing" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
-                                가격
+                                맞춤 견적
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -656,13 +661,13 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     제품
                 </Link>
 
-                {/* 가격 메뉴 */}
+                {/* 맞춤 견적 메뉴 */}
                 <Link
                     href="/pricing"
                     className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
                     onClick={onClose}
                 >
-                    가격
+                    맞춤 견적
                 </Link>
 
                 {/* 블로그 메뉴 */}
