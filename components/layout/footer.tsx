@@ -9,7 +9,7 @@ export function Footer() {
             <div className="container px-6 md:px-8 lg:px-12 py-12">
                 {/* 원본 사이트와 동일한 4컬럼 구조 - 중앙 배치 */}
                 <div className="max-w-4xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
                         {/* PRODUCT */}
                         <div className="space-y-4">
                             <h3 className="text-base font-medium text-foreground/80">PRODUCT</h3>
