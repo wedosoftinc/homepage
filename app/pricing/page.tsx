@@ -253,13 +253,6 @@ export default function CustomQuotePage() {
             )
         })
     }
-    const handleNeedsSelect = (needId: string) => {
-        const updatedNeeds = quoteData.needs.includes(needId)
-            ? quoteData.needs.filter(id => id !== needId)
-            : [...quoteData.needs, needId]
-
-        setQuoteData({ ...quoteData, needs: updatedNeeds })
-    }
 
     // 플랜 선택 핸들러 (3단계용)
     const handlePlanSelect = (productId: string, planId: string) => {
@@ -271,6 +264,17 @@ export default function CustomQuotePage() {
             }
         })
     }
+
+    // 니즈 선택 핸들러
+    const handleNeedsSelect = (needId: string) => {
+        const updatedNeeds = quoteData.needs.includes(needId)
+            ? quoteData.needs.filter(id => id !== needId)
+            : [...quoteData.needs, needId]
+
+        setQuoteData({ ...quoteData, needs: updatedNeeds })
+    }
+
+    // 사용자 수 선택 핸들러
     const handleUserCountChange = (userCount: number) => {
         setQuoteData({ ...quoteData, userCount })
     }
@@ -551,6 +555,98 @@ export default function CustomQuotePage() {
                     {currentStep === 3 && (
                         <Card className="p-8">
                             <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">각 제품의 플랜을 선택하세요</CardTitle>
+                                <CardDescription className="text-base">
+                                    선택하신 제품별로 가장 적합한 플랜을 선택해주세요.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-8">
+                                {/* 선택된 제품별 플랜 선택 */}
+                                <div className="space-y-8">
+                                    {quoteData.selectedProducts.map(productId => {
+                                        const product = productDatabase[productId]
+                                        if (!product) return null
+
+                                        return (
+                                            <div key={productId} className="space-y-4">
+                                                <div className="text-center">
+                                                    <h3 className="text-xl font-semibold">{product.name}</h3>
+                                                    <p className="text-muted-foreground">{product.description}</p>
+                                                </div>
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                    {product.plans.map(plan => {
+                                                        const isSelected = quoteData.selectedPlans[productId] === plan.id
+                                                        return (
+                                                            <Card
+                                                                key={plan.id}
+                                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${
+                                                                    isSelected
+                                                                        ? 'border-2 border-primary bg-primary/5 shadow-lg'
+                                                                        : plan.recommended
+                                                                        ? 'border-2 border-blue-200 bg-blue-50/50'
+                                                                        : 'border border-border hover:border-primary/50'
+                                                                }`}
+                                                                onClick={() => handlePlanSelect(productId, plan.id)}
+                                                            >
+                                                                <CardContent className="p-6 h-full flex flex-col">
+                                                                    <div className="text-center mb-4">
+                                                                        <div className="flex items-center justify-center gap-2 mb-2">
+                                                                            <span className="font-semibold text-lg">{plan.name}</span>
+                                                                            {plan.recommended && (
+                                                                                <Badge variant="default" className="text-xs">추천</Badge>
+                                                                            )}
+                                                                        </div>
+                                                                        <div className="text-2xl font-bold">
+                                                                            ${plan.price}
+                                                                            <span className="text-sm font-normal text-muted-foreground">/월</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <ul className="space-y-1 text-sm flex-1">
+                                                                        {plan.features.map((feature, idx) => (
+                                                                            <li key={idx} className="flex items-center gap-2">
+                                                                                <CheckCircle className="h-3 w-3 text-green-600" />
+                                                                                {feature}
+                                                                            </li>
+                                                                        ))}
+                                                                    </ul>
+                                                                    {isSelected && (
+                                                                        <div className="mt-4 pt-2 border-t border-border/50">
+                                                                            <div className="flex items-center justify-center text-xs text-primary font-medium">
+                                                                                <CheckCircle className="h-3 w-3 mr-1" />
+                                                                                선택됨
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                </CardContent>
+                                                            </Card>
+                                                        )
+                                                    })}
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
+                                <div className="flex justify-between mt-8">
+                                    <Button variant="outline" onClick={prevStep} size="lg">
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
+                                    </Button>
+                                    <Button
+                                        onClick={nextStep}
+                                        disabled={Object.keys(quoteData.selectedPlans).length !== quoteData.selectedProducts.length}
+                                        size="lg"
+                                    >
+                                        사용자 수 입력하기 <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {/* 4단계: 사용자 수 설정 */}
+                    {currentStep === 4 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
                                 <CardTitle className="text-2xl">몇 명이 사용하실 예정인가요?</CardTitle>
                                 <CardDescription className="text-base">
                                     사용자 수에 따라 정확한 견적을 계산해드립니다. 볼륨 할인도 자동 적용됩니다.
@@ -677,8 +773,72 @@ export default function CustomQuotePage() {
                         </Card>
                     )}
 
-                    {/* 3단계: 플랜 선택 */}
-                    {currentStep === 3 && (
+                    {/* 5단계: 결제 주기 선택 */}
+                    {currentStep === 5 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">결제 주기를 선택해주세요</CardTitle>
+                                <CardDescription className="text-base">
+                                    연간 결제 시 최대 20% 할인 혜택을 받을 수 있습니다
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                                    {billingCycles.map((cycle) => {
+                                        const isSelected = quoteData.billingCycle === cycle.id
+                                        return (
+                                            <Card
+                                                key={cycle.id}
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md relative ${isSelected
+                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
+                                                    : 'border border-border hover:border-primary/50'
+                                                    }`}
+                                                onClick={() => handleBillingCycleSelect(cycle.id)}
+                                            >
+                                                {cycle.id === 'yearly' && (
+                                                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                                        <Badge className="bg-green-500 text-white">인기</Badge>
+                                                    </div>
+                                                )}
+                                                <CardContent className="p-6 text-center">
+                                                    <Calendar className={`h-8 w-8 mx-auto mb-3 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
+                                                    <h3 className="font-semibold text-lg mb-2">{cycle.label}</h3>
+                                                    {cycle.discount > 0 && (
+                                                        <div className="mb-2">
+                                                            <Badge variant="secondary" className="bg-green-50 text-green-700">
+                                                                {Math.round(cycle.discount * 100)}% 할인
+                                                            </Badge>
+                                                        </div>
+                                                    )}
+                                                    <p className="text-sm text-muted-foreground mb-4">
+                                                        {cycle.description}
+                                                    </p>
+                                                    {isSelected && (
+                                                        <div className="flex items-center justify-center text-sm text-primary">
+                                                            <CheckCircle className="h-4 w-4 mr-1" />
+                                                            선택됨
+                                                        </div>
+                                                    )}
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    })}
+                                </div>
+
+                                <div className="flex justify-between mt-8">
+                                    <Button variant="outline" onClick={prevStep} size="lg">
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
+                                    </Button>
+                                    <Button onClick={nextStep} size="lg">
+                                        제품 보기 <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {/* 6단계: 플랜 선택 */}
+                    {currentStep === 6 && (
                         <Card className="p-8">
                             <CardHeader className="text-center pb-8">
                                 <CardTitle className="text-2xl">추천 솔루션을 확인하세요</CardTitle>
@@ -912,8 +1072,8 @@ export default function CustomQuotePage() {
                         </Card>
                     )}
 
-                    {/* 6단계: 최종 견적서 */}
-                    {currentStep === 6 && (
+                    {/* 7단계: 최종 견적서 */}
+                    {currentStep === 7 && (
                         <div className="space-y-6">
                             <Card className="p-8">
                                 <CardHeader className="text-center pb-8">
