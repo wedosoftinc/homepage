@@ -36,23 +36,23 @@ export default function ConsultingPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-blue-950 dark:via-background dark:to-indigo-950">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+            <Badge variant="secondary" className="mb-4">
               <Target className="w-3 h-3 mr-1" />
               Strategic Consulting
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
               도입 전에 물어야 할 질문들을,<br />
-              <span className="text-foreground">대신 생각해드립니다</span>
+              <span className="text-primary">대신 생각해드립니다</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               25년간 4,000여 기업의 디지털 혁신을 이끌어온 전문가들이<br />
               귀하의 비즈니스에 최적화된 SaaS 도입 전략을 설계합니다
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Button size="lg" asChild>
                 <Link href="/contact">
                   무료 컨설팅 신청
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -74,7 +74,7 @@ export default function ConsultingPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               글로벌 SaaS 파트너십 기반
-              <span className="text-blue-600"> 전략 컨설팅</span>
+              <span className="text-primary"> 전략 컨설팅</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Freshworks, Google, Monday.com, Splashtop 공식 파트너로서 
@@ -84,10 +84,10 @@ export default function ConsultingPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 비즈니스 분석 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <BarChart3 className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">비즈니스 분석</CardTitle>
                 <CardDescription>
@@ -117,10 +117,10 @@ export default function ConsultingPage() {
             </Card>
 
             {/* 솔루션 설계 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-indigo-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Settings className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Settings className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">솔루션 설계</CardTitle>
                 <CardDescription>
@@ -150,10 +150,10 @@ export default function ConsultingPage() {
             </Card>
 
             {/* 전략 수립 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-purple-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Target className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Target className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">도입 전략 수립</CardTitle>
                 <CardDescription>
@@ -183,10 +183,10 @@ export default function ConsultingPage() {
             </Card>
 
             {/* 비용 최적화 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-green-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <TrendingUp className="h-6 w-6 text-green-600 dark:text-green-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">비용 최적화</CardTitle>
                 <CardDescription>
@@ -216,10 +216,10 @@ export default function ConsultingPage() {
             </Card>
 
             {/* 위험 관리 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-red-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Shield className="h-6 w-6 text-red-600 dark:text-red-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">위험 관리</CardTitle>
                 <CardDescription>
@@ -249,10 +249,10 @@ export default function ConsultingPage() {
             </Card>
 
             {/* 성과 측정 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-orange-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Clock className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">성과 측정 체계</CardTitle>
                 <CardDescription>
@@ -291,7 +291,7 @@ export default function ConsultingPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 왜 위두소프트의 컨설팅을<br />
-                <span className="text-blue-600">선택해야 할까요?</span>
+                <span className="text-primary">선택해야 할까요?</span>
               </h2>
             </div>
 
@@ -300,8 +300,8 @@ export default function ConsultingPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                      <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Globe className="h-5 w-5 text-primary" />
                     </div>
                     <CardTitle className="text-xl">공식 파트너십</CardTitle>
                   </div>
@@ -323,8 +323,8 @@ export default function ConsultingPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
-                      <Briefcase className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Briefcase className="h-5 w-5 text-primary" />
                     </div>
                     <CardTitle className="text-xl">25년 실무 경험</CardTitle>
                   </div>
@@ -335,11 +335,11 @@ export default function ConsultingPage() {
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="font-semibold text-2xl text-green-600">4,000+</div>
+                      <div className="font-semibold text-2xl text-primary">4,000+</div>
                       <div className="text-muted-foreground">프로젝트 수행</div>
                     </div>
                     <div>
-                      <div className="font-semibold text-2xl text-blue-600">25년</div>
+                      <div className="font-semibold text-2xl text-primary">25년</div>
                       <div className="text-muted-foreground">경험 노하우</div>
                     </div>
                   </div>
@@ -350,8 +350,8 @@ export default function ConsultingPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
-                      <Target className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Target className="h-5 w-5 text-primary" />
                     </div>
                     <CardTitle className="text-xl">맞춤형 접근</CardTitle>
                   </div>
@@ -381,8 +381,8 @@ export default function ConsultingPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
-                      <Users className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Users className="h-5 w-5 text-primary" />
                     </div>
                     <CardTitle className="text-xl">지속적 지원</CardTitle>
                   </div>
@@ -413,23 +413,23 @@ export default function ConsultingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             SaaS 도입, 혼자 고민하지 마세요
           </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
             25년 경험의 전문가가 귀하의 비즈니스에 최적화된 솔루션을 찾아드립니다.
             무료 컨설팅으로 시작해보세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" asChild>
               <Link href="/contact">
                 무료 컨설팅 신청
                 <MessageSquare className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600" asChild>
+            <Button size="lg" variant="outline" asChild>
               <Link href="tel:02-2135-3071">
                 전화 상담: 02-2135-3071
               </Link>
@@ -449,8 +449,8 @@ export default function ConsultingPage() {
             <Card className="group hover:shadow-md transition-all duration-300">
               <CardContent className="p-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Settings className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Settings className="h-6 w-6 text-primary" />
                   </div>
                   <h4 className="font-semibold mb-2">구축 서비스</h4>
                   <p className="text-sm text-muted-foreground mb-4">기술적인 설정은 우리 몫입니다</p>
@@ -467,8 +467,8 @@ export default function ConsultingPage() {
             <Card className="group hover:shadow-md transition-all duration-300">
               <CardContent className="p-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-6 w-6 text-primary" />
                   </div>
                   <h4 className="font-semibold mb-2">교육 서비스</h4>
                   <p className="text-sm text-muted-foreground mb-4">잘 도입했다면, 잘 쓰게 만들어야죠</p>
@@ -485,8 +485,8 @@ export default function ConsultingPage() {
             <Card className="group hover:shadow-md transition-all duration-300">
               <CardContent className="p-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <h4 className="font-semibold mb-2">운영지원</h4>
                   <p className="text-sm text-muted-foreground mb-4">도입 이후에도 계속 곁에 있습니다</p>

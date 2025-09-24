@@ -32,23 +32,23 @@ export default function ServicesPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-blue-950 dark:via-background dark:to-purple-950">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+            <Badge variant="secondary" className="mb-4">
               <Globe className="w-3 h-3 mr-1" />
               Professional Services
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
               도입부터 운영까지<br />
-              <span className="text-foreground">25년 경험의 전문 서비스</span>
+              <span className="text-primary">25년 경험의 전문 서비스</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               4,000여 기업의 디지털 혁신을 이끌어온 위두소프트가<br />
               글로벌 SaaS 솔루션의 성공적인 정착을 위한 원스톱 서비스를 제공합니다
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Button size="lg" asChild>
                 <Link href="/contact">
                   전문 서비스 상담
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -70,7 +70,7 @@ export default function ServicesPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               SaaS 성공의 핵심은<br />
-              <span className="text-blue-600">올바른 프로세스</span>입니다
+              <span className="text-primary">올바른 프로세스</span>입니다
             </h2>
             <p className="text-xl text-muted-foreground">
               컨설팅부터 구축, 교육, 운영지원까지<br />
@@ -84,10 +84,10 @@ export default function ServicesPage() {
               {/* Step 1 */}
               <div className="text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Target className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Target className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                     1
                   </div>
                 </div>
@@ -105,10 +105,10 @@ export default function ServicesPage() {
               {/* Step 2 */}
               <div className="text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Settings className="h-8 w-8 text-green-600 dark:text-green-400" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Settings className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                     2
                   </div>
                 </div>
@@ -126,10 +126,10 @@ export default function ServicesPage() {
               {/* Step 3 */}
               <div className="text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                     3
                   </div>
                 </div>
@@ -148,10 +148,10 @@ export default function ServicesPage() {
               {/* Step 4 - Centered */}
               <div className="md:col-span-4 text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
                     4
                   </div>
                 </div>
@@ -182,8 +182,8 @@ export default function ServicesPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Target className="h-7 w-7 text-blue-600 dark:text-blue-400" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Target className="h-7 w-7 text-primary" />
                   </div>
                   <div>
                     <Badge variant="outline" className="mb-2">Strategic</Badge>
@@ -215,7 +215,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
                   <div className="pt-4">
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700" asChild>
+                    <Button className="w-full" asChild>
                       <Link href="/services/consulting">
                         컨설팅 서비스 자세히 보기
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -230,8 +230,8 @@ export default function ServicesPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Settings className="h-7 w-7 text-green-600 dark:text-green-400" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Settings className="h-7 w-7 text-primary" />
                   </div>
                   <div>
                     <Badge variant="outline" className="mb-2">Technical</Badge>
@@ -263,7 +263,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
                   <div className="pt-4">
-                    <Button className="w-full bg-green-600 hover:bg-green-700" asChild>
+                    <Button className="w-full" asChild>
                       <Link href="/services/implementation">
                         구축 서비스 자세히 보기
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -278,8 +278,8 @@ export default function ServicesPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Users className="h-7 w-7 text-purple-600 dark:text-purple-400" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Users className="h-7 w-7 text-primary" />
                   </div>
                   <div>
                     <Badge variant="outline" className="mb-2">Educational</Badge>
@@ -311,7 +311,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
                   <div className="pt-4">
-                    <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
+                    <Button className="w-full" asChild>
                       <Link href="/services/training">
                         교육 서비스 자세히 보기
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -326,8 +326,8 @@ export default function ServicesPage() {
             <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Shield className="h-7 w-7 text-orange-600 dark:text-orange-400" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Shield className="h-7 w-7 text-primary" />
                   </div>
                   <div>
                     <Badge variant="outline" className="mb-2">Ongoing</Badge>
@@ -359,7 +359,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
                   <div className="pt-4">
-                    <Button className="w-full bg-orange-600 hover:bg-orange-700" asChild>
+                    <Button className="w-full" asChild>
                       <Link href="/services/maintenance">
                         운영지원 자세히 보기
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -379,15 +379,15 @@ export default function ServicesPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               왜 위두소프트의 전문 서비스를<br />
-              <span className="text-blue-600">선택해야 할까요?</span>
+              <span className="text-primary">선택해야 할까요?</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="text-center border-0 shadow-lg">
               <CardHeader>
-                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">공식 파트너십</CardTitle>
               </CardHeader>
@@ -406,8 +406,8 @@ export default function ServicesPage() {
 
             <Card className="text-center border-0 shadow-lg">
               <CardHeader>
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">25년 실무 경험</CardTitle>
               </CardHeader>
@@ -417,11 +417,11 @@ export default function ServicesPage() {
                 </p>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <div className="text-2xl font-bold text-green-600">4,000+</div>
+                    <div className="text-2xl font-bold text-primary">4,000+</div>
                     <div className="text-muted-foreground">프로젝트</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-blue-600">25년</div>
+                    <div className="text-2xl font-bold text-primary">25년</div>
                     <div className="text-muted-foreground">경험</div>
                   </div>
                 </div>
@@ -430,8 +430,8 @@ export default function ServicesPage() {
 
             <Card className="text-center border-0 shadow-lg">
               <CardHeader>
-                <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">원스톱 서비스</CardTitle>
               </CardHeader>
@@ -440,7 +440,7 @@ export default function ServicesPage() {
                   컨설팅부터 운영지원까지 모든 과정을 한 곳에서 해결
                 </p>
                 <div className="flex justify-center">
-                  <div className="text-2xl font-bold text-purple-600">1→4</div>
+                  <div className="text-2xl font-bold text-primary">1→4</div>
                   <div className="ml-2 text-muted-foreground text-sm flex items-center">단계 통합 지원</div>
                 </div>
               </CardContent>
@@ -450,23 +450,23 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             SaaS 도입, 성공적으로 시작하세요
           </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
             25년 경험의 전문가가 귀하의 비즈니스에 최적화된 SaaS 도입 전략부터 
             안정적인 운영까지 모든 과정을 책임집니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" asChild>
               <Link href="/contact">
                 전문 서비스 상담
                 <MessageSquare className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600" asChild>
+            <Button size="lg" variant="outline" asChild>
               <Link href="tel:02-2135-3071">
                 전화 상담: 02-2135-3071
               </Link>
