@@ -444,9 +444,9 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                         </div>
 
                         <Tabs defaultValue={data.detailedFeatureTabs?.[0]?.id} className="w-full">
-                            <TabsList className="grid w-full max-w-2xl mx-auto mb-12" style={{ gridTemplateColumns: `repeat(${data.detailedFeatureTabs.length}, 1fr)` }}>
+                            <TabsList className="grid w-full max-w-3xl mx-auto mb-12 h-14" style={{ gridTemplateColumns: `repeat(${data.detailedFeatureTabs.length}, 1fr)` }}>
                                 {data.detailedFeatureTabs.map((tab) => (
-                                    <TabsTrigger key={tab.id} value={tab.id} className="text-sm">
+                                    <TabsTrigger key={tab.id} value={tab.id} className="text-base font-medium px-6 py-3 h-12">
                                         {tab.label}
                                     </TabsTrigger>
                                 ))}

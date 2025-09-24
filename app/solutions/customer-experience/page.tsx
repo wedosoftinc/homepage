@@ -65,13 +65,13 @@ export default function CustomerExperiencePage() {
             href: '/products/freddy-ai'
         },
         {
-            name: 'Freshsales',
-            slug: 'freshsales',
-            description: '스마트한 CRM으로 영업 성과 극대화',
-            badge: '영업 최적화',
+            name: 'Freshcaller',
+            slug: 'freshcaller',
+            description: '클라우드 PBX로 전문적인 음성 서비스 제공',
+            badge: '글로벌 통화',
             icon: TrendingUp,
-            features: ['파이프라인 관리', '영업 자동화', '360° 고객뷰'],
-            href: '/products/freshsales'
+            features: ['AI 음성봇', '글로벌 번호', '통화 분석'],
+            href: '/products/freshcaller'
         }
     ]
 
@@ -117,9 +117,9 @@ export default function CustomerExperiencePage() {
         },
         {
             step: '4단계',
-            title: '영업 기회 전환',
-            description: 'Freshsales로 잠재 고객을 실제 매출로 전환',
-            products: ['Freshsales']
+            title: '전문적인 음성 지원',
+            description: 'Freshcaller로 글로벌 고객에게 고품질 음성 서비스 제공',
+            products: ['Freshcaller']
         }
     ]
 

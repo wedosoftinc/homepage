@@ -62,14 +62,14 @@ export default function ProductsPage() {
                     <Card>
                         <CardHeader>
                             <Badge className="w-fit mb-2">고객 경험 관리</Badge>
-                            <CardTitle>Freshsales</CardTitle>
+                            <CardTitle>Freshcaller</CardTitle>
                             <CardDescription>
-                                CRM 및 세일즈 관리
+                                클라우드 PBX 솔루션
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Button asChild className="w-full">
-                                <Link href="/products/freshsales">자세히 보기</Link>
+                                <Link href="/products/freshcaller">자세히 보기</Link>
                             </Button>
                         </CardContent>
                     </Card>
