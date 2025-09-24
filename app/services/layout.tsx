@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { MainNavigation } from '@/components/navigation/main-navigation'
+import { Footer } from '@/components/layout/footer'
 
 export const metadata: Metadata = {
   title: "전문 서비스 | WeDoSoft - 글로벌 SaaS 도입부터 운영까지 25년 경험",
@@ -16,5 +18,13 @@ export default function ServicesLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <div className="min-h-screen bg-background">
+      <MainNavigation />
+      <main className="min-h-screen">
+        {children}
+      </main>
+      <Footer />
+    </div>
+  )
 }
