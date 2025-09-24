@@ -1,17 +1,19 @@
+import { MainNavigation } from "@/components/navigation/main-navigation"
+import { Footer } from "@/components/layout/footer"
 import { Breadcrumb } from "@/components/common/breadcrumb"
 import { ProfileCard } from "@/components/ui/profile-card"
 import { Timeline } from "@/components/ui/timeline"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  Building, 
-  Calendar, 
-  Users, 
-  Trophy, 
-  Target, 
-  Heart, 
-  Shield, 
-  TrendingUp, 
+import {
+  Building,
+  Calendar,
+  Users,
+  Trophy,
+  Target,
+  Heart,
+  Shield,
+  TrendingUp,
   Lightbulb,
   Globe,
   Award,
@@ -144,6 +146,7 @@ export default function CompanyPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <MainNavigation />
       {/* Breadcrumb */}
       <div className="border-b bg-muted/20">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
@@ -158,39 +161,35 @@ export default function CompanyPage() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             신뢰할 수 있는 디지털 혁신 파트너
           </h1>
-          <p className="text-xl text-muted-foreground mb-4 max-w-4xl mx-auto">
-            25년간 축적된 경험과 기술력으로 고객의 성공을 함께 만들어갑니다
-          </p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            2000년부터 대한민국 주요 기업들과 함께해온 위두소프트는 글로벌 SaaS 솔루션 전문 기업으로, 고객의 디지털 혁신을 선도하는 신뢰받는 파트너입니다.
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            글로벌 SaaS 솔루션 전문 기업 위두소프트는 고객의 디지털 혁신을 선도하는 신뢰받는 파트너입니다.
           </p>
         </div>
       </section>
 
       {/* CEO Profile Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-16 bg-muted/20">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <Badge className="mb-4">Leadership</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               경험과 철학이 만나는 리더십
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              25년간 대기업 프로젝트를 통해 축적된 경험과 "회사의 운명은 고객에 달려있다"는 철학으로 
-              고객의 성공을 최우선으로 생각합니다.
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              "회사의 운명은 고객에 달려있다"는 철학으로 고객의 성공을 최우선으로 생각합니다.
             </p>
           </div>
-          
-          <div className="max-w-4xl mx-auto">
+
+          <div className="max-w-5xl mx-auto">
             <ProfileCard {...ceoProfile} />
           </div>
         </div>
       </section>
 
       {/* Company Philosophy */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <Badge className="mb-4">Philosophy</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               위두소프트의 철학과 가치
@@ -214,7 +213,7 @@ export default function CompanyPage() {
               </div>
               <h3 className="text-lg font-semibold mb-2">신뢰와 전문성</h3>
               <p className="text-sm text-muted-foreground">
-                25년 경험과 4개 글로벌 벤더 파트너십으로 검증된 전문성을 제공합니다
+                글로벌 벤더 파트너십과 검증된 전문성으로 안정적인 서비스를 제공합니다
               </p>
             </Card>
 
@@ -238,44 +237,13 @@ export default function CompanyPage() {
               </p>
             </Card>
           </div>
-
-          {/* Key Achievements */}
-          <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                위두소프트의 성과
-              </h3>
-              <p className="text-muted-foreground">
-                숫자로 보는 25년간의 성과와 신뢰
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">25년</div>
-                <div className="text-sm text-muted-foreground">풍부한 경험</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">350+</div>
-                <div className="text-sm text-muted-foreground">고객사</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">4개사</div>
-                <div className="text-sm text-muted-foreground">글로벌 파트너</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">4,000+</div>
-                <div className="text-sm text-muted-foreground">프로젝트 수행</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-16 bg-muted/20">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <Badge className="mb-4">History</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               위두소프트의 여정
@@ -292,28 +260,28 @@ export default function CompanyPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-              25년 경험의 파트너와 함께
+              신뢰받는 파트너와 함께
               <br />
               <span className="text-primary">디지털 혁신을 시작하세요</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              축적된 노하우와 글로벌 파트너십으로 귀하의 비즈니스 성장을 지원합니다.
+              글로벌 파트너십으로 귀하의 비즈니스 성장을 지원합니다.
               전문 컨설턴트와의 상담을 통해 최적의 솔루션을 찾아보세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 transition-colors"
               >
                 무료 상담 신청
                 <TrendingUp className="ml-2 h-4 w-4" />
               </a>
-              <a 
-                href="/solutions" 
+              <a
+                href="/solutions"
                 className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 솔루션 둘러보기
@@ -323,6 +291,8 @@ export default function CompanyPage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   )
 }
