@@ -43,8 +43,8 @@ export function MainNavigation() {
                 window.location.href = '/products/freshdesk-omni'
             } else if (query.includes('freshdesk') || query.includes('고객지원') || query.includes('헬프데스크')) {
                 window.location.href = '/products/freshdesk'
-            } else if (query.includes('freshsales') || query.includes('crm') || query.includes('세일즈')) {
-                window.location.href = '/products/freshsales'
+            } else if (query.includes('freshcaller') || query.includes('pbx') || query.includes('통화') || query.includes('전화')) {
+                window.location.href = '/products/freshcaller'
             } else if (query.includes('freshchat') || query.includes('채팅') || query.includes('실시간')) {
                 window.location.href = '/products/freshchat'
             } else if (query.includes('freddy') || query.includes('ai') || query.includes('인공지능')) {
@@ -109,9 +109,9 @@ export function MainNavigation() {
                 description: "고객 지원의 새로운 기준"
             },
             {
-                name: "Freshsales",
-                href: "/products/freshsales",
-                description: "CRM 및 세일즈 관리"
+                name: "Freshcaller",
+                href: "/products/freshcaller",
+                description: "클라우드 PBX 솔루션"
             },
             {
                 name: "Freshchat",
@@ -481,9 +481,9 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                 description: "통합 고객지원 플랫폼"
             },
             {
-                name: "Freshsales",
-                href: "/freshsales/",
-                description: "스마트 CRM 솔루션"
+                name: "Freshcaller",
+                href: "/freshcaller/",
+                description: "클라우드 PBX 솔루션"
             },
             {
                 name: "Freshchat",
