@@ -6,66 +6,146 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { CurrencyConverter } from "@/components/ui/currency-converter"
-import { 
-    Check, 
-    Star, 
-    ArrowRight, 
-    ArrowLeft, 
-    Users, 
-    Building, 
-    Zap, 
-    MessageSquare, 
-    Headphones, 
+import {
+    ArrowRight,
+    ArrowLeft,
+    Users,
+    Building,
+    Zap,
+    MessageSquare,
+    Headphones,
     Wrench,
+    Calculator,
+    CheckCircle,
+    TrendingUp,
+    Shield,
     Globe,
-    Calendar,
-    Calculator
+    BarChart3,
+    FileText,
+    Clock,
+    Target,
+    Lightbulb
 } from "lucide-react"
+
+// 타입 정의
+interface QuoteData {
+    needs: string[]
+    companySize: string
+    selectedProducts: string[]
+}
+
+interface Product {
+    name: string
+    price: number
+    category: string
+}
+
+interface BusinessNeed {
+    id: string
+    title: string
+    description: string
+    icon: any
+    color: string
+    products: string[]
+}
+
+interface CompanySize {
+    id: string
+    label: string
+    range: string
+    multiplier: number
+}
 
 export default function CustomQuotePage() {
     // 위저드 단계 상태
     const [currentStep, setCurrentStep] = useState(1)
-    const [quoteData, setQuoteData] = useState({
+    const [quoteData, setQuoteData] = useState<QuoteData>({
         needs: [],
         companySize: '',
-        selectedProducts: [],
-        customizations: {},
-        finalQuote: null
+        selectedProducts: []
     })
 
     // 1단계: 비즈니스 니즈 파악
     const businessNeeds = [
         {
             id: 'customer-support',
-            title: '고객 지원 개선',
-            description: '고객 응답 시간 단축 및 만족도 향상',
+            title: '고객 서비스 향상',
+            description: '고객 응답 시간 단축, 만족도 향상, 옴니채널 지원',
             icon: Headphones,
             color: 'bg-blue-50 border-blue-200 text-blue-700',
             products: ['freshdesk', 'freshchat', 'freddy-ai']
         },
         {
-            id: 'team-collaboration',
-            title: '팀 협업 강화',
-            description: '프로젝트 관리 및 협업 효율성 증대',
-            icon: Users,
+            id: 'sales-growth',
+            title: '매출 성장 가속화',
+            description: 'CRM 최적화, 영업 프로세스 자동화, 리드 관리',
+            icon: TrendingUp,
             color: 'bg-green-50 border-green-200 text-green-700',
-            products: ['google-workspace', 'monday-work', 'monday-service']
-        },
-        {
-            id: 'sales-management',
-            title: '영업 프로세스 최적화',
-            description: 'CRM 및 영업 관리 체계화',
-            icon: MessageSquare,
-            color: 'bg-purple-50 border-purple-200 text-purple-700',
             products: ['freshsales', 'monday-sales']
         },
         {
-            id: 'it-infrastructure',
-            title: 'IT 인프라 관리',
-            description: 'IT 서비스 및 원격 접속 환경 구축',
-            icon: Wrench,
-            color: 'bg-orange-50 border-orange-200 text-orange-700',
-            products: ['freshservice', 'splashtop']
+            id: 'team-productivity',
+            title: '팀 생산성 향상',
+            description: '협업 도구, 프로젝트 관리, 워크플로우 자동화',
+            icon: Users,
+            color: 'bg-purple-50 border-purple-200 text-purple-700',
+            products: ['google-workspace', 'monday-work', 'monday-service']
+        },
+        {
+            id: 'operational-efficiency',
+            title: '운영 효율성 개선',
+            description: '업무 프로세스 최적화, 데이터 통합, 자동화',
+            icon: Zap,
+            color: 'bg-yellow-50 border-yellow-200 text-yellow-700',
+            products: ['monday-service', 'freshservice', 'google-workspace']
+        },
+        {
+            id: 'data-analytics',
+            title: '데이터 기반 의사결정',
+            description: '비즈니스 인텔리전스, 대시보드, 성과 분석',
+            icon: BarChart3,
+            color: 'bg-indigo-50 border-indigo-200 text-indigo-700',
+            products: ['monday-work', 'freshservice', 'google-workspace']
+        },
+        {
+            id: 'remote-work',
+            title: '원격근무 환경 구축',
+            description: '클라우드 협업, 원격 접속, 보안 강화',
+            icon: Globe,
+            color: 'bg-cyan-50 border-cyan-200 text-cyan-700',
+            products: ['google-workspace', 'splashtop', 'monday-work']
+        },
+        {
+            id: 'it-security',
+            title: 'IT 보안 및 관리',
+            description: 'IT 서비스 관리, 보안 강화, 시스템 모니터링',
+            icon: Shield,
+            color: 'bg-red-50 border-red-200 text-red-700',
+            products: ['freshservice', 'splashtop', 'google-workspace']
+        },
+        {
+            id: 'compliance-governance',
+            title: '컴플라이언스 & 거버넌스',
+            description: '규정 준수, 문서 관리, 감사 대응',
+            icon: FileText,
+            color: 'bg-gray-50 border-gray-200 text-gray-700',
+            products: ['google-workspace', 'freshservice']
+        },
+        {
+            id: 'time-management',
+            title: '시간 관리 최적화',
+            description: '일정 관리, 리소스 계획, 업무 우선순위',
+            icon: Clock,
+            color: 'bg-pink-50 border-pink-200 text-pink-700',
+            products: ['monday-work', 'google-workspace']
+        },
+        {
+            id: 'innovation-growth',
+            title: '혁신 및 성장 지원',
+            description: '새로운 비즈니스 모델, 디지털 전환, 확장성',
+            icon: Lightbulb,
+            color: 'bg-emerald-50 border-emerald-200 text-emerald-700',
+            products: ['google-workspace', 'monday-work', 'freshservice']
         }
     ]
 
@@ -78,340 +158,366 @@ export default function CustomQuotePage() {
     ]
 
     // 제품 데이터베이스
-    const productDatabase = {
-        {
-            id: 'customer-experience',
-            title: '고객 경험 관리',
-            icon: '🎯',
-            description: '옴니채널 고객 지원, 라이브 채팅, 콜센터로 완벽한 고객 경험을 제공하세요',
-        },
-        {
-            id: 'collaboration',
-            title: '협업 & 생산성',
-            icon: '🚀',
-            description: '클라우드 기반 협업과 프로젝트 관리로 팀 생산성을 극대화하세요',
-        },
-        {
-            id: 'infrastructure',
-            title: 'IT 인프라 관리',
-            icon: '🛠️',
-            description: 'ITSM과 원격 접속으로 안정적이고 효율적인 IT 인프라를 구축하세요',
-        }
-    ]
+    const productDatabase: Record<string, Product> = {
+        'freshdesk': { name: 'Freshdesk', price: 79, category: 'customer-support' },
+        'freshchat': { name: 'Freshchat', price: 19, category: 'customer-support' },
+        'freddy-ai': { name: 'Freddy AI', price: 50, category: 'customer-support' },
+        'freshsales': { name: 'Freshsales', price: 65, category: 'sales-management' },
+        'freshservice': { name: 'Freshservice', price: 89, category: 'it-infrastructure' },
+        'google-workspace': { name: 'Google Workspace', price: 18, category: 'team-collaboration' },
+        'monday-work': { name: 'Monday Work Management', price: 24, category: 'team-collaboration' },
+        'monday-service': { name: 'Monday Service', price: 50, category: 'team-collaboration' },
+        'monday-sales': { name: 'Monday Sales CRM', price: 32, category: 'sales-management' },
+        'splashtop': { name: 'Splashtop', price: 60, category: 'it-infrastructure' }
+    }
 
-    // 모든 제품 데이터
-    const allProducts = [
-        // 고객 경험 관리
-        {
-            category: 'customer-experience',
-            vendor: 'Freshworks',
-            name: 'Freshdesk Omni',
-            description: '옴니채널 고객 지원 플랫폼',
-            popular: true,
-            plans: [
-                { name: 'Growth', price: '$29/월', originalPrice: '$35/월', features: ['옴니채널 통합', 'AI 자동 응답', '무제한 에이전트', '기본 자동화'], popular: false },
-                { name: 'Pro', price: '$69/월', originalPrice: '$83/월', features: ['Growth 기능 포함', '맞춤형 포털', 'API 액세스', '고급 자동화'], popular: true },
-                { name: 'Enterprise', price: '$109/월', originalPrice: '$131/월', features: ['Pro 기능 포함', '감사 로그', '고급 보안', '무제한 통합'], popular: false }
-            ]
-        },
-        {
-            category: 'customer-experience',
-            vendor: 'Freshworks',
-            name: 'Freshchat',
-            description: '실시간 라이브 채팅',
-            popular: false,
-            plans: [
-                { name: 'Free', price: '무료', originalPrice: null, features: ['10명 에이전트', '기본 채팅', '모바일 앱', '기본 보고서'], popular: false },
-                { name: 'Growth', price: '$19/월', originalPrice: '$23/월', features: ['무제한 에이전트', '팀 받은편지함', 'FAQ 봇', '방문자 정보'], popular: true },
-                { name: 'Pro', price: '$49/월', originalPrice: '$59/월', features: ['Growth 기능 포함', '고급 자동화', 'CRM 통합', 'API 액세스'], popular: false }
-            ]
-        },
-        {
-            category: 'customer-experience',
-            vendor: 'Freshworks',
-            name: 'Freshcaller',
-            description: '클라우드 콜센터',
-            popular: false,
-            plans: [
-                { name: 'Free', price: '무료', originalPrice: null, features: ['기본 콜센터', '종량제 요금', 'IVR 시스템', '통화 녹음'], popular: false },
-                { name: 'Growth', price: '$15/월', originalPrice: '$18/월', features: ['월 2,000분', '기본 라우팅', '통화 대기열', '실시간 대시보드'], popular: true },
-                { name: 'Pro', price: '$39/월', originalPrice: '$47/월', features: ['월 3,000분', '고급 라우팅', 'CRM 연동', '고급 분석'], popular: false }
-            ]
-        },
-        // 협업 & 생산성
-        {
-            category: 'collaboration',
-            vendor: 'Monday.com',
-            name: 'Monday Work Management',
-            description: '직관적인 프로젝트 관리',
-            popular: true,
-            plans: [
-                { name: 'Basic', price: '$12/월', originalPrice: '$14/월', features: ['기본 대시보드', '5GB 저장공간', '무제한 보드', '200+ 템플릿'], popular: false },
-                { name: 'Standard', price: '$14/월', originalPrice: '$17/월', features: ['타임라인 뷰', '게스트 액세스', '250GB 저장', '캘린더 뷰'], popular: true },
-                { name: 'Pro', price: '$24/월', originalPrice: '$29/월', features: ['시간 추적', '커스텀 필드', '1TB 저장공간', '고급 검색'], popular: false }
-            ]
-        },
-        {
-            category: 'collaboration',
-            vendor: 'Google',
-            name: 'Google Workspace',
-            description: '클라우드 협업 솔루션',
-            popular: false,
-            plans: [
-                { name: 'Business Starter', price: '$6/월', originalPrice: null, features: ['Gmail', '30GB 저장공간', 'Meet 100명', '표준 보안'], popular: false },
-                { name: 'Business Standard', price: '$12/월', originalPrice: null, features: ['2TB 저장공간', 'Meet 150명', '녹화 기능', '공유 드라이브'], popular: true },
-                { name: 'Business Plus', price: '$18/월', originalPrice: null, features: ['5TB 저장공간', 'Meet 500명', 'Vault 보관', '고급 보안'], popular: false }
-            ]
-        },
-        // IT 인프라 관리
-        {
-            category: 'infrastructure',
-            vendor: 'Freshworks',
-            name: 'Freshservice',
-            description: 'IT 서비스 관리 (ITSM)',
-            popular: true,
-            plans: [
-                { name: 'Starter', price: '$19/월', originalPrice: '$23/월', features: ['티켓 관리', 'ITIL 프로세스', '에셋 관리', '기본 자동화'], popular: false },
-                { name: 'Growth', price: '$49/월', originalPrice: '$59/월', features: ['워크플로우 자동화', 'SLA 관리', '고급 리포팅', '문제 관리'], popular: true },
-                { name: 'Pro', price: '$99/월', originalPrice: '$119/월', features: ['변경 관리', '릴리즈 관리', '프로젝트 관리', '고급 분석'], popular: false }
-            ]
-        },
-        {
-            category: 'infrastructure',
-            vendor: 'Splashtop',
-            name: 'Splashtop Business Access',
-            description: '원격 데스크톱 액세스',
-            popular: false,
-            plans: [
-                { name: 'Solo', price: '$5/월', originalPrice: null, features: ['1 사용자', '무제한 컴퓨터', '파일 전송', '인쇄 지원'], popular: false },
-                { name: 'Pro', price: '$8.25/월', originalPrice: '$9.90/월', features: ['비즈니스 기능', '세션 녹화', '원격 재부팅', '그룹 관리'], popular: true }
-            ]
-        }
-    ]
+    // 니즈 선택 핸들러
+    const handleNeedsSelect = (needId: string) => {
+        const updatedNeeds = quoteData.needs.includes(needId)
+            ? quoteData.needs.filter(id => id !== needId)
+            : [...quoteData.needs, needId]
 
-    // 현재 선택된 카테고리의 제품들
-    const categoryProducts = allProducts.filter(product => product.category === selectedCategory)
-    const currentCategory = categories.find(cat => cat.id === selectedCategory)
+        setQuoteData({ ...quoteData, needs: updatedNeeds })
+    }
 
-    // 벤더 단위로 그룹화하여 UX 가독성 향상
-    const vendorGroups = categoryProducts.reduce((groups, product) => {
-        const group = groups.find((item) => item.vendor === product.vendor)
+    // 회사 규모 선택 핸들러
+    const handleCompanySizeSelect = (sizeId: string) => {
+        setQuoteData({ ...quoteData, companySize: sizeId })
+    }
 
-        if (group) {
-            group.products.push(product)
-        } else {
-            groups.push({
-                vendor: product.vendor,
-                products: [product]
-            })
-        }
+    // 다음/이전 단계
+    const nextStep = () => setCurrentStep(Math.min(currentStep + 1, 4))
+    const prevStep = () => setCurrentStep(Math.max(currentStep - 1, 1))
 
-        return groups
-    }, [] as { vendor: string; products: typeof categoryProducts }[])
+    // 추천 제품 계산
+    const getRecommendedProducts = () => {
+        const recommendedIds = quoteData.needs.flatMap(needId => {
+            const need = businessNeeds.find(n => n.id === needId)
+            return need ? need.products : []
+        })
+        return [...new Set(recommendedIds)]
+    }
+
+    // 총 가격 계산
+    const calculateTotalPrice = () => {
+        const totalUSD = quoteData.selectedProducts.reduce((sum, productId) => {
+            return sum + (productDatabase[productId]?.price || 0)
+        }, 0)
+
+        const sizeMultiplier = companySizes.find(s => s.id === quoteData.companySize)?.multiplier || 1
+        return Math.round(totalUSD * sizeMultiplier)
+    }
+
+    // 진행률 계산
+    const getProgress = () => (currentStep / 4) * 100
 
     return (
         <div className="min-h-screen bg-background">
-            <div className="container mx-auto px-4 py-16">
-                {/* 헤더 섹션 */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl font-bold mb-4">요금제</h1>
+            {/* 헤더 */}
+            <section className="py-12 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+                <div className="container max-w-4xl mx-auto px-6 text-center">
+                    <Badge variant="secondary" className="mb-4">
+                        맞춤 견적 시스템
+                    </Badge>
+                    <h1 className="text-4xl font-bold tracking-tight mb-4">
+                        3분만에 받는
+                        <span className="text-primary"> 맞춤 솔루션 견적</span>
+                    </h1>
                     <p className="text-xl text-muted-foreground mb-8">
-                        귀하의 비즈니스에 맞는 최적의 솔루션을 찾아보세요
+                        귀하의 비즈니스 니즈에 딱 맞는 솔루션과 실시간 원화 가격을 확인하세요
+                    </p>
+
+                    {/* 진행률 바 */}
+                    <div className="w-full bg-muted rounded-full h-2 mb-4">
+                        <div
+                            className="bg-primary h-2 rounded-full transition-all duration-500 ease-out"
+                            style={{ width: `${getProgress()}%` }}
+                        />
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                        {currentStep}/4 단계 완료
                     </p>
                 </div>
+            </section>
 
-                {/* 카테고리 탭 네비게이션 */}
-                <div className="grid w-full grid-cols-3 mb-12 h-14 p-1 bg-muted rounded-lg">
-                    {categories.map((category) => (
-                        <button
-                            key={category.id}
-                            onClick={() => setSelectedCategory(category.id)}
-                            className={`flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all ${selectedCategory === category.id
-                                ? 'bg-background text-foreground shadow-sm'
-                                : 'text-muted-foreground hover:text-foreground'
-                                }`}
-                        >
-                            <span className="text-base">{category.icon}</span>
-                            <span className="hidden sm:inline">{category.title}</span>
-                        </button>
-                    ))}
-                </div>
+            {/* 메인 콘텐츠 */}
+            <section className="py-16">
+                <div className="container max-w-4xl mx-auto px-6" style={{ maxWidth: currentStep === 1 ? '72rem' : '64rem' }}>
 
-                {/* 카테고리 설명 */}
-                <div className="text-center mb-12">
-                    <h2 className="text-2xl font-semibold mb-2">{currentCategory?.title}</h2>
-                    <p className="text-muted-foreground">{currentCategory?.description}</p>
-                </div>
-
-                {/* 솔루션 파인더 섹션 */}
-                <div className="mb-16">
-                    <Card className="p-8 bg-gradient-to-br from-primary/5 to-secondary/5">
-                        <div className="text-center mb-8">
-                            <h3 className="text-2xl font-bold mb-2">🔍 솔루션 파인더</h3>
-                            <p className="text-muted-foreground">
-                                몇 가지 질문으로 귀하에게 최적화된 솔루션과 가격을 찾아드립니다
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                            <Button
-                                variant="outline"
-                                className="h-20 p-4 flex flex-col items-center gap-2"
-                                onClick={() => {/* TODO: 솔루션 파인더 로직 */ }}
-                            >
-                                <span className="text-2xl">📞</span>
-                                <span className="font-medium">고객 응답 속도 개선</span>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                className="h-20 p-4 flex flex-col items-center gap-2"
-                            >
-                                <span className="text-2xl">🤝</span>
-                                <span className="font-medium">팀 협업 효율성 향상</span>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                className="h-20 p-4 flex flex-col items-center gap-2"
-                            >
-                                <span className="text-2xl">🔧</span>
-                                <span className="font-medium">IT 인프라 안정화</span>
-                            </Button>
-                        </div>
-
-                        <div className="text-center">
-                            <Button size="lg">
-                                맞춤 솔루션 찾기 시작
-                            </Button>
-                        </div>
-                    </Card>
-                </div>
-
-                {/* 벤더 그룹 섹션 */}
-                <div className="space-y-16 mb-16">
-                    {vendorGroups.map((group) => (
-                        <section key={group.vendor} className="space-y-8">
-                            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                                <div>
-                                    <h3 className="text-xl font-semibold">{group.vendor}</h3>
-                                    <p className="text-sm text-muted-foreground">
-                                        {currentCategory?.title} 카테고리의 {group.products.length}개 솔루션
-                                    </p>
-                                </div>
-                                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                    <span>위두소프트 추천 포트폴리오</span>
-                                    <span className="hidden sm:inline">·</span>
-                                    <span>전문가 상담 연계</span>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                                {group.products.map((product) => (
-                                    <Card key={product.name} className="relative h-full">
-                                        {product.popular && (
-                                            <div className="absolute -top-3 left-4 z-10">
-                                                <Badge variant="default" className="bg-primary text-primary-foreground">
-                                                    <Star className="w-3 h-3 mr-1" />
-                                                    인기 제품
-                                                </Badge>
-                                            </div>
-                                        )}
-
-                                        <CardHeader className="pb-4">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                    <Badge variant="outline" className="w-fit">
-                                                        {product.vendor}
-                                                    </Badge>
-                                                    <span>{product.plans.length}개 요금제 제공</span>
-                                                </div>
-                                                <CardTitle className="text-2xl">
-                                                    {product.name}
-                                                </CardTitle>
-                                                <CardDescription>{product.description}</CardDescription>
-                                            </div>
-                                        </CardHeader>
-
-                                        <CardContent className="space-y-6">
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                {product.plans.map((plan, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className={`relative rounded-lg border p-4 transition-all ${plan.popular
-                                                            ? 'border-primary bg-primary/5 ring-1 ring-primary/20'
-                                                            : 'border-border hover:border-primary/40'
-                                                            }`}
-                                                    >
-                                                        {plan.popular && (
-                                                            <div className="absolute -top-2 left-1/2 -translate-x-1/2">
-                                                                <Badge variant="default" className="text-xs">
-                                                                    추천 요금제
-                                                                </Badge>
-                                                            </div>
-                                                        )}
-
-                                                        <div className="mb-4 text-center">
-                                                            <h4 className="mb-1 text-sm font-semibold tracking-tight">{plan.name}</h4>
-                                                            <div className="space-y-1">
-                                                                <p className="text-lg font-bold text-primary">{plan.price}</p>
-                                                                {plan.originalPrice && (
-                                                                    <span className="text-xs text-muted-foreground line-through">
-                                                                        {plan.originalPrice}
-                                                                    </span>
-                                                                )}
+                    {/* 1단계: 비즈니스 니즈 파악 */}
+                    {currentStep === 1 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">어떤 문제를 해결하고 싶으신가요?</CardTitle>
+                                <CardDescription className="text-base">
+                                    해당되는 항목을 모두 선택해주세요 (복수 선택 가능)
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {businessNeeds.map((need) => {
+                                        const IconComponent = need.icon
+                                        const isSelected = quoteData.needs.includes(need.id)
+                                        return (
+                                            <Card
+                                                key={need.id}
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md h-full ${isSelected
+                                                    ? `border-2 ${need.color} shadow-lg`
+                                                    : 'border border-border hover:border-primary/50'
+                                                    }`}
+                                                onClick={() => handleNeedsSelect(need.id)}
+                                            >
+                                                <CardContent className="p-5 h-full flex flex-col">
+                                                    <div className="flex items-start space-x-3 flex-1">
+                                                        <div className={`p-2 rounded-lg flex-shrink-0 ${isSelected ? need.color : 'bg-muted'}`}>
+                                                            <IconComponent className="h-5 w-5" />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <h3 className="font-semibold mb-2 text-sm leading-tight">{need.title}</h3>
+                                                            <p className="text-xs text-muted-foreground leading-relaxed">
+                                                                {need.description}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    {isSelected && (
+                                                        <div className="mt-3 pt-2 border-t border-border/50">
+                                                            <div className="flex items-center text-xs text-primary font-medium">
+                                                                <CheckCircle className="h-3 w-3 mr-1" />
+                                                                선택됨
                                                             </div>
                                                         </div>
+                                                    )}
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    })}
+                                </div>
 
-                                                        <ul className="mb-5 space-y-1">
-                                                            {plan.features.slice(0, 3).map((feature, featureIndex) => (
-                                                                <li key={featureIndex} className="flex items-start gap-2 text-xs">
-                                                                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-green-500" />
-                                                                    <span>{feature}</span>
-                                                                </li>
-                                                            ))}
-                                                            {plan.features.length > 3 && (
-                                                                <li className="text-xs text-muted-foreground">
-                                                                    +{plan.features.length - 3}개 기능 더 보기
-                                                                </li>
-                                                            )}
-                                                        </ul>
+                                <div className="flex justify-between mt-8">
+                                    <div></div>
+                                    <Button
+                                        onClick={nextStep}
+                                        disabled={quoteData.needs.length === 0}
+                                        size="lg"
+                                    >
+                                        다음 단계 <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
 
-                                                        <Button
-                                                            className="w-full"
-                                                            size="sm"
-                                                            variant={plan.popular ? 'default' : 'outline'}
-                                                        >
-                                                            {plan.price === '무료' ? '무료 시작' : '상담 요청'}
-                                                        </Button>
+                    {/* 2단계: 회사 규모 */}
+                    {currentStep === 2 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">회사 규모를 알려주세요</CardTitle>
+                                <CardDescription className="text-base">
+                                    사용자 수에 따라 최적의 플랜을 추천해드립니다
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {companySizes.map((size) => {
+                                        const isSelected = quoteData.companySize === size.id
+                                        return (
+                                            <Card
+                                                key={size.id}
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${isSelected
+                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
+                                                    : 'border border-border hover:border-primary/50'
+                                                    }`}
+                                                onClick={() => handleCompanySizeSelect(size.id)}
+                                            >
+                                                <CardContent className="p-6 text-center">
+                                                    <Building className={`h-8 w-8 mx-auto mb-3 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
+                                                    <h3 className="font-semibold mb-1">{size.label}</h3>
+                                                    <p className="text-sm text-muted-foreground">
+                                                        {size.range}명 규모
+                                                    </p>
+                                                    {isSelected && (
+                                                        <div className="mt-2 flex items-center justify-center text-sm text-primary">
+                                                            <CheckCircle className="h-4 w-4 mr-1" />
+                                                            선택됨
+                                                        </div>
+                                                    )}
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    })}
+                                </div>
+
+                                <div className="flex justify-between mt-8">
+                                    <Button variant="outline" onClick={prevStep} size="lg">
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
+                                    </Button>
+                                    <Button
+                                        onClick={nextStep}
+                                        disabled={!quoteData.companySize}
+                                        size="lg"
+                                    >
+                                        다음 단계 <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
+                    {/* 3단계: 제품 추천 및 선택 */}
+                    {currentStep === 3 && (
+                        <Card className="p-8">
+                            <CardHeader className="text-center pb-8">
+                                <CardTitle className="text-2xl">추천 솔루션을 확인하세요</CardTitle>
+                                <CardDescription className="text-base">
+                                    선택하신 니즈에 맞는 제품들입니다. 필요한 제품을 선택해주세요
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="space-y-4">
+                                    {getRecommendedProducts().map((productId) => {
+                                        const product = productDatabase[productId]
+                                        if (!product) return null
+
+                                        const isSelected = quoteData.selectedProducts.includes(productId)
+                                        return (
+                                            <Card
+                                                key={productId}
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${isSelected
+                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
+                                                    : 'border border-border hover:border-primary/50'
+                                                    }`}
+                                                onClick={() => {
+                                                    const updatedProducts = isSelected
+                                                        ? quoteData.selectedProducts.filter(id => id !== productId)
+                                                        : [...quoteData.selectedProducts, productId]
+                                                    setQuoteData({ ...quoteData, selectedProducts: updatedProducts })
+                                                }}
+                                            >
+                                                <CardContent className="p-6">
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex items-center space-x-4">
+                                                            <div className={`p-3 rounded-lg ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                                                                <Zap className="h-5 w-5" />
+                                                            </div>
+                                                            <div>
+                                                                <h3 className="font-semibold text-lg">{product.name}</h3>
+                                                                <p className="text-muted-foreground">
+                                                                    월 ${product.price} (사용자당)
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        {isSelected && (
+                                                            <CheckCircle className="h-6 w-6 text-primary" />
+                                                        )}
                                                     </div>
-                                                ))}
-                                            </div>
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    })}
+                                </div>
 
-                                            <div className="flex flex-col gap-3 rounded-lg border border-dashed p-4 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-                                                <span>이 제품군의 도입과 운영까지 위두소프트 컨설턴트가 함께합니다.</span>
-                                                <Button size="sm" variant="ghost" className="self-start md:self-auto">
-                                                    파트너 지원 문의
-                                                </Button>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
-                </div>
+                                <div className="flex justify-between mt-8">
+                                    <Button variant="outline" onClick={prevStep} size="lg">
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
+                                    </Button>
+                                    <Button
+                                        onClick={nextStep}
+                                        disabled={quoteData.selectedProducts.length === 0}
+                                        size="lg"
+                                    >
+                                        견적 확인하기 <Calculator className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
 
-                {/* 하단 CTA */}
-                <div className="text-center">
-                    <h3 className="text-xl font-semibold mb-4">궁금한 점이 있으신가요?</h3>
-                    <p className="text-muted-foreground mb-6">
-                        전문 컨설턴트가 귀하의 비즈니스에 최적화된 솔루션을 제안해드립니다
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button size="lg">무료 상담 신청</Button>
-                        <Button size="lg" variant="outline">데모 체험하기</Button>
-                    </div>
+                    {/* 4단계: 최종 견적서 */}
+                    {currentStep === 4 && (
+                        <div className="space-y-6">
+                            <Card className="p-8">
+                                <CardHeader className="text-center pb-8">
+                                    <CardTitle className="text-2xl flex items-center justify-center gap-2">
+                                        <Calculator className="h-6 w-6" />
+                                        맞춤 견적서
+                                    </CardTitle>
+                                    <CardDescription className="text-base">
+                                        선택하신 솔루션의 예상 비용입니다
+                                    </CardDescription>
+                                </CardHeader>
+                                <CardContent className="space-y-6">
+                                    {/* 선택된 제품들 */}
+                                    <div>
+                                        <h3 className="font-semibold mb-4">선택된 제품</h3>
+                                        <div className="space-y-3">
+                                            {quoteData.selectedProducts.map(productId => {
+                                                const product = productDatabase[productId]
+                                                return (
+                                                    <div key={productId} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
+                                                        <span className="font-medium">{product.name}</span>
+                                                        <Badge variant="secondary">${product.price}/월</Badge>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+
+                                    <Separator />
+
+                                    {/* 가격 계산 */}
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between">
+                                            <span>기본 월 사용료 (USD)</span>
+                                            <span className="font-mono">${quoteData.selectedProducts.reduce((sum, id) => sum + productDatabase[id].price, 0)}</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span>규모별 할인/할증</span>
+                                            <span className="font-mono">x{companySizes.find(s => s.id === quoteData.companySize)?.multiplier}</span>
+                                        </div>
+                                        <Separator />
+                                        <div className="flex justify-between text-lg font-semibold">
+                                            <span>총 월 사용료 (USD)</span>
+                                            <span className="font-mono">${calculateTotalPrice()}</span>
+                                        </div>
+                                    </div>
+
+                                    <Separator />
+
+                                    {/* 환율 변환 */}
+                                    <CurrencyConverter
+                                        usdPrice={calculateTotalPrice()}
+                                        productName="선택된 솔루션 패키지"
+                                    />
+
+                                    <div className="flex justify-between mt-8">
+                                        <Button variant="outline" onClick={prevStep} size="lg">
+                                            <ArrowLeft className="mr-2 h-4 w-4" /> 수정하기
+                                        </Button>
+                                        <div className="space-x-2">
+                                            <Button variant="outline" size="lg">
+                                                견적서 다운로드
+                                            </Button>
+                                            <Button size="lg">
+                                                상담 신청하기
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {/* 추가 정보 */}
+                            <Card className="p-6 bg-blue-50 dark:bg-blue-950 border-blue-200">
+                                <div className="text-center">
+                                    <h3 className="font-semibold mb-2">🎉 견적 완료!</h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        전문 컨설턴트와 상담하시면 더 정확한 견적과 특별 할인 혜택을 받아보실 수 있습니다.
+                                    </p>
+                                </div>
+                            </Card>
+                        </div>
+                    )}
                 </div>
-            </div>
+            </section>
         </div>
     )
 }
