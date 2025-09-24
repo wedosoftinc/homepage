@@ -32,23 +32,23 @@ export default function MaintenancePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-purple-950 dark:via-background dark:to-indigo-950">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-4 bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
+            <Badge variant="secondary" className="mb-4">
               <Shield className="w-3 h-3 mr-1" />
               Maintenance & Support
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
               도입 이후에도<br />
-              <span className="text-foreground">계속 곁에 있습니다</span>
+              <span className="text-primary">계속 곁에 있습니다</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               SaaS 도입은 시작일 뿐입니다. 지속적인 운영 지원과 최적화를 통해<br />
               장기적인 성공을 보장하는 것이 진짜 파트너십입니다.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
+              <Button size="lg" asChild>
                 <Link href="/contact">
                   운영지원 상담
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -70,7 +70,7 @@ export default function MaintenancePage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               24/7 전문가
-              <span className="text-purple-600"> 운영 지원</span>
+              <span className="text-primary"> 운영 지원</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               25년 경험의 전문가들이 귀하의 SaaS 환경을 지속적으로 모니터링하고
@@ -79,10 +79,10 @@ export default function MaintenancePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-purple-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <HeadphonesIcon className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <HeadphonesIcon className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">24/7 기술 지원</CardTitle>
                 <CardDescription>
@@ -111,10 +111,10 @@ export default function MaintenancePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Settings className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Settings className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">시스템 최적화</CardTitle>
                 <CardDescription>
@@ -143,10 +143,10 @@ export default function MaintenancePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-green-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <TrendingUp className="h-6 w-6 text-green-600 dark:text-green-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">지속적 개선</CardTitle>
                 <CardDescription>
@@ -175,10 +175,10 @@ export default function MaintenancePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-orange-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Shield className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">보안 관리</CardTitle>
                 <CardDescription>
@@ -207,10 +207,10 @@ export default function MaintenancePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-red-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Clock className="h-6 w-6 text-red-600 dark:text-red-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Clock className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">정기 점검</CardTitle>
                 <CardDescription>
@@ -239,10 +239,10 @@ export default function MaintenancePage() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-yellow-500">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
-                <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <MessageSquare className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <MessageSquare className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">전담 매니저</CardTitle>
                 <CardDescription>
@@ -275,23 +275,23 @@ export default function MaintenancePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             안정적인 SaaS 운영, 혼자 하지 마세요
           </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
             25년 경험의 전문가가 귀하의 SaaS 환경을 24시간 책임지고 관리합니다.
             전담 매니저와 함께하는 안심 운영 서비스를 경험해보세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" asChild>
               <Link href="/contact">
                 운영지원 상담
                 <MessageSquare className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600" asChild>
+            <Button size="lg" variant="outline" asChild>
               <Link href="tel:02-2135-3071">
                 전화 상담: 02-2135-3071
               </Link>
