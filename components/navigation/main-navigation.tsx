@@ -465,89 +465,105 @@ function MobileNav({ onClose }: { onClose: () => void }) {
         setExpandedSection(expandedSection === section ? null : section)
     }
 
-    // 솔루션 메뉴 데이터 (데스크톱과 동일)
+    // 솔루션 메뉴 데이터 (데스크톱과 완전 동일하게 동기화)
     const solutionsByCategory = {
-        "고객 경험 & 세일즈": [
+        "고객 경험 관리": [
+            {
+                name: "Freshdesk Omni",
+                href: "/products/freshdesk-omni",
+                description: "옴니채널 고객 지원의 완성"
+            },
             {
                 name: "Freshdesk",
-                href: "/freshdesk/",
-                description: "통합 고객지원 플랫폼"
+                href: "/products/freshdesk",
+                description: "고객 지원의 새로운 기준"
             },
             {
                 name: "Freshcaller",
-                href: "/freshcaller/",
+                href: "/products/freshcaller",
                 description: "클라우드 PBX 솔루션"
             },
             {
                 name: "Freshchat",
-                href: "/freshchat/",
-                description: "실시간 고객 상담"
+                href: "/products/freshchat",
+                description: "실시간 채팅 솔루션"
             },
             {
                 name: "Freddy AI",
-                href: "/freddy-ai/",
-                description: "AI 기반 업무 자동화"
+                href: "/products/freddy-ai",
+                description: "GPT LLM 기반 자동화"
+            },
+            {
+                name: "Freshsales",
+                href: "/products/freshsales",
+                description: "AI 기반 스마트 CRM"
             }
         ],
-        "협업 & 생산성": [
+        "협업 및 생산성 향상": [
             {
                 name: "Google Workspace",
-                href: "/google-workspace/",
-                description: "클라우드 협업 도구"
+                href: "/products/google-workspace",
+                description: "클라우드 기반 협업 솔루션"
             },
             {
                 name: "Monday Work Management",
-                href: "/monday-work-management-2/",
-                description: "프로젝트 관리 플랫폼"
+                href: "/products/monday-work-management",
+                description: "올인원 워크 OS"
             },
             {
-                name: "Monday Dev",
-                href: "/monday-dev/",
-                description: "개발팀 협업 도구"
+                name: "Monday Service",
+                href: "/products/monday-service",
+                description: "AI 기반 서비스 관리"
             },
             {
                 name: "Monday Sales CRM",
-                href: "/monday-sales-crm/",
-                description: "영업팀 관리 도구"
+                href: "/products/monday-sales-crm",
+                description: "세일즈 파이프라인 관리"
             }
         ],
-        "IT 인프라": [
+        "IT 인프라 최적화": [
             {
                 name: "Freshservice",
-                href: "/freshservice/",
-                description: "IT 서비스 관리"
+                href: "/products/freshservice",
+                description: "IT 서비스 관리의 혁신"
             },
             {
                 name: "Splashtop",
-                href: "/splashtop/",
-                description: "원격 접속 솔루션"
+                href: "/products/splashtop",
+                description: "안전한 원격 접속 솔루션"
+            },
+            {
+                name: "Monday Dev",
+                href: "/products/monday-dev",
+                description: "개발팀 전용 프로젝트 관리"
             }
         ]
     }
 
+    // 서비스 메뉴 데이터 (데스크톱과 동일하게 동기화)
     const servicesByCategory = {
         "컨설팅 & 전략": [
             {
                 name: "컨설팅",
                 href: "/services/consulting",
-                description: "도입 전 전략 수립"
+                description: "도입 전에 물어야 할 질문들을, 대신 생각해드립니다"
             },
             {
-                name: "구축 & 구현",
+                name: "구축",
                 href: "/services/implementation",
-                description: "기술적 설정 및 구축"
+                description: "기술적인 설정은 우리 몫입니다"
             }
         ],
         "교육 & 지원": [
             {
-                name: "교육 & 트레이닝",
+                name: "교육",
                 href: "/services/training",
-                description: "사용자 교육 프로그램"
+                description: "잘 도입했다면, 잘 쓰게 만들어야죠"
             },
             {
-                name: "운영 지원",
+                name: "운영지원",
                 href: "/services/maintenance",
-                description: "지속적인 운영 지원"
+                description: "도입 이후에도 계속 곁에 있습니다"
             }
         ]
     }

@@ -1,0 +1,628 @@
+{
+  "freshworks": {
+    "freshdesk": {
+      "name": "Freshdesk",
+      "category": "customer-support",
+      "description": "고객 지원 및 헬프데스크 솔루션",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyPrice": 0,
+          "yearlyPrice": 0,
+          "features": [
+            "최대 2명 에이전트",
+            "기본 티켓 관리",
+            "이메일 지원",
+            "기본 보고서"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 15,
+          "yearlyPrice": 180,
+          "features": [
+            "무제한 에이전트",
+            "소셜 채널 통합",
+            "시간 추적",
+            "기본 자동화"
+          ]
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 49,
+          "yearlyPrice": 588,
+          "features": [
+            "Growth 모든 기능",
+            "멀티 브랜드",
+            "고급 자동화",
+            "커스텀 필드"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": 79,
+          "yearlyPrice": 948,
+          "features": [
+            "Pro 모든 기능",
+            "IP 화이트리스트",
+            "감사 로그",
+            "24/7 지원"
+          ]
+        }
+      ]
+    },
+    "freshdesk-omni": {
+      "name": "Freshdesk Omni",
+      "category": "customer-support",
+      "description": "옴니채널 고객 지원의 완성",
+      "plans": [
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 29,
+          "yearlyPrice": 348,
+          "features": [
+            "옴니채널 고객 지원",
+            "지능형 챗봇",
+            "웹/SMS/메시징/이메일 티켓팅",
+            "기본 보고서"
+          ]
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 69,
+          "yearlyPrice": 828,
+          "features": [
+            "Growth 모든 기능",
+            "맞춤형 지원 포털",
+            "커스텀 객체",
+            "고급 티켓팅",
+            "커스텀 리포팅"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": 109,
+          "yearlyPrice": 1308,
+          "features": [
+            "Pro 모든 기능",
+            "감사 로그",
+            "승인 워크플로우",
+            "스킬 기반 배정",
+            "추가 보안 기능"
+          ]
+        }
+      ]
+    },
+    "freshchat": {
+      "name": "Freshchat",
+      "category": "customer-support",
+      "description": "실시간 채팅 및 메시징 플랫폼",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyPrice": 0,
+          "yearlyPrice": 0,
+          "features": [
+            "최대 10명 에이전트",
+            "기본 챗봇",
+            "웹 위젯",
+            "모바일 앱"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 19,
+          "yearlyPrice": 228,
+          "features": [
+            "무제한 대화",
+            "고급 챗봇",
+            "인텔리어사인",
+            "모바일 SDK"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 59,
+          "yearlyPrice": 708,
+          "features": [
+            "Growth 모든 기능",
+            "캠페인",
+            "고급 보고서",
+            "API 액세스"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": 89,
+          "yearlyPrice": 1068,
+          "features": [
+            "Pro 모든 기능",
+            "SSO",
+            "IP 제한",
+            "전담 지원"
+          ]
+        }
+      ]
+    },
+    "freshcaller": {
+      "name": "Freshcaller",
+      "category": "customer-support", 
+      "description": "클라우드 PBX 솔루션",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyPrice": 0,
+          "yearlyPrice": 0,
+          "features": [
+            "기본 통화 기능",
+            "사용한 분(pay/min) 추가 요금",
+            "최대 2명 에이전트",
+            "기본 리포트"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 15,
+          "yearlyPrice": 180,
+          "features": [
+            "월 2,000분 포함",
+            "통화 녹음",
+            "IVR",
+            "고급 리포트"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 39,
+          "yearlyPrice": 468,
+          "features": [
+            "월 3,000분 포함",
+            "고급 IVR",
+            "통화 모니터링",
+            "예측 다이얼"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": 69,
+          "yearlyPrice": 828,
+          "features": [
+            "월 5,000분 포함",
+            "멀티 레벨 IVR",
+            "실시간 대시보드",
+            "24/7 지원"
+          ]
+        }
+      ]
+    },
+    "freshservice": {
+      "name": "Freshservice",
+      "category": "it-service",
+      "description": "IT 서비스 관리의 혁신",
+      "plans": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "monthlyPrice": 19,
+          "yearlyPrice": 228,
+          "features": [
+            "인시던트 관리",
+            "기본 자산 관리",
+            "셀프 서비스 포털",
+            "모바일 앱"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 49,
+          "yearlyPrice": 588,
+          "features": [
+            "Starter 모든 기능",
+            "문제 관리",
+            "변경 관리",
+            "고급 자산 관리"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 95,
+          "yearlyPrice": 1140,
+          "features": [
+            "Growth 모든 기능",
+            "프로젝트 관리",
+            "벤더 관리",
+            "고급 분석"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": null,
+          "yearlyPrice": null,
+          "customPricing": true,
+          "features": [
+            "Pro 모든 기능",
+            "Freddy AI 포함",
+            "맞춤형 구성",
+            "전담 지원"
+          ]
+        }
+      ]
+    },
+    "freshsales": {
+      "name": "Freshsales",
+      "category": "sales-management",
+      "description": "AI 기반 스마트 CRM",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyPrice": 0,
+          "yearlyPrice": 0,
+          "features": [
+            "최대 3명 사용자",
+            "기본 리드 관리",
+            "연락처 관리",
+            "기본 이메일"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth",
+          "monthlyPrice": 9,
+          "yearlyPrice": 108,
+          "features": [
+            "리드/딜 관리",
+            "연락처 관리",
+            "이메일/전화",
+            "기본 보고서"
+          ]
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 39,
+          "yearlyPrice": 468,
+          "features": [
+            "Growth 모든 기능",
+            "영업 시퀀스",
+            "파이프라인 관리",
+            "고급 보고서"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": 59,
+          "yearlyPrice": 708,
+          "features": [
+            "Pro 모든 기능",
+            "영역 관리",
+            "예측 연락처 점수",
+            "고급 워크플로우"
+          ]
+        }
+      ]
+    }
+  },
+  "google": {
+    "google-workspace": {
+      "name": "Google Workspace",
+      "category": "team-collaboration",
+      "description": "클라우드 기반 협업 솔루션",
+      "plans": [
+        {
+          "id": "business-starter",
+          "name": "Business Starter",
+          "monthlyPrice": 6,
+          "yearlyPrice": 72,
+          "features": [
+            "Gmail",
+            "Drive 30GB",
+            "Meet 최대 100명",
+            "Calendar, Docs, Sheets, Slides"
+          ]
+        },
+        {
+          "id": "business-standard",
+          "name": "Business Standard",
+          "monthlyPrice": 12,
+          "yearlyPrice": 144,
+          "features": [
+            "Business Starter 모든 기능",
+            "Drive 2TB",
+            "Meet 최대 150명",
+            "녹화 기능",
+            "출석 추적"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "business-plus",
+          "name": "Business Plus",
+          "monthlyPrice": 18,
+          "yearlyPrice": 216,
+          "features": [
+            "Business Standard 모든 기능",
+            "Drive 5TB",
+            "Meet 최대 500명",
+            "고급 보안",
+            "Vault"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": null,
+          "yearlyPrice": null,
+          "customPricing": true,
+          "features": [
+            "무제한 저장공간",
+            "고급 보안 및 분석",
+            "지원",
+            "맞춤형 구성"
+          ]
+        }
+      ]
+    }
+  },
+  "monday": {
+    "monday-work": {
+      "name": "Monday Work Management",
+      "category": "team-collaboration",
+      "description": "프로젝트 관리 및 팀 협업 플랫폼",
+      "plans": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "monthlyPrice": 8,
+          "yearlyPrice": 96,
+          "features": [
+            "기본 대시보드",
+            "iOS/Android 앱",
+            "5GB 저장공간",
+            "3 seats 최소"
+          ]
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "monthlyPrice": 10,
+          "yearlyPrice": 120,
+          "features": [
+            "Basic 모든 기능",
+            "타임라인 및 캘린더 뷰",
+            "게스트 액세스",
+            "250GB 저장공간"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 16,
+          "yearlyPrice": 192,
+          "features": [
+            "Standard 모든 기능",
+            "시간 추적",
+            "커스텀 필드",
+            "차트 뷰",
+            "1,000GB 저장공간"
+          ]
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": null,
+          "yearlyPrice": null,
+          "customPricing": true,
+          "features": [
+            "Pro 모든 기능",
+            "고급 리포팅",
+            "엔터프라이즈 보안",
+            "멀티 레벨 권한"
+          ]
+        }
+      ]
+    },
+    "monday-service": {
+      "name": "Monday Service",
+      "category": "it-service",
+      "description": "AI 기반 서비스 관리",
+      "plans": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "monthlyPrice": 6,
+          "yearlyPrice": 72,
+          "features": [
+            "티켓 관리",
+            "기본 자동화",
+            "이메일 알림",
+            "SLA 추적"
+          ]
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "monthlyPrice": 12,
+          "yearlyPrice": 144,
+          "features": [
+            "Basic 모든 기능",
+            "고급 자동화",
+            "지식 베이스",
+            "사용자 포털"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 19,
+          "yearlyPrice": 228,
+          "features": [
+            "Standard 모든 기능",
+            "고급 분석",
+            "에스컬레이션",
+            "API 액세스"
+          ]
+        }
+      ]
+    },
+    "monday-sales": {
+      "name": "Monday Sales CRM",
+      "category": "sales-management",
+      "description": "CRM 및 영업 파이프라인 관리",
+      "plans": [
+        {
+          "id": "basic",
+          "name": "Basic",
+          "monthlyPrice": 12,
+          "yearlyPrice": 144,
+          "features": [
+            "리드 관리",
+            "딜 파이프라인",
+            "기본 보고서",
+            "이메일 동기화"
+          ]
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "monthlyPrice": 17,
+          "yearlyPrice": 204,
+          "features": [
+            "Basic 모든 기능",
+            "자동화",
+            "고급 필터",
+            "활동 로그"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyPrice": 28,
+          "yearlyPrice": 336,
+          "features": [
+            "Standard 모든 기능",
+            "고급 분석",
+            "예측",
+            "통합 API"
+          ]
+        }
+      ]
+    }
+  },
+  "splashtop": {
+    "splashtop": {
+      "name": "Splashtop Business Access",
+      "category": "remote-access",
+      "description": "안전한 원격 접속 솔루션",
+      "plans": [
+        {
+          "id": "solo",
+          "name": "Solo",
+          "monthlyPrice": 5,
+          "yearlyPrice": 60,
+          "features": [
+            "1 user",
+            "개인용",
+            "무제한 컴퓨터 액세스",
+            "기본 보안"
+          ]
+        },
+        {
+          "id": "pro",
+          "name": "Business Access Pro",
+          "monthlyPrice": 8.33,
+          "yearlyPrice": 100,
+          "features": [
+            "1 user",
+            "비즈니스용",
+            "고급 기능",
+            "파일 전송",
+            "채팅",
+            "세션 기록"
+          ],
+          "recommended": true
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "monthlyPrice": null,
+          "yearlyPrice": null,
+          "customPricing": true,
+          "features": [
+            "대기업용",
+            "SSO",
+            "고급 보안",
+            "API",
+            "온프레미스"
+          ]
+        }
+      ]
+    }
+  },
+  "ai_addons": {
+    "freddy-ai": {
+      "name": "Freddy AI",
+      "category": "ai-addon",
+      "description": "모든 Freshworks 제품에 통합 가능한 AI 기능",
+      "plans": [
+        {
+          "id": "agent",
+          "name": "Freddy AI Agent",
+          "monthlyPrice": null,
+          "sessionPricing": {
+            "freeIncluded": 500,
+            "additionalPrice": 100,
+            "unit": "1,000 세션"
+          },
+          "features": [
+            "500 세션 무료 포함",
+            "추가 세션 $100/1,000 세션",
+            "자동 고객 응답",
+            "실시간 채팅 봇"
+          ]
+        },
+        {
+          "id": "copilot",
+          "name": "Freddy AI Copilot",
+          "monthlyPrice": 29,
+          "yearlyPrice": 348,
+          "features": [
+            "에이전트 업무 보조",
+            "응답 제안",
+            "감정 분석",
+            "지식베이스 추천"
+          ],
+          "recommended": true
+        }
+      ]
+    }
+  }
+}
