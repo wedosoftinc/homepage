@@ -27,7 +27,7 @@ export default function DesignSystemPage() {
         <div className="min-h-screen bg-background">
             {/* Header */}
             <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between">
+                <div className="container py-4 flex items-center justify-between">
                     <div>
                         <h1 className="text-2xl font-bold">WeDoSoft Design System</h1>
                         <p className="text-sm text-muted-foreground">B2B SaaS를 위한 디자인 시스템</p>
@@ -39,7 +39,7 @@ export default function DesignSystemPage() {
                 </div>
             </header>
 
-            <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8">
+            <div className="container py-8">
                 <Tabs defaultValue="overview" className="w-full">
                     <TabsList className="grid w-full grid-cols-5">
                         <TabsTrigger value="overview">개요</TabsTrigger>

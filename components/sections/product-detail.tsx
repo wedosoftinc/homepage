@@ -34,7 +34,7 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
         <>
             {/* Hero Section */}
             <section className="bg-muted/20 py-16 lg:py-24">
-                <div className="container mx-auto px-4">
+                <div className="container">
                     <div className="max-w-4xl mx-auto text-center">
                         <Badge variant="outline" className="mb-4">
                             {product.category}
@@ -64,7 +64,7 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
 
             {/* Features Section */}
             <section className="py-16 lg:py-24">
-                <div className="container mx-auto px-4">
+                <div className="container">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -93,7 +93,7 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
 
             {/* Benefits Section */}
             <section className="py-16 lg:py-24 bg-muted/20">
-                <div className="container mx-auto px-4">
+                <div className="container">
                     <div className="max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <div>
@@ -141,7 +141,7 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
 
             {/* Related Products */}
             <section className="py-16 lg:py-24">
-                <div className="container mx-auto px-4">
+                <div className="container">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -170,7 +170,7 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
 
             {/* CTA Section */}
             <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-                <div className="container mx-auto px-4">
+                <div className="container">
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             {product.title} 도입을 고려 중이신가요?
