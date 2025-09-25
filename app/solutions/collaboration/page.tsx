@@ -8,18 +8,18 @@ import { PageHeader } from '@/components/common/page-header'
 import { MetricCard } from '@/components/common/metric-card'
 import Link from 'next/link'
 import {
-    Users,
-    Calendar,
-    FileText,
-    Zap,
-    TrendingUp,
-    BarChart3,
-    ArrowRight,
-    CheckCircle,
-    Target,
-    Clock,
-    Briefcase
-} from 'lucide-react'
+    UsersIcon as Users,
+    CalendarIcon as Calendar,
+    DocumentTextIcon as FileText,
+    BoltIcon as Zap,
+    ArrowTrendingUpIcon as TrendingUp,
+    ChartBarIcon as BarChart3,
+    ArrowRightIcon as ArrowRight,
+    CheckCircleIcon as CheckCircle,
+    CursorArrowRaysIcon as Target,
+    ClockIcon as Clock,
+    BriefcaseIcon as Briefcase
+} from '@heroicons/react/24/outline'
 
 export default function CollaborationPage() {
     const breadcrumbItems = [

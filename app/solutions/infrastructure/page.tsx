@@ -8,18 +8,18 @@ import { PageHeader } from '@/components/common/page-header'
 import { MetricCard } from '@/components/common/metric-card'
 import Link from 'next/link'
 import {
-    Server,
-    Shield,
-    Zap,
-    Code,
-    Monitor,
-    Settings,
-    ArrowRight,
-    CheckCircle,
-    Clock,
-    TrendingDown,
-    Activity
-} from 'lucide-react'
+    ServerIcon as Server,
+    ShieldCheckIcon as Shield,
+    BoltIcon as Zap,
+    CodeBracketIcon as Code,
+    ComputerDesktopIcon as Monitor,
+    CogIcon as Settings,
+    ArrowRightIcon as ArrowRight,
+    CheckCircleIcon as CheckCircle,
+    ClockIcon as Clock,
+    ArrowTrendingDownIcon as TrendingDown,
+    SignalIcon as Activity
+} from '@heroicons/react/24/outline'
 
 export default function InfrastructurePage() {
     const breadcrumbItems = [

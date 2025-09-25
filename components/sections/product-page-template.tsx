@@ -9,12 +9,17 @@ import { StepByStepDemo } from "@/components/ui/step-by-step-demo"
 import { DashboardCard } from "@/components/dashboard"
 import { MetricCard } from "@/components/common"
 import {
-    CheckCircle, ArrowRight, Star, Users, Zap, Shield,
-    MessageSquare, BarChart3, Settings, Headphones, Globe,
-    Phone, Mail, FileText, Clock, Target, Briefcase,
-    ChevronRight, Home, Share2, Play, Sparkles, Monitor, Workflow,
-    Bell, Filter, TrendingUp
-} from "lucide-react"
+    CheckCircleIcon as CheckCircle, ArrowRightIcon as ArrowRight, StarIcon as Star,
+    UsersIcon as Users, BoltIcon as Zap, ShieldCheckIcon as Shield,
+    ChatBubbleBottomCenterTextIcon as MessageSquare, ChartBarIcon as BarChart3,
+    CogIcon as Settings, PhoneIcon as Headphones, GlobeAltIcon as Globe,
+    PhoneIcon as Phone, EnvelopeIcon as Mail, DocumentTextIcon as FileText,
+    ClockIcon as Clock, FlagIcon as Target, BriefcaseIcon as Briefcase,
+    ChevronRightIcon as ChevronRight, HomeIcon as Home, ShareIcon as Share2,
+    PlayIcon as Play, SparklesIcon as Sparkles, ComputerDesktopIcon as Monitor,
+    RectangleGroupIcon as Workflow, BellIcon as Bell, FunnelIcon as Filter,
+    ArrowTrendingUpIcon as TrendingUp
+} from "@heroicons/react/24/outline"
 import Link from "next/link"
 import Image from "next/image"
 

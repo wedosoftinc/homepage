@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import {
-  ArrowRight,
-  CheckCircle,
-  Settings,
-  Database,
-  MessageSquare,
-  Server,
-  Code
-} from "lucide-react"
+  ArrowRightIcon as ArrowRight,
+  CheckCircleIcon as CheckCircle,
+  CogIcon as Settings,
+  CircleStackIcon as Database,
+  ChatBubbleLeftRightIcon as MessageSquare,
+  ServerIcon as Server,
+  CodeBracketIcon as Code
+} from "@heroicons/react/24/outline"
 
 export default function ImplementationPage() {
   return (

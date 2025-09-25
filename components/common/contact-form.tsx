@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Phone, Send } from "lucide-react"
+import { EnvelopeIcon as Mail, PhoneIcon as Phone, PaperAirplaneIcon as Send } from "@heroicons/react/24/outline"
 
 interface ContactFormProps {
     title?: string

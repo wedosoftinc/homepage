@@ -4,7 +4,14 @@ import React from 'react'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Building, Calendar, Trophy, Users, Award, Handshake } from "lucide-react"
+import {
+  BuildingOfficeIcon as Building,
+  CalendarIcon as Calendar,
+  TrophyIcon as Trophy,
+  UsersIcon as Users,
+  StarIcon as Award,
+  HandRaisedIcon as Handshake
+} from "@heroicons/react/24/outline"
 
 const iconMap = {
   Building,

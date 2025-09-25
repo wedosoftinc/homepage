@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Star, ArrowRight, Zap } from "lucide-react"
+import { StarIcon as Star, ArrowRightIcon as ArrowRight, BoltIcon as Zap } from "@heroicons/react/24/outline"
 import {
     MetricCard,
     FeatureList,

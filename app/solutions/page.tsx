@@ -6,16 +6,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CurrencyConverter } from '@/components/ui/currency-converter'
 import Link from 'next/link'
 import {
-    Users,
-    TrendingUp,
-    Server,
-    ArrowRight,
-    CheckCircle,
-    Zap,
-    Globe,
-    Shield,
-    Target
-} from 'lucide-react'
+    UsersIcon as Users,
+    ArrowTrendingUpIcon as TrendingUp,
+    ServerIcon as Server,
+    ArrowRightIcon as ArrowRight,
+    CheckCircleIcon as CheckCircle,
+    BoltIcon as Zap,
+    GlobeAltIcon as Globe,
+    ShieldCheckIcon as Shield,
+    CursorArrowRaysIcon as Target
+} from '@heroicons/react/24/outline'
 
 export default function SolutionsPage() {
     const solutions = [

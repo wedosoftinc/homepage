@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Building2, Mail, Phone, MapPin } from "lucide-react"
+import { BuildingOfficeIcon as Building2, EnvelopeIcon as Mail, PhoneIcon as Phone, MapPinIcon as MapPin } from "@heroicons/react/24/outline"
 
 const footerSections = [
     {

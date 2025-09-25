@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import {
-    RefreshCw,
-    DollarSign,
-    TrendingUp,
-    Calendar,
-    AlertCircle
-} from 'lucide-react'
+    ArrowPathIcon as RefreshCw,
+    CurrencyDollarIcon as DollarSign,
+    ArrowTrendingUpIcon as TrendingUp,
+    CalendarIcon as Calendar,
+    ExclamationCircleIcon as AlertCircle
+} from '@heroicons/react/24/outline'
 
 interface ExchangeRateResponse {
     success?: boolean

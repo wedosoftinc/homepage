@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, LucideIcon } from "lucide-react"
+import { ArrowRightIcon as ArrowRight, PlayIcon as Play } from "@heroicons/react/24/outline"
 import { cn } from "@/lib/utils"
 import { designTokens } from "@/lib/design-tokens"
 
@@ -9,7 +9,7 @@ interface CTAButton {
     onClick?: () => void
     variant?: "default" | "secondary" | "outline" | "ghost"
     size?: "sm" | "default" | "lg"
-    icon?: LucideIcon
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     iconPosition?: 'left' | 'right'
 }
 

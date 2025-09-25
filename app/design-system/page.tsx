@@ -8,19 +8,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import {
-    Palette,
-    Type,
-    Layout,
-    Check,
-    ChevronRight,
-    Star,
-    Building2,
-    Users,
-    TrendingUp,
-    Mail,
-    Phone,
-    Globe
-} from 'lucide-react'
+    SwatchIcon as Palette,
+    DocumentTextIcon as Type,
+    Squares2X2Icon as Layout,
+    CheckIcon as Check,
+    ChevronRightIcon as ChevronRight,
+    StarIcon as Star,
+    BuildingOfficeIcon as Building2,
+    UsersIcon as Users,
+    ArrowTrendingUpIcon as TrendingUp,
+    EnvelopeIcon as Mail,
+    PhoneIcon as Phone,
+    GlobeAltIcon as Globe
+} from '@heroicons/react/24/outline'
 
 export default function DesignSystemPage() {
     return (

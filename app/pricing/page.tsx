@@ -7,29 +7,29 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { CurrencyConverter } from "@/components/ui/currency-converter"
 import {
-    ArrowRight,
-    ArrowLeft,
-    Users,
-    Building,
-    Zap,
-    MessageSquare,
-    Headphones,
-    Wrench,
-    Calculator,
-    CheckCircle,
-    TrendingUp,
-    Shield,
-    Globe,
-    BarChart3,
-    FileText,
-    Clock,
-    Target,
-    Lightbulb,
-    Minus,
-    Plus,
-    Calendar,
-    AlertTriangle
-} from "lucide-react"
+    ArrowRightIcon as ArrowRight,
+    ArrowLeftIcon as ArrowLeft,
+    UsersIcon as Users,
+    BuildingOfficeIcon as Building,
+    BoltIcon as Zap,
+    ChatBubbleLeftRightIcon as MessageSquare,
+    PhoneIcon as Headphones,
+    WrenchScrewdriverIcon as Wrench,
+    CalculatorIcon as Calculator,
+    CheckCircleIcon as CheckCircle,
+    ArrowTrendingUpIcon as TrendingUp,
+    ShieldCheckIcon as Shield,
+    GlobeAltIcon as Globe,
+    ChartBarIcon as BarChart3,
+    DocumentTextIcon as FileText,
+    ClockIcon as Clock,
+    CursorArrowRaysIcon as Target,
+    LightBulbIcon as Lightbulb,
+    MinusIcon as Minus,
+    PlusIcon as Plus,
+    CalendarIcon as Calendar,
+    ExclamationTriangleIcon as AlertTriangle
+} from "@heroicons/react/24/outline"
 
 // 타입 정의
 interface QuoteData {
@@ -243,9 +243,9 @@ export default function CustomQuotePage() {
         const updatedProducts = quoteData.selectedProducts.includes(productId)
             ? quoteData.selectedProducts.filter(id => id !== productId)
             : [...quoteData.selectedProducts, productId]
-        
-        setQuoteData({ 
-            ...quoteData, 
+
+        setQuoteData({
+            ...quoteData,
             selectedProducts: updatedProducts,
             // 선택 해제된 제품의 플랜도 제거
             selectedPlans: Object.fromEntries(
@@ -475,11 +475,10 @@ export default function CustomQuotePage() {
                                         return (
                                             <Card
                                                 key={productId}
-                                                className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                                                    isSelected
+                                                className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${isSelected
                                                         ? 'border-2 border-primary bg-primary/5 shadow-lg'
                                                         : 'border border-border hover:border-primary/50'
-                                                }`}
+                                                    }`}
                                                 onClick={() => handleProductSelect(productId)}
                                             >
                                                 <CardContent className="p-6">
@@ -579,13 +578,12 @@ export default function CustomQuotePage() {
                                                         return (
                                                             <Card
                                                                 key={plan.id}
-                                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${
-                                                                    isSelected
+                                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${isSelected
                                                                         ? 'border-2 border-primary bg-primary/5 shadow-lg'
                                                                         : plan.recommended
-                                                                        ? 'border-2 border-blue-200 bg-blue-50/50'
-                                                                        : 'border border-border hover:border-primary/50'
-                                                                }`}
+                                                                            ? 'border-2 border-blue-200 bg-blue-50/50'
+                                                                            : 'border border-border hover:border-primary/50'
+                                                                    }`}
                                                                 onClick={() => handlePlanSelect(productId, plan.id)}
                                                             >
                                                                 <CardContent className="p-6 h-full flex flex-col">

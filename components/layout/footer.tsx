@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { ChevronUp } from "lucide-react"
+import { ChevronUpIcon as ChevronUp } from "@heroicons/react/24/outline"
 
 export function Footer() {
     return (

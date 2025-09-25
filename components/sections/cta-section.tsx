@@ -2,7 +2,15 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Phone, Mail, MessageCircle, Clock, Users, TrendingUp } from "lucide-react"
+import {
+    ArrowRightIcon as ArrowRight,
+    PhoneIcon as Phone,
+    EnvelopeIcon as Mail,
+    ChatBubbleLeftRightIcon as MessageCircle,
+    ClockIcon as Clock,
+    UsersIcon as Users,
+    ArrowTrendingUpIcon as TrendingUp
+} from "@heroicons/react/24/outline"
 import {
     MetricCard,
     FeatureList,

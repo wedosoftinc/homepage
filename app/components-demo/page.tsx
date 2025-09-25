@@ -15,7 +15,7 @@ import { LoadingSpinner } from "@/components/common/loading-spinner"
 import { ErrorMessage } from "@/components/common/error-message"
 
 // 아이콘 임포트
-import { Component, Palette, Code, Eye, ArrowRight, CheckCircle } from "lucide-react"
+import { CubeIcon as Component, SwatchIcon as Palette, CodeBracketIcon as Code, EyeIcon as Eye, ArrowRightIcon as ArrowRight, CheckCircleIcon as CheckCircle } from "@heroicons/react/24/outline"
 
 // 테마 토글 임포트
 import { ThemeToggle } from "@/components/ui/theme-toggle"
