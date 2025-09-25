@@ -49,7 +49,7 @@ interface ProductPlan {
     id: string
     name: string
     monthlyPrice: number | null
-    yearlyPrice: number | null
+    yearlyPrice?: number | null
     customPricing?: boolean
     sessionPricing?: {
         freeIncluded: number
@@ -59,6 +59,7 @@ interface ProductPlan {
     features: string[]
     recommended?: boolean
     maxUsers?: number
+    price?: number // 계산된 가격 필드 추가
 }
 
 interface Product {

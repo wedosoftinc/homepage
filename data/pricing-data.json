@@ -43,18 +43,6 @@
           "recommended": true
         },
         {
-          "id": "pro-ai",
-          "name": "Pro + AI Copilot Bundle",
-          "monthlyPrice": 78,
-          "yearlyPrice": 936,
-          "features": [
-            "Pro 모든 기능",
-            "AI 코파일럿 포함",
-            "지능형 에이전트 어시스트",
-            "고급 인사이트"
-          ]
-        },
-        {
           "id": "enterprise",
           "name": "Enterprise",
           "monthlyPrice": 79,
@@ -63,7 +51,7 @@
             "Pro 모든 기능",
             "IP 화이트리스트",
             "감사 로그",
-            "24/7 전화 지원"
+            "24/7 지원"
           ]
         }
       ]
@@ -147,8 +135,8 @@
         {
           "id": "pro",
           "name": "Pro",
-          "monthlyPrice": 49,
-          "yearlyPrice": 588,
+          "monthlyPrice": 59,
+          "yearlyPrice": 708,
           "features": [
             "Growth 모든 기능",
             "캠페인",
@@ -159,8 +147,8 @@
         {
           "id": "enterprise",
           "name": "Enterprise",
-          "monthlyPrice": 79,
-          "yearlyPrice": 948,
+          "monthlyPrice": 89,
+          "yearlyPrice": 1068,
           "features": [
             "Pro 모든 기능",
             "SSO",
@@ -259,8 +247,8 @@
         {
           "id": "pro",
           "name": "Pro",
-          "monthlyPrice": 99,
-          "yearlyPrice": 1188,
+          "monthlyPrice": 95,
+          "yearlyPrice": 1140,
           "features": [
             "Growth 모든 기능",
             "프로젝트 관리",
@@ -410,8 +398,8 @@
         {
           "id": "basic",
           "name": "Basic",
-          "monthlyPrice": 12,
-          "yearlyPrice": 144,
+          "monthlyPrice": 8,
+          "yearlyPrice": 96,
           "features": [
             "기본 대시보드",
             "iOS/Android 앱",
@@ -422,8 +410,8 @@
         {
           "id": "standard",
           "name": "Standard",
-          "monthlyPrice": 14,
-          "yearlyPrice": 168,
+          "monthlyPrice": 10,
+          "yearlyPrice": 120,
           "features": [
             "Basic 모든 기능",
             "타임라인 및 캘린더 뷰",
@@ -435,8 +423,8 @@
         {
           "id": "pro",
           "name": "Pro",
-          "monthlyPrice": 24,
-          "yearlyPrice": 288,
+          "monthlyPrice": 16,
+          "yearlyPrice": 192,
           "features": [
             "Standard 모든 기능",
             "시간 추적",
@@ -570,8 +558,8 @@
         {
           "id": "pro",
           "name": "Business Access Pro",
-          "monthlyPrice": 9.9,
-          "yearlyPrice": 118.8,
+          "monthlyPrice": 8.33,
+          "yearlyPrice": 100,
           "features": [
             "1 user",
             "비즈니스용",
