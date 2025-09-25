@@ -21,8 +21,8 @@ const timelineData = [
     category: "project" as const,
     highlights: [
       "농심데이터시스템 프로젝트 참여",
-      "기업 IT 시스템 구축 경험 시작",
-      "대규모 데이터 처리 시스템 개발"
+      "아남 반도체 프로젝트 참여",
+      "Hitachi-LG Data Storage 프로젝트 참여"
     ]
   },
   {
@@ -31,34 +31,28 @@ const timelineData = [
     description: "LG Display, LG전자, LG CNS 등 LG 그룹 계열사의 다양한 프로젝트에 참여하며 대기업 IT 인프라 전문성을 확보했습니다.",
     category: "project" as const,
     highlights: [
-      "LG Display 시스템 구축",
-      "LG전자 IT 인프라 프로젝트",
-      "LG CNS 협력 프로젝트 다수",
-      "대한주택보증 시스템 개발"
+      "LG Display 그룹웨어 구축 및 운영 참여",
+      "LG전자 IT 인프라 프로젝트 참여",
+      "LG CNS 프로젝트 외 다수 참여",
     ]
   },
   {
     year: "2008",
-    title: "반도체 및 금융업 진출",
-    description: "아남반도체, Hitage LG Data System 등 반도체 업계와 금융권 프로젝트를 통해 업계 전문성을 확장했습니다.",
+    title: "",
+    description: "공공기관 프로젝트 참여",
     category: "project" as const,
     highlights: [
-      "아남반도체 생산 시스템 구축",
-      "Hitage LG Data System 개발",
-      "반도체 제조 프로세스 최적화",
-      "금융 데이터 처리 시스템"
+      "대한주택보증 차세대시스템 개발 참여"
     ]
   },
   {
     year: "2011",
-    title: "위두소프트 창업",
+    title: "위두소프트 창업, 글로벌 SaaS 솔루션 확장",
     description: "축적된 경험과 노하우를 바탕으로 위두소프트를 창업하여 글로벌 SaaS 솔루션 전문 기업으로의 여정을 시작했습니다.",
     category: "foundation" as const,
     highlights: [
       "위두소프트 법인 설립",
-      "글로벌 SaaS 파트너십 시작",
-      "전문 컨설팅 서비스 출시",
-      "기업 고객 포트폴리오 구축"
+      "글로벌 SaaS 파트너십 시작"
     ]
   },
   {
@@ -69,8 +63,7 @@ const timelineData = [
     highlights: [
       "4개 주요 벤더 파트너십 계약",
       "공식 인증 파트너 지위 확보",
-      "글로벌 기술 지원 체계 구축",
-      "전문가 인증 취득"
+      "글로벌 기술 지원 체계 구축"
     ]
   },
   {
@@ -79,10 +72,10 @@ const timelineData = [
     description: "다양한 산업군의 350여개 고객사에게 성공적인 디지털 전환 서비스를 제공하며 국내 SaaS 시장의 선도 기업으로 자리매김했습니다.",
     category: "milestone" as const,
     highlights: [
-      "350여개 고객사 계약 체결",
-      "다양한 산업군 커버리지 확보",
-      "높은 고객 만족도 달성",
-      "시장 선도 기업 위치 확립"
+      "Suprema CS System 구축",
+      "SK C&C CS System 구축",
+      "MyRealTrip, Miso, Weverse CS System 구축",
+      "11번가, 성우하이텍 ITSM 구축"
     ]
   },
   {
@@ -91,10 +84,8 @@ const timelineData = [
     description: "AI 기반 솔루션과 25년 축적된 전문성을 결합하여 고객의 디지털 혁신을 선도하는 신뢰받는 파트너로 성장했습니다.",
     category: "milestone" as const,
     highlights: [
-      "AI 기반 솔루션 전문성 확보",
-      "25년 경험 기반 컨설팅 서비스",
-      "디지털 혁신 성공사례 다수",
-      "고객 중심 철학 실현"
+      "AI 기반 상담원 지원 솔루션 Copilot Canvas 개발",
+      "다수의 컨설팅 서비스"
     ]
   }
 ]
@@ -231,16 +222,18 @@ export default function CompanyPage() {
             <Card className="p-8">
               <div className="flex flex-col lg:flex-row items-center gap-8">
                 {/* CEO Profile Photo */}
-                <div className="flex-shrink-0">
-                  <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary/20 hover:border-primary/40 transition-colors shadow-lg">
-                    <Image
-                      src="/ceo-profile.png"
-                      alt="위두소프트 대표이사"
-                      width={224}
-                      height={224}
-                      className="w-full h-full object-cover"
-                      priority
-                    />
+                <div className="flex justify-center mb-8">
+                  <div className="relative">
+                    <div className="w-72 h-96 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200">
+                      <Image
+                        src="/ceo-profile.png"
+                        alt="위두소프트 대표이사"
+                        width={288}
+                        height={384}
+                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -249,7 +242,13 @@ export default function CompanyPage() {
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold mb-2">{ceoProfile.name}</h3>
                     <p className="text-lg text-primary font-semibold mb-2">{ceoProfile.title}</p>
-                    <p className="text-muted-foreground">{ceoProfile.company} • {ceoProfile.experience}</p>
+
+                    {/* 경력 정보 */}
+                    <div className="text-center mb-4">
+                      <p className="text-muted-foreground">
+                        IT업계 25년 경력, 대기업 프로젝트 전문
+                      </p>
+                    </div>
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6">

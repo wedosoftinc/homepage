@@ -84,6 +84,7 @@ export function MainNavigation() {
                 width={140}
                 height={40}
                 className="h-10 w-auto dark:hidden"
+                style={{ height: "auto" }}
                 priority
             />
             <Image
@@ -92,6 +93,7 @@ export function MainNavigation() {
                 width={140}
                 height={40}
                 className="h-10 w-auto hidden dark:block"
+                style={{ height: "auto" }}
                 priority
             />
         </div>

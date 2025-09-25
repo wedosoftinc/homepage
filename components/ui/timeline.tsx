@@ -32,17 +32,17 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  foundation: 'bg-blue-500',
-  project: 'bg-green-500',
-  partnership: 'bg-purple-500',
-  milestone: 'bg-orange-500'
+  foundation: 'bg-primary',
+  project: 'bg-primary',
+  partnership: 'bg-primary',
+  milestone: 'bg-primary'
 }
 
 const categoryBadgeColors = {
-  foundation: 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-800',
-  project: 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-800',
-  partnership: 'bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900 dark:text-purple-300 dark:border-purple-800',
-  milestone: 'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900 dark:text-orange-300 dark:border-orange-800'
+  foundation: 'bg-primary/10 text-primary border-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:border-primary/30',
+  project: 'bg-primary/10 text-primary border-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:border-primary/30',
+  partnership: 'bg-primary/10 text-primary border-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:border-primary/30',
+  milestone: 'bg-primary/10 text-primary border-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:border-primary/30'
 }
 
 export function Timeline({ items, className }: TimelineProps) {
@@ -62,7 +62,7 @@ export function Timeline({ items, className }: TimelineProps) {
                 "relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-background",
                 categoryColors[item.category]
               )}>
-                <IconComponent className="h-6 w-6 text-white" />
+                <IconComponent className="h-6 w-6 text-primary-foreground" />
               </div>
 
               {/* Content */}

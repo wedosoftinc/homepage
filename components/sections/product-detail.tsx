@@ -26,8 +26,8 @@ export function ProductDetail({ product, slug }: ProductDetailProps) {
     }
 
     const handleContact = () => {
-        // 연락처 페이지로 이동 (추후 구현)
-        console.log(`문의하기: ${product.title}`)
+        // 연락처 페이지로 이동
+        window.location.href = '/contact'
     }
 
     return (
