@@ -295,6 +295,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                                                     width={300}
                                                     height={200}
                                                     className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
+                                                    style={{ height: "auto" }}
                                                 />
                                             </div>
                                         )}
@@ -418,6 +419,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                                                         width={500}
                                                         height={350}
                                                         className="w-full h-auto"
+                                                        style={{ height: "auto" }}
                                                     />
                                                 </div>
                                             ) : (

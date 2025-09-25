@@ -98,13 +98,15 @@ export function HeroSection() {
                                     {
                                         text: "무료 상담 신청",
                                         variant: "default",
-                                        iconPosition: "right"
+                                        iconPosition: "right",
+                                        href: "/contact"
                                     },
                                     {
                                         text: "성공사례 보기",
                                         variant: "outline",
                                         icon: Play,
-                                        iconPosition: "left"
+                                        iconPosition: "left",
+                                        href: "/company"
                                     }
                                 ]}
                             />

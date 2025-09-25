@@ -46,12 +46,14 @@ export function CTASection() {
                                 {
                                     text: "무료 상담 신청",
                                     variant: "default",
-                                    size: "lg"
+                                    size: "lg",
+                                    href: "/contact"
                                 },
                                 {
                                     text: "14일 무료 체험",
                                     variant: "outline",
-                                    size: "lg"
+                                    size: "lg",
+                                    href: "/contact"
                                 }
                             ]}
                             align="center"
