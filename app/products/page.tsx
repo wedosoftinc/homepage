@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
     return (
         <div className="min-h-screen">
-            <div className="container mx-auto px-6 md:px-8 lg:px-12 py-16">
+            <div className="container py-16">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold mb-4">제품 소개</h1>
                     <p className="text-lg text-muted-foreground">

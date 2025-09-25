@@ -137,7 +137,7 @@ export default function CustomerExperiencePage() {
             {/* Hero Section */}
             <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
                 <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
-                <div className="container relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container relative max-w-7xl">
                     <Breadcrumb items={breadcrumbItems} />
 
                     <div className="mt-8 text-center">
@@ -171,7 +171,7 @@ export default function CustomerExperiencePage() {
 
             {/* Customer Journey Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             완전한 고객 여정 관리
@@ -216,7 +216,7 @@ export default function CustomerExperiencePage() {
 
             {/* Benefits Section */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             입증된 비즈니스 성과
@@ -244,7 +244,7 @@ export default function CustomerExperiencePage() {
 
             {/* Products Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             고객 경험 관리 제품군
@@ -292,7 +292,7 @@ export default function CustomerExperiencePage() {
 
             {/* CTA Section */}
             <section className="py-20 bg-primary text-primary-foreground">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                         고객 경험 혁신을 시작하세요
                     </h2>

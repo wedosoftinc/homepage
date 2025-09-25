@@ -71,7 +71,7 @@ export default function ComponentsDemoPage() {
 
     return (
         <div className="min-h-screen bg-background">
-            <div className="container mx-auto px-6 md:px-8 lg:px-12 py-8">
+            <div className="container py-8">
                 {/* 헤더 */}
                 <div className="text-center mb-12 relative">
                     {/* 다크모드 토글 - 우상단 */}

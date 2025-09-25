@@ -183,7 +183,7 @@ export function PricingSection() {
 
     return (
         <section className="py-24 bg-muted/40">
-            <div className="container mx-auto px-4">
+            <div className="container">
                 {/* 섹션 헤더 */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <BadgeGroup

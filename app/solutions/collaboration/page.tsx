@@ -142,7 +142,7 @@ export default function CollaborationPage() {
             {/* Hero Section */}
             <section className="relative py-20 bg-gradient-to-br from-green-50/50 via-background to-blue-50/50 dark:from-green-900/20 dark:via-background dark:to-blue-900/20">
                 <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
-                <div className="container relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container relative max-w-7xl">
                     <Breadcrumb items={breadcrumbItems} />
 
                     <div className="mt-8 text-center">
@@ -176,7 +176,7 @@ export default function CollaborationPage() {
 
             {/* Features Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             협업의 새로운 기준
@@ -209,7 +209,7 @@ export default function CollaborationPage() {
 
             {/* Collaboration Journey Section */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             체계적인 협업 혁신 로드맵
@@ -254,7 +254,7 @@ export default function CollaborationPage() {
 
             {/* Benefits Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             입증된 생산성 향상 효과
@@ -282,7 +282,7 @@ export default function CollaborationPage() {
 
             {/* Products Section */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             협업 및 생산성 제품군
@@ -330,7 +330,7 @@ export default function CollaborationPage() {
 
             {/* CTA Section */}
             <section className="py-20 bg-primary text-primary-foreground">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                         팀의 생산성 혁신을 시작하세요
                     </h2>
