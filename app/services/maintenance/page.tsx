@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import {
-  ArrowRight,
-  CheckCircle,
-  Shield,
-  HeadphonesIcon,
-  MessageSquare,
-  Clock,
-  Settings,
-  TrendingUp
-} from "lucide-react"
+  ArrowRightIcon as ArrowRight,
+  CheckCircleIcon as CheckCircle,
+  ShieldCheckIcon as Shield,
+  PhoneIcon as HeadphonesIcon,
+  ChatBubbleLeftRightIcon as MessageSquare,
+  ClockIcon as Clock,
+  CogIcon as Settings,
+  ArrowTrendingUpIcon as TrendingUp
+} from "@heroicons/react/24/outline"
 
 export default function MaintenancePage() {
   return (

@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, Users, Cog, MessageSquare } from "lucide-react"
+import { ArrowRightIcon as ArrowRight, UsersIcon as Users, CogIcon as Cog, ChatBubbleBottomCenterTextIcon as MessageSquare } from "@heroicons/react/24/outline"
 import Link from "next/link"
 
 // 제품 데이터

@@ -3,7 +3,20 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-import { ArrowRight, Play, TrendingUp, CheckCircle, Bell, Settings, Filter, MoreHorizontal, Calendar, Cog, Headphones, Award } from "lucide-react"
+import {
+    ArrowRightIcon as ArrowRight,
+    PlayIcon as Play,
+    ArrowTrendingUpIcon as TrendingUp,
+    CheckCircleIcon as CheckCircle,
+    BellIcon as Bell,
+    CogIcon as Settings,
+    FunnelIcon as Filter,
+    EllipsisHorizontalIcon as MoreHorizontal,
+    CalendarIcon as Calendar,
+    CogIcon as Cog,
+    PhoneIcon as Headphones,
+    TrophyIcon as Award
+} from "@heroicons/react/24/outline"
 import {
     MetricCard,
     FeatureList,

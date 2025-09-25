@@ -1,11 +1,10 @@
 import { Badge } from "@/components/ui/badge"
-import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { designTokens } from "@/lib/design-tokens"
 
 interface BadgeItem {
     text: string
-    icon?: LucideIcon
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     variant?: "default" | "secondary" | "outline" | "destructive"
 }
 

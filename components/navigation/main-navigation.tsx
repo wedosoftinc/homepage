@@ -3,7 +3,12 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, Search, ChevronDown } from "lucide-react"
+import {
+    Bars3Icon as Menu,
+    XMarkIcon as X,
+    MagnifyingGlassIcon as Search,
+    ChevronDownIcon as ChevronDown
+} from "@heroicons/react/24/outline"
 
 import { cn } from "@/lib/utils"
 import {

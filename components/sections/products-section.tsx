@@ -4,16 +4,16 @@ import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {
-    ArrowRight,
-    Headphones,
-    Calendar,
-    Shield,
-    CheckCircle2,
-    Lightbulb,
-    Settings,
-    GraduationCap,
-    Wrench
-} from "lucide-react"
+    ArrowRightIcon as ArrowRight,
+    PhoneIcon as Headphones,
+    CalendarIcon as Calendar,
+    ShieldCheckIcon as Shield,
+    CheckCircleIcon as CheckCircle2,
+    LightBulbIcon as Lightbulb,
+    CogIcon as Settings,
+    AcademicCapIcon as GraduationCap,
+    WrenchScrewdriverIcon as Wrench
+} from "@heroicons/react/24/outline"
 import { FreshworksLogo } from "@/components/logos/freshworks-logo"
 import { GoogleWorkspaceLogo } from "@/components/logos/google-workspace-logo"
 import { MondayLogo } from "@/components/logos/monday-logo"

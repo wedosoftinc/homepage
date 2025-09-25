@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ChevronRight, Home } from "lucide-react"
+import { ChevronRightIcon as ChevronRight, HomeIcon as Home } from "@heroicons/react/24/outline"
 import { cn } from "@/lib/utils"
 
 interface BreadcrumbItem {

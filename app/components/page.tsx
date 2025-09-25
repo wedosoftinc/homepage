@@ -1,7 +1,13 @@
 'use client'
 
 import { useState } from "react"
-import { Copy, Check, Palette, Code, Eye } from "lucide-react"
+import {
+    ClipboardDocumentIcon as Copy,
+    CheckIcon as Check,
+    SwatchIcon as Palette,
+    CodeBracketIcon as Code,
+    EyeIcon as Eye
+} from "@heroicons/react/24/outline"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -16,7 +22,11 @@ import { Switch } from "@/components/ui/switch"
 import { Slider } from "@/components/ui/slider"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { AlertTriangle, InfoIcon, CheckCircle } from "lucide-react"
+import {
+    ExclamationTriangleIcon as AlertTriangle,
+    InformationCircleIcon as InfoIcon,
+    CheckCircleIcon as CheckCircle
+} from "@heroicons/react/24/outline"
 
 const componentExamples = [
     {

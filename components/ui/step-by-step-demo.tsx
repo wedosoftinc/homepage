@@ -3,7 +3,16 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight, Play, Pause, MessageCircle, Mail, Phone, Clock } from "lucide-react"
+import {
+    ChevronLeftIcon as ChevronLeft,
+    ChevronRightIcon as ChevronRight,
+    PlayIcon as Play,
+    PauseIcon as Pause,
+    ChatBubbleLeftRightIcon as MessageCircle,
+    EnvelopeIcon as Mail,
+    PhoneIcon as Phone,
+    ClockIcon as Clock
+} from "@heroicons/react/24/outline"
 import Image from "next/image"
 
 interface Step {

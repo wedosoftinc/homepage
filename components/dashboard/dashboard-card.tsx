@@ -1,11 +1,10 @@
 import { Card } from "@/components/ui/card"
-import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { designTokens } from "@/lib/design-tokens"
 
 interface DashboardCardProps {
     title: string
-    icon?: LucideIcon
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     iconBg?: string
     headerColor?: string
     children: React.ReactNode

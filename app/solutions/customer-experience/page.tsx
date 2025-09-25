@@ -8,18 +8,18 @@ import { PageHeader } from '@/components/common/page-header'
 import { MetricCard } from '@/components/common/metric-card'
 import Link from 'next/link'
 import {
-    MessageCircle,
-    Bot,
-    Users,
-    TrendingUp,
-    HeadphonesIcon,
-    Zap,
-    ArrowRight,
-    CheckCircle,
-    Star,
-    Clock,
-    Target
-} from 'lucide-react'
+    ChatBubbleLeftEllipsisIcon as MessageCircle,
+    RocketLaunchIcon as Bot,
+    UsersIcon as Users,
+    ArrowTrendingUpIcon as TrendingUp,
+    PhoneIcon as HeadphonesIcon,
+    BoltIcon as Zap,
+    ArrowRightIcon as ArrowRight,
+    CheckCircleIcon as CheckCircle,
+    StarIcon as Star,
+    ClockIcon as Clock,
+    CursorArrowRaysIcon as Target
+} from '@heroicons/react/24/outline'
 
 export default function CustomerExperiencePage() {
     const breadcrumbItems = [

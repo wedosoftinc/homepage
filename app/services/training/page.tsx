@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import {
-  ArrowRight,
-  CheckCircle,
-  Users,
-  BookOpen,
-  MessageSquare,
-  Video,
-  Award,
-  Clock
-} from "lucide-react"
+  ArrowRightIcon as ArrowRight,
+  CheckCircleIcon as CheckCircle,
+  UsersIcon as Users,
+  BookOpenIcon as BookOpen,
+  ChatBubbleLeftRightIcon as MessageSquare,
+  VideoCameraIcon as Video,
+  TrophyIcon as Award,
+  ClockIcon as Clock
+} from "@heroicons/react/24/outline"
 
 export default function TrainingPage() {
   return (

@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { designTokens } from "@/lib/design-tokens"
 
@@ -15,7 +14,7 @@ interface TicketItemProps {
     }
     timestamp: string
     priority?: 'low' | 'medium' | 'high' | 'urgent'
-    icon?: LucideIcon
+    icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     onClick?: () => void
     className?: string
 }

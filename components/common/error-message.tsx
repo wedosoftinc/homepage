@@ -1,4 +1,8 @@
-import { AlertTriangle, RefreshCw, Home } from "lucide-react"
+import {
+    ExclamationTriangleIcon as AlertTriangle,
+    ArrowPathIcon as RefreshCw,
+    HomeIcon as Home
+} from "@heroicons/react/24/outline"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"

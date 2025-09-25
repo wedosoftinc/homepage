@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Check, ArrowRight, ExternalLink, MessageCircle } from "lucide-react"
+import { CheckIcon as Check, ArrowRightIcon as ArrowRight, ArrowTopRightOnSquareIcon as ExternalLink, ChatBubbleLeftRightIcon as MessageCircle } from "@heroicons/react/24/outline"
 import Link from "next/link"
 
 interface ProductDetailProps {

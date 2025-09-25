@@ -5,19 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import {
-  ArrowRight,
-  CheckCircle,
-  Target,
-  Users,
-  BarChart3,
-  MessageSquare,
-  Shield,
-  Clock,
-  Briefcase,
-  TrendingUp,
-  Globe,
-  Settings
-} from "lucide-react"
+  ArrowRightIcon as ArrowRight,
+  CheckCircleIcon as CheckCircle,
+  FlagIcon as Target,
+  UsersIcon as Users,
+  ChartBarIcon as BarChart3,
+  ChatBubbleBottomCenterTextIcon as MessageSquare,
+  ShieldCheckIcon as Shield,
+  ClockIcon as Clock,
+  BriefcaseIcon as Briefcase,
+  ArrowTrendingUpIcon as TrendingUp,
+  GlobeAltIcon as Globe,
+  CogIcon as Settings
+} from "@heroicons/react/24/outline"
 
 export default function ConsultingPage() {
   return (
@@ -77,7 +77,7 @@ export default function ConsultingPage() {
               <span className="text-primary"> 전략 컨설팅</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Freshworks, Google, Monday.com, Splashtop 공식 파트너로서 
+              Freshworks, Google, Monday.com, Splashtop 공식 파트너로서
               검증된 방법론과 실무 경험을 바탕으로 최적의 솔루션을 제안합니다
             </p>
           </div>

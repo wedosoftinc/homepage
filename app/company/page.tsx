@@ -1,24 +1,17 @@
 import { MainNavigation } from "@/components/navigation/main-navigation"
 import { Footer } from "@/components/layout/footer"
 import { Breadcrumb } from "@/components/common/breadcrumb"
-import { ProfileCard } from "@/components/ui/profile-card"
 import { Timeline } from "@/components/ui/timeline"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import {
-  Building,
-  Calendar,
-  Users,
-  Trophy,
-  Target,
-  Heart,
-  Shield,
-  TrendingUp,
-  Lightbulb,
-  Globe,
-  Award,
-  Handshake
-} from "lucide-react"
+  FlagIcon as Target,
+  ShieldCheckIcon as Shield,
+  ArrowTrendingUpIcon as TrendingUp,
+  LightBulbIcon as Lightbulb,
+  GlobeAltIcon as Globe
+} from "@heroicons/react/24/outline"
 
 const timelineData = [
   {
@@ -110,33 +103,7 @@ const ceoProfile = {
   name: "대표이사",
   title: "최고경영자 & 기술이사",
   company: "위두소프트",
-  experience: "25년 경험",
-  highlights: [
-    {
-      icon: "Building",
-      label: "참여 프로젝트",
-      value: "4,000+",
-      description: "대기업 및 중견기업 프로젝트"
-    },
-    {
-      icon: "Users",
-      label: "고객사",
-      value: "350+",
-      description: "다양한 산업군 고객 확보"
-    },
-    {
-      icon: "Handshake",
-      label: "벤더 파트너십",
-      value: "4개사",
-      description: "글로벌 SaaS 공식 파트너"
-    },
-    {
-      icon: "Award",
-      label: "업계 경력",
-      value: "25년",
-      description: "2000년부터 현재까지"
-    }
-  ]
+  experience: "25년 경험"
 }
 
 export default function CompanyPage() {
@@ -159,29 +126,27 @@ export default function CompanyPage() {
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
           <Badge className="mb-4">About Us</Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            신뢰할 수 있는 디지털 혁신 파트너
+            회사의 운명은 고객에 달려있다
           </h1>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            글로벌 SaaS 솔루션 전문 기업 위두소프트는 고객의 디지털 혁신을 선도하는 신뢰받는 파트너입니다.
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
+            고객의 성공이 우리의 성공입니다.
+            2000년부터 25년간 이어온 위두소프트의 핵심 철학으로,
+            고객의 비즈니스 성공을 최우선으로 생각하며 글로벌 SaaS 솔루션을 통해
+            고객의 디지털 혁신과 지속가능한 성장을 함께 만들어갑니다.
           </p>
-        </div>
-      </section>
-
-      {/* CEO Profile Section */}
-      <section className="py-16 bg-muted/20">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <div className="text-center mb-8">
-            <Badge className="mb-4">Leadership</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              경험과 철학이 만나는 리더십
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              "회사의 운명은 고객에 달려있다"는 철학으로 고객의 성공을 최우선으로 생각합니다.
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto">
-            <ProfileCard {...ceoProfile} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">25년</div>
+              <div className="text-sm text-muted-foreground">신뢰받는 경험</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">350+</div>
+              <div className="text-sm text-muted-foreground">성공한 고객사</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">500+</div>
+              <div className="text-sm text-muted-foreground">완료된 프로젝트</div>
+            </div>
           </div>
         </div>
       </section>
@@ -196,17 +161,7 @@ export default function CompanyPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <Card className="text-center p-6 border-2 hover:border-primary/50 transition-colors">
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Heart className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">고객 중심</h3>
-              <p className="text-sm text-muted-foreground">
-                "회사의 운명은 고객에 달려있다" - 고객의 성공이 우리의 성공입니다
-              </p>
-            </Card>
-
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
             <Card className="text-center p-6 border-2 hover:border-primary/50 transition-colors">
               <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                 <Shield className="w-8 h-8 text-primary" />
@@ -255,6 +210,62 @@ export default function CompanyPage() {
 
           <div className="max-w-4xl mx-auto">
             <Timeline items={timelineData} />
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section className="py-16">
+        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Leadership</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              리더십
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              25년간의 풍부한 경험과 전문성으로 고객의 성공을 이끄는 리더십을 소개합니다.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-8">
+              <div className="flex flex-col lg:flex-row items-center gap-8">
+                {/* CEO Profile Photo */}
+                <div className="flex-shrink-0">
+                  <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary/20 hover:border-primary/40 transition-colors shadow-lg">
+                    <Image
+                      src="/ceo-profile.png"
+                      alt="위두소프트 대표이사"
+                      width={224}
+                      height={224}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                {/* CEO Profile Content */}
+                <div className="flex-1 text-center">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold mb-2">{ceoProfile.name}</h3>
+                    <p className="text-lg text-primary font-semibold mb-2">{ceoProfile.title}</p>
+                    <p className="text-muted-foreground">{ceoProfile.company} • {ceoProfile.experience}</p>
+                  </div>
+
+                  <div className="bg-muted/30 rounded-lg p-6">
+                    <blockquote className="text-lg italic text-foreground/90 mb-4">
+                      "고객의 성공이 곧 우리의 성공입니다. 25년간 쌓아온 경험과 전문성을 바탕으로
+                      고객의 디지털 혁신 여정을 함께하겠습니다."
+                    </blockquote>
+                    <div className="text-right">
+                      <cite className="text-sm font-medium text-muted-foreground">
+                        - 위두소프트 대표이사
+                      </cite>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>

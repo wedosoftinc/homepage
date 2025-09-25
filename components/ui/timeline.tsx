@@ -3,7 +3,12 @@
 import React from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CalendarDays, Building, Users, Trophy } from "lucide-react"
+import {
+  RocketLaunchIcon as RocketLaunch,
+  BriefcaseIcon as Briefcase,
+  HandRaisedIcon as Handshake,
+  SparklesIcon as Sparkles
+} from "@heroicons/react/24/outline"
 import { cn } from "@/lib/utils"
 
 interface TimelineItem {
@@ -20,24 +25,24 @@ interface TimelineProps {
 }
 
 const categoryIcons = {
-  foundation: Building,
-  project: Users,
-  partnership: Trophy,
-  milestone: CalendarDays
+  foundation: RocketLaunch,
+  project: Briefcase,
+  partnership: Handshake,
+  milestone: Sparkles
 }
 
 const categoryColors = {
-  foundation: 'bg-muted-foreground',
-  project: 'bg-muted-foreground',
-  partnership: 'bg-muted-foreground',
-  milestone: 'bg-muted-foreground'
+  foundation: 'bg-blue-500',
+  project: 'bg-green-500',
+  partnership: 'bg-purple-500',
+  milestone: 'bg-orange-500'
 }
 
 const categoryBadgeColors = {
-  foundation: 'bg-muted text-muted-foreground border-muted',
-  project: 'bg-muted text-muted-foreground border-muted',
-  partnership: 'bg-muted text-muted-foreground border-muted',
-  milestone: 'bg-muted text-muted-foreground border-muted'
+  foundation: 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-800',
+  project: 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-800',
+  partnership: 'bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900 dark:text-purple-300 dark:border-purple-800',
+  milestone: 'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900 dark:text-orange-300 dark:border-orange-800'
 }
 
 export function Timeline({ items, className }: TimelineProps) {

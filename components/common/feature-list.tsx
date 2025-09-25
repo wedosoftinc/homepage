@@ -1,11 +1,11 @@
-import { CheckCircle, LucideIcon } from "lucide-react"
+import { CheckCircleIcon as CheckCircle } from "@heroicons/react/24/outline"
 import { cn } from "@/lib/utils"
 import { designTokens } from "@/lib/design-tokens"
 
 interface FeatureListProps {
     features: Array<{
         text: string
-        icon?: LucideIcon
+        icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     }>
     iconColor?: string
     size?: 'sm' | 'md' | 'lg'
