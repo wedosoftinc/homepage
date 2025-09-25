@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { StepByStepDemo } from "@/components/ui/step-by-step-demo"
 import { DashboardCard } from "@/components/dashboard"
 import { MetricCard } from "@/components/common"
+import { Breadcrumb } from "@/components/common/breadcrumb"
 import {
     CheckCircleIcon as CheckCircle, ArrowRightIcon as ArrowRight, StarIcon as Star,
     UsersIcon as Users, BoltIcon as Zap, ShieldCheckIcon as Shield,
@@ -15,10 +16,9 @@ import {
     CogIcon as Settings, PhoneIcon as Headphones, GlobeAltIcon as Globe,
     PhoneIcon as Phone, EnvelopeIcon as Mail, DocumentTextIcon as FileText,
     ClockIcon as Clock, FlagIcon as Target, BriefcaseIcon as Briefcase,
-    ChevronRightIcon as ChevronRight, HomeIcon as Home, ShareIcon as Share2,
-    PlayIcon as Play, SparklesIcon as Sparkles, ComputerDesktopIcon as Monitor,
-    RectangleGroupIcon as Workflow, BellIcon as Bell, FunnelIcon as Filter,
-    ArrowTrendingUpIcon as TrendingUp
+    ShareIcon as Share2, PlayIcon as Play, SparklesIcon as Sparkles, 
+    ComputerDesktopIcon as Monitor, RectangleGroupIcon as Workflow, 
+    BellIcon as Bell, FunnelIcon as Filter, ArrowTrendingUpIcon as TrendingUp
 } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import Image from "next/image"
@@ -183,50 +183,41 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
     return (
         <div className="min-h-screen">
             {/* Breadcrumb Navigation */}
-            <section className="py-4 border-b">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
-                    <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Link href="/" className="hover:text-foreground">
-                            <Home className="h-4 w-4" />
-                        </Link>
-                        <ChevronRight className="h-4 w-4" />
-                        <Link href="/products" className="hover:text-foreground">
-                            제품
-                        </Link>
-                        <ChevronRight className="h-4 w-4" />
-                        <span className="text-foreground">{data.name}</span>
-                    </nav>
+            <div className="border-b bg-muted/20">
+                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+                    <Breadcrumb
+                        items={[
+                            { title: "제품", href: "/products" },
+                            { title: data.name }
+                        ]}
+                    />
                 </div>
-            </section>
+            </div>
 
             {/* Hero Section */}
-            <section className="py-8 lg:py-12">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <div className="space-y-6">
-                            <Badge variant="outline" className="mb-4">
-                                {data.category}
-                            </Badge>
-                            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                                {data.name}
-                            </h1>
-                            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                                {data.description}
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <Button size="lg" asChild>
-                                    <Link href={data.heroCTA.primary.href}>
-                                        {data.heroCTA.primary.text}
-                                        <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                </Button>
-                                <Button variant="outline" size="lg" asChild>
-                                    <Link href={data.heroCTA.secondary.href}>
-                                        {data.heroCTA.secondary.text}
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
+            <section className="py-16">
+                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                    <Badge variant="outline" className="mb-4">
+                        {data.category}
+                    </Badge>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                        {data.name}
+                    </h1>
+                    <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
+                        {data.description}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                        <Button size="lg" asChild>
+                            <Link href={data.heroCTA.primary.href}>
+                                {data.heroCTA.primary.text}
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                        </Button>
+                        <Button variant="outline" size="lg" asChild>
+                            <Link href={data.heroCTA.secondary.href}>
+                                {data.heroCTA.secondary.text}
+                            </Link>
+                        </Button>
                     </div>
                 </div>
             </section>

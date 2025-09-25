@@ -91,10 +91,11 @@ const timelineData = [
 ]
 
 const ceoProfile = {
-  name: "대표이사",
-  title: "최고경영자 & 기술이사",
+  name: "이우석",
+  title: "대표이사 & CTO",
   company: "위두소프트",
-  experience: "25년 경험"
+  experience: "25년 경험",
+  description: "대기업 IT 인프라 구축 25년 · 글로벌 SaaS 전문 컨설턴트"
 }
 
 export default function CompanyPage() {
@@ -113,13 +114,13 @@ export default function CompanyPage() {
       </div>
 
       {/* Page Header */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
           <Badge className="mb-4">About Us</Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
             회사의 운명은 고객에 달려있다
           </h1>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
+          <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
             고객의 성공이 우리의 성공입니다.
             2000년부터 25년간 이어온 위두소프트의 핵심 철학으로,
             고객의 비즈니스 성공을 최우선으로 생각하며 글로벌 SaaS 솔루션을 통해
@@ -214,7 +215,7 @@ export default function CompanyPage() {
               리더십
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              25년간의 풍부한 경험과 전문성으로 고객의 성공을 이끄는 리더십을 소개합니다.
+              풍부한 경험과 전문성으로 고객의 성공을 이끕니다.
             </p>
           </div>
 
@@ -224,13 +225,13 @@ export default function CompanyPage() {
                 {/* CEO Profile Photo */}
                 <div className="flex justify-center mb-8">
                   <div className="relative">
-                    <div className="w-72 h-96 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="w-72 h-60 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 p-4">
                       <Image
                         src="/ceo-profile.png"
                         alt="위두소프트 대표이사"
                         width={288}
-                        height={384}
-                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                        height={320}
+                        className="w-full h-full object-contain object-center rounded-lg"
                         priority
                       />
                     </div>
@@ -241,25 +242,20 @@ export default function CompanyPage() {
                 <div className="flex-1 text-center">
                   <div className="mb-6">
                     <h3 className="text-2xl font-bold mb-2">{ceoProfile.name}</h3>
-                    <p className="text-lg text-primary font-semibold mb-2">{ceoProfile.title}</p>
-
-                    {/* 경력 정보 */}
-                    <div className="text-center mb-4">
-                      <p className="text-muted-foreground">
-                        IT업계 25년 경력, 대기업 프로젝트 전문
-                      </p>
+                    <p className="text-lg text-primary font-semibold mb-3">{ceoProfile.title}</p>
+                    
+                    {/* 경력 소개 */}
+                    <div className="text-center mb-3">
+                      <p className="text-sm text-muted-foreground">{ceoProfile.description}</p>
                     </div>
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6">
                     <blockquote className="text-lg italic text-foreground/90 mb-4">
-                      "고객의 성공이 곧 우리의 성공입니다. 25년간 쌓아온 경험과 전문성을 바탕으로
+                      "고객의 성공이 곧 우리의 성공입니다. 그동안 쌓아온 경험과 전문성을 바탕으로
                       고객의 디지털 혁신 여정을 함께하겠습니다."
                     </blockquote>
                     <div className="text-right">
-                      <cite className="text-sm font-medium text-muted-foreground">
-                        - 위두소프트 대표이사
-                      </cite>
                     </div>
                   </div>
                 </div>
@@ -291,10 +287,10 @@ export default function CompanyPage() {
                 <TrendingUp className="ml-2 h-4 w-4" />
               </a>
               <a
-                href="/solutions"
+                href="/pricing"
                 className="inline-flex items-center justify-center rounded-md border border-input bg-background px-8 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                솔루션 둘러보기
+                맞춤견적 문의
                 <Target className="ml-2 h-4 w-4" />
               </a>
             </div>
