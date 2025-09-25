@@ -226,19 +226,11 @@ export function MainNavigation() {
                                     <div className="grid grid-cols-3 gap-4">
                                         {Object.entries(solutionsByCategory).map(([category, products]) => (
                                             <div key={category} className="space-y-2">
-                                                {/* 범주 헤더 - 클릭 가능한 링크로 변경 */}
-                                                <Link
-                                                    href={
-                                                        category === "고객 경험 관리" ? "/solutions/customer-experience" :
-                                                            category === "협업 및 생산성 향상" ? "/solutions/collaboration" :
-                                                                category === "IT 인프라 최적화" ? "/solutions/infrastructure" :
-                                                                    "/solutions"
-                                                    }
-                                                    className="block bg-primary/5 border border-primary/10 rounded-lg p-2.5 hover:bg-primary/10 transition-colors group"
-                                                >
+                                                {/* 범주 헤더 - 링크 제거하여 단순 표시용으로 변경 */}
+                                                <div className="block bg-primary/5 border border-primary/10 rounded-lg p-2.5">
                                                     <div className="flex items-center space-x-2 mb-1">
-                                                        <div className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary"></div>
-                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide group-hover:text-primary/80">
+                                                        <div className="w-2 h-2 rounded-full bg-primary/60"></div>
+                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
                                                             {category}
                                                         </h4>
                                                     </div>
@@ -247,7 +239,7 @@ export function MainNavigation() {
                                                         {category === "협업 및 생산성 향상" && "팀워크와 효율성 극대화"}
                                                         {category === "IT 인프라 최적화" && "안전하고 유연한 IT 환경"}
                                                     </p>
-                                                </Link>
+                                                </div>
                                                 {/* 제품 리스트 - 컴팩트한 스타일 */}
                                                 <div className="space-y-0.5">
                                                     {products.map((product) => (
