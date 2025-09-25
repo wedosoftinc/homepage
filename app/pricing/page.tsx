@@ -29,8 +29,12 @@ import {
     MinusIcon as Minus,
     PlusIcon as Plus,
     CalendarIcon as Calendar,
-    ExclamationTriangleIcon as AlertTriangle
+    ExclamationTriangleIcon as AlertTriangle,
+    EnvelopeIcon as Mail
 } from "@heroicons/react/24/outline"
+
+// 실제 가격 데이터 import
+import pricingData from "@/data/pricing-data.json"
 
 // 타입 정의
 interface QuoteData {
@@ -44,7 +48,14 @@ interface QuoteData {
 interface ProductPlan {
     id: string
     name: string
-    price: number
+    monthlyPrice: number | null
+    yearlyPrice: number | null
+    customPricing?: boolean
+    sessionPricing?: {
+        freeIncluded: number
+        additionalPrice: number
+        unit: string
+    }
     features: string[]
     recommended?: boolean
     maxUsers?: number
@@ -93,7 +104,7 @@ export default function CustomQuotePage() {
             description: '고객 응답 시간 단축, 만족도 향상, 옴니채널 지원',
             icon: Headphones,
             color: 'bg-blue-50 border-blue-200 text-blue-700',
-            products: ['freshdesk', 'freshchat', 'freddy-ai']
+            products: ['freshdesk-omni', 'freshdesk', 'freshchat', 'freshcaller', 'freddy-ai']
         },
         {
             id: 'sales-growth',
@@ -101,7 +112,7 @@ export default function CustomQuotePage() {
             description: 'CRM 최적화, 영업 프로세스 자동화, 리드 관리',
             icon: TrendingUp,
             color: 'bg-green-50 border-green-200 text-green-700',
-            products: ['freshsales', 'monday-sales']
+            products: ['freshsales', 'monday-sales', 'freddy-ai']
         },
         {
             id: 'team-productivity',
@@ -172,124 +183,120 @@ export default function CustomQuotePage() {
         {
             id: 'yearly',
             label: '연간 결제',
-            discount: 0.2, // 20% 할인
-            description: '2개월 무료, 최대 20% 절약'
+            discount: 0, // 실제 연간 가격이 이미 할인된 가격이므로 추가 할인 없음
+            description: '연간 결제로 비용 절약, 대부분 제품에서 월간 대비 할인'
         }
     ]
 
-    // 제품 데이터베이스 (플랜별 구조)
-    const productDatabase: Record<string, Product> = {
-        'freshdesk': {
-            id: 'freshdesk',
-            name: 'Freshdesk',
-            category: 'customer-support',
-            description: '고객 지원 및 헬프데스크 솔루션',
-            plans: [
-                { id: 'growth', name: 'Growth', price: 18, features: ['무제한 티켓', '이메일 지원', '기본 보고서', '모바일 앱'], maxUsers: 100 },
-                { id: 'pro', name: 'Pro', price: 59, features: ['Growth 모든 기능', '전화 지원', '커스텀 앱', '고급 분석', '시간 추적'], recommended: true },
-                { id: 'enterprise', name: 'Enterprise', price: 95, features: ['Pro 모든 기능', 'IP 화이트리스트', '감사 로그', '샌드박스', '24/7 지원'] }
-            ]
-        },
-        'freshchat': {
-            id: 'freshchat',
-            name: 'Freshchat',
-            category: 'customer-support',
-            description: '실시간 채팅 및 메시징 플랫폼',
-            plans: [
-                { id: 'free', name: 'Free', price: 0, features: ['10 대화/월', '기본 챗봇', '웹 위젯'], maxUsers: 10 },
-                { id: 'growth', name: 'Growth', price: 19, features: ['무제한 대화', '고급 챗봇', 'IntelliAssign', '모바일 SDK'], recommended: true },
-                { id: 'pro', name: 'Pro', price: 59, features: ['Growth 모든 기능', '캠페인', '고급 보고서', 'API 액세스'] }
-            ]
-        },
-        'freddy-ai': {
-            id: 'freddy-ai',
-            name: 'Freddy AI',
-            category: 'customer-support',
-            description: 'AI 기반 고객 지원 자동화',
-            plans: [
-                { id: 'starter', name: 'Starter', price: 29, features: ['AI 답변 제안', '감정 분석', '기본 인사이트'] },
-                { id: 'growth', name: 'Growth', price: 59, features: ['Starter 모든 기능', 'AI 챗봇', '예측 연락처 점수', '통합 분석'], recommended: true },
-                { id: 'enterprise', name: 'Enterprise', price: 119, features: ['Growth 모든 기능', '맞춤형 AI 모델', '고급 워크플로우', '우선 지원'] }
-            ]
-        },
-        'freshsales': {
-            id: 'freshsales',
-            name: 'Freshsales',
-            category: 'sales-management',
-            description: 'CRM 및 영업 관리 솔루션',
-            plans: [
-                { id: 'growth', name: 'Growth', price: 18, features: ['리드/딜 관리', '연락처 관리', '이메일', '전화', '기본 보고서'] },
-                { id: 'pro', name: 'Pro', price: 47, features: ['Growth 모든 기능', '영업 시퀀스', '파이프라인 관리', '고급 보고서', 'AI 기반 딜 인사이트'], recommended: true },
-                { id: 'enterprise', name: 'Enterprise', price: 83, features: ['Pro 모든 기능', '영역 관리', '예측 연락처 점수', '고급 워크플로우', '감사 로그'] }
-            ]
-        },
-        'google-workspace': {
-            id: 'google-workspace',
-            name: 'Google Workspace',
-            category: 'team-collaboration',
-            description: '클라우드 기반 생산성 및 협업 도구',
-            plans: [
-                { id: 'business-starter', name: 'Business Starter', price: 6, features: ['Gmail', 'Drive (30GB)', 'Meet (100명)', 'Docs, Sheets, Slides'] },
-                { id: 'business-standard', name: 'Business Standard', price: 12, features: ['Business Starter 모든 기능', 'Drive (2TB)', 'Meet (150명)', '보안 관리'], recommended: true },
-                { id: 'business-plus', name: 'Business Plus', price: 18, features: ['Business Standard 모든 기능', 'Drive (5TB)', 'Meet (500명)', '고급 보안', 'Vault'] }
-            ]
-        },
-        'monday-work': {
-            id: 'monday-work',
-            name: 'Monday Work Management',
-            category: 'team-collaboration',
-            description: '프로젝트 관리 및 팀 협업 플랫폼',
-            plans: [
-                { id: 'basic', name: 'Basic', price: 8, features: ['무제한 보드', '기본 대시보드', '모바일 앱', '24/7 지원'], maxUsers: 1000 },
-                { id: 'standard', name: 'Standard', price: 10, features: ['Basic 모든 기능', '타임라인 뷰', '캘린더 뷰', '게스트 액세스', '통합'], recommended: true },
-                { id: 'pro', name: 'Pro', price: 16, features: ['Standard 모든 기능', '개인 보드', '차트 뷰', '시간 추적', '고급 검색'] }
-            ]
-        },
-        'monday-sales': {
-            id: 'monday-sales',
-            name: 'Monday Sales CRM',
-            category: 'sales-management',
-            description: 'CRM 및 영업 파이프라인 관리',
-            plans: [
-                { id: 'basic', name: 'Basic', price: 12, features: ['리드 관리', '딜 파이프라인', '기본 보고서', '이메일 동기화'] },
-                { id: 'standard', name: 'Standard', price: 17, features: ['Basic 모든 기능', '자동화', '고급 필터', '활동 로그'], recommended: true },
-                { id: 'pro', name: 'Pro', price: 28, features: ['Standard 모든 기능', '고급 분석', '예측', '통합 API'] }
-            ]
-        },
-        'monday-service': {
-            id: 'monday-service',
-            name: 'Monday Service',
-            category: 'it-service',
-            description: 'IT 서비스 관리 및 헬프데스크',
-            plans: [
-                { id: 'basic', name: 'Basic', price: 6, features: ['티켓 관리', '기본 자동화', '이메일 알림', 'SLA 추적'] },
-                { id: 'standard', name: 'Standard', price: 12, features: ['Basic 모든 기능', '고급 자동화', '지식 베이스', '사용자 포털'], recommended: true },
-                { id: 'pro', name: 'Pro', price: 19, features: ['Standard 모든 기능', '고급 분석', '에스컬레이션', 'API 액세스'] }
-            ]
-        },
-        'freshservice': {
-            id: 'freshservice',
-            name: 'Freshservice',
-            category: 'it-service',
-            description: 'IT 서비스 관리 및 ITSM 솔루션',
-            plans: [
-                { id: 'starter', name: 'Starter', price: 19, features: ['티켓 관리', '자산 관리', '기본 ITIL', '지식 베이스'] },
-                { id: 'growth', name: 'Growth', price: 49, features: ['Starter 모든 기능', '변경 관리', '문제 관리', '프로젝트 관리'], recommended: true },
-                { id: 'pro', name: 'Pro', price: 95, features: ['Growth 모든 기능', '고급 분석', '비즈니스 규칙', 'API'] }
-            ]
-        },
-        'splashtop': {
-            id: 'splashtop',
-            name: 'Splashtop',
-            category: 'remote-access',
-            description: '원격 데스크톱 및 접속 솔루션',
-            plans: [
-                { id: 'business-access', name: 'Business Access', price: 8.25, features: ['원격 데스크톱', '파일 전송', '채팅', '세션 기록'] },
-                { id: 'business-access-pro', name: 'Business Access Pro', price: 16.67, features: ['Business Access 모든 기능', '그룹 관리', 'SSO', '고급 보안'], recommended: true },
-                { id: 'enterprise', name: 'Enterprise', price: 25, features: ['Pro 모든 기능', 'API', '온프레미스', '24/7 지원'] }
-            ]
+    // 실제 가격 데이터를 제품 데이터베이스 형태로 변환하는 함수
+    const getProductDatabase = (): Record<string, Product> => {
+        return {
+            // Freshworks 제품군
+            'freshdesk': {
+                id: 'freshdesk',
+                ...pricingData.freshworks.freshdesk,
+                plans: pricingData.freshworks.freshdesk.plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            'freshdesk-omni': {
+                id: 'freshdesk-omni',
+                ...pricingData.freshworks["freshdesk-omni"],
+                plans: pricingData.freshworks["freshdesk-omni"].plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            'freshchat': {
+                id: 'freshchat',
+                ...pricingData.freshworks.freshchat,
+                plans: pricingData.freshworks.freshchat.plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            'freshcaller': {
+                id: 'freshcaller',
+                ...pricingData.freshworks.freshcaller,
+                plans: pricingData.freshworks.freshcaller.plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            'freshservice': {
+                id: 'freshservice',
+                ...pricingData.freshworks.freshservice,
+                plans: pricingData.freshworks.freshservice.plans.map(plan => ({
+                    ...plan,
+                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                }))
+            },
+            'freshsales': {
+                id: 'freshsales',
+                ...pricingData.freshworks.freshsales,
+                plans: pricingData.freshworks.freshsales.plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            // Google Workspace
+            'google-workspace': {
+                id: 'google-workspace',
+                ...pricingData.google["google-workspace"],
+                plans: pricingData.google["google-workspace"].plans.map(plan => ({
+                    ...plan,
+                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                }))
+            },
+            // Monday.com 제품군
+            'monday-work': {
+                id: 'monday-work',
+                ...pricingData.monday["monday-work"],
+                plans: pricingData.monday["monday-work"].plans.map(plan => ({
+                    ...plan,
+                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                }))
+            },
+            'monday-service': {
+                id: 'monday-service',
+                ...pricingData.monday["monday-service"],
+                plans: pricingData.monday["monday-service"].plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            'monday-sales': {
+                id: 'monday-sales',
+                ...pricingData.monday["monday-sales"],
+                plans: pricingData.monday["monday-sales"].plans.map(plan => ({
+                    ...plan,
+                    price: quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                }))
+            },
+            // Splashtop
+            'splashtop': {
+                id: 'splashtop',
+                ...pricingData.splashtop.splashtop,
+                plans: pricingData.splashtop.splashtop.plans.map(plan => ({
+                    ...plan,
+                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                }))
+            },
+            // AI 애드온
+            'freddy-ai': {
+                id: 'freddy-ai',
+                ...pricingData.ai_addons["freddy-ai"],
+                plans: pricingData.ai_addons["freddy-ai"].plans.map(plan => ({
+                    ...plan,
+                    price: plan.sessionPricing ? 29 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                }))
+            }
         }
     }
+
+    // 동적 제품 데이터베이스
+    const productDatabase = getProductDatabase()
 
     // 제품 선택 핸들러 (2단계용)
     const handleProductSelect = (productId: string) => {
@@ -350,7 +357,7 @@ export default function CustomQuotePage() {
         return [...new Set(recommendedIds)]
     }
 
-    // 총 가격 계산 (선택된 플랜 기반)
+    // 총 가격 계산 (선택된 플랜 기반, 실제 연간/월간 가격 반영)
     const calculateTotalPrice = () => {
         let totalPerUserUSD = 0
         Object.entries(quoteData.selectedPlans).forEach(([productId, planId]) => {
@@ -358,7 +365,18 @@ export default function CustomQuotePage() {
             if (product) {
                 const plan = product.plans.find(p => p.id === planId)
                 if (plan) {
-                    totalPerUserUSD += plan.price
+                    if (plan.customPricing) {
+                        // 커스텀 가격은 0으로 처리하고 견적 문의 안내
+                        totalPerUserUSD += 0
+                    } else if (plan.sessionPricing) {
+                        // 세션 기반 가격은 기본 가격으로 처리
+                        totalPerUserUSD += 29
+                    } else {
+                        const price = quoteData.billingCycle === 'yearly' 
+                            ? (plan.yearlyPrice || 0) / 12 
+                            : (plan.monthlyPrice || 0)
+                        totalPerUserUSD += price
+                    }
                 }
             }
         })
@@ -374,12 +392,8 @@ export default function CustomQuotePage() {
 
         const discountedMonthly = totalMonthly * (1 - volumeDiscount)
 
-        // 연간 결제 할인 적용
-        const billingCycle = billingCycles.find(c => c.id === quoteData.billingCycle)
-        const billingDiscount = billingCycle?.discount || 0
-        const finalMonthly = discountedMonthly * (1 - billingDiscount)
-
-        return Math.round(finalMonthly)
+        // 연간 결제는 이미 반영되어 있으므로 추가 할인 없음
+        return Math.round(discountedMonthly)
     }
 
     // 연간 총액 계산
@@ -425,7 +439,7 @@ export default function CustomQuotePage() {
                         />
                     </div>
                     <p className="text-sm text-muted-foreground">
-                        {currentStep}/6 단계 완료
+                        {currentStep}/7 단계 완료
                     </p>
                 </div>
             </section>
@@ -560,9 +574,25 @@ export default function CustomQuotePage() {
 
                                                     {/* 가격 범위 표시 */}
                                                     <div className="mb-4">
-                                                        <div className="text-sm text-muted-foreground">가격 범위</div>
+                                                        <div className="text-sm text-muted-foreground">가격 범위 ({quoteData.billingCycle === 'yearly' ? '연간 결제' : '월간 결제'})</div>
                                                         <div className="text-lg font-semibold">
-                                                            ${Math.min(...product.plans.map(p => p.price))} - ${Math.max(...product.plans.map(p => p.price))}
+                                                            {(() => {
+                                                                const prices = product.plans
+                                                                    .filter(p => !p.customPricing)
+                                                                    .map(p => quoteData.billingCycle === 'yearly' ? (p.yearlyPrice || 0) / 12 : (p.monthlyPrice || 0))
+                                                                    .filter(p => p > 0)
+                                                                
+                                                                if (prices.length === 0) return "맞춤 견적"
+                                                                
+                                                                const minPrice = Math.min(...prices)
+                                                                const maxPrice = Math.max(...prices)
+                                                                
+                                                                if (minPrice === maxPrice) {
+                                                                    return `$${minPrice}`
+                                                                } else {
+                                                                    return `$${minPrice} - $${maxPrice}`
+                                                                }
+                                                            })()}
                                                             <span className="text-sm font-normal text-muted-foreground">/월/사용자</span>
                                                         </div>
                                                     </div>
@@ -657,8 +687,24 @@ export default function CustomQuotePage() {
                                                                             )}
                                                                         </div>
                                                                         <div className="text-2xl font-bold">
-                                                                            ${plan.price}
-                                                                            <span className="text-sm font-normal text-muted-foreground">/월</span>
+                                                                            {plan.customPricing ? (
+                                                                                <span className="text-lg">맞춤 견적</span>
+                                                                            ) : plan.sessionPricing ? (
+                                                                                <div>
+                                                                                    <div className="text-base">무료 {plan.sessionPricing.freeIncluded} 세션</div>
+                                                                                    <div className="text-sm text-muted-foreground">추가: ${plan.sessionPricing.additionalPrice}/{plan.sessionPricing.unit}</div>
+                                                                                </div>
+                                                                            ) : (
+                                                                                <>
+                                                                                    ${quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)}
+                                                                                    <span className="text-sm font-normal text-muted-foreground">/월</span>
+                                                                                    {quoteData.billingCycle === 'yearly' && (
+                                                                                        <div className="text-xs text-green-600 mt-1">
+                                                                                            (연간: ${plan.yearlyPrice || 0})
+                                                                                        </div>
+                                                                                    )}
+                                                                                </>
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                     <ul className="space-y-1 text-sm flex-1">
@@ -1190,7 +1236,9 @@ export default function CustomQuotePage() {
                                                             <span className="font-medium">{product?.name}</span>
                                                             <span className="text-sm text-muted-foreground ml-2">({plan?.name})</span>
                                                         </div>
-                                                        <Badge variant="secondary">${plan?.price}/월</Badge>
+                                                        <Badge variant="secondary">
+                                                            {plan?.customPricing ? '맞춤 견적' : plan?.sessionPricing ? '세션 기반' : `$${quoteData.billingCycle === 'yearly' ? (plan?.yearlyPrice || 0) / 12 : (plan?.monthlyPrice || 0)}/월`}
+                                                        </Badge>
                                                     </div>
                                                 )
                                             })}
@@ -1206,7 +1254,11 @@ export default function CustomQuotePage() {
                                             <span className="font-mono">${Object.entries(quoteData.selectedPlans).reduce((sum, [productId, planId]) => {
                                                 const product = productDatabase[productId]
                                                 const plan = product?.plans.find(p => p.id === planId)
-                                                return sum + (plan?.price || 0)
+                                                if (!plan) return sum
+                                                if (plan.customPricing) return sum
+                                                if (plan.sessionPricing) return sum + 29 // Freddy AI Copilot 기본 가격
+                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                return sum + price
                                             }, 0)}</span>
                                         </div>
                                         <div className="flex justify-between">
@@ -1218,8 +1270,12 @@ export default function CustomQuotePage() {
                                             <span className="font-mono">${Object.entries(quoteData.selectedPlans).reduce((sum, [productId, planId]) => {
                                                 const product = productDatabase[productId]
                                                 const plan = product?.plans.find(p => p.id === planId)
-                                                return sum + (plan?.price || 0)
-                                            }, 0) * quoteData.userCount}</span>
+                                                if (!plan) return sum
+                                                if (plan.customPricing) return sum
+                                                if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
+                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                return sum + (price * quoteData.userCount)
+                                            }, 0)}</span>
                                         </div>
                                         {quoteData.userCount >= 50 && (
                                             <div className="flex justify-between text-green-600">
@@ -1227,14 +1283,18 @@ export default function CustomQuotePage() {
                                                 <span className="font-mono">-${Math.round((Object.entries(quoteData.selectedPlans).reduce((sum, [productId, planId]) => {
                                                     const product = productDatabase[productId]
                                                     const plan = product?.plans.find(p => p.id === planId)
-                                                    return sum + (plan?.price || 0)
-                                                }, 0) * quoteData.userCount) * (quoteData.userCount >= 200 ? 0.2 : quoteData.userCount >= 100 ? 0.15 : 0.1))}</span>
+                                                    if (!plan) return sum
+                                                    if (plan.customPricing) return sum
+                                                    if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
+                                                    const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                    return sum + (price * quoteData.userCount)
+                                                }, 0)) * (quoteData.userCount >= 200 ? 0.2 : quoteData.userCount >= 100 ? 0.15 : 0.1))}</span>
                                             </div>
                                         )}
                                         {quoteData.billingCycle === 'yearly' && (
                                             <div className="flex justify-between text-green-600">
-                                                <span>연간 결제 할인 (20%)</span>
-                                                <span className="font-mono">추가 할인 적용됨</span>
+                                                <span>연간 결제 혜택</span>
+                                                <span className="font-mono text-sm">이미 적용됨</span>
                                             </div>
                                         )}
                                         <Separator />
@@ -1263,8 +1323,39 @@ export default function CustomQuotePage() {
                                             <ArrowLeft className="mr-2 h-4 w-4" /> 수정하기
                                         </Button>
                                         <div className="space-x-2">
-                                            <Button variant="outline" size="lg">
-                                                견적서 다운로드
+                                            <Button 
+                                                variant="outline" 
+                                                size="lg"
+                                                onClick={() => {
+                                                    // 메일로 견적서 받기 기능 구현
+                                                    const subject = encodeURIComponent("맞춤 견적서 요청 - 위두소프트")
+                                                    const body = encodeURIComponent(`
+안녕하세요,
+
+다음과 같은 솔루션에 대한 상세 견적서를 이메일로 받고 싶습니다:
+
+=== 선택된 제품 ===
+${Object.entries(quoteData.selectedPlans).map(([productId, planId]) => {
+    const product = productDatabase[productId]
+    const plan = product?.plans.find(p => p.id === planId)
+    return `• ${product?.name} (${plan?.name})`
+}).join('\n')}
+
+=== 사용 조건 ===
+• 사용자 수: ${quoteData.userCount}명
+• 결제 주기: ${quoteData.billingCycle === 'yearly' ? '연간 결제' : '월간 결제'}
+• 예상 월간 비용: $${calculateTotalPrice()}
+${quoteData.billingCycle === 'yearly' ? `• 예상 연간 비용: $${calculateYearlyTotal()}` : ''}
+
+상세한 견적서와 함께 도입 상담을 받고 싶습니다.
+
+감사합니다.
+                                                    `)
+                                                    window.location.href = `mailto:support@wedosoft.net?subject=${subject}&body=${body}`
+                                                }}
+                                            >
+                                                <Mail className="mr-2 h-4 w-4" />
+                                                견적서 메일로 받기
                                             </Button>
                                             <Button size="lg">
                                                 상담 신청하기
