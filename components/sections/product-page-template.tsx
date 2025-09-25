@@ -184,7 +184,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
         <div className="min-h-screen">
             {/* Breadcrumb Navigation */}
             <div className="border-b bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+                <div className="container max-w-7xl py-4">
                     <Breadcrumb
                         items={[
                             { title: "제품", href: "/products" },
@@ -196,7 +196,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* Hero Section */}
             <section className="py-16">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <Badge variant="outline" className="mb-4">
                         {data.category}
                     </Badge>
@@ -252,7 +252,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* 주요 특징 Section (원본 구조) */}
             <section className="py-16 bg-muted/20">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">주요 특징</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -300,7 +300,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* 인터랙티브 데모 섹션 (주요 특징과 세부 기능 사이) */}
             <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10 border-y">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-6">
                             {data.name} 실시간 체험
@@ -360,7 +360,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
             {/* 세부 기능 Section (원본 구조) */}
             {data.detailedFeatures && (
                 <section className="py-16">
-                    <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                    <div className="container">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold mb-4">세부 기능</h2>
                             <p className="text-lg text-muted-foreground">
@@ -436,7 +436,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
             {/* 새로운 탭 기반 세부 기능 Section */}
             {data.detailedFeatureTabs && (
                 <section className="py-16">
-                    <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                    <div className="container">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold mb-4">세부 기능</h2>
                         </div>
@@ -494,7 +494,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 
             {/* FAQ Section */}
             <section className="py-16">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">FAQ</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -534,7 +534,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                     </div>
                 )}
 
-                <div className="container mx-auto px-6 md:px-8 lg:px-12 relative">
+                <div className="container relative">
                     <div className="text-center space-y-8">
                         <div className="space-y-4">
                             <h2 className="text-3xl lg:text-4xl font-bold">

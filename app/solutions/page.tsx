@@ -97,7 +97,7 @@ export default function SolutionsPage() {
             {/* Hero Section */}
             <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
                 <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
-                <div className="container relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container relative max-w-7xl">
                     <div className="text-center">
                         <Badge variant="secondary" className="mb-4">
                             위두소프트 솔루션
@@ -129,7 +129,7 @@ export default function SolutionsPage() {
 
             {/* Overall Benefits */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             위두소프트만의 차별화된 가치
@@ -159,7 +159,7 @@ export default function SolutionsPage() {
 
             {/* Solutions Grid */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             3가지 핵심 솔루션 영역
@@ -227,7 +227,7 @@ export default function SolutionsPage() {
 
             {/* Success Stories */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             검증된 성공 사례
@@ -259,7 +259,7 @@ export default function SolutionsPage() {
 
             {/* Pricing Information Section */}
             <section className="py-20 bg-muted/30">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             투명한 가격 정책
@@ -323,7 +323,7 @@ export default function SolutionsPage() {
 
             {/* CTA Section */}
             <section className="py-20 bg-primary text-primary-foreground">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                         비즈니스 혁신을 시작할 준비가 되셨나요?
                     </h2>

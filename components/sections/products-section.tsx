@@ -62,7 +62,7 @@ export function ProductsSection() {
 
     return (
         <section className="py-20 bg-muted/20">
-            <div className="container mx-auto px-6 md:px-8 lg:px-12">
+            <div className="container">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
                     <div className="text-center mb-16">
@@ -108,19 +108,7 @@ export function ProductsSection() {
                                         ))}
                                     </div>
 
-                                    {/* CTA 버튼 */}
-                                    <div className="pt-4">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300"
-                                            asChild
-                                        >
-                                            <Link href={solution.link}>
-                                                자세히 알아보기
-                                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                                            </Link>
-                                        </Button>
-                                    </div>
+                                    {/* CTA 버튼 제거됨 - 요청에 따라 링크 삭제 */}
                                 </CardContent>
                             </Card>
                         ))}
@@ -130,7 +118,7 @@ export function ProductsSection() {
             </div>
 
             {/* 업계별 글로벌 SaaS 솔루션 포트폴리오 섹션 */}
-            <div className="container mx-auto px-6 md:px-8 lg:px-12 pt-20 pb-20">
+            <div className="container pt-20 pb-20">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
                     <div className="text-center mb-16">
@@ -204,7 +192,7 @@ export function ProductsSection() {
 
             {/* SaaS 도입부터 운영까지 섹션 - 원본 사이트와 동일 */}
             <div className="bg-muted/40 py-24">
-                <div className="container mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
                         <div className="text-center mb-16">
@@ -359,7 +347,7 @@ export function ProductsSection() {
                 {/* 미묘한 배경 패턴 */}
                 <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px]" />
 
-                <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+                <div className="container relative z-10">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
                         <div className="text-center mb-12">

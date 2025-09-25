@@ -150,7 +150,7 @@ export default function InfrastructurePage() {
             {/* Hero Section */}
             <section className="relative py-20 bg-gradient-to-br from-slate-50/50 via-background to-indigo-50/50 dark:from-slate-900/20 dark:via-background dark:to-indigo-900/20">
                 <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:60px_60px]" />
-                <div className="container relative max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container relative max-w-7xl">
                     <Breadcrumb items={breadcrumbItems} />
 
                     <div className="mt-8 text-center">
@@ -184,7 +184,7 @@ export default function InfrastructurePage() {
 
             {/* IT Challenges & Solutions */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             IT 운영의 주요 과제와 해결책
@@ -228,7 +228,7 @@ export default function InfrastructurePage() {
 
             {/* Features Section */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             IT 인프라 최적화의 핵심 기능
@@ -261,7 +261,7 @@ export default function InfrastructurePage() {
 
             {/* Infrastructure Journey Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             체계적인 IT 인프라 구축 로드맵
@@ -306,7 +306,7 @@ export default function InfrastructurePage() {
 
             {/* Benefits Section */}
             <section className="py-20 bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             입증된 IT 운영 개선 효과
@@ -334,7 +334,7 @@ export default function InfrastructurePage() {
 
             {/* Products Section */}
             <section className="py-20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+                <div className="container max-w-7xl">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                             IT 인프라 최적화 제품군
@@ -382,7 +382,7 @@ export default function InfrastructurePage() {
 
             {/* CTA Section */}
             <section className="py-20 bg-primary text-primary-foreground">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                         IT 인프라 최적화를 시작하세요
                     </h2>

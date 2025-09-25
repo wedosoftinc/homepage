@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumb } from "@/components/common/breadcrumb"
 import Link from "next/link"
 import {
   ArrowRightIcon as ArrowRight,
@@ -23,21 +24,20 @@ export default function ConsultingPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Breadcrumb */}
-      <div className="border-b bg-muted/30">
-        <div className="container mx-auto px-4 py-3">
-          <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-foreground transition-colors">홈</Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-foreground transition-colors">서비스</Link>
-            <span>/</span>
-            <span className="text-foreground font-medium">컨설팅</span>
-          </nav>
+      <div className="border-b bg-muted/20">
+        <div className="container max-w-7xl py-4">
+          <Breadcrumb
+            items={[
+              { title: "서비스", href: "/services" },
+              { title: "컨설팅" }
+            ]}
+          />
         </div>
       </div>
 
       {/* Hero Section */}
       <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
               <Target className="w-3 h-3 mr-1" />
@@ -70,7 +70,7 @@ export default function ConsultingPage() {
 
       {/* Key Services */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               글로벌 SaaS 파트너십 기반
@@ -286,7 +286,7 @@ export default function ConsultingPage() {
 
       {/* Why Choose Us */}
       <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -414,7 +414,7 @@ export default function ConsultingPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-muted/20">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             SaaS 도입, 혼자 고민하지 마세요
           </h2>
@@ -440,7 +440,7 @@ export default function ConsultingPage() {
 
       {/* Navigation to other services */}
       <section className="py-12 bg-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center mb-8">
             <h3 className="text-xl font-semibold mb-2">다른 서비스도 확인해보세요</h3>
             <p className="text-muted-foreground">컨설팅부터 운영지원까지, 원스톱 서비스를 제공합니다</p>

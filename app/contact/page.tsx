@@ -16,7 +16,7 @@ export default function ContactPage() {
             <main>
                 {/* Breadcrumb Navigation */}
                 <div className="border-b bg-muted/20">
-                    <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+                    <div className="container max-w-7xl py-4">
                         <Breadcrumb
                             items={[
                                 { title: "문의하기" }
@@ -27,7 +27,7 @@ export default function ContactPage() {
 
                 {/* Page Header */}
                 <section className="py-16">
-                    <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                    <div className="container max-w-7xl text-center">
                         <Badge className="mb-4">Contact Us</Badge>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4">
                             문의하기
@@ -40,7 +40,7 @@ export default function ContactPage() {
 
                 {/* 연락처 정보와 문의 폼 - 2컬럼 */}
                 <section className="pb-12">
-                    <div className="container mx-auto px-4">
+                    <div className="container">
                         <div className="max-w-7xl mx-auto">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                                 
