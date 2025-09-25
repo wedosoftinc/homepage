@@ -97,79 +97,55 @@ export default function CustomQuotePage() {
         billingCycle: 'monthly'
     })
 
-    // 1단계: 비즈니스 니즈 파악
+    // 1단계: 비즈니스 니즈 파악 (12개 제품 분석 기반 6개 핵심 니즈)
     const businessNeeds = [
         {
-            id: 'customer-support',
-            title: '고객 서비스 향상',
-            description: '고객 응답 시간 단축, 만족도 향상, 옴니채널 지원',
+            id: 'customer-response-time',
+            title: '고객 응답 시간 80% 단축',
+            description: '옴니채널 통합, 자동 티켓 분류, AI 챗봇으로 0.8초 내 첫 응답',
             icon: Headphones,
             color: 'bg-blue-50 border-blue-200 text-blue-700',
-            products: ['freshdesk-omni', 'freshdesk', 'freshchat', 'freshcaller', 'freddy-ai']
+            products: ['freshdesk-omni', 'freshdesk', 'freshchat', 'freddy-ai']
         },
         {
-            id: 'sales-growth',
-            title: '매출 성장 가속화',
-            description: 'CRM 최적화, 영업 프로세스 자동화, 리드 관리',
+            id: 'sales-revenue-growth',
+            title: '영업 매출 20% 증대',
+            description: 'AI CRM 자동화, 리드 스코어링, 영업 파이프라인 최적화로 전환율 향상',
             icon: TrendingUp,
             color: 'bg-green-50 border-green-200 text-green-700',
             products: ['freshsales', 'monday-sales', 'freddy-ai']
         },
         {
-            id: 'team-productivity',
-            title: '팀 생산성 향상',
-            description: '협업 도구, 프로젝트 관리, 워크플로우 자동화',
+            id: 'team-collaboration-boost',
+            title: '팀 협업 효율성 30% 향상',
+            description: '실시간 협업, 프로젝트 가시성, 워크플로우 자동화로 생산성 극대화',
             icon: Users,
             color: 'bg-purple-50 border-purple-200 text-purple-700',
             products: ['google-workspace', 'monday-work', 'monday-service']
         },
         {
-            id: 'operational-efficiency',
-            title: '운영 효율성 개선',
-            description: '업무 프로세스 최적화, 데이터 통합, 자동화',
-            icon: Zap,
-            color: 'bg-yellow-50 border-yellow-200 text-yellow-700',
-            products: ['monday-service', 'freshservice', 'google-workspace']
-        },
-        {
-            id: 'data-analytics',
-            title: '데이터 기반 의사결정',
-            description: '비즈니스 인텔리전스, 대시보드, 성과 분석',
-            icon: BarChart3,
-            color: 'bg-indigo-50 border-indigo-200 text-indigo-700',
-            products: ['monday-work', 'freshservice', 'google-workspace']
-        },
-        {
-            id: 'remote-work',
-            title: '원격근무 환경 구축',
-            description: '클라우드 협업, 원격 접속, 보안 강화',
-            icon: Globe,
-            color: 'bg-cyan-50 border-cyan-200 text-cyan-700',
-            products: ['google-workspace', 'splashtop', 'monday-work']
-        },
-        {
-            id: 'it-security',
-            title: 'IT 보안 및 관리',
-            description: 'IT 서비스 관리, 보안 강화, 시스템 모니터링',
-            icon: Shield,
-            color: 'bg-red-50 border-red-200 text-red-700',
-            products: ['freshservice', 'splashtop', 'google-workspace']
-        },
-        {
-            id: 'time-management',
-            title: '시간 관리 최적화',
-            description: '일정 관리, 리소스 계획, 업무 우선순위',
-            icon: Clock,
-            color: 'bg-pink-50 border-pink-200 text-pink-700',
-            products: ['monday-work', 'google-workspace']
-        },
-        {
-            id: 'itsm-optimization',
-            title: 'IT 서비스 관리 (ITSM)',
-            description: '티켓 관리, 인시던트 대응, IT 자산 관리, SLA 모니터링',
+            id: 'it-helpdesk-automation',
+            title: 'IT 헬프데스크 90% 자동화',
+            description: '티켓 자동 분류, SLA 관리, 인시던트 예방으로 IT 운영비 절감',
             icon: Wrench,
             color: 'bg-orange-50 border-orange-200 text-orange-700',
-            products: ['freshservice', 'monday-service']
+            products: ['freshservice', 'monday-service', 'freddy-ai']
+        },
+        {
+            id: 'secure-remote-work',
+            title: '원격 근무 보안 100% 강화',
+            description: '안전한 원격 접속, 클라우드 보안, 업무 연속성 보장',
+            icon: Shield,
+            color: 'bg-red-50 border-red-200 text-red-700',
+            products: ['splashtop', 'google-workspace', 'freshservice']
+        },
+        {
+            id: 'ai-powered-automation',
+            title: 'AI 기반 업무 자동화 50% 달성',
+            description: '음성 인식, 자동 응답, 데이터 분석으로 반복 업무 완전 자동화',
+            icon: Lightbulb,
+            color: 'bg-yellow-50 border-yellow-200 text-yellow-700',
+            products: ['freddy-ai', 'freshcaller', 'freshchat', 'monday-work']
         }
     ]
 
