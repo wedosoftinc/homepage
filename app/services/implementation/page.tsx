@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumb } from "@/components/common/breadcrumb"
 import Link from "next/link"
 import {
   ArrowRightIcon as ArrowRight,
@@ -18,15 +19,14 @@ export default function ImplementationPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Breadcrumb */}
-      <div className="border-b bg-muted/30">
-        <div className="container py-3">
-          <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-foreground transition-colors">홈</Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-foreground transition-colors">서비스</Link>
-            <span>/</span>
-            <span className="text-foreground font-medium">구축</span>
-          </nav>
+      <div className="border-b bg-muted/20">
+        <div className="container max-w-7xl py-4">
+          <Breadcrumb
+            items={[
+              { title: "서비스", href: "/services" },
+              { title: "구축" }
+            ]}
+          />
         </div>
       </div>
 

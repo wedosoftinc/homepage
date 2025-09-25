@@ -108,19 +108,7 @@ export function ProductsSection() {
                                         ))}
                                     </div>
 
-                                    {/* CTA 버튼 */}
-                                    <div className="pt-4">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300"
-                                            asChild
-                                        >
-                                            <Link href={solution.link}>
-                                                자세히 알아보기
-                                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                                            </Link>
-                                        </Button>
-                                    </div>
+                                    {/* CTA 버튼 제거됨 - 요청에 따라 링크 삭제 */}
                                 </CardContent>
                             </Card>
                         ))}
