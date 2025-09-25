@@ -15,14 +15,30 @@ const contactSchema = z.object({
     message: z.string().min(10, '문의 내용은 최소 10글자 이상 입력해주세요'),
 })
 
-// Gmail SMTP 설정
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-    },
-})
+// Gmail SMTP 설정 - 환경변수 검증 포함
+function createTransporter() {
+    const gmailUser = process.env.GMAIL_USER
+    const gmailPassword = process.env.GMAIL_APP_PASSWORD
+    
+    if (!gmailUser || !gmailPassword) {
+        console.error('Gmail credentials missing:', {
+            user: gmailUser ? 'present' : 'missing',
+            password: gmailPassword ? 'present' : 'missing',
+            env: process.env.NODE_ENV
+        })
+        throw new Error('Gmail credentials are not properly configured')
+    }
+
+    console.log('Creating Gmail transporter with user:', gmailUser)
+    
+    return nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: gmailUser,
+            pass: gmailPassword,
+        },
+    })
+}
 
 export async function POST(request: NextRequest) {
     try {
@@ -53,7 +69,7 @@ ${validatedData.message}
 ---
 위두소프트 홈페이지 문의 시스템
 접수 시간: ${new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })}
-    `.trim()
+        `.trim()
 
         // 개발 환경에서도 콘솔 출력으로 디버깅 정보 제공
         if (process.env.NODE_ENV === 'development') {
@@ -62,10 +78,13 @@ ${validatedData.message}
             console.log('=== End of Email Content ===')
         }
 
+        // 트랜스포터 생성 (환경변수 검증 포함)
+        const transporter = createTransporter()
+
         // 실제 이메일 전송 (개발/프로덕션 모두)
         await transporter.sendMail({
             from: `"${validatedData.name} (위두소프트 홈페이지)" <${process.env.GMAIL_USER}>`,
-            to: process.env.CONTACT_EMAIL_TO,
+            to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
             subject: `[홈페이지 문의] ${validatedData.inquiryType} - ${validatedData.subject}`,
             text: emailContent,
             html: emailContent.replace(/\n/g, '<br>').replace(/■/g, '<strong>■</strong>'),

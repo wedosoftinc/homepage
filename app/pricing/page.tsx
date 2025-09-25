@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { CurrencyConverter } from "@/components/ui/currency-converter"
+import { Breadcrumb } from "@/components/common/breadcrumb"
 import {
     ArrowRightIcon as ArrowRight,
     ArrowLeftIcon as ArrowLeft,
@@ -74,7 +75,7 @@ interface BillingCycle {
 }
 
 export default function CustomQuotePage() {
-    // 위저드 단계 상태 (6단계로 확장)
+    // 위저드 단계 상태 (7단계로 확장)
     const [currentStep, setCurrentStep] = useState(1)
     const [quoteData, setQuoteData] = useState<QuoteData>({
         needs: [],
@@ -149,6 +150,14 @@ export default function CustomQuotePage() {
             icon: Clock,
             color: 'bg-pink-50 border-pink-200 text-pink-700',
             products: ['monday-work', 'google-workspace']
+        },
+        {
+            id: 'itsm-optimization',
+            title: 'IT 서비스 관리 (ITSM)',
+            description: '티켓 관리, 인시던트 대응, IT 자산 관리, SLA 모니터링',
+            icon: Wrench,
+            color: 'bg-orange-50 border-orange-200 text-orange-700',
+            products: ['freshservice', 'monday-service']
         }
     ]
 
@@ -234,6 +243,50 @@ export default function CustomQuotePage() {
                 { id: 'basic', name: 'Basic', price: 8, features: ['무제한 보드', '기본 대시보드', '모바일 앱', '24/7 지원'], maxUsers: 1000 },
                 { id: 'standard', name: 'Standard', price: 10, features: ['Basic 모든 기능', '타임라인 뷰', '캘린더 뷰', '게스트 액세스', '통합'], recommended: true },
                 { id: 'pro', name: 'Pro', price: 16, features: ['Standard 모든 기능', '개인 보드', '차트 뷰', '시간 추적', '고급 검색'] }
+            ]
+        },
+        'monday-sales': {
+            id: 'monday-sales',
+            name: 'Monday Sales CRM',
+            category: 'sales-management',
+            description: 'CRM 및 영업 파이프라인 관리',
+            plans: [
+                { id: 'basic', name: 'Basic', price: 12, features: ['리드 관리', '딜 파이프라인', '기본 보고서', '이메일 동기화'] },
+                { id: 'standard', name: 'Standard', price: 17, features: ['Basic 모든 기능', '자동화', '고급 필터', '활동 로그'], recommended: true },
+                { id: 'pro', name: 'Pro', price: 28, features: ['Standard 모든 기능', '고급 분석', '예측', '통합 API'] }
+            ]
+        },
+        'monday-service': {
+            id: 'monday-service',
+            name: 'Monday Service',
+            category: 'it-service',
+            description: 'IT 서비스 관리 및 헬프데스크',
+            plans: [
+                { id: 'basic', name: 'Basic', price: 6, features: ['티켓 관리', '기본 자동화', '이메일 알림', 'SLA 추적'] },
+                { id: 'standard', name: 'Standard', price: 12, features: ['Basic 모든 기능', '고급 자동화', '지식 베이스', '사용자 포털'], recommended: true },
+                { id: 'pro', name: 'Pro', price: 19, features: ['Standard 모든 기능', '고급 분석', '에스컬레이션', 'API 액세스'] }
+            ]
+        },
+        'freshservice': {
+            id: 'freshservice',
+            name: 'Freshservice',
+            category: 'it-service',
+            description: 'IT 서비스 관리 및 ITSM 솔루션',
+            plans: [
+                { id: 'starter', name: 'Starter', price: 19, features: ['티켓 관리', '자산 관리', '기본 ITIL', '지식 베이스'] },
+                { id: 'growth', name: 'Growth', price: 49, features: ['Starter 모든 기능', '변경 관리', '문제 관리', '프로젝트 관리'], recommended: true },
+                { id: 'pro', name: 'Pro', price: 95, features: ['Growth 모든 기능', '고급 분석', '비즈니스 규칙', 'API'] }
+            ]
+        },
+        'splashtop': {
+            id: 'splashtop',
+            name: 'Splashtop',
+            category: 'remote-access',
+            description: '원격 데스크톱 및 접속 솔루션',
+            plans: [
+                { id: 'business-access', name: 'Business Access', price: 8.25, features: ['원격 데스크톱', '파일 전송', '채팅', '세션 기록'] },
+                { id: 'business-access-pro', name: 'Business Access Pro', price: 16.67, features: ['Business Access 모든 기능', '그룹 관리', 'SSO', '고급 보안'], recommended: true },
+                { id: 'enterprise', name: 'Enterprise', price: 25, features: ['Pro 모든 기능', 'API', '온프레미스', '24/7 지원'] }
             ]
         }
     }
@@ -334,22 +387,33 @@ export default function CustomQuotePage() {
         return calculateTotalPrice() * 12
     }
 
-    // 진행률 계산 (6단계로 변경)
-    const getProgress = () => (currentStep / 6) * 100
+    // 진행률 계산 (7단계로 변경)
+    const getProgress = () => (currentStep / 7) * 100
+
+    const breadcrumbItems = [
+        { title: '맞춤 견적' }
+    ]
 
     return (
         <div className="min-h-screen bg-background">
+            {/* Breadcrumb */}
+            <div className="border-b bg-muted/20">
+                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+                    <Breadcrumb items={breadcrumbItems} />
+                </div>
+            </div>
+            
             {/* 헤더 */}
-            <section className="py-12 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-                <div className="container max-w-4xl mx-auto px-6 text-center">
+            <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
                     <Badge variant="secondary" className="mb-4">
                         맞춤 견적 시스템
                     </Badge>
-                    <h1 className="text-4xl font-bold tracking-tight mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
                         3분만에 받는
                         <span className="text-primary"> 맞춤 솔루션 견적</span>
                     </h1>
-                    <p className="text-xl text-muted-foreground mb-8">
+                    <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
                         귀하의 비즈니스 니즈에 딱 맞는 솔루션과 실시간 원화 가격을 확인하세요
                     </p>
 
@@ -580,9 +644,7 @@ export default function CustomQuotePage() {
                                                                 key={plan.id}
                                                                 className={`cursor-pointer transition-all duration-200 hover:shadow-md ${isSelected
                                                                         ? 'border-2 border-primary bg-primary/5 shadow-lg'
-                                                                        : plan.recommended
-                                                                            ? 'border-2 border-blue-200 bg-blue-50/50'
-                                                                            : 'border border-border hover:border-primary/50'
+                                                                        : 'border border-border hover:border-primary/50'
                                                                     }`}
                                                                 onClick={() => handlePlanSelect(productId, plan.id)}
                                                             >
@@ -835,7 +897,7 @@ export default function CustomQuotePage() {
                         </Card>
                     )}
 
-                    {/* 6단계: 플랜 선택 */}
+                    {/* 6단계: 추천 솔루션 확인 */}
                     {currentStep === 6 && (
                         <Card className="p-8">
                             <CardHeader className="text-center pb-8">

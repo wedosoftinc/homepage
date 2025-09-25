@@ -4,11 +4,13 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { PaperAirplaneIcon, CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
@@ -23,6 +25,9 @@ const contactFormSchema = z.object({
     interestedProduct: z.string().optional(),
     subject: z.string().min(1, '제목을 입력해주세요'),
     message: z.string().min(10, '문의 내용은 최소 10글자 이상 입력해주세요'),
+    privacyConsent: z.boolean().refine(val => val === true, {
+        message: '개인정보 수집 및 이용에 동의해주세요',
+    }),
 })
 
 type ContactFormData = z.infer<typeof contactFormSchema>
@@ -48,6 +53,7 @@ export function ContactForm({ className }: ContactFormProps) {
             interestedProduct: '',
             subject: '',
             message: '',
+            privacyConsent: false,
         },
     })
 
@@ -84,14 +90,8 @@ export function ContactForm({ className }: ContactFormProps) {
 
     return (
         <div className={className}>
-            <Card className="w-full max-w-2xl mx-auto">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold">문의하기</CardTitle>
-                    <p className="text-muted-foreground mt-2">
-                        궁금한 사항이나 상담 요청을 남겨주세요. 전문 컨설턴트가 신속하게 답변드립니다.
-                    </p>
-                </CardHeader>
-                <CardContent>
+            <Card className="w-full">
+                <CardContent className="pt-6">
                     {/* 상태 메시지 */}
                     {submitStatus !== 'idle' && (
                         <div className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${submitStatus === 'success'
@@ -108,10 +108,10 @@ export function ContactForm({ className }: ContactFormProps) {
                     )}
 
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                             {/* 개인정보 섹션 */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold border-b pb-2">개인정보</h3>
+                            <div className="space-y-3">
+                                <h3 className="text-base font-semibold border-b pb-1">개인정보</h3>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <FormField
@@ -121,7 +121,11 @@ export function ContactForm({ className }: ContactFormProps) {
                                             <FormItem>
                                                 <FormLabel>이름 *</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="홍길동" {...field} />
+                                                    <Input 
+                                                        placeholder="홍길동" 
+                                                        className="placeholder:text-muted-foreground/40"
+                                                        {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -138,6 +142,7 @@ export function ContactForm({ className }: ContactFormProps) {
                                                     <Input
                                                         type="email"
                                                         placeholder="example@company.com"
+                                                        className="placeholder:text-muted-foreground/40"
                                                         {...field}
                                                     />
                                                 </FormControl>
@@ -155,7 +160,11 @@ export function ContactForm({ className }: ContactFormProps) {
                                             <FormItem>
                                                 <FormLabel>연락처</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="010-1234-5678" {...field} />
+                                                    <Input 
+                                                        placeholder="010-1234-5678" 
+                                                        className="placeholder:text-muted-foreground/40"
+                                                        {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -169,7 +178,11 @@ export function ContactForm({ className }: ContactFormProps) {
                                             <FormItem>
                                                 <FormLabel>직책</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="팀장, 과장 등" {...field} />
+                                                    <Input 
+                                                        placeholder="팀장, 과장 등" 
+                                                        className="placeholder:text-muted-foreground/40"
+                                                        {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -184,7 +197,11 @@ export function ContactForm({ className }: ContactFormProps) {
                                         <FormItem>
                                             <FormLabel>회사명 *</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="(주)위두소프트" {...field} />
+                                                <Input 
+                                                    placeholder="(주)위두소프트" 
+                                                    className="placeholder:text-muted-foreground/40"
+                                                    {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -193,8 +210,8 @@ export function ContactForm({ className }: ContactFormProps) {
                             </div>
 
                             {/* 문의내용 섹션 */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold border-b pb-2">문의내용</h3>
+                            <div className="space-y-3">
+                                <h3 className="text-base font-semibold border-b pb-1">문의내용</h3>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <FormField
@@ -257,7 +274,11 @@ export function ContactForm({ className }: ContactFormProps) {
                                         <FormItem>
                                             <FormLabel>제목 *</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="문의 제목을 입력하세요" {...field} />
+                                                <Input 
+                                                    placeholder="문의 제목을 입력하세요" 
+                                                    className="placeholder:text-muted-foreground/40"
+                                                    {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -273,7 +294,7 @@ export function ContactForm({ className }: ContactFormProps) {
                                             <FormControl>
                                                 <Textarea
                                                     placeholder="궁금한 사항이나 요청사항을 자세히 작성해주세요. (최소 10글자 이상)"
-                                                    className="min-h-[120px]"
+                                                    className="min-h-[80px] resize-none placeholder:text-muted-foreground/40"
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -284,19 +305,44 @@ export function ContactForm({ className }: ContactFormProps) {
                             </div>
 
                             {/* 개인정보 처리방침 동의 */}
-                            <div className="bg-muted/30 p-4 rounded-lg">
-                                <p className="text-sm text-muted-foreground">
-                                    문의 접수 시 개인정보 처리방침에 동의한 것으로 간주됩니다.
-                                    수집된 정보는 문의 처리 목적으로만 사용되며, 처리 완료 후
-                                    관련 법령에 따라 안전하게 처리됩니다.
-                                </p>
-                            </div>
+                            <FormField
+                                control={form.control}
+                                name="privacyConsent"
+                                render={({ field }) => (
+                                    <FormItem className="bg-muted/20 p-3 rounded-lg">
+                                        <div className="flex items-start space-x-3">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                    className="mt-0.5"
+                                                />
+                                            </FormControl>
+                                            <div className="flex-1">
+                                                <FormLabel className="text-sm font-medium cursor-pointer">
+                                                    개인정보 수집 및 이용에 동의합니다. (필수)
+                                                </FormLabel>
+                                                <p className="text-xs text-muted-foreground mt-0.5">
+                                                    문의 처리를 위해 개인정보를 수집하며, 처리 완료 후 관련 법령에 따라 보관됩니다.{' '}
+                                                    <Link 
+                                                        href="/privacy-policy" 
+                                                        target="_blank"
+                                                        className="text-primary hover:underline"
+                                                    >
+                                                        자세한 내용 보기
+                                                    </Link>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
 
                             {/* 제출 버튼 */}
                             <Button
                                 type="submit"
-                                className="w-full"
-                                size="lg"
+                                className="w-full mt-6"
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting ? (
