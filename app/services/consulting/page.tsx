@@ -48,8 +48,8 @@ export default function ConsultingPage() {
               <span className="text-primary">대신 생각해드립니다</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              25년간 4,000여 기업의 디지털 혁신을 이끌어온 전문가들이<br />
-              귀하의 비즈니스에 최적화된 SaaS 도입 전략을 설계합니다
+              12개 글로벌 SaaS 제품을 직접 운영해본 소규모 전문팀이<br />
+              대기업 컨설팅사에서는 불가능한 세밀하고 실용적인 조언을 제공합니다
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -73,176 +73,176 @@ export default function ConsultingPage() {
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              글로벌 SaaS 파트너십 기반
-              <span className="text-primary"> 전략 컨설팅</span>
+              12개 제품을 실제로 써본 사람들의
+              <span className="text-primary"> 진짜 조언</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Freshworks, Google, Monday.com, Splashtop 공식 파트너로서
-              검증된 방법론과 실무 경험을 바탕으로 최적의 솔루션을 제안합니다
+              Freshworks 5개, Monday.com 4개, Google Workspace, Splashtop, Freshcaller까지<br />
+              각각의 장단점과 실제 구축 경험을 바탕으로 한 솔직한 컨설팅을 받아보세요
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* 비즈니스 분석 */}
+            {/* 실무 경험 기반 분석 */}
             <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BarChart3 className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">비즈니스 분석</CardTitle>
+                <CardTitle className="text-xl">실무 경험 기반 분석</CardTitle>
                 <CardDescription>
-                  현재 업무 프로세스와 시스템 현황을 면밀히 분석하여 개선점을 도출합니다
+                  12개 제품을 실제로 구축해본 경험으로 책이나 매뉴얼에 없는 진짜 함정들과 해결책을 알려드립니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    현재 워크플로우 매핑
+                    Freshdesk vs Freshservice 실무 차이점
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    병목 지점 식별
+                    Monday.com 4개 제품 조합 전략
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    ROI 예측 분석
+                    Google Workspace 연동 시나리오
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    리스크 평가
+                    실제 구축 시 만나는 함정들
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            {/* 솔루션 설계 */}
+            {/* 제품 조합 최적화 */}
             <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Settings className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">솔루션 설계</CardTitle>
+                <CardTitle className="text-xl">제품 조합 최적화</CardTitle>
                 <CardDescription>
-                  12개 글로벌 SaaS 제품 중 귀하의 비즈니스에 최적화된 조합을 설계합니다
+                  12개 제품 중 정말 필요한 것만 골라서 예산 대비 최대 효과를 낼 수 있는 조합을 찾아드립니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    4개 벤더 포트폴리오 분석
+                    불필요한 기능 중복 제거
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    맞춤형 아키텍처 설계
+                    단계별 도입 우선순위
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    통합 시나리오 계획
+                    라이선스 비용 최적화
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    확장성 고려 설계
+                    연동 복잡도 고려 설계
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            {/* 전략 수립 */}
+            {/* 현실적 도입 계획 */}
             <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Target className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">도입 전략 수립</CardTitle>
+                <CardTitle className="text-xl">현실적 도입 계획</CardTitle>
                 <CardDescription>
-                  단계별 도입 계획과 변화 관리 전략을 구체적으로 수립합니다
+                  이상적인 계획이 아니라 실제 조직에서 실행 가능한 현실적인 단계별 도입 전략을 제시합니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    단계별 로드맵 작성
+                    조직 저항 최소화 전략
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    변화 관리 전략
+                    파일럿 테스트 설계
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    교육 계획 수립
+                    업무 중단 없는 전환 계획
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    성공 지표 정의
+                    실패 시 백업 전략
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            {/* 비용 최적화 */}
+            {/* 벤더 협상 지원 */}
             <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">비용 최적화</CardTitle>
+                <CardTitle className="text-xl">벤더 협상 지원</CardTitle>
                 <CardDescription>
-                  라이선스 최적화와 운영 비용을 절감하는 방안을 제시합니다
+                  공식 파트너로서 일반 고객이 받기 어려운 특별 할인과 조건을 협상해드립니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    라이선스 최적화
+                    파트너 특별 할인 적용
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    운영 비용 절감
+                    계약 조건 검토 및 개선
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    벤더 협상 지원
+                    라이선스 최적화 방안
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    TCO 분석
+                    장기 계약 전략 수립
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            {/* 위험 관리 */}
+            {/* 솔직한 단점 공유 */}
             <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">위험 관리</CardTitle>
+                <CardTitle className="text-xl">솔직한 단점 공유</CardTitle>
                 <CardDescription>
-                  도입 과정에서 발생할 수 있는 위험 요소를 사전에 식별하고 대응합니다
+                  벤더에서 말하지 않는 각 제품의 한계와 제약사항을 미리 알려드려 예상치 못한 문제를 방지합니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    위험 요소 식별
+                    제품별 알려진 제약사항
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    대응 방안 수립
+                    한국 환경 적용 시 이슈들
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    백업 계획 준비
+                    확장 시 예상 문제점
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    보안 검토
+                    대안 솔루션 제시
                   </li>
                 </ul>
               </CardContent>
@@ -254,28 +254,28 @@ export default function ConsultingPage() {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl">성과 측정 체계</CardTitle>
+                <CardTitle className="text-xl">성과 측정과 개선</CardTitle>
                 <CardDescription>
-                  도입 후 성과를 객관적으로 측정할 수 있는 KPI 체계를 구축합니다
+                  도입 후 실제 성과를 측정하고 지속적인 개선 방안을 제시하는 사후 관리까지 포함합니다
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    KPI 정의 및 설정
+                    실제 사용률 모니터링
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    대시보드 구성
+                    ROI 측정 및 보고
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    정기 리포팅 체계
+                    사용자 만족도 조사
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    개선 방안 도출
+                    지속적 최적화 방안
                   </li>
                 </ul>
               </CardContent>
@@ -290,8 +290,8 @@ export default function ConsultingPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                왜 위두소프트의 컨설팅을<br />
-                <span className="text-primary">선택해야 할까요?</span>
+                소규모 전문팀이라서<br />
+                <span className="text-primary">가능한 진짜 컨설팅</span>
               </h2>
             </div>
 
@@ -303,18 +303,19 @@ export default function ConsultingPage() {
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                       <Globe className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">공식 파트너십</CardTitle>
+                    <CardTitle className="text-xl">실무진 직접 컨설팅</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-muted-foreground mb-4">
-                    4개 글로벌 벤더의 공식 파트너로서 최신 제품 정보와 베스트 프랙티스를 보유하고 있습니다.
+                    대기업 컨설팅처럼 주니어가 자료 만들고 시니어가 PT하는 게 아니라,
+                    실제로 구축할 사람이 직접 컨설팅합니다.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">Freshworks Partner</Badge>
-                    <Badge variant="outline">Google Partner</Badge>
-                    <Badge variant="outline">Monday.com Partner</Badge>
-                    <Badge variant="outline">Splashtop Partner</Badge>
+                    <Badge variant="outline">구축할 사람이 컨설팅</Badge>
+                    <Badge variant="outline">실무진 직접 미팅</Badge>
+                    <Badge variant="outline">솔직한 조언</Badge>
+                    <Badge variant="outline">빠른 의사결정</Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -326,21 +327,22 @@ export default function ConsultingPage() {
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                       <Briefcase className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">25년 실무 경험</CardTitle>
+                    <CardTitle className="text-xl">실제 구축 경험</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-muted-foreground mb-4">
-                    1999년부터 4,000여 기업의 디지털 혁신을 이끌어온 풍부한 경험과 노하우를 보유하고 있습니다.
+                    12개 제품을 직접 써보고 수십 번 구축해본 경험으로, 
+                    매뉴얼에 없는 실제 노하우와 함정들을 알려드립니다.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="font-semibold text-2xl text-primary">4,000+</div>
-                      <div className="text-muted-foreground">프로젝트 수행</div>
+                      <div className="font-semibold text-2xl text-primary">100+</div>
+                      <div className="text-muted-foreground">직접 구축 프로젝트</div>
                     </div>
                     <div>
-                      <div className="font-semibold text-2xl text-primary">25년</div>
-                      <div className="text-muted-foreground">경험 노하우</div>
+                      <div className="font-semibold text-2xl text-primary">12개</div>
+                      <div className="text-muted-foreground">제품 실사용 경험</div>
                     </div>
                   </div>
                 </CardContent>
@@ -353,25 +355,26 @@ export default function ConsultingPage() {
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                       <Target className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">맞춤형 접근</CardTitle>
+                    <CardTitle className="text-xl">빠르고 유연한 대응</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-muted-foreground mb-4">
-                    천편일률적인 솔루션이 아닌, 각 기업의 고유한 상황과 목표에 맞춘 맞춤형 전략을 제공합니다.
+                    소규모 팀이라 고객별 상황에 맞춰 유연하게 접근하고,
+                    불필요한 컨설팅 페이지 수를 늘리지 않습니다.
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-3 w-3 text-green-600" />
-                      업종별 특화 솔루션
+                      복잡한 결재라인 없음
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-3 w-3 text-green-600" />
-                      규모별 최적화
+                      빠른 의사결정과 수정
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="h-3 w-3 text-green-600" />
-                      예산 고려 설계
+                      고객 상황에 맞춘 조정
                     </li>
                   </ul>
                 </CardContent>
@@ -384,12 +387,13 @@ export default function ConsultingPage() {
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                       <Users className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">지속적 지원</CardTitle>
+                    <CardTitle className="text-xl">같은 팀의 연속 지원</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-muted-foreground mb-4">
-                    컨설팅 완료 후에도 구축, 교육, 운영지원까지 원스톱 서비스로 지속적인 파트너십을 유지합니다.
+                    컨설팅으로 끝나지 않고 실제 구축, 교육, 운영지원까지 
+                    같은 팀이 연속해서 담당하므로 일관성 있는 서비스를 받을 수 있습니다.
                   </p>
                   <div className="flex items-center gap-4 text-sm">
                     <div className="flex items-center gap-1 text-blue-600">
@@ -416,11 +420,11 @@ export default function ConsultingPage() {
       <section className="py-20 bg-muted/20">
         <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            SaaS 도입, 혼자 고민하지 마세요
+            한 번쯤은 솔직한 전문가와 대화해보세요
           </h2>
           <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-            25년 경험의 전문가가 귀하의 비즈니스에 최적화된 솔루션을 찾아드립니다.
-            무료 컨설팅으로 시작해보세요.
+            벤더 영업이 말하지 않는 진짜 이야기와 실제 구축 경험을 바탕으로 한 현실적인 조언을 받아보세요. 
+            무료 상담이니까 부담 없이 한번 들어보시면 어떨까요?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
