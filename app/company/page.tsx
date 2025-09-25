@@ -108,14 +108,14 @@ export default function CompanyPage() {
       <MainNavigation />
       {/* Breadcrumb */}
       <div className="border-b bg-muted/20">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+        <div className="container max-w-7xl py-4">
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </div>
 
       {/* Page Header */}
       <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+        <div className="container max-w-7xl text-center">
           <Badge className="mb-4">About Us</Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             회사의 운명은 고객에 달려있다
@@ -145,7 +145,7 @@ export default function CompanyPage() {
 
       {/* Company Philosophy */}
       <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="container max-w-7xl">
           <div className="text-center mb-12">
             <Badge className="mb-4">Philosophy</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -189,7 +189,7 @@ export default function CompanyPage() {
 
       {/* Timeline Section */}
       <section className="py-16 bg-muted/20">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="container max-w-7xl">
           <div className="text-center mb-12">
             <Badge className="mb-4">History</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -208,7 +208,7 @@ export default function CompanyPage() {
 
       {/* Leadership Section */}
       <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="container max-w-7xl">
           <div className="text-center mb-12">
             <Badge className="mb-4">Leadership</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -267,7 +267,7 @@ export default function CompanyPage() {
 
       {/* Call to Action */}
       <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+        <div className="container max-w-7xl text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">
               신뢰받는 파트너와 함께

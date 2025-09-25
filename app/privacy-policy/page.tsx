@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
     return (
         <div className="min-h-screen bg-background">
             <MainNavigation />
-            <main className="container mx-auto px-4 py-16">
+            <main className="container py-16">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl font-bold mb-8 text-center">개인정보 처리방침</h1>
                     

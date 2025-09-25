@@ -398,14 +398,14 @@ export default function CustomQuotePage() {
         <div className="min-h-screen bg-background">
             {/* Breadcrumb */}
             <div className="border-b bg-muted/20">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+                <div className="container max-w-7xl py-4">
                     <Breadcrumb items={breadcrumbItems} />
                 </div>
             </div>
             
             {/* 헤더 */}
             <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-                <div className="container max-w-7xl mx-auto px-6 md:px-8 lg:px-12 text-center">
+                <div className="container max-w-7xl text-center">
                     <Badge variant="secondary" className="mb-4">
                         맞춤 견적 시스템
                     </Badge>

@@ -20,7 +20,7 @@ export default function TrainingPage() {
     <div className="flex flex-col min-h-screen">
       {/* Breadcrumb */}
       <div className="border-b bg-muted/30">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container py-3">
           <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
             <Link href="/" className="hover:text-foreground transition-colors">홈</Link>
             <span>/</span>
@@ -33,7 +33,7 @@ export default function TrainingPage() {
 
       {/* Hero Section */}
       <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
               <BookOpen className="w-3 h-3 mr-1" />
@@ -66,7 +66,7 @@ export default function TrainingPage() {
 
       {/* Core Training Programs */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               실무 중심
@@ -276,7 +276,7 @@ export default function TrainingPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-muted/20">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             투자한 SaaS, 100% 활용하고 계신가요?
           </h2>
