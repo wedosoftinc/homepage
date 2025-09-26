@@ -77,13 +77,13 @@ export function MainNavigation() {
 
     // 로고 렌더링 최적화: CSS로 테마별 로고 전환
     const logoComponent = mounted ? (
-        <div className="relative h-10 w-auto">
+        <div className="relative h-8 md:h-10 w-auto flex items-center">
             <Image
                 src="/logo-light.webp"
                 alt="WeDoSoft"
                 width={140}
                 height={40}
-                className="h-10 w-auto dark:hidden"
+                className="h-8 md:h-10 w-auto dark:hidden"
                 style={{ height: "auto" }}
                 priority
             />
@@ -92,14 +92,14 @@ export function MainNavigation() {
                 alt="WeDoSoft"
                 width={140}
                 height={40}
-                className="h-10 w-auto hidden dark:block"
+                className="h-8 md:h-10 w-auto hidden dark:block"
                 style={{ height: "auto" }}
                 priority
             />
         </div>
     ) : (
         // SSR 시 기본 로고 (빈 공간 방지)
-        <div className="h-10 w-[140px] bg-muted animate-pulse rounded" />
+        <div className="h-8 md:h-10 w-[120] md:w-[140px] bg-muted animate-pulse rounded" />
     )
 
     // 3개 솔루션 카테고리 랜딩 페이지
@@ -655,15 +655,6 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                         </div>
                     </div>
                 </div>
-
-                {/* 제품 메뉴 */}
-                <Link
-                    href="/products"
-                    className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
-                    onClick={onClose}
-                >
-                    제품
-                </Link>
 
                 {/* 맞춤 견적 메뉴 */}
                 <Link

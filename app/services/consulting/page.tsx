@@ -43,7 +43,7 @@ export default function ConsultingPage() {
               <Target className="w-3 h-3 mr-1" />
               Strategic Consulting
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               도입 전에 물어야 할 질문들을,<br />
               <span className="text-primary">대신 생각해드립니다</span>
             </h1>

@@ -39,7 +39,7 @@ export default function TrainingPage() {
               <BookOpen className="w-3 h-3 mr-1" />
               Training & Education
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               잘 도입했다면,<br />
               <span className="text-primary">잘 쓰게 만들어야죠</span>
             </h1>
