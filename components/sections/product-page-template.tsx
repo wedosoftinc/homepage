@@ -52,8 +52,8 @@ export interface ProductPageData {
     category: string
     slug?: string
     heroCTA: {
-        primary: { text: string; href: string }
-        secondary: { text: string; href: string }
+        primary: { text: string; href: string; target?: string }
+        secondary: { text: string; href: string; target?: string }
     }
     // Hero 이미지/비디오 (옵션)
     heroMedia?: {
@@ -113,10 +113,12 @@ export interface ProductPageData {
             items: string[]
         }
         interactiveArea: {
-            type: 'demo' | 'feature-map' | 'dashboard' | 'workflow' | 'screenshot'
+            type: 'demo' | 'feature-map' | 'dashboard' | 'workflow' | 'screenshot' | 'video' | 'image'
             title: string
             description: string
             placeholder?: string
+            videoUrl?: string
+            imageUrl?: string
         }
     }[]
 
@@ -588,10 +590,12 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
 // 인터랙티브 영역 컴포넌트
 function InteractiveArea({ interactiveArea }: {
     interactiveArea: {
-        type: 'demo' | 'feature-map' | 'dashboard' | 'workflow' | 'screenshot'
+        type: 'demo' | 'feature-map' | 'dashboard' | 'workflow' | 'screenshot' | 'video' | 'image'
         title: string
         description: string
         placeholder?: string
+        videoUrl?: string
+        imageUrl?: string
     }
 }) {
     const getIcon = () => {
@@ -605,6 +609,10 @@ function InteractiveArea({ interactiveArea }: {
             case 'workflow':
                 return <Workflow className="h-8 w-8 text-primary/60" />
             case 'screenshot':
+                return <FileText className="h-8 w-8 text-primary/60" />
+            case 'video':
+                return <Play className="h-8 w-8 text-primary/60" />
+            case 'image':
                 return <FileText className="h-8 w-8 text-primary/60" />
             default:
                 return <Play className="h-8 w-8 text-primary/60" />
@@ -623,9 +631,68 @@ function InteractiveArea({ interactiveArea }: {
                 return '워크플로우 시뮬레이션'
             case 'screenshot':
                 return '제품 스크린샷'
+            case 'video':
+                return '제품 데모 영상'
+            case 'image':
+                return '제품 화면'
             default:
                 return '인터랙티브 영역'
         }
+    }
+
+    // video 타입일 때는 실제 비디오를 렌더링
+    if (interactiveArea.type === 'video' && interactiveArea.videoUrl) {
+        return (
+            <Card className="h-full min-h-[500px] overflow-hidden bg-gradient-to-br from-background to-muted/20">
+                <div className="relative h-full flex items-center justify-center">
+                    <video 
+                        className="w-full h-full object-contain rounded-lg"
+                        controls
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    >
+                        <source src={interactiveArea.videoUrl} type="video/webm" />
+                        <source src={interactiveArea.videoUrl.replace('.webm', '.mp4')} type="video/mp4" />
+                        브라우저가 비디오를 지원하지 않습니다.
+                    </video>
+                    <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg px-4 py-2 border shadow-lg">
+                        <div className="text-xs font-medium text-primary/80 uppercase tracking-wide mb-1">
+                            {getTypeLabel()}
+                        </div>
+                        <h4 className="text-sm font-semibold text-foreground">
+                            {interactiveArea.title}
+                        </h4>
+                    </div>
+                </div>
+            </Card>
+        )
+    }
+
+    // image 타입일 때는 실제 이미지를 렌더링
+    if (interactiveArea.type === 'image' && interactiveArea.imageUrl) {
+        return (
+            <Card className="h-full min-h-[500px] overflow-hidden bg-gradient-to-br from-background to-muted/20">
+                <div className="relative h-full flex items-center justify-center">
+                    <Image 
+                        src={interactiveArea.imageUrl}
+                        alt={interactiveArea.title}
+                        fill
+                        className="object-contain rounded-lg"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg px-4 py-2 border shadow-lg">
+                        <div className="text-xs font-medium text-primary/80 uppercase tracking-wide mb-1">
+                            {getTypeLabel()}
+                        </div>
+                        <h4 className="text-sm font-semibold text-foreground">
+                            {interactiveArea.title}
+                        </h4>
+                    </div>
+                </div>
+            </Card>
+        )
     }
 
     return (
