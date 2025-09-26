@@ -69,29 +69,6 @@ const freshdeskData: ProductPageData = {
             }
         },
         {
-            id: "freddy-ai",
-            label: "Freddy AI",
-            title: "Freddy AI 코파일럿",
-            description: "에이전트에게 실시간 응답 제안, 감정 분석, 지식베이스 문서 추천으로 업무 지원. 평균 응답 시간 감소와 품질 향상.",
-            feature: {
-                title: "AI 기반 상담 지원 시스템",
-                description: "AI가 에이전트의 업무를 보조하여 더 많은 고객 문의를 빠르고 정확하게 처리할 수 있습니다.",
-                items: [
-                    "실시간 응답 제안",
-                    "고객 감정 분석",
-                    "지식베이스 자동 검색",
-                    "응답 품질 개선 제안",
-                    "대화 요약 자동 생성"
-                ]
-            },
-            interactiveArea: {
-                type: "demo",
-                title: "Freddy AI 실시간 지원 데모",
-                description: "AI가 상담사를 도와 고객 응답을 생성하는 과정을 확인하세요",
-                placeholder: "AI 응답 제안 시뮬레이션"
-            }
-        },
-        {
             id: "omnichannel",
             label: "다채널 통합",
             title: "다채널 통합 관리",

@@ -38,7 +38,7 @@ export default function ImplementationPage() {
               <Settings className="w-3 h-3 mr-1" />
               Implementation & Setup
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               기술적인 설정은<br />
               <span className="text-primary">우리 몫입니다</span>
             </h1>

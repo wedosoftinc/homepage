@@ -40,7 +40,7 @@ export default function MaintenancePage() {
               <Shield className="w-3 h-3 mr-1" />
               Maintenance & Support
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               도입 이후에도<br />
               <span className="text-primary">계속 곁에 있습니다</span>
             </h1>

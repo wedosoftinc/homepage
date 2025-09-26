@@ -14,10 +14,30 @@ export function Footer() {
                         <div className="space-y-4">
                             <h3 className="text-base font-medium text-foreground/80">PRODUCT</h3>
                             <nav className="space-y-2">
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Freshworks</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Google Workspace</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Monday.com</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Splashtop</div>
+                                <Link
+                                    href="/products/freshdesk"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    Freshworks
+                                </Link>
+                                <Link
+                                    href="/products/google-workspace"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    Google Workspace
+                                </Link>
+                                <Link
+                                    href="/products/monday-service"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    Monday.com
+                                </Link>
+                                <Link
+                                    href="/products"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    Splashtop
+                                </Link>
                             </nav>
                         </div>
 
@@ -25,9 +45,24 @@ export function Footer() {
                         <div className="space-y-4">
                             <h3 className="text-base font-medium text-foreground/80">SOLUTIONS</h3>
                             <nav className="space-y-2">
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">고객 경험 관리</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">업무 생산성</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">IT 인프라 관리</div>
+                                <Link
+                                    href="/products/freshdesk-omni"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    고객 경험 관리
+                                </Link>
+                                <Link
+                                    href="/products/google-workspace"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    업무 생산성
+                                </Link>
+                                <Link
+                                    href="/products/freshservice"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    IT 인프라 관리
+                                </Link>
                             </nav>
                         </div>
 
@@ -35,10 +70,30 @@ export function Footer() {
                         <div className="space-y-4">
                             <h3 className="text-base font-medium text-foreground/80">SERVICES</h3>
                             <nav className="space-y-2">
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">컨설팅</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">솔루션 구축</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">교육</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">유지보수</div>
+                                <Link
+                                    href="/contact"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    컨설팅
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    솔루션 구축
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    교육
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    유지보수
+                                </Link>
                             </nav>
                         </div>
 
@@ -46,10 +101,33 @@ export function Footer() {
                         <div className="space-y-4">
                             <h3 className="text-base font-medium text-foreground/80">RESOURCES</h3>
                             <nav className="space-y-2">
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">고객센터</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">문서 포털</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">블로그</div>
-                                <div className="text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer">개발자 포털</div>
+                                <a
+                                    href="https://support.wedosoft.net"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    고객센터
+                                </a>
+                                <a
+                                    href="https://docs.wedosoft.net"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    문서 포털
+                                </a>
+                                <span className="block text-base text-muted-foreground/50 cursor-not-allowed">
+                                    블로그 (준비중)
+                                </span>
+                                <a
+                                    href="https://developers.freshworks.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    개발자 포털
+                                </a>
                             </nav>
                         </div>
                     </div>

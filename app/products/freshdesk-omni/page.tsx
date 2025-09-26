@@ -20,8 +20,8 @@ const freshdeskOmniData: ProductPageData = {
     category: "customer experience",
     slug: "freshdesk-omni",
     heroCTA: {
-        primary: { text: "데모 신청하기", href: "/contact?demo=freshdesk-omni" },
-        secondary: { text: "자세히 보기", href: "/contact" }
+        primary: { text: "라이브 체험하기", href: "https://scaling-meme-v679p57qx4562wgp-5001.app.github.dev/", target: "_blank" },
+        secondary: { text: "데모 신청하기", href: "/contact?demo=freshdesk-omni" }
     },
 
     keyFeatures: [
