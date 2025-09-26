@@ -45,117 +45,94 @@ const freshdeskOmniData: ProductPageData = {
     detailedFeatureTabs: [
         {
             id: "ai-response",
-            label: "AI 실시간 응답",
-            title: "AI 기반 실시간 고객 응답",
-            description: "AI 챗봇으로 실시간 상담을 지원합니다. Freddy AI Agent가 우선적으로 고객 문의에 답변하고 상담원 개입을 효과적으로 감소시킵니다.",
+            label: "AI 에이전트",
+            title: "문제를 자동으로 해결하는 AI 에이전트",
+            description: "AI 에이전트는 단순한 제안을 넘어 직접 행동합니다. 일상적인 문의 해결부터 기록 업데이트, 요청 처리까지 이 디지털 팀원들이 24시간 자동으로 처리해드려요.",
             feature: {
-                title: "Freddy AI 지원 시스템",
-                description: "AI가 에이전트의 업무를 보조하여 더 많은 고객 문의를 빠르고 정확하게 처리할 수 있습니다.",
+                title: "자동 문제 해결 AI 시스템",
+                description: "사람의 개입 없이 AI가 직접 고객 문제를 해결하고 업무를 자동화합니다.",
                 items: [
-                    "AI 챗봇 실시간 상담",
-                    "어조 개선 및 맞춤법 확인",
-                    "실시간 응답 제안",
-                    "고객 감정 분석",
-                    "지식베이스 문서 추천"
+                    "일상적인 문의 자동 해결",
+                    "고객 기록 자동 업데이트",
+                    "요청사항 자동 처리",
+                    "24시간 무중단 서비스",
+                    "대기시간 완전 제거"
                 ]
             },
             interactiveArea: {
-                type: "demo",
-                title: "AI 챗봇 실시간 응답 데모",
-                description: "Freddy AI가 고객 문의에 자동으로 응답하는 과정을 확인하세요",
-                placeholder: "AI 자동 응답 시뮬레이션"
+                type: "video",
+                title: "AI 에이전트 실시간 작동 영상",
+                description: "Freddy AI Agent가 고객 문의를 자동으로 해결하는 실제 과정",
+                videoUrl: "https://dam.freshworks.com/m/3f4f0cf65ec45bed/original/AI-Agent_X2-50.webm"
             }
         },
         {
-            id: "ticket-conversion",
-            label: "채팅 티켓 전환",
-            title: "채팅 및 전화 티켓 전환",
-            description: "채팅 또는 전화로 인입된 고객 문의를 티켓으로 변환합니다. 고객 전화 내용을 기록하고, 티켓으로 변환할 수 있습니다.",
+            id: "ai-copilot",
+            label: "AI 코파일럿",
+            title: "상담사를 도와주는 똑똑한 AI 어시스턴트",
+            description: "AI가 상담사 옆에서 실시간으로 도움을 줍니다. 대화 요약, 실시간 번역, 답변 제안까지 자동으로 해주니까 상담사는 고객과의 대화에만 집중할 수 있어요.",
             feature: {
-                title: "다채널 티켓 변환 시스템",
-                description: "모든 커뮤니케이션 채널에서 들어온 문의를 체계적으로 티켓화하여 관리합니다.",
+                title: "실시간 AI 상담 도우미",
+                description: "상담사가 더 빠르고 정확하게 고객 응대를 할 수 있도록 AI가 실시간으로 지원합니다.",
                 items: [
-                    "채팅 자동 티켓 변환",
-                    "전화 내용 기록",
-                    "음성 티켓 자동 생성",
+                    "대화 내용 자동 요약",
+                    "실시간 다국어 번역",
+                    "맞춤형 답변 제안",
+                    "고객 감정 상태 분석",
+                    "관련 문서 자동 검색"
+                ]
+            },
+            interactiveArea: {
+                type: "video",
+                title: "AI 코파일럿 실시간 지원 영상",
+                description: "상담사를 도와 더 나은 고객 서비스를 제공하는 AI의 모습",
+                videoUrl: "https://dam.freshworks.com/m/5985bfde388a455d/original/Resolution-AI-Assist_Omni_X2-50.webm"
+            }
+        },
+        {
+            id: "omnichannel-inbox",
+            label: "옴니채널 인박스",
+            title: "고객이 있는 곳 어디든 만나보세요",
+            description: "모든 채널의 고객 대화를 하나의 스마트 인박스에서 확인하세요. 상담사는 모든 지원 문제를 놓치지 않고, 고객 선호도에 따라 채널을 전환하며, 여러 탭이나 도구를 오가지 않고도 더 빠르게 응답할 수 있습니다.",
+            feature: {
+                title: "통합 고객 커뮤니케이션 허브",
+                description: "모든 채널의 대화를 한 곳에서 관리하여 효율적이고 일관된 고객 서비스를 제공합니다.",
+                items: [
+                    "모든 채널 통합 관리",
+                    "스마트 인박스 시스템",
                     "채널별 우선순위 설정",
-                    "원본 대화 이력 보존"
+                    "고객 선호 채널 자동 인식",
+                    "실시간 대화 전환"
                 ]
             },
             interactiveArea: {
-                type: "workflow",
-                title: "채널별 티켓 변환 워크플로우",
-                description: "다양한 채널의 문의가 티켓으로 변환되는 과정을 확인하세요",
-                placeholder: "채널 통합 티켓 시스템"
+                type: "image",
+                title: "옴니채널 인박스 화면",
+                description: "다양한 채널의 고객 대화가 하나로 통합된 인박스를 확인하세요",
+                imageUrl: "/SB-3-Omnichannel-Inbox.webp"
             }
         },
         {
-            id: "cti-integration",
-            label: "전화 통합 (CTI)",
-            title: "전화 통합 (CTI)",
-            description: "Freshcaller 제품과 연동하여 음성 지원을 제공합니다. IVR 구성, 통화 녹음, 자동 티켓 생성, 콜백 스케줄링 등을 하나의 플랫폼에서 통합 처리합니다.",
+            id: "integration",
+            label: "비즈니스 앱 연동",
+            title: "팀이 사용하는 모든 도구와 연결하세요",
+            description: "팀이 의존하는 도구들과 연동하세요. Freshdesk에 기본 내장된 연동 기능으로 추가 비용이나 복잡함 없이 바로 시작할 수 있습니다.",
             feature: {
-                title: "통합 음성 지원 시스템",
-                description: "국내 통신사와의 연결도 문제없이 전화 상담까지 한번에 해결합니다.",
+                title: "네이티브 통합 생태계",
+                description: "별도 설치나 복잡한 설정 없이 필요한 도구들과 즉시 연동됩니다.",
                 items: [
-                    "IVR 시스템 구성",
-                    "통화 녹음 자동 저장",
-                    "콜백 스케줄링",
-                    "자동 티켓 생성",
-                    "국내 통신사 연동"
+                    "Slack, Teams 협업 도구",
+                    "Salesforce, HubSpot CRM",
+                    "Jira, Asana 프로젝트 관리",
+                    "Shopify, WooCommerce 이커머스",
+                    "추가 비용 없는 기본 연동"
                 ]
             },
             interactiveArea: {
-                type: "feature-map",
-                title: "CTI 통합 시스템 맵",
-                description: "전화 상담부터 티켓 생성까지의 전체 프로세스를 확인하세요",
-                placeholder: "CTI 통합 커뮤니케이션 허브"
-            }
-        },
-        {
-            id: "marketplace",
-            label: "마켓플레이스 확장",
-            title: "마켓플레이스 확장",
-            description: "Slack, 카카오톡, Instagram, Shopify, WhatsApp, Facebook Messenger, Salesforce, Jira 등 다양한 플랫폼과 연동 가능합니다.",
-            feature: {
-                title: "무제한 확장 생태계",
-                description: "필요한 모든 비즈니스 도구와 연결하여 통합 워크플로우를 구성합니다.",
-                items: [
-                    "Slack, Teams 협업 툴 연동",
-                    "카카오톡, WhatsApp 메신저 연동",
-                    "Instagram, Facebook 소셜 연동",
-                    "Shopify, WooCommerce 커머스 연동",
-                    "Salesforce, Jira 엔터프라이즈 연동"
-                ]
-            },
-            interactiveArea: {
-                type: "feature-map",
-                title: "확장 생태계 매트릭스",
-                description: "다양한 플랫폼과의 연동 구조를 시각화합니다",
-                placeholder: "마켓플레이스 통합 생태계"
-            }
-        },
-        {
-            id: "customer-360",
-            label: "360도 고객 뷰",
-            title: "360도 고객 뷰",
-            description: "고객이 선택한 모든 채널에서 이루어지는 소통을 한 눈에 확인해보세요. 고객 정보, 이메일, 최근 티켓 문의 내역까지 360도 고객 뷰로 빠르게 확인합니다.",
-            feature: {
-                title: "통합 고객 프로파일 시스템",
-                description: "고객과의 모든 상호작용을 시간순으로 정리하여 맥락을 유지합니다.",
-                items: [
-                    "전채널 통합 이력 관리",
-                    "고객 정보 통합 뷰",
-                    "실시간 상호작용 추적",
-                    "개인화된 고객 프로필",
-                    "과거 문의 패턴 분석"
-                ]
-            },
-            interactiveArea: {
-                type: "dashboard",
-                title: "360도 고객 뷰 대시보드",
-                description: "고객의 전체 여정을 한눈에 확인할 수 있는 통합 뷰를 체험하세요",
-                placeholder: "고객 360도 뷰 대시보드"
+                type: "image",
+                title: "비즈니스 앱 연동 화면",
+                description: "다양한 비즈니스 도구들과의 네이티브 연동을 확인하세요",
+                imageUrl: "/Integration_2x.webp"
             }
         }
     ],
