@@ -1,5 +1,18 @@
 import { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { ProductPageTemplate, ProductPageData } from '@/components/sections/product-page-template'
+
+// 3D 컴포넌트를 동적 임포트 (SSR 방지)
+const Omni3DExperience = dynamic(
+  () => import('@/components/interactive/omni/Omni3DExperience').then(mod => ({ default: mod.Omni3DExperience })),
+  { 
+    loading: () => (
+      <div className="h-[600px] bg-muted/20 rounded-xl flex items-center justify-center">
+        <p>3D 인터랙티브를 로딩 중...</p>
+      </div>
+    )
+  }
+)
 
 export const metadata: Metadata = {
     title: 'Freshdesk Omni | 위두소프트 - 옴니채널 고객 지원',
@@ -165,5 +178,63 @@ const freshdeskOmniData: ProductPageData = {
 }
 
 export default function FreshdeskOmniPage() {
-    return <ProductPageTemplate data={freshdeskOmniData} />
+    return (
+        <>
+            <ProductPageTemplate data={freshdeskOmniData} />
+            
+            {/* 3D 인터랙티브 섹션 */}
+            <section className="py-16 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-blue-950/10 dark:to-indigo-950/10">
+                <div className="container max-w-7xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold mb-4">
+                            다채널을 중앙에서 효율적으로 처리
+                        </h2>
+                        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                            이메일, 라이브 채팅, 전화, WhatsApp, Instagram, Messenger, KakaoTalk, SMS 등 
+                            모든 채널의 고객 문의가 하나의 중앙 인박스로 통합되어 상담원이 효율적으로 처리할 수 있습니다.
+                        </p>
+                        <div className="mt-6 text-center">
+                            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-background/60 px-4 py-2 rounded-full">
+                                <span className="text-primary font-semibold">다채널</span>
+                                <span>→</span>
+                                <span className="text-secondary font-semibold">중앙 인박스</span>
+                                <span>→</span>
+                                <span className="text-accent font-semibold">효율적 상담</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* 3D 인터랙티브 체험 */}
+                    <div className="max-w-5xl mx-auto">
+                        <Omni3DExperience />
+                    </div>
+                    
+                    {/* 추가 설명 */}
+                    <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div className="text-center p-4">
+                            <div className="text-2xl mb-2">🔄</div>
+                            <h4 className="font-semibold mb-2">실시간 통합</h4>
+                            <p className="text-sm text-muted-foreground">
+                                모든 채널의 메시지가 실시간으로 중앙 인박스에 통합됩니다
+                            </p>
+                        </div>
+                        <div className="text-center p-4">
+                            <div className="text-2xl mb-2">⚡</div>
+                            <h4 className="font-semibold mb-2">빠른 응답</h4>
+                            <p className="text-sm text-muted-foreground">
+                                상담원은 여러 도구를 오가지 않고 한 화면에서 모든 문의에 응답합니다
+                            </p>
+                        </div>
+                        <div className="text-center p-4">
+                            <div className="text-2xl mb-2">📊</div>
+                            <h4 className="font-semibold mb-2">통합 관리</h4>
+                            <p className="text-sm text-muted-foreground">
+                                채널별 우선순위와 고객 히스토리를 한눈에 파악할 수 있습니다
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </>
+    )
 }
