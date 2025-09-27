@@ -62,10 +62,10 @@ const freshdeskData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "workflow",
+                type: "image",
                 title: "티켓 처리 워크플로우",
                 description: "문의 접수부터 해결까지의 전체 과정을 시각화합니다",
-                placeholder: "스마트 티켓 라우팅 시스템"
+                imageUrl: "/freshworks-canvas.webp"
             }
         },
         {
@@ -85,10 +85,10 @@ const freshdeskData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "feature-map",
+                type: "image",
                 title: "다채널 통합 맵",
                 description: "모든 커뮤니케이션 채널이 하나로 통합되는 구조를 확인하세요",
-                placeholder: "옴니채널 커뮤니케이션 허브"
+                imageUrl: "/SB-3-Omnichannel-Inbox.webp"
             }
         },
         {
@@ -108,10 +108,10 @@ const freshdeskData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "workflow",
+                type: "image",
                 title: "자동화 워크플로우 빌더",
                 description: "드래그 앤 드롭으로 워크플로우를 구성하는 과정을 체험하세요",
-                placeholder: "비주얼 워크플로우 에디터"
+                imageUrl: "/Integration_2x.webp"
             }
         },
         {
@@ -131,10 +131,10 @@ const freshdeskData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "dashboard",
+                type: "image",
                 title: "실시간 성과 대시보드",
                 description: "고객 만족도와 팀 성과 지표를 한눈에 확인하세요",
-                placeholder: "CSAT & 성과 분석 대시보드"
+                imageUrl: "/Tab-1-Voice-FD-Omni.webp"
             }
         }
     ],

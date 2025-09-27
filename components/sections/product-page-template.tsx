@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { StepByStepDemo } from "@/components/ui/step-by-step-demo"
 import { DashboardCard } from "@/components/dashboard"
 import { MetricCard } from "@/components/common"
 import { Breadcrumb } from "@/components/common/breadcrumb"
@@ -87,18 +86,7 @@ export interface ProductPageData {
             alt?: string
             poster?: string
         }
-        // Step-by-step 데모 (옵션)
-        stepByStepDemo?: {
-            title: string
-            description: string
-            steps: {
-                id: number
-                title: string
-                description: string
-                image?: string
-                highlight?: string
-            }[]
-        }
+
     }[]
 
     // 새로운 탭 기반 세부 기능 구조 (detailedFeatures 대신 사용 가능)
@@ -122,18 +110,7 @@ export interface ProductPageData {
         }
     }[]
 
-    // 전체 제품용 Step-by-step 데모 (옵션)
-    stepByStepDemo?: {
-        title: string
-        description: string
-        steps: {
-            id: number
-            title: string
-            description: string
-            image?: string
-            highlight?: string
-        }[]
-    }
+    
 
     // 연동 플랫폼 섹션
     integrations?: {
@@ -224,33 +201,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                 </div>
             </section>
 
-            {/* 인터랙티브 데모 섹션 */}
-            {data.stepByStepDemo && (
-                <section className="py-20 bg-muted/30 border-t">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                                {data.stepByStepDemo.title}
-                            </h2>
-                            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                                {data.stepByStepDemo.description}
-                            </p>
-                        </div>
 
-                        <div className="flex justify-center">
-                            <div className="w-full max-w-5xl bg-background rounded-2xl shadow-lg border p-8">
-                                <StepByStepDemo
-                                    title={data.stepByStepDemo.title}
-                                    description={data.stepByStepDemo.description}
-                                    steps={data.stepByStepDemo.steps}
-                                    autoPlay={true}
-                                    interval={5000}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            )}
 
             {/* 주요 특징 Section (원본 구조) */}
             <section className="py-16 bg-muted/20">
@@ -300,64 +251,7 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                 </div>
             </section>
 
-            {/* 인터랙티브 데모 섹션 (주요 특징과 세부 기능 사이) */}
-            <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10 border-y">
-                <div className="container">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                            {data.name} 실시간 체험
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                            {data.name}의 핵심 기능들을 직접 체험해보세요.
-                            실제 업무 환경에서 어떻게 작동하는지 인터랙티브 데모를 통해 확인할 수 있습니다.
-                        </p>
-                    </div>
 
-                    {/* 인터랙티브 데모 컨테이너 */}
-                    <div className="max-w-6xl mx-auto">
-                        <div className="bg-background rounded-2xl shadow-2xl border p-8 lg:p-12">
-                            {/* 데모 플레이스홀더 */}
-                            <div className="flex items-center justify-center min-h-[500px] lg:min-h-[600px] bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl border-2 border-dashed border-primary/20">
-                                <div className="text-center space-y-6 p-8">
-                                    <div className="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                                        <Play className="h-10 w-10 text-primary" />
-                                    </div>
-                                    <div className="space-y-3">
-                                        <h3 className="text-2xl font-bold text-foreground">
-                                            인터랙티브 데모
-                                        </h3>
-                                        <p className="text-lg text-muted-foreground max-w-md mx-auto leading-relaxed">
-                                            곧 추가될 {data.name}의 실시간 체험 데모입니다.
-                                            실제 워크플로우를 단계별로 확인할 수 있습니다.
-                                        </p>
-                                    </div>
-
-                                    {/* 데모 기능 미리보기 */}
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
-                                        <div className="flex items-center space-x-3 p-4 bg-background/50 rounded-lg border">
-                                            <Sparkles className="h-5 w-5 text-primary flex-shrink-0" />
-                                            <span className="text-sm font-medium">실시간 시뮬레이션</span>
-                                        </div>
-                                        <div className="flex items-center space-x-3 p-4 bg-background/50 rounded-lg border">
-                                            <Monitor className="h-5 w-5 text-primary flex-shrink-0" />
-                                            <span className="text-sm font-medium">3D 인터페이스</span>
-                                        </div>
-                                        <div className="flex items-center space-x-3 p-4 bg-background/50 rounded-lg border">
-                                            <Workflow className="h-5 w-5 text-primary flex-shrink-0" />
-                                            <span className="text-sm font-medium">워크플로우 체험</span>
-                                        </div>
-                                    </div>
-
-                                    <Button size="lg" className="mt-6">
-                                        <Play className="h-5 w-5 mr-2" />
-                                        데모 체험 예정
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* 세부 기능 Section (원본 구조) */}
             {data.detailedFeatures && (
@@ -391,18 +285,8 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                                         </ul>
                                     </div>
 
-                                    {/* 기능별 미디어 또는 Step-by-step 데모 */}
-                                    {feature.stepByStepDemo ? (
-                                        <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                                            <StepByStepDemo
-                                                title={feature.stepByStepDemo.title}
-                                                description={feature.stepByStepDemo.description}
-                                                steps={feature.stepByStepDemo.steps}
-                                                autoPlay={true}
-                                                interval={4000}
-                                            />
-                                        </div>
-                                    ) : feature.media && (
+                                    {/* 기능별 미디어 */}
+                                    {feature.media && (
                                         <div className={`relative ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                                             {feature.media.type === 'image' ? (
                                                 <div className="relative rounded-lg overflow-hidden shadow-lg">

@@ -95,10 +95,10 @@ const googleWorkspaceData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "demo",
+                type: "image",
                 title: "Gemini AI 워크플로우 데모",
                 description: "AI 기반 콘텐츠 생성 과정을 직접 체험해보세요",
-                placeholder: "Gemini AI 콘텐츠 생성 화면"
+                imageUrl: "/google-workspace-canvas.webp"
             }
         },
         {
@@ -118,10 +118,10 @@ const googleWorkspaceData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "dashboard",
+                type: "image",
                 title: "Google Drive 대시보드",
                 description: "직관적인 파일 관리 인터페이스를 경험하세요",
-                placeholder: "Google Drive 파일 관리 화면"
+                imageUrl: "/google-workspace-canvas.webp"
             }
         },
         {
@@ -141,10 +141,10 @@ const googleWorkspaceData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "feature-map",
+                type: "image",
                 title: "Gmail 비즈니스 기능",
                 description: "전문적인 이메일 관리 기능을 확인하세요",
-                placeholder: "Gmail 비즈니스 기능 구성도"
+                imageUrl: "/workspace-background.jpeg"
             }
         },
         {
@@ -164,10 +164,10 @@ const googleWorkspaceData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "workflow",
+                type: "image",
                 title: "회의 & 일정 관리 워크플로우",
                 description: "통합된 커뮤니케이션 환경을 체험하세요",
-                placeholder: "Google Meet & Calendar 연동 화면"
+                imageUrl: "/google-workspace-canvas.webp"
             }
         },
         {
@@ -187,10 +187,10 @@ const googleWorkspaceData: ProductPageData = {
                 ]
             },
             interactiveArea: {
-                type: "demo",
+                type: "image",
                 title: "실시간 문서 협업 데모",
                 description: "여러 사용자가 동시에 편집하는 과정을 확인하세요",
-                placeholder: "Google Docs 실시간 협업 화면"
+                imageUrl: "/hands-typing-laptop.jpeg"
             }
         }
     ],
