@@ -100,7 +100,7 @@ export interface ProductPageData {
             description: string
             items: string[]
         }
-        interactiveArea: {
+        interactiveArea?: {
             type: 'demo' | 'feature-map' | 'dashboard' | 'workflow' | 'screenshot' | 'video' | 'image'
             title: string
             description: string
@@ -364,12 +364,14 @@ export function ProductPageTemplate({ data }: ProductPageTemplateProps) {
                                             </Card>
                                         </div>
 
-                                        {/* 우측: 인터랙티브 영역 (7/10 비율) */}
-                                        <div className="lg:col-span-7">
-                                            <div className="h-full min-h-[500px]">
-                                                <InteractiveArea interactiveArea={tab.interactiveArea} />
+                                        {/* 우측: 인터랙티브 영역 (7/10 비율) - 텍스트 중심 변경 */}
+                                        {tab.interactiveArea && (
+                                            <div className="lg:col-span-7">
+                                                <div className="h-full min-h-[500px]">
+                                                    <InteractiveArea interactiveArea={tab.interactiveArea} />
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                 </TabsContent>
                             ))}
