@@ -33,14 +33,14 @@ const DETAILED_PRODUCT_TABS: DetailedProductTab[] = [
     title: '옴니채널 고객 서비스',
     description: '채팅, 티켓, 전화를 통합한 고객 지원 워크플로우를 체험해보세요',
     feature: {
-      title: '통합 옴니채널 플랫폼',
-      description: '모든 고객 접점을 하나의 플랫폼에서 통합 관리하여 일관된 서비스 경험을 제공합니다. 채널 간 전환 시에도 고객 맥락이 유지되어 효율적인 문제 해결이 가능합니다.',
+      title: 'Freshworks 통합 플랫폼',
+      description: 'Freshdesk + Freshcaller + Freshchat을 단일 워크스페이스로 통합. 티켓, 전화, 채팅을 하나의 플랫폼에서 관리합니다.',
       items: [
-        '이메일, 전화, 채팅, 소셜미디어 통합 관리',
-        '채널 간 고객 대화 맥락 유지',
-        'AI 기반 티켓 자동 분류 및 라우팅',
-        '실시간 고객 만족도 측정',
-        '통합 에이전트 워크스페이스'
+        'Freshdesk + Freshcaller + Freshchat 통합 운영',
+        '단일 워크스페이스에서 모든 채널 관리',
+        '채널 간 고객 대화 맥락 연결',
+        'AI 라우팅으로 적절한 채널 자동 선택',
+        '통합 대시보드로 고객 여정 추적'
       ]
     },
     demoConfig: {
@@ -125,7 +125,7 @@ export function InteractiveFreshworksSelector() {
             <div className="grid lg:grid-cols-10 gap-8 items-stretch">
               {/* 좌측: 기능 설명 (3/10 비율) */}
               <div className="lg:col-span-3">
-                <Card className="p-6 h-full">
+                <Card className="p-6 h-full text-left">
                   <CardContent className="p-0">
                     <div className="space-y-6 h-full flex flex-col">
                       <div className="space-y-4 flex-1">
