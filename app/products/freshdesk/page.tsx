@@ -43,98 +43,94 @@ const freshdeskData: ProductPageData = {
         }
     ],
 
-    // docs 원본 콘텐츠 기반 5개 탭
+    // docs 원본 콘텐츠 기반 4개 탭
     detailedFeatureTabs: [
         {
             id: "advanced-ticketing",
-            label: "고급 티켓팅",
+            label: "고급 티켓팅 기능",
             title: "고급 티켓팅 기능",
-            description: "모든 고객 문의를 체계적으로 분류하고 추적하는 중앙 시스템. 자동 분류, 우선순위 지정, 라우팅으로 응대 시간 단축 및 처리 효율성 증대.",
+            description: "모든 고객 문의를 체계적으로 분류하고 추적하는 중앙 시스템.",
             feature: {
-                title: "스마트 티켓 관리 시스템",
-                description: "복잡한 문의도 적절한 팀원에게 자동 배정되어 해결 속도가 크게 향상됩니다.",
+                title: "체계적 티켓 관리 시스템",
+                description: "자동 분류, 우선순위 지정, 라우팅으로 응대 시간 단축 및 처리 효율성 증대. 복잡한 문의도 적절한 팀원에게 자동 배정되어 해결 속도가 크게 향상됩니다.",
                 items: [
-                    "자동 티켓 분류 및 라우팅",
-                    "우선순위 자동 지정",
-                    "SLA 기반 에스컬레이션",
-                    "실시간 티켓 추적",
-                    "커스텀 티켓 필드"
+                    "모든 고객 문의 체계적 분류 및 추적",
+                    "자동 분류, 우선순위 지정, 라우팅",
+                    "응대 시간 단축 및 처리 효율성 증대",
+                    "복잡한 문의의 적절한 팀원 자동 배정",
+                    "해결 속도 대폭 향상"
                 ]
             },
             interactiveArea: {
-                type: "image",
-                title: "티켓 처리 워크플로우",
-                description: "문의 접수부터 해결까지의 전체 과정을 시각화합니다",
-                imageUrl: "/freshworks-canvas.webp"
+                type: "demo",
+                title: "티켓 관리 시스템",
+                description: "체계적인 티켓 분류와 자동 라우팅 시스템을 확인하세요"
             }
         },
         {
-            id: "omnichannel",
-            label: "다채널 통합",
-            title: "다채널 통합 관리",
-            description: "이메일, 전화, 소셜 미디어, 웹 채팅을 하나의 통합 플랫폼에서 관리. 모든 채널에서 일관된 고객 경험 제공으로 만족도 향상.",
+            id: "freddy-copilot",
+            label: "Freddy AI 코파일럿",
+            title: "Freddy AI 코파일럿",
+            description: "에이전트에게 실시간 응답 제안, 감정 분석, 지식베이스 문서 추천으로 업무 지원.",
             feature: {
-                title: "통합 커뮤니케이션 플랫폼",
-                description: "채널 간 전환 시에도 대화 맥락이 유지되어 원활한 고객 지원이 가능합니다.",
+                title: "AI 기반 에이전트 지원 시스템",
+                description: "평균 응답 시간 감소와 품질 향상. AI가 에이전트의 업무를 보조하여 더 많은 고객 문의를 빠르고 정확하게 처리할 수 있습니다.",
                 items: [
-                    "이메일 티켓 자동 생성",
-                    "소셜 미디어 통합 모니터링",
-                    "웹 채팅 실시간 응답",
-                    "전화 통합 (CTI)",
-                    "채널 간 대화 이력 동기화"
+                    "실시간 응답 제안 및 감정 분석",
+                    "지식베이스 문서 자동 추천",
+                    "평균 응답 시간 감소 및 품질 향상",
+                    "AI 기반 에이전트 업무 보조",
+                    "빠르고 정확한 고객 문의 처리"
                 ]
             },
             interactiveArea: {
-                type: "image",
-                title: "다채널 통합 맵",
-                description: "모든 커뮤니케이션 채널이 하나로 통합되는 구조를 확인하세요",
-                imageUrl: "/SB-3-Omnichannel-Inbox.webp"
+                type: "demo",
+                title: "AI 코파일럿 인터페이스",
+                description: "실시간으로 에이전트를 지원하는 AI 시스템을 체험하세요"
+            }
+        },
+        {
+            id: "omnichannel-management",
+            label: "다채널 통합 관리",
+            title: "다채널 통합 관리",
+            description: "이메일, 전화, 소셜 미디어, 웹 채팅을 하나의 통합 플랫폼에서 관리.",
+            feature: {
+                title: "통합 채널 관리 플랫폼",
+                description: "모든 채널에서 일관된 고객 경험 제공으로 만족도 향상 및 해결 시간 단축. 채널 간 전환 시에도 대화 맥락이 유지되어 원활한 고객 지원이 가능합니다.",
+                items: [
+                    "이메일, 전화, 소셜미디어, 웹채팅 통합",
+                    "모든 채널에서 일관된 고객 경험 제공",
+                    "고객 만족도 향상 및 해결 시간 단축",
+                    "채널 간 대화 맥락 유지",
+                    "원활한 고객 지원 환경 구축"
+                ]
+            },
+            interactiveArea: {
+                type: "demo",
+                title: "다채널 통합 워크스페이스",
+                description: "모든 커뮤니케이션 채널이 하나로 통합된 환경을 확인하세요"
             }
         },
         {
             id: "automation-workflows",
-            label: "자동화 & 워크플로우",
+            label: "자동화 규칙 & 워크플로우",
             title: "자동화 규칙 & 워크플로우",
             description: "티켓 생성, 상태 변경, 시간 기반 트리거를 활용한 자동 응답, 에스컬레이션, 알림 발송 등으로 반복 업무를 자동화합니다.",
             feature: {
-                title: "지능형 워크플로우 엔진",
+                title: "지능형 워크플로우 자동화",
                 description: "SLA 관리와 연동하여 약속된 응답 시간을 준수합니다.",
                 items: [
-                    "조건 기반 자동화 규칙",
-                    "시간 기반 트리거 설정",
-                    "자동 에스컬레이션",
-                    "SLA 위반 방지 알림",
-                    "커스텀 워크플로우 구성"
+                    "티켓 생성, 상태 변경 자동화",
+                    "시간 기반 트리거 활용",
+                    "자동 응답, 에스컬레이션, 알림 발송",
+                    "반복 업무 자동화로 효율성 증대",
+                    "SLA 관리 연동으로 응답 시간 준수"
                 ]
             },
             interactiveArea: {
-                type: "image",
-                title: "자동화 워크플로우 빌더",
-                description: "드래그 앤 드롭으로 워크플로우를 구성하는 과정을 체험하세요",
-                imageUrl: "/Integration_2x.webp"
-            }
-        },
-        {
-            id: "csat-analytics",
-            label: "만족도 & 분석",
-            title: "고객 만족도 조사 (CSAT) & 분석",
-            description: "티켓 해결 후 자동 만족도 설문 발송으로 서비스 품질을 측정하고, 실시간 대시보드로 성과를 추적합니다.",
-            feature: {
-                title: "통합 성과 분석 시스템",
-                description: "2-7점 평점 척도와 추가 질문 설정을 지원하며, 실시간 대시보드로 피드백을 확인할 수 있습니다.",
-                items: [
-                    "자동 만족도 조사 발송",
-                    "실시간 CSAT 대시보드",
-                    "상담사별 성과 분석",
-                    "고객 피드백 트렌드 분석",
-                    "커스텀 보고서 생성"
-                ]
-            },
-            interactiveArea: {
-                type: "image",
-                title: "실시간 성과 대시보드",
-                description: "고객 만족도와 팀 성과 지표를 한눈에 확인하세요",
-                imageUrl: "/Tab-1-Voice-FD-Omni.webp"
+                type: "workflow",
+                title: "워크플로우 자동화 엔진",
+                description: "자동화 규칙과 워크플로우 설정 과정을 확인하세요"
             }
         }
     ],

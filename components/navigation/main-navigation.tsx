@@ -107,32 +107,32 @@ export function MainNavigation() {
         "고객 경험 관리": [
             {
                 name: "Freshdesk Omni",
-                href: "/products/freshdesk-omni",
+                href: "/freshworks",
                 description: "옴니채널 고객 지원의 완성"
             },
             {
                 name: "Freshdesk",
-                href: "/products/freshdesk",
+                href: "/freshworks",
                 description: "고객 지원의 새로운 기준"
             },
             {
                 name: "Freshcaller",
-                href: "/products/freshcaller",
+                href: "/freshworks",
                 description: "클라우드 PBX 솔루션"
             },
             {
                 name: "Freshchat",
-                href: "/products/freshchat",
+                href: "/freshworks",
                 description: "실시간 채팅 솔루션"
             },
             {
                 name: "Freddy AI",
-                href: "/products/freddy-ai",
+                href: "/freshworks",
                 description: "GPT LLM 기반 자동화"
             },
             {
                 name: "Freshsales",
-                href: "/products/freshsales",
+                href: "/freshworks",
                 description: "AI 기반 스마트 CRM"
             }
         ],
@@ -339,11 +339,12 @@ export function MainNavigation() {
                                 맞춤 견적
                             </NavigationMenuLink>
                         </NavigationMenuItem>
-                        <NavigationMenuItem>
+                        {/* 블로그 메뉴 - 임시 숨김 */}
+                        {/* <NavigationMenuItem>
                             <NavigationMenuLink href="/blog" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 블로그
                             </NavigationMenuLink>
-                        </NavigationMenuItem>
+                        </NavigationMenuItem> */}
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/company" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 회사소개
@@ -352,36 +353,9 @@ export function MainNavigation() {
                     </NavigationMenuList>
                 </NavigationMenu>
 
-                {/* 우측 검색바 및 버튼들 */}
+                {/* 우측 검색바 및 버튼들 - 검색 기능 임시 숨김 */}
                 <div className="flex items-center space-x-2">
-                    {/* 모바일 검색 버튼 */}
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="md:hidden"
-                        onClick={() => {
-                            const query = prompt("검색어를 입력하세요:")
-                            if (query) {
-                                setSearchQuery(query)
-                                handleSearch(new Event('submit') as any)
-                            }
-                        }}
-                        aria-label="검색"
-                    >
-                        <Search className="h-4 w-4" />
-                    </Button>
-
-                    {/* 데스크톱 검색바 */}
-                    <form onSubmit={handleSearch} className="relative hidden lg:flex">
-                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                        <Input
-                            type="search"
-                            placeholder="사이트 검색..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-48 pl-10 bg-background/50 border-border/50 h-9"
-                        />
-                    </form>
+                    {/* 검색 기능 임시 숨김 - 추후 복원 예정 */}
 
                     {/* 상담신청 버튼 */}
                     <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
@@ -417,8 +391,8 @@ export function MainNavigation() {
 
                                     {/* 오른쪽: 액션 버튼들 */}
                                     <div className="flex items-center space-x-1">
-                                        {/* 검색 버튼 */}
-                                        <Button
+                                        {/* 검색 버튼 - 임시 숨김 */}
+                                        {/* <Button
                                             variant="ghost"
                                             size="icon"
                                             onClick={() => {
@@ -432,7 +406,7 @@ export function MainNavigation() {
                                             className="h-8 w-8"
                                         >
                                             <Search className="h-4 w-4" />
-                                        </Button>
+                                        </Button> */}
 
                                         {/* 닫기 버튼 */}
                                         <Button
@@ -665,14 +639,14 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     맞춤 견적
                 </Link>
 
-                {/* 블로그 메뉴 */}
-                <Link
+                {/* 블로그 메뉴 - 임시 숨김 */}
+                {/* <Link
                     href="/blog"
                     className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
                     onClick={onClose}
                 >
                     블로그
-                </Link>
+                </Link> */}
 
                 {/* 회사소개 메뉴 */}
                 <Link
