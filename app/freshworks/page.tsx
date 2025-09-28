@@ -14,7 +14,7 @@ import {
   ChartBarIcon as BarChart3,
   SparklesIcon as Sparkles
 } from "@heroicons/react/24/outline"
-import { InteractiveFreshworksModal } from "@/components/interactive-demos/interactive-freshworks-modal"
+import { InteractiveFreshworksSelector } from "@/components/interactive-demos/interactive-freshworks-selector"
 
 export const metadata: Metadata = {
   title: "Freshworks - 고객 경험 & 세일즈 관리 솔루션 | We Do Soft",
@@ -51,105 +51,46 @@ export default function FreshworksPage() {
         {/* Interactive Experience Section */}
         <section id="interactive" className="py-16 lg:py-24 bg-muted/30">
           <div className="container">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="text-center space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold">
-                  Freshworks 인터랙티브 체험
+                  Freshworks 데모 체험
                 </h2>
-                <p className="text-lg text-muted-foreground">
-                  실제 Freshworks 솔루션을 직접 체험해보세요. 
-                  풀스크린 인터랙티브 데모로 핵심 기능들을 확인할 수 있습니다.
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                  각 제품별 핵심 워크플로우를 선택하여 데모 환경에서 직접 체험해보세요.
                 </p>
               </div>
               
-              {/* 인터랙티브 체험 영역 */}
-              <div className="relative aspect-[5/2] rounded-2xl border border-primary/20 overflow-hidden bg-background shadow-lg">
-                {/* 작은 iframe 미리보기 */}
-                <div className="absolute inset-0">
-                  <iframe
-                    src="https://interactive-freshworks.vercel.app/"
-                    className="w-full h-full border-0 pointer-events-none"
-                    title="Freshworks 데모 미리보기"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* 클릭 가능한 오버레이 - 전체 영역 클릭 가능 */}
-                <div className="absolute inset-0 cursor-pointer group">
-                  {/* 호버 효과 */}
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* 중앙 Play 버튼 */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-primary/90 backdrop-blur-sm text-primary-foreground p-4 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Sparkles className="h-8 w-8" />
-                    </div>
-                  </div>
-                  
-                  {/* 하단 정보 */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 via-background/60 to-transparent p-4">
-                    <div className="text-center space-y-2">
-                      <h3 className="text-lg font-semibold text-foreground">
-                        실제 Freshworks 솔루션 체험
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        클릭하여 풀스크린으로 체험해보세요
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* 실제 모달 트리거 (숨김) */}
-                  <InteractiveFreshworksModal 
-                    triggerText=""
-                    triggerVariant="outline"
-                    className="absolute inset-0 opacity-0 w-full h-full"
-                  />
-                </div>
-              </div>
+              {/* 제품 선택형 인터랙티브 체험 */}
+              <InteractiveFreshworksSelector />
             </div>
           </div>
         </section>
 
         {/* CTA Section - 체험 후 액션 유도 */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-16 bg-muted/30">
           <div className="container">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center space-y-6">
-                <h2 className="text-2xl lg:text-3xl font-bold">
-                  체험해보셨나요? 이제 다음 단계로!
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Freshworks 솔루션이 귀하의 비즈니스에 어떻게 도움이 될지 자세히 알아보세요
-                </p>
+              <div className="text-center space-y-8">
+                <div className="space-y-4">
+                  <h2 className="text-3xl lg:text-4xl font-bold">
+                    Freshworks 도입을 검토 중이신가요?
+                  </h2>
+                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    전문 컨설턴트와 함께 귀하의 비즈니스 요구사항에 최적화된 솔루션을 설계해보세요.
+                  </p>
+                </div>
                 
-                <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                  <Button asChild size="lg" className="h-auto p-6 flex-col gap-2">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button asChild size="lg">
                     <Link href="/pricing">
-                      <span className="text-2xl">💰</span>
-                      <div className="text-center">
-                        <div className="font-semibold">맞춤 견적</div>
-                        <div className="text-xs opacity-90">가격 확인하기</div>
-                      </div>
+                      맞춤 견적 요청
                     </Link>
                   </Button>
                   
-                  <Button asChild variant="outline" size="lg" className="h-auto p-6 flex-col gap-2">
-                    <Link href="https://docs.wedosoft.net" target="_blank" rel="noopener noreferrer">
-                      <span className="text-2xl">📚</span>
-                      <div className="text-center">
-                        <div className="font-semibold">제품 상세</div>
-                        <div className="text-xs opacity-90">문서 보기</div>
-                      </div>
-                    </Link>
-                  </Button>
-                  
-                  <Button asChild variant="secondary" size="lg" className="h-auto p-6 flex-col gap-2">
+                  <Button asChild variant="outline" size="lg">
                     <Link href="/contact">
-                      <span className="text-2xl">💬</span>
-                      <div className="text-center">
-                        <div className="font-semibold">전문가 상담</div>
-                        <div className="text-xs opacity-90">1:1 컨설팅</div>
-                      </div>
+                      전문가 상담 신청
                     </Link>
                   </Button>
                 </div>
