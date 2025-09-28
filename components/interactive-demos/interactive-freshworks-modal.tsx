@@ -41,7 +41,7 @@ export function InteractiveFreshworksModal({
                     <div className="flex items-center gap-3 bg-background/95 backdrop-blur-sm px-4 py-2 rounded-lg border shadow-sm">
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span className="text-sm font-medium">Freshworks 실시간 데모</span>
+                            <span className="text-sm font-medium">Freshworks 데모</span>
                         </div>
                     </div>
                     
