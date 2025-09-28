@@ -32,116 +32,94 @@ export default function FreshchatPage() {
             }
         ],
 
-        // 탭 기반 세부 기능 (5개 - docs 기반)
+        // docs 원본 콘텐츠 기반 4개 탭
         detailedFeatureTabs: [
             {
                 id: "multi-channel",
-                label: "다채널 연동",
+                label: "다양한 채널 플랫폼 연동",
                 title: "다양한 채널 플랫폼 연동",
                 description: "Freshchat은 웹사이트, 모바일 앱은 물론 카카오톡, WhatsApp, Facebook Messenger, Instagram 등 다양한 채널을 연동하여 하나의 플랫폼에서 통합 관리할 수 있습니다.",
                 feature: {
-                    title: "단일 창에서 모든 채널의 메시지를 응대",
-                    description: "고객은 원하는 채널로 편리하게 소통하고, 상담사는 업무 효율이 향상됩니다.",
+                    title: "단일 창에서 모든 채널의 메시지를 응대하여 업무 효율 향상",
+                    description: "고객은 원하는 채널로 편리하게 소통하고, 상담사는 단일 창에서 모든 채널의 메시지를 응대할 수 있어 업무 효율이 향상됩니다.",
                     items: [
-                        "웹사이트 라이브 채팅",
-                        "모바일 앱 메시징",
-                        "카카오톡 비즈니스 채널",
-                        "WhatsApp, Facebook Messenger, Instagram"
+                        "웹사이트, 모바일 앱 채팅 연동",
+                        "카카오톡, WhatsApp, Facebook Messenger",
+                        "Instagram 등 다양한 채널 지원",
+                        "하나의 플랫폼에서 통합 관리",
+                        "단일 창에서 모든 메시지 응대"
                     ]
                 },
                 interactiveArea: {
-                    type: "dashboard" as const,
-                    title: "통합 채널 관리 대시보드",
-                    description: "모든 메시징 채널을 하나의 인터페이스에서 관리하세요",
-                    placeholder: "다채널 메시징 통합 대시보드"
+                    type: "dashboard",
+                    title: "멀티 채널 메시지 허브",
+                    description: "다양한 채널을 통한 상호작용 과정을 확인하세요"
                 }
             },
             {
                 id: "freddy-ai",
                 label: "Freddy AI Agent",
                 title: "Freddy AI Agent",
-                description: "보편적이지 않은 전문 기술 답변도 AI Agent가 답변합니다. 나만의 지식 베이스에 맞춰 커스텀 AI로 학습시켜보세요!",
+                description: "보편적이지 않은 전문 기술 답변도 AI Agent가 답변합니다.",
                 feature: {
-                    title: "문서 파일, URL, 지식 베이스 문서를 빠르게 학습",
-                    description: "고객에게 실시간 답변을 전달합니다.",
+                    title: "문서 파일, URL, 지식 베이스 문서를 빠르게 학습하여 실시간 답변 제공",
+                    description: "나만의 지식 베이스에 맞춰 커스텀 AI로 학습시켜보세요! 문서 파일, URL, 지식 베이스 문서를 빠르게 학습하고, 고객에게 실시간 답변을 전달합니다.",
                     items: [
-                        "문서 파일 자동 학습",
-                        "URL 기반 정보 수집",
-                        "지식 베이스 통합",
-                        "실시간 AI 답변 생성"
+                        "전문 기술 답변까지 AI가 지원",
+                        "나만의 지식 베이스 맞춤 학습",
+                        "문서 파일, URL 빠른 학습",
+                        "지식 베이스 문서 자동 통합",
+                        "고객에게 실시간 답변 전달"
                     ]
                 },
                 interactiveArea: {
-                    type: "demo" as const,
-                    title: "AI Agent 학습 과정",
-                    description: "Freddy AI가 지식을 학습하고 고객에게 답변하는 과정을 체험하세요",
-                    placeholder: "AI Agent 학습 및 응답 시뮬레이션"
-                }
-            },
-            {
-                id: "mobile-app",
-                label: "모바일 앱",
-                title: "Freshchat 모바일",
-                description: "Freshchat은 iOS 및 Android용 모바일 앱을 제공하여, 상담사가 언제 어디서나 고객 메시지에 실시간 응답할 수 있도록 지원합니다.",
-                feature: {
-                    title: "지속적인 고객 대응이 가능",
-                    description: "외근 중이거나 사무실을 벗어난 상황에서도 완벽한 고객 서비스를 제공합니다.",
-                    items: [
-                        "iOS/Android 전용 앱",
-                        "실시간 메시지 알림",
-                        "모바일 최적화 인터페이스",
-                        "오프라인 메시지 동기화"
-                    ]
-                },
-                interactiveArea: {
-                    type: "demo" as const,
-                    title: "모바일 앱 인터페이스",
-                    description: "언제 어디서나 고객과 소통할 수 있는 모바일 경험을 확인하세요",
-                    placeholder: "모바일 상담 앱 인터페이스"
+                    type: "demo",
+                    title: "Freddy AI 에이전트 대화",
+                    description: "AI 기반 자동 응답과 문제 해결 과정을 확인하세요"
                 }
             },
             {
                 id: "chatbot-builder",
-                label: "챗봇 빌더",
+                label: "챗봇 빌더 (Freddy AI Bot Builder)",
                 title: "챗봇 빌더 (Freddy AI Bot Builder)",
                 description: "코드 없이 챗봇을 구성할 수 있도록 워크플로우 및 AI 챗봇 빌더를 제공합니다.",
                 feature: {
-                    title: "드래그 앤 드롭으로 간단한 챗봇 구축",
-                    description: "복잡한 대화 플로우도 시각적으로 설계하고 관리할 수 있습니다.",
+                    title: "코드 없는 직관적 챗봇 구축 도구",
+                    description: "코드 없이 챗봇을 구성할 수 있도록 워크플로우 및 AI 챗봇 빌더를 제공합니다.",
                     items: [
-                        "코드 없는 챗봇 구축",
-                        "시각적 워크플로우 설계",
-                        "조건부 대화 분기",
-                        "AI 기반 답변 자동화"
+                        "코드 없는 챗봇 구성",
+                        "워크플로우 기반 설계",
+                        "AI 챗봇 빌더 제공",
+                        "직관적 인터페이스",
+                        "손쉬운 봇 관리 및 수정"
                     ]
                 },
                 interactiveArea: {
-                    type: "demo" as const,
-                    title: "챗봇 빌더 도구",
-                    description: "직관적인 드래그 앤 드롭으로 나만의 챗봇을 만들어보세요",
-                    placeholder: "비주얼 챗봇 빌더 인터페이스"
+                    type: "demo",
+                    title: "지능형 챗봇 빌더",
+                    description: "지식 기반 챗봇의 작동 방식을 확인하세요"
                 }
             },
             {
                 id: "unified-inbox",
-                label: "통합 인박스",
+                label: "통합 메시지 인박스",
                 title: "통합 메시지 인박스",
-                description: "여러 채널의 메시지를 하나의 인박스에서 확인하고 대응합니다. 상담사 간 채팅을 이관할 수 있습니다.",
+                description: "여러 채널의 메시지를 하나의 인박스에서 확인하고 대응합니다.",
                 feature: {
-                    title: "상담 그룹, 업무 시간에 따라 유저에게 다른 자동화 메세지를 안내",
-                    description: "국가별 상담 그룹에 따라 맞춤 업무시간을 설정합니다.",
+                    title: "상담 그룹, 업무 시간에 따라 맞춤 자동화 메시지 안내",
+                    description: "상담사 간 채팅을 이관할 수 있습니다. 국가별 상담 그룹에 따라 맞춤 업무시간을 설정합니다. 상담 그룹, 업무 시간에 따라 유저에게 다른 자동화 메세지를 안내합니다.",
                     items: [
-                        "통합 메시지 관리",
-                        "상담사 간 이관 기능",
-                        "업무시간 자동 설정",
-                        "국가별 맞춤 대응"
+                        "여러 채널 메시지 통합 관리",
+                        "하나의 인박스에서 확인 및 대응",
+                        "상담사 간 채팅 이관 기능",
+                        "국가별 상담 그룹 맞춤 설정",
+                        "업무시간별 자동화 메시지 안내"
                     ]
                 },
                 interactiveArea: {
-                    type: "dashboard" as const,
-                    title: "통합 인박스 관리",
-                    description: "모든 채널의 메시지를 효율적으로 관리하고 배분하세요",
-                    placeholder: "통합 메시지 인박스 대시보드"
+                    type: "dashboard",
+                    title: "통합 인박스 대시보드",
+                    description: "모든 커뮤니케이션이 통합된 인터페이스를 확인하세요"
                 }
             }
         ],
