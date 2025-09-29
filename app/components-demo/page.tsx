@@ -20,6 +20,12 @@ import { CubeIcon as Component, SwatchIcon as Palette, CodeBracketIcon as Code, 
 // 테마 토글 임포트
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
+// 3단계 제품 카드 임포트
+import { ProductCard3Step } from "@/components/ui/product-card-3-step"
+
+// 제품 데이터 임포트
+import productsData from "@/data/products.json"
+
 export default function ComponentsDemoPage() {
     const [activeDemo, setActiveDemo] = useState<string | null>(null)
     const [showError, setShowError] = useState(false)
@@ -59,10 +65,17 @@ export default function ComponentsDemoPage() {
             description: "에러 상태를 표시하고 복구 옵션을 제공하는 컴포넌트",
             category: "Feedback",
             features: ["재시도 버튼", "홈 이동", "아이콘 표시"]
+        },
+        {
+            id: "product-card-3-step",
+            name: "ProductCard3Step",
+            description: "3단계로 제품 정보를 보여주는 인터랙티브 카드",
+            category: "Product",
+            features: ["Level 1-3 단계", "제품 정보 표시", "CTA 버튼"]
         }
     ]
 
-    const categories = ["All", "Layout", "Navigation", "Forms", "Feedback"]
+    const categories = ["All", "Layout", "Navigation", "Forms", "Feedback", "Product"]
     const [selectedCategory, setSelectedCategory] = useState("All")
 
     const filteredComponents = selectedCategory === "All"
@@ -165,12 +178,13 @@ export default function ComponentsDemoPage() {
                     </div>
 
                     <Tabs value={activeDemo || "page-header"} onValueChange={setActiveDemo} className="w-full">
-                        <TabsList className="grid w-full grid-cols-5">
+                        <TabsList className="grid w-full grid-cols-6">
                             <TabsTrigger value="page-header">PageHeader</TabsTrigger>
                             <TabsTrigger value="breadcrumb">Breadcrumb</TabsTrigger>
                             <TabsTrigger value="contact-form">ContactForm</TabsTrigger>
                             <TabsTrigger value="loading-spinner">LoadingSpinner</TabsTrigger>
                             <TabsTrigger value="error-message">ErrorMessage</TabsTrigger>
+                            <TabsTrigger value="product-card-3-step">ProductCard</TabsTrigger>
                         </TabsList>
 
                         <TabsContent value="page-header" className="mt-6">
@@ -305,6 +319,39 @@ export default function ComponentsDemoPage() {
                                                 />
                                             )}
                                         </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </TabsContent>
+
+                        <TabsContent value="product-card-3-step" className="mt-6">
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>ProductCard3Step 컴포넌트</CardTitle>
+                                    <CardDescription>
+                                        3단계로 제품 정보를 보여주는 인터랙티브 카드입니다
+                                    </CardDescription>
+                                </CardHeader>
+                                <CardContent className="space-y-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        {/* Freshdesk 카드 */}
+                                        <ProductCard3Step 
+                                            product={productsData["customer-experience"][0]}
+                                        />
+                                        {/* Monday Work Management 카드 */}
+                                        <ProductCard3Step 
+                                            product={productsData["collaboration-productivity"][0]}
+                                        />
+                                        {/* Freshservice 카드 */}
+                                        <ProductCard3Step 
+                                            product={productsData["it-infrastructure"][0]}
+                                        />
+                                    </div>
+                                    <div className="text-sm text-muted-foreground mt-4">
+                                        <p>• <strong>Level 1:</strong> 기본 정보 - 제품 개요와 핵심 가치</p>
+                                        <p>• <strong>Level 2:</strong> 주요 기능 - 상세 기능 목록</p>
+                                        <p>• <strong>Level 3:</strong> 고급 정보 - 시스템 요구사항, 보안, 컴플라이언스</p>
+                                        <p>• 각 레벨에서 점진적으로 더 자세한 정보를 제공합니다</p>
                                     </div>
                                 </CardContent>
                             </Card>
