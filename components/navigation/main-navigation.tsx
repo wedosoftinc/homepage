@@ -26,6 +26,9 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { useTheme } from "next-themes"
 
+// JSON 데이터 import
+import solutionsMenuData from "@/data/solutions-menu.json"
+
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [searchQuery, setSearchQuery] = React.useState("")
@@ -43,24 +46,39 @@ export function MainNavigation() {
             // 검색어에 따라 적절한 페이지로 이동
             const query = searchQuery.toLowerCase().trim()
 
-            // 솔루션/제품 관련 검색
+            // 솔루션/제품 관련 검색 - 카테고리 페이지로 이동
             if (query.includes('freshdesk omni') || query.includes('옴니채널')) {
-                window.location.href = '/products/freshdesk-omni'
+                window.location.href = '/solutions/customer-experience#freshdesk-omni'
             } else if (query.includes('freshdesk') || query.includes('고객지원') || query.includes('헬프데스크')) {
-                window.location.href = '/products/freshdesk'
+                window.location.href = '/solutions/customer-experience#freshdesk'
             } else if (query.includes('freshcaller') || query.includes('pbx') || query.includes('통화') || query.includes('전화')) {
-                window.location.href = '/products/freshcaller'
+                window.location.href = '/solutions/customer-experience#freshcaller'
             } else if (query.includes('freshchat') || query.includes('채팅') || query.includes('실시간')) {
-                window.location.href = '/products/freshchat'
+                window.location.href = '/solutions/customer-experience#freshchat'
             } else if (query.includes('freddy') || query.includes('ai') || query.includes('인공지능')) {
-                window.location.href = '/products/freddy-ai'
-            } else if (query.includes('freshservice') || query.includes('it서비스') || query.includes('헬프데스크')) {
-                window.location.href = '/products/freshservice'
+                window.location.href = '/solutions/customer-experience#freddy-ai'
+            } else if (query.includes('freshsales') || query.includes('crm') || query.includes('영업')) {
+                window.location.href = '/solutions/customer-experience#freshsales'
+            } else if (query.includes('freshservice') || query.includes('it서비스') || query.includes('itsm')) {
+                window.location.href = '/solutions/infrastructure#freshservice'
+            } else if (query.includes('splashtop') || query.includes('원격접속') || query.includes('리모트')) {
+                window.location.href = '/solutions/infrastructure#splashtop'
             } else if (query.includes('google workspace') || query.includes('구글') || query.includes('워크스페이스')) {
-                window.location.href = '/products/google-workspace'
-            } else if (query.includes('monday') || query.includes('먼데이') || query.includes('프로젝트')) {
-                window.location.href = '/products/monday-service'
-                window.location.href = '/solutions/monday'
+                window.location.href = '/solutions/collaboration-productivity#google-workspace'
+            } else if (query.includes('monday work') || query.includes('먼데이 워크') || query.includes('프로젝트 관리')) {
+                window.location.href = '/solutions/collaboration-productivity#monday-work-management'
+            } else if (query.includes('monday dev') || query.includes('먼데이 데브') || query.includes('개발팀')) {
+                window.location.href = '/solutions/infrastructure#monday-dev'
+            } else if (query.includes('monday sales') || query.includes('먼데이 세일즈') || query.includes('세일즈 crm')) {
+                window.location.href = '/solutions/collaboration-productivity#monday-sales-crm'
+            } else if (query.includes('monday') || query.includes('먼데이')) {
+                window.location.href = '/solutions/collaboration-productivity'
+            } else if (query.includes('고객 경험') || query.includes('고객 지원') || query.includes('freshworks')) {
+                window.location.href = '/solutions/customer-experience'
+            } else if (query.includes('협업') || query.includes('생산성') || query.includes('프로젝트')) {
+                window.location.href = '/solutions/collaboration-productivity'
+            } else if (query.includes('it 인프라') || query.includes('인프라') || query.includes('시스템 관리')) {
+                window.location.href = '/solutions/infrastructure'
             } else if (query.includes('가격') || query.includes('요금') || query.includes('price') || query.includes('플랜') || query.includes('견적') || query.includes('맞춤')) {
                 window.location.href = '/pricing'
             } else if (query.includes('상담') || query.includes('문의') || query.includes('contact')) {
@@ -102,80 +120,20 @@ export function MainNavigation() {
         <div className="h-8 md:h-10 w-[120] md:w-[140px] bg-muted animate-pulse rounded" />
     )
 
-    // 3개 솔루션 카테고리 랜딩 페이지
-    const solutionsByCategory = {
-        "고객 경험 관리": [
-            {
-                name: "Freshdesk Omni",
-                href: "/freshworks",
-                description: "옴니채널 고객 지원의 완성"
-            },
-            {
-                name: "Freshdesk",
-                href: "/freshworks",
-                description: "고객 지원의 새로운 기준"
-            },
-            {
-                name: "Freshcaller",
-                href: "/freshworks",
-                description: "클라우드 PBX 솔루션"
-            },
-            {
-                name: "Freshchat",
-                href: "/freshworks",
-                description: "실시간 채팅 솔루션"
-            },
-            {
-                name: "Freddy AI",
-                href: "/freshworks",
-                description: "GPT LLM 기반 자동화"
-            },
-            {
-                name: "Freshsales",
-                href: "/freshworks",
-                description: "AI 기반 스마트 CRM"
-            }
-        ],
-        "협업 및 생산성 향상": [
-            {
-                name: "Google Workspace",
-                href: "/products/google-workspace",
-                description: "클라우드 기반 협업 솔루션"
-            },
-            {
-                name: "Monday Work Management",
-                href: "/products/monday-work-management",
-                description: "올인원 워크 OS"
-            },
-            {
-                name: "Monday Service",
-                href: "/products/monday-service",
-                description: "AI 기반 서비스 관리"
-            },
-            {
-                name: "Monday Sales CRM",
-                href: "/products/monday-sales-crm",
-                description: "세일즈 파이프라인 관리"
-            }
-        ],
-        "IT 인프라 최적화": [
-            {
-                name: "Freshservice",
-                href: "/products/freshservice",
-                description: "IT 서비스 관리의 혁신"
-            },
-            {
-                name: "Splashtop",
-                href: "/products/splashtop",
-                description: "안전한 원격 접속 솔루션"
-            },
-            {
-                name: "Monday Dev",
-                href: "/products/monday-dev",
-                description: "개발팀 전용 프로젝트 관리"
-            }
-        ]
-    }
+    // JSON 데이터를 기존 형식으로 변환
+    const solutionsByCategory = React.useMemo(() => {
+        const result: Record<string, Array<{name: string, href: string, description: string}>> = {}
+        
+        solutionsMenuData.categories.forEach(category => {
+            result[category.name] = category.products.map(product => ({
+                name: product.name,
+                href: product.href,
+                description: product.description
+            }))
+        })
+        
+        return result
+    }, [])
 
     // 서비스 메뉴 구조 (원본 사이트 기준으로 간소화)
     const services = [
@@ -218,35 +176,28 @@ export function MainNavigation() {
                 {/* 가운데 데스크톱 네비게이션 */}
                 <NavigationMenu className="hidden md:flex">
                     <NavigationMenuList>
-                        {/* 솔루션 메가메뉴 */}
+                        {/* 솔루션 메가메뉴 - 심플하고 확장 가능한 디자인 */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">솔루션</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <div className="w-[650px] p-4">
                                     <div className="grid grid-cols-3 gap-4">
-                                        {Object.entries(solutionsByCategory).map(([category, products]) => (
-                                            <div key={category} className="space-y-2">
-                                                {/* 범주 헤더 - 링크 제거하여 단순 표시용으로 변경 */}
-                                                <div className="block bg-primary/5 border border-primary/10 rounded-lg p-2.5">
-                                                    <div className="flex items-center space-x-2 mb-1">
-                                                        <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
-                                                            {category}
-                                                        </h4>
-                                                    </div>
+                                        {solutionsMenuData.categories.map((category) => (
+                                            <div key={category.id} className="space-y-2">
+                                                {/* 카테고리 헤더 - 깔끔하고 간단 */}
+                                                <div className="bg-primary/5 border border-primary/10 rounded-lg p-3">
+                                                    <h4 className="text-sm font-semibold text-primary uppercase tracking-wide mb-1">
+                                                        {category.name}
+                                                    </h4>
                                                     <p className="text-sm text-muted-foreground leading-tight">
-                                                        {category === "고객 경험 관리" && "고객 지원부터 영업까지"}
-                                                        {category === "협업 및 생산성 향상" && "팀워크와 효율성 극대화"}
-                                                        {category === "IT 인프라 최적화" && "안전하고 유연한 IT 환경"}
+                                                        {category.description}
                                                     </p>
                                                 </div>
-                                                {/* 제품 리스트 - 컴팩트한 스타일 */}
+                                                
+                                                {/* 제품 리스트 - 유지보수 친화적 */}
                                                 <div className="space-y-0.5">
-                                                    {products.map((product) => (
-                                                        <NavigationMenuLink
-                                                            key={product.name}
-                                                            asChild
-                                                        >
+                                                    {category.products.map((product) => (
+                                                        <NavigationMenuLink key={product.name} asChild>
                                                             <Link
                                                                 href={product.href}
                                                                 className={cn(
@@ -439,81 +390,6 @@ function MobileNav({ onClose }: { onClose: () => void }) {
         setExpandedSection(expandedSection === section ? null : section)
     }
 
-    // 솔루션 메뉴 데이터 (데스크톱과 완전 동일하게 동기화)
-    const solutionsByCategory = {
-        "고객 경험 관리": [
-            {
-                name: "Freshdesk Omni",
-                href: "/products/freshdesk-omni",
-                description: "옴니채널 고객 지원의 완성"
-            },
-            {
-                name: "Freshdesk",
-                href: "/products/freshdesk",
-                description: "고객 지원의 새로운 기준"
-            },
-            {
-                name: "Freshcaller",
-                href: "/products/freshcaller",
-                description: "클라우드 PBX 솔루션"
-            },
-            {
-                name: "Freshchat",
-                href: "/products/freshchat",
-                description: "실시간 채팅 솔루션"
-            },
-            {
-                name: "Freddy AI",
-                href: "/products/freddy-ai",
-                description: "GPT LLM 기반 자동화"
-            },
-            {
-                name: "Freshsales",
-                href: "/products/freshsales",
-                description: "AI 기반 스마트 CRM"
-            }
-        ],
-        "협업 및 생산성 향상": [
-            {
-                name: "Google Workspace",
-                href: "/products/google-workspace",
-                description: "클라우드 기반 협업 솔루션"
-            },
-            {
-                name: "Monday Work Management",
-                href: "/products/monday-work-management",
-                description: "올인원 워크 OS"
-            },
-            {
-                name: "Monday Service",
-                href: "/products/monday-service",
-                description: "AI 기반 서비스 관리"
-            },
-            {
-                name: "Monday Sales CRM",
-                href: "/products/monday-sales-crm",
-                description: "세일즈 파이프라인 관리"
-            }
-        ],
-        "IT 인프라 최적화": [
-            {
-                name: "Freshservice",
-                href: "/products/freshservice",
-                description: "IT 서비스 관리의 혁신"
-            },
-            {
-                name: "Splashtop",
-                href: "/products/splashtop",
-                description: "안전한 원격 접속 솔루션"
-            },
-            {
-                name: "Monday Dev",
-                href: "/products/monday-dev",
-                description: "개발팀 전용 프로젝트 관리"
-            }
-        ]
-    }
-
     // 서비스 메뉴 데이터 (데스크톱과 동일하게 동기화)
     const servicesByCategory = {
         "컨설팅 & 전략": [
@@ -564,13 +440,13 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                             } origin-top overflow-hidden`}
                     >
                         <div className="space-y-3 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
-                            {Object.entries(solutionsByCategory).map(([category, products]) => (
-                                <div key={category} className="space-y-1">
+                            {solutionsMenuData.categories.map((category) => (
+                                <div key={category.id} className="space-y-1">
                                     <h4 className="text-sm font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
-                                        {category}
+                                        {category.name}
                                     </h4>
                                     <div className="space-y-0.5">
-                                        {products.map((product) => (
+                                        {category.products.map((product) => (
                                             <Link
                                                 key={product.name}
                                                 href={product.href}

@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { PricingModal } from '@/components/ui/pricing-modal'
+import { cn } from '@/lib/utils'
 import { 
   ChevronRightIcon, 
   ChevronLeftIcon,
@@ -72,10 +73,11 @@ interface ProductData {
 
 interface ProductCard3StepProps {
   product: ProductData
+  isHighlighted?: boolean
 }
 
-export function ProductCard3Step({ product }: ProductCard3StepProps) {
-  const [currentLevel, setCurrentLevel] = useState(1)
+export function ProductCard3Step({ product, isHighlighted = false }: ProductCard3StepProps) {
+  const [currentLevel, setCurrentLevel] = useState(isHighlighted ? 2 : 1)
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false)
 
   const nextLevel = () => {
@@ -137,121 +139,155 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
   return (
     <>
-      <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary relative overflow-hidden">
-      {/* Level 표시 배지 */}
-      <div className="absolute top-4 right-4 z-10">
-        <Badge className={`${getLevelBadgeColor()} text-white text-xs font-medium px-2 py-1`}>
-          Level {currentLevel}. {getLevelTitle()}
-        </Badge>
-      </div>
-
-      {/* 헤더 - 고정 */}
-      <CardHeader className="pb-4 pr-20">
-        <div className="flex items-start gap-4">
-          <div className="relative w-12 h-12 flex-shrink-0">
-            <Image
-              src={product.logo}
-              alt={`${product.name} 로고`}
-              width={48}
-              height={48}
-              className="rounded-lg"
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-xl text-foreground mb-1">
-              {product.name}
-            </h3>
-            <p className="text-sm text-muted-foreground mb-2">
-              {product.vendor} 제품
-            </p>
-            <p className="text-sm text-muted-foreground italic">
-              "{product.subtitle}"
-            </p>
-          </div>
+      <Card className={cn(
+        "h-[680px] flex flex-col group transition-all duration-500 relative overflow-hidden",
+        "bg-gradient-to-br from-background via-background to-muted/20",
+        "border-2 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10",
+        isHighlighted && "border-primary/50 shadow-xl shadow-primary/20 ring-1 ring-primary/20"
+      )}>
+        {/* Level 표시 배지 - 통일된 색상 */}
+        <div className="absolute top-6 right-6 z-10">
+          <Badge className={cn(
+            "text-primary-foreground text-xs font-medium px-3 py-1.5 shadow-lg",
+            currentLevel === 1 && "bg-gradient-to-r from-primary/90 to-primary",
+            currentLevel === 2 && "bg-gradient-to-r from-primary to-primary", 
+            currentLevel === 3 && "bg-gradient-to-r from-primary to-primary/90"
+          )}>
+            Level {currentLevel}. {getLevelTitle()}
+          </Badge>
         </div>
-      </CardHeader>
 
-      {/* 동적 콘텐츠 영역 */}
-      <CardContent className="flex-1 flex flex-col">
-        <div className="flex-1 min-h-0">
-          {/* Level 1: 기본 정보 */}
-          {currentLevel === 1 && (
-            <div className="space-y-4">
-              <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                <p className="text-sm text-blue-900 dark:text-blue-100 leading-relaxed font-medium">
-                  {product.basic_info.description}
-                </p>
+        {/* 헤더 - 아이콘 기반으로 개선 */}
+        <CardHeader className="pb-6 pr-24 relative">
+          <div className="flex items-start gap-4">
+            {/* 제품 아이콘 - 모노톤 */}
+            <div className="relative w-16 h-16 flex-shrink-0 bg-gradient-to-br from-muted to-muted/60 rounded-2xl flex items-center justify-center border border-border/50 shadow-lg">
+              {/* 벤더별 아이콘 - 통일된 테마 색상 */}
+              {product.vendor === 'Freshworks' && (
+                <div className="w-8 h-8 bg-gradient-to-br from-primary/90 to-primary rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground text-lg font-bold">F</span>
+                </div>
+              )}
+              {product.vendor === 'monday.com' && (
+                <div className="w-8 h-8 bg-gradient-to-br from-primary/90 to-primary rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground text-lg font-bold">M</span>
+                </div>
+              )}
+              {product.vendor === 'Google' && (
+                <div className="w-8 h-8 bg-gradient-to-br from-primary/90 to-primary rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground text-lg font-bold">G</span>
+                </div>
+              )}
+              {product.vendor === 'Splashtop' && (
+                <div className="w-8 h-8 bg-gradient-to-br from-primary/90 to-primary rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground text-lg font-bold">S</span>
+                </div>
+              )}
+            </div>
+            
+            <div className="flex-1 min-w-0">
+              <h3 className="font-bold text-xl text-foreground mb-2 leading-tight">
+                {product.name}
+              </h3>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-medium text-muted-foreground px-2 py-1 bg-muted/50 rounded-full border">
+                  {product.vendor}
+                </span>
               </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                    <span className="text-sm font-medium text-foreground">대상 사용자</span>
+              <p className="text-sm text-muted-foreground italic leading-relaxed">
+                "{product.subtitle}"
+              </p>
+            </div>
+          </div>
+          
+          {/* 장식적 요소 */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/5 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+        </CardHeader>
+
+        {/* 동적 콘텐츠 영역 - 모노톤 디자인 */}
+        <CardContent className="flex-1 flex flex-col px-6">
+          <div className="flex-1 min-h-0">
+            {/* Level 1: 기본 정보 - 통일된 디자인 */}
+            {currentLevel === 1 && (
+              <div className="space-y-6">
+                <div className="p-5 bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl border border-primary/20 backdrop-blur-sm">
+                  <p className="text-sm text-foreground leading-relaxed font-medium">
+                    {product.basic_info.description}
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <CheckCircleIcon className="w-4 h-4 text-primary" />
+                      <span className="text-sm font-semibold text-foreground">대상 사용자</span>
+                    </div>
+                    <div className="ml-6 space-y-2">
+                      {product.basic_info.target_users.slice(0, 3).map((user, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
+                          <span className="text-sm text-muted-foreground">{user}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="ml-6 space-y-1">
-                    {product.basic_info.target_users.slice(0, 3).map((user, index) => (
-                      <div key={index} className="text-sm text-muted-foreground">
-                        • {user}
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <CloudIcon className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm font-semibold text-foreground">배포 방식</span>
+                    </div>
+                    <div className="ml-6 space-y-1">
+                      <div className="text-sm text-muted-foreground">
+                        {product.basic_info.deployment}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {product.basic_info.languages}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <Separator className="bg-border/30" />
+
+                <div>
+                  <h4 className="font-semibold text-sm mb-3 text-foreground flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    핵심 가치 제안
+                  </h4>
+                  <div className="grid gap-3">
+                    {product.key_features.slice(0, 3).map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors">
+                        <div className="w-6 h-6 bg-gradient-to-br from-muted to-muted/60 rounded-lg flex items-center justify-center">
+                          <div className="w-2 h-2 bg-foreground/60 rounded-full"></div>
+                        </div>
+                        <span className="text-sm text-foreground font-medium">
+                          {feature.title}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <CloudIcon className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-medium text-foreground">배포 방식</span>
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-muted-foreground">
-                      {product.basic_info.deployment}
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-1">
-                      {product.basic_info.languages}
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              <Separator />
-
-              <div>
-                <h4 className="font-semibold text-sm mb-2 text-foreground">
-                  핵심 가치 제안
-                </h4>
-                <div className="grid gap-2">
-                  {product.key_features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-sm text-foreground font-medium">
-                        {feature.title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Level 2: 주요 기능 */}
+            )}          {/* Level 2: 주요 기능 - 통일된 디자인 */}
           {currentLevel === 2 && (
             <div className="space-y-4">
-              <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
-                <h4 className="font-semibold text-sm mb-3 text-green-900 dark:text-green-100">
+              <div className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20">
+                <h4 className="font-semibold text-sm mb-1 text-primary flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
                   상세 기능 목록 ({product.key_features.length}개)
                 </h4>
               </div>
 
-              <div className="grid gap-3 max-h-[300px] overflow-y-auto">
+              <div className="grid gap-3 max-h-[280px] overflow-y-auto pr-2 custom-scrollbar">
                 {product.key_features.map((feature, index) => (
-                  <div key={index} className="p-3 bg-muted/50 rounded-lg border">
+                  <div key={index} className="group p-4 bg-gradient-to-br from-background to-primary/5 rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-200 hover:shadow-lg">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:shadow-md transition-shadow">
                         <CheckCircleIcon className="w-4 h-4 text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h5 className="font-medium text-sm text-foreground mb-1">
+                        <h5 className="font-semibold text-sm text-foreground mb-1.5 leading-tight">
                           {feature.title}
                         </h5>
                         <p className="text-xs text-muted-foreground leading-relaxed">
@@ -265,26 +301,27 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
             </div>
           )}
 
-          {/* Level 3: 고급 정보 */}
+          {/* Level 3: 고급 정보 - 통일된 디자인 */}
           {currentLevel === 3 && (
-            <div className="space-y-4">
-              <div className="p-4 bg-orange-50 dark:bg-orange-950/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                <h4 className="font-semibold text-sm text-orange-900 dark:text-orange-100">
+            <div className="space-y-5">
+              <div className="p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20">
+                <h4 className="font-semibold text-sm text-primary flex items-center gap-2">
+                  <ShieldCheckIcon className="w-4 h-4 text-primary" />
                   고급 기술 정보 & 규정 준수
                 </h4>
               </div>
 
               <div className="grid gap-4">
                 {/* 시스템 요구사항 */}
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <CpuChipIcon className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-medium text-foreground">시스템 요구사항</span>
+                    <CpuChipIcon className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-semibold text-foreground">시스템 요구사항</span>
                   </div>
-                  <div className="ml-6 space-y-1">
+                  <div className="ml-6 space-y-2">
                     {getAdvancedInfo().system_requirements.map((req, index) => (
-                      <div key={index} className="flex items-center gap-1">
-                        <CheckCircleIcon className="w-3 h-3 text-green-500" />
+                      <div key={index} className="flex items-center gap-2">
+                        <CheckCircleIcon className="w-3 h-3 text-primary" />
                         <span className="text-xs text-muted-foreground">{req}</span>
                       </div>
                     ))}
@@ -292,14 +329,14 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                 </div>
 
                 {/* 보안 & 컴플라이언스 */}
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <ShieldCheckIcon className="w-4 h-4 text-green-500" />
-                    <span className="text-sm font-medium text-foreground">보안 & 컴플라이언스</span>
+                    <ShieldCheckIcon className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-semibold text-foreground">보안 & 컴플라이언스</span>
                   </div>
-                  <div className="ml-6 flex flex-wrap gap-1">
+                  <div className="ml-6 flex flex-wrap gap-1.5">
                     {getAdvancedInfo().compliance.map((comp, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
+                      <Badge key={index} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/30">
                         {comp}
                       </Badge>
                     ))}
@@ -307,17 +344,18 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                 </div>
 
                 {/* 통합 가능 서비스 */}
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-purple-500" />
-                    <span className="text-sm font-medium text-foreground">
+                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-semibold text-foreground">
                       통합 가능 서비스 ({getAdvancedInfo().integrations_count}개+)
                     </span>
                   </div>
-                  <div className="ml-6 grid grid-cols-2 gap-1">
+                  <div className="ml-6 grid grid-cols-2 gap-1.5">
                     {product.pricing_integration.integrations.slice(0, 6).map((integration, index) => (
-                      <div key={index} className="text-xs text-muted-foreground">
-                        • {integration}
+                      <div key={index} className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
+                        <span className="text-xs text-muted-foreground">{integration}</span>
                       </div>
                     ))}
                   </div>
@@ -327,28 +365,31 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           )}
         </div>
 
-        {/* 액션 버튼 영역 - 하단 고정 */}
-        <div className="pt-4 mt-auto border-t">
-          {/* 레벨 내비게이션 */}
-          <div className="flex items-center justify-between mb-3">
+        {/* 액션 버튼 영역 - 고정 높이로 통일 */}
+        <div className="h-[140px] flex flex-col justify-end p-6 pt-4 mt-auto border-t border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10">
+          {/* 레벨 내비게이션 - 통일된 색상 */}
+          <div className="flex items-center justify-between mb-4">
             <Button
               variant="ghost"
               size="sm"
               onClick={prevLevel}
               disabled={currentLevel === 1}
-              className="text-xs"
+              className="text-xs text-primary hover:text-primary hover:bg-primary/10 disabled:opacity-30 disabled:text-muted-foreground"
             >
               <ChevronLeftIcon className="w-4 h-4 mr-1" />
               이전
             </Button>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               {[1, 2, 3].map((level) => (
                 <div
                   key={level}
-                  className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
-                    currentLevel >= level ? 'bg-primary' : 'bg-muted'
-                  }`}
+                  className={cn(
+                    "w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer border",
+                    currentLevel >= level 
+                      ? 'bg-primary border-primary shadow-sm' 
+                      : 'bg-background border-primary/30 hover:border-primary/60'
+                  )}
                   onClick={() => setCurrentLevel(level)}
                 />
               ))}
@@ -359,32 +400,35 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               size="sm"
               onClick={nextLevel}
               disabled={currentLevel === 3}
-              className="text-xs"
+              className="text-xs text-primary hover:text-primary hover:bg-primary/10 disabled:opacity-30 disabled:text-muted-foreground"
             >
               다음
               <ChevronRightIcon className="w-4 h-4 ml-1" />
             </Button>
           </div>
 
-          {/* CTA 버튼들 */}
+          {/* CTA 버튼들 - 통일된 색상 */}
           {currentLevel === 3 ? (
             <div className="grid grid-cols-3 gap-2">
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="text-xs"
+                className="text-xs hover:bg-primary/10 border-primary/30 hover:border-primary text-primary"
                 onClick={() => setIsPricingModalOpen(true)}
               >
                 <CurrencyDollarIcon className="w-3 h-3 mr-1" />
                 가격보기
               </Button>
-              <Button size="sm" className="text-xs">
+              <Button 
+                size="sm" 
+                className="text-xs bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
                 상담하기
               </Button>
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="text-xs"
+                className="text-xs hover:bg-primary/10 border-primary/30 hover:border-primary text-primary"
                 onClick={() => window.open(product.pricing_integration.technical_resources.documentation_url, '_blank')}
               >
                 <ArrowTopRightOnSquareIcon className="w-3 h-3 mr-1" />
@@ -396,7 +440,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               variant="default"
               size="sm"
               onClick={nextLevel}
-              className="w-full text-xs"
+              className="w-full text-xs bg-primary hover:bg-primary/90 text-primary-foreground shadow-md"
             >
               더 알아보기
               <ChevronRightIcon className="w-4 h-4 ml-1" />

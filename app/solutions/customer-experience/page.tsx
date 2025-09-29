@@ -144,25 +144,27 @@ export default function CustomerExperiencePage() {
               
               {/* 3단계 가이드 */}
               <div className="flex flex-wrap justify-center gap-3 pt-4">
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
+                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30">
                   Level 1: 기본 정보
                 </Badge>
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
-                  Level 2: 주요 기능  
+                <Badge variant="outline" className="bg-secondary/10 text-secondary-foreground border-secondary/30">
+                  Level 2: 주요 기능
                 </Badge>
-                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800">
+                <Badge variant="outline" className="bg-accent/10 text-accent-foreground border-accent/30">
                   Level 3: 고급 정보
                 </Badge>
               </div>
             </div>
 
-            {/* 3단계 제품 카드 그리드 */}
+            {/* 3단계 제품 카드 그리드 - 앵커 링크 지원 */}
             <div className="grid md:grid-cols-2 gap-8">
               {customerExperienceProducts.map((product, index) => (
-                <ProductCard3Step 
-                  key={product.id}
-                  product={product}
-                />
+                <div key={product.id} id={product.id}>
+                  <ProductCard3Step 
+                    product={product}
+                    isHighlighted={typeof window !== 'undefined' && window.location.hash === `#${product.id}`}
+                  />
+                </div>
               ))}
             </div>
           </div>
