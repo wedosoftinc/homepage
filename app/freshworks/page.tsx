@@ -84,7 +84,7 @@ export default function FreshworksPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button asChild size="lg">
                     <Link href="/pricing">
-                      맞춤 견적 요청
+                      맞춤 견적 내기
                     </Link>
                   </Button>
                   

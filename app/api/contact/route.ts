@@ -85,7 +85,7 @@ ${validatedData.message}
         await transporter.sendMail({
             from: `"${validatedData.name} (위두소프트 홈페이지)" <${process.env.GMAIL_USER}>`,
             to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
-            subject: `[홈페이지 문의] ${validatedData.inquiryType} - ${validatedData.subject}`,
+            subject: `${validatedData.inquiryType} - ${validatedData.subject}`,
             text: emailContent,
             html: emailContent.replace(/\n/g, '<br>').replace(/■/g, '<strong>■</strong>'),
             replyTo: validatedData.email, // 고객 이메일로 답장 가능하게

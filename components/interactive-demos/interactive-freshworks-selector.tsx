@@ -57,52 +57,52 @@ const DETAILED_PRODUCT_TABS: DetailedProductTab[] = [
     id: 'freshservice',
     label: 'Freshservice',
     title: 'IT 서비스 관리',
-    description: 'IT 인시던트부터 자산 관리까지 ITSM 워크플로우를 확인하세요',
+    description: '곧 제공될 예정입니다. IT 인시던트부터 자산 관리까지 ITSM 워크플로우를 확인해보세요',
     feature: {
-      title: 'IT 서비스 관리 플랫폼',
-      description: 'ITIL 기반 IT 서비스 관리로 인시던트 해결 시간을 단축하고 IT 자산을 효율적으로 관리합니다. 셀프서비스 포털로 사용자 요청을 자동화하여 IT 팀의 업무 부담을 줄입니다.',
+      title: 'IT 서비스 관리 플랫폼 (준비 중)',
+      description: '현재 인터랙티브 데모를 준비하고 있습니다. ITIL 기반 IT 서비스 관리로 인시던트 해결 시간을 단축하고 IT 자산을 효율적으로 관리하는 솔루션입니다.',
       items: [
-        'ITIL 기반 인시던트 및 변경 관리',
-        '자동화된 IT 자산 디스커버리',
-        '셀프서비스 포털 및 지식베이스',
-        'SLA 관리 및 성능 모니터링',
-        '모바일 지원 및 오프라인 작업'
+        '⏳ ITIL 기반 인시던트 및 변경 관리',
+        '⏳ 자동화된 IT 자산 디스커버리',
+        '⏳ 셀프서비스 포털 및 지식베이스',
+        '⏳ SLA 관리 및 성능 모니터링',
+        '⏳ 모바일 지원 및 오프라인 작업'
       ]
     },
     demoConfig: {
       id: 'freshservice',
       name: 'Freshservice',
-      title: 'IT 서비스 관리',
-      description: 'IT 인시던트부터 자산 관리까지 ITSM 워크플로우를 확인하세요',
-      demoUrl: 'https://interactive-freshworks.vercel.app/',
+      title: 'IT 서비스 관리 (준비 중)',
+      description: '곧 제공될 예정입니다. IT 인시던트부터 자산 관리까지 ITSM 워크플로우를 확인해보세요',
+      demoUrl: 'about:blank',
       category: 'IT 관리',
-      features: ['인시던트 관리', '자산 추적', '변경 관리', '셀프서비스 포털']
+      features: ['준비 중', '곧 공개', '업데이트 예정']
     }
   },
   {
     id: 'freshsales',
     label: 'Freshsales',
     title: '영업 관리 시스템',
-    description: '리드 관리부터 거래 성사까지 영업 프로세스를 경험해보세요',
+    description: '곧 제공될 예정입니다. 리드 관리부터 거래 성사까지 영업 프로세스를 경험해보세요',
     feature: {
-      title: 'AI 기반 영업 관리',
-      description: '리드 스코링부터 거래 예측까지 AI가 영업 프로세스 전반을 지원합니다. 이메일 연동과 자동화로 영업팀이 고객 관계에만 집중할 수 있는 환경을 제공합니다.',
+      title: 'AI 기반 영업 관리 (준비 중)',
+      description: '현재 인터랙티브 데모를 준비하고 있습니다. 리드 스코링부터 거래 예측까지 AI가 영업 프로세스 전반을 지원하는 솔루션입니다.',
       items: [
-        'AI 기반 리드 스코링 및 예측 분석',
-        '이메일 및 전화 자동 로깅',
-        '파이프라인 및 거래 단계별 관리',
-        '맞춤형 영업 보고서 및 대시보드',
-        'Google Workspace 및 Office 365 연동'
+        '⏳ AI 기반 리드 스코링 및 예측 분석',
+        '⏳ 이메일 및 전화 자동 로깅',
+        '⏳ 파이프라인 및 거래 단계별 관리',
+        '⏳ 맞춤형 영업 보고서 및 대시보드',
+        '⏳ Google Workspace 및 Office 365 연동'
       ]
     },
     demoConfig: {
       id: 'freshsales',
       name: 'Freshsales',
-      title: '영업 관리 시스템',
-      description: '리드 관리부터 거래 성사까지 영업 프로세스를 경험해보세요',
-      demoUrl: 'https://interactive-freshworks.vercel.app/',
+      title: '영업 관리 시스템 (준비 중)',
+      description: '곧 제공될 예정입니다. 리드 관리부터 거래 성사까지 영업 프로세스를 경험해보세요',
+      demoUrl: 'about:blank',
       category: '영업 관리',
-      features: ['리드 스코링', '파이프라인 관리', 'AI 예측 분석', '이메일 연동']
+      features: ['준비 중', '곧 공개', '업데이트 예정']
     }
   }
 ]
@@ -165,31 +165,42 @@ export function InteractiveFreshworksSelector() {
                     </div>
                     
                     {/* 클릭 가능한 오버레이 */}
-                    <div className="absolute inset-0 cursor-pointer group">
+                    <div className={`absolute inset-0 cursor-pointer group ${tab.demoConfig.demoUrl === 'about:blank' ? 'cursor-not-allowed' : ''}`}>
                       {/* 호버 효과 */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${tab.demoConfig.demoUrl === 'about:blank' ? 'from-muted/20 via-muted/10 to-muted/5' : 'from-primary/20 via-primary/10 to-primary/5'} opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out`} />
                       
                       {/* 중앙 Play 버튼 */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="relative">
-                          <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping group-hover:animate-none" />
-                          <div className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground p-6 rounded-full shadow-2xl group-hover:scale-110 group-hover:shadow-primary/25 transition-all duration-300">
-                            <Sparkles className="h-10 w-10" />
-                          </div>
+                          {tab.demoConfig.demoUrl === 'about:blank' ? (
+                            // 플레이스홀더 아이콘
+                            <div className="relative bg-muted text-muted-foreground p-6 rounded-full shadow-2xl">
+                              <div className="absolute inset-0 rounded-full border-2 border-dashed border-muted-foreground/30"></div>
+                              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-muted-foreground/50"></div>
+                            </div>
+                          ) : (
+                            // 활성 상태 아이콘
+                            <>
+                              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping group-hover:animate-none" />
+                              <div className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground p-6 rounded-full shadow-2xl group-hover:scale-110 group-hover:shadow-primary/25 transition-all duration-300">
+                                <Sparkles className="h-10 w-10" />
+                              </div>
+                            </>
+                          )}
                         </div>
                       </div>
                       
                       {/* 상단 정보 */}
                       <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
                         <div className="bg-background/90 backdrop-blur-sm rounded-lg px-4 py-2 border shadow-lg">
-                          <div className="text-xs font-medium text-primary/80 uppercase tracking-wide mb-1">
-                            인터랙티브 데모
+                          <div className={`text-xs font-medium uppercase tracking-wide mb-1 ${tab.demoConfig.demoUrl === 'about:blank' ? 'text-muted-foreground/80' : 'text-primary/80'}`}>
+                            {tab.demoConfig.demoUrl === 'about:blank' ? '데모 준비 중' : '인터랙티브 데모'}
                           </div>
                           <h4 className="text-sm font-semibold text-foreground">
                             {tab.title}
                           </h4>
                         </div>
-                        <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
+                        <Badge variant={tab.demoConfig.demoUrl === 'about:blank' ? 'outline' : 'secondary'} className="bg-background/90 backdrop-blur-sm">
                           {tab.demoConfig.category}
                         </Badge>
                       </div>
@@ -202,7 +213,11 @@ export function InteractiveFreshworksSelector() {
                           </p>
                           <div className="flex flex-wrap gap-1">
                             {tab.demoConfig.features.slice(0, 3).map((feature, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs">
+                              <Badge 
+                                key={idx} 
+                                variant={tab.demoConfig.demoUrl === 'about:blank' ? 'secondary' : 'outline'} 
+                                className={`text-xs ${tab.demoConfig.demoUrl === 'about:blank' ? 'text-muted-foreground' : ''}`}
+                              >
                                 {feature}
                               </Badge>
                             ))}
@@ -210,13 +225,21 @@ export function InteractiveFreshworksSelector() {
                         </div>
                       </div>
                       
-                      {/* 실제 모달 트리거 (숨김) */}
-                      <InteractiveProductModal 
-                        product={tab.demoConfig}
-                        triggerText=""
-                        triggerVariant="outline"
-                        className="absolute inset-0 opacity-0 w-full h-full"
-                      />
+                      {/* 실제 모달 트리거 또는 상담 페이지 이동 */}
+                      {tab.demoConfig.demoUrl !== 'about:blank' ? (
+                        <InteractiveProductModal 
+                          product={tab.demoConfig}
+                          triggerText=""
+                          triggerVariant="outline"
+                          className="absolute inset-0 opacity-0 w-full h-full"
+                        />
+                      ) : (
+                        <button
+                          className="absolute inset-0 w-full h-full opacity-0"
+                          onClick={() => window.open(`/contact?product=${tab.demoConfig.id}`, '_blank')}
+                          aria-label={`${tab.demoConfig.name} 상담 신청`}
+                        />
+                      )}
                     </div>
                   </div>
                 </Card>
