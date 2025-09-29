@@ -1,18 +1,16 @@
 import { Metadata } from "next"
-import { MainNavigation } from "@/components/navigation/main-navigation"
-import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import Image from "next/image"
 import { 
   ChatBubbleLeftRightIcon, 
   PhoneIcon, 
   UserGroupIcon,
-  CogIcon,
-  ChartBarIcon,
-  SparklesIcon
+  SparklesIcon,
+  HeartIcon,
+  TrophyIcon,
+  ChartBarIcon
 } from "@heroicons/react/24/outline"
 
 // 3단계 제품 카드 임포트
@@ -31,175 +29,194 @@ export default function CustomerExperiencePage() {
   const customerExperienceProducts = productsData["customer-experience"]
 
   return (
-    <div className="min-h-screen bg-background">
-      <MainNavigation />
-      
-      <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-background to-muted/20 py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="text-sm font-medium">
-                  Customer Experience Solutions
+    <>
+      {/* Hero Section - 모던하고 임팩트 있는 디자인 */}
+      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-32 overflow-hidden">
+        {/* 배경 장식 */}
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-pattern" />
+        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        
+        <div className="container relative">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="space-y-6">
+              <Badge variant="secondary" className="text-sm font-medium px-4 py-2">
+                <SparklesIcon className="w-4 h-4 mr-2" />
+                Customer Experience & Sales Management
+              </Badge>
+              
+              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
+                고객의 
+                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                  마음을 사로잡는
+                </span>
+                <br />
+                경험을 만드세요
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Freshworks의 AI 기반 통합 플랫폼으로 고객 서비스부터 영업까지, 
+                <br className="hidden lg:block" />
+                전체 고객 여정을 혁신하세요.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/contact">
+                  <HeartIcon className="w-5 h-5 mr-2" />
+                  무료 상담 받기
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/pricing">
+                  <TrophyIcon className="w-5 h-5 mr-2" />
+                  가격 정보
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 가치 제안 섹션 */}
+      <section className="py-20 lg:py-32">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center space-y-16">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                왜 고객 경험이 중요할까요?
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                뛰어난 고객 경험은 단순한 서비스를 넘어 브랜드 가치와 매출 성장의 핵심입니다
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChatBubbleLeftRightIcon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">옴니채널 소통</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  이메일, 채팅, 전화, 소셜미디어 등 모든 채널에서 
+                  일관된 고객 경험을 제공하세요
+                </p>
+              </Card>
+
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <SparklesIcon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">AI 기반 자동화</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Freddy AI가 고객 문의를 분석하고 
+                  최적의 해결책을 자동으로 제안합니다
+                </p>
+              </Card>
+
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChartBarIcon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">데이터 기반 인사이트</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  실시간 분석과 리포팅으로 
+                  고객 만족도와 팀 성과를 지속적으로 개선하세요
+                </p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 제품 카드 섹션 - 개선된 디자인 */}
+      <section className="py-20 lg:py-32 bg-gradient-to-b from-muted/30 to-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-16">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                Freshworks 통합 솔루션
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                고객 서비스부터 영업, 마케팅까지 하나의 플랫폼에서 관리하세요
+              </p>
+              
+              {/* 3단계 가이드 */}
+              <div className="flex flex-wrap justify-center gap-3 pt-4">
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
+                  Level 1: 기본 정보
                 </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                  고객 경험의
-                  <span className="text-primary block">새로운 기준</span>
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  AI 기반 통합 플랫폼으로 고객 서비스, 영업, 마케팅을 
-                  하나의 생태계에서 효율적으로 운영하세요.
-                </p>
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
+                  Level 2: 주요 기능  
+                </Badge>
+                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800">
+                  Level 3: 고급 정보
+                </Badge>
               </div>
+            </div>
 
-              <div className="flex items-center justify-center gap-4">
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    무료 상담 받기
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/pricing">
-                    가격 정보
-                  </Link>
-                </Button>
+            {/* 3단계 제품 카드 그리드 */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {customerExperienceProducts.map((product, index) => (
+                <ProductCard3Step 
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - 강화된 디자인 */}
+      <section className="py-20 lg:py-32 relative">
+        {/* 배경 그라데이션 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        
+        <div className="container relative">
+          <div className="max-w-4xl mx-auto text-center space-y-12">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                고객 경험 혁신을 시작하세요
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                전문 컨설턴트가 귀하의 비즈니스에 최적화된 
+                고객 경험 관리 전략을 설계해드립니다
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/contact">
+                  무료 상담 신청
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/services/consulting">
+                  컨설팅 서비스
+                </Link>
+              </Button>
+            </div>
+
+            {/* 성과 지표 */}
+            <div className="grid md:grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">95%</div>
+                <div className="text-sm text-muted-foreground">고객 만족도 향상</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">40%</div>
+                <div className="text-sm text-muted-foreground">응답 시간 단축</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">60%</div>
+                <div className="text-sm text-muted-foreground">영업 효율성 증대</div>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* 솔루션 개요 */}
-        <section className="py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  왜 통합 고객 경험 플랫폼인가?
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  고객의 전체 여정을 하나의 플랫폼에서 관리하여 일관된 경험을 제공합니다
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <ChatBubbleLeftRightIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">옴니채널 소통</h3>
-                  <p className="text-sm text-muted-foreground">
-                    이메일, 채팅, 전화, SNS를 하나의 플랫폼에서 통합 관리
-                  </p>
-                </Card>
-
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <SparklesIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">AI 기반 자동화</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Freddy AI가 반복 업무를 자동화하고 인사이트 제공
-                  </p>
-                </Card>
-
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <ChartBarIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">데이터 기반 인사이트</h3>
-                  <p className="text-sm text-muted-foreground">
-                    실시간 분석으로 고객 만족도와 비즈니스 성과 최적화
-                  </p>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 제품 카드 섹션 */}
-        <section className="py-16 lg:py-24 bg-muted/20">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  고객 경험 관리 솔루션
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  각 제품을 클릭하여 3단계로 구성된 상세 정보를 확인하세요
-                </p>
-                <div className="flex justify-center gap-2 text-sm text-muted-foreground">
-                  <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
-                    Level 1: 기본 정보
-                  </Badge>
-                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    Level 2: 주요 기능
-                  </Badge>
-                  <Badge variant="outline" className="bg-orange-50 text-orange-600 border-orange-200">
-                    Level 3: 고급 정보
-                  </Badge>
-                </div>
-              </div>
-
-              {/* 3단계 제품 카드 그리드 */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {customerExperienceProducts.map((product, index) => (
-                  <ProductCard3Step 
-                    key={product.id}
-                    product={product}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  고객 경험 혁신을 시작하세요
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  전문 컨설턴트가 귀하의 비즈니스에 최적화된 솔루션을 제안합니다
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    무료 상담 신청
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/services/consulting">
-                    컨설팅 서비스
-                  </Link>
-                </Button>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">200+</div>
-                  <div className="text-sm text-muted-foreground">국내 구축 사례</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
-                  <div className="text-sm text-muted-foreground">시스템 가용성</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                  <div className="text-sm text-muted-foreground">기술 지원</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
+        </div>
+      </section>
+    </>
   )
 }

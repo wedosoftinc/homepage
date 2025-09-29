@@ -1,18 +1,17 @@
 import { Metadata } from "next"
-import { MainNavigation } from "@/components/navigation/main-navigation"
-import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import Image from "next/image"
 import { 
   UsersIcon, 
   RocketLaunchIcon, 
   ChartBarIcon,
   ClockIcon,
   PuzzlePieceIcon,
-  GlobeAltIcon
+  GlobeAltIcon,
+  LightBulbIcon,
+  BoltIcon
 } from "@heroicons/react/24/outline"
 
 // 3단계 제품 카드 임포트
@@ -31,175 +30,194 @@ export default function CollaborationPage() {
   const collaborationProducts = productsData["collaboration-productivity"]
 
   return (
-    <div className="min-h-screen bg-background">
-      <MainNavigation />
-      
-      <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-background to-muted/20 py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="text-sm font-medium">
-                  Collaboration & Productivity Solutions
+    <>
+      {/* Hero Section - 모던하고 임팩트 있는 디자인 */}
+      <section className="relative bg-gradient-to-br from-purple/5 via-background to-blue/5 py-20 lg:py-32 overflow-hidden">
+        {/* 배경 장식 */}
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-pattern" />
+        <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-purple/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-96 h-96 bg-blue/5 rounded-full blur-3xl" />
+        
+        <div className="container relative">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="space-y-6">
+              <Badge variant="secondary" className="text-sm font-medium px-4 py-2">
+                <RocketLaunchIcon className="w-4 h-4 mr-2" />
+                Collaboration & Productivity Solutions
+              </Badge>
+              
+              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
+                팀워크를 
+                <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  혁신하는
+                </span>
+                <br />
+                스마트한 협업
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Monday.com과 Google Workspace의 완벽한 조합으로 
+                <br className="hidden lg:block" />
+                팀의 생산성과 창의성을 극대화하세요.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/contact">
+                  <LightBulbIcon className="w-5 h-5 mr-2" />
+                  무료 상담 받기
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/pricing">
+                  <BoltIcon className="w-5 h-5 mr-2" />
+                  가격 정보
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 가치 제안 섹션 */}
+      <section className="py-20 lg:py-32">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center space-y-16">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                왜 협업 플랫폼이 필요할까요?
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                원격근무와 하이브리드 업무 환경에서 효율적인 협업은 필수가 되었습니다
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple/10 to-purple/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <UsersIcon className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">팀 시너지 극대화</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  실시간 협업과 투명한 소통으로 
+                  팀의 창의성과 효율성을 동시에 향상시키세요
+                </p>
+              </Card>
+
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue/10 to-blue/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <RocketLaunchIcon className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">생산성 혁명</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  자동화 워크플로우와 스마트한 도구로 
+                  반복 업무를 줄이고 핵심 업무에 집중하세요
+                </p>
+              </Card>
+
+              <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-green/10 to-green/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChartBarIcon className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">데이터 기반 인사이트</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  프로젝트 진행 상황과 팀 성과를 
+                  실시간으로 분석하고 최적화하세요
+                </p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 제품 카드 섹션 - 개선된 디자인 */}
+      <section className="py-20 lg:py-32 bg-gradient-to-b from-muted/30 to-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-16">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                협업 & 생산성 솔루션
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                프로젝트 관리부터 클라우드 오피스까지, 완벽한 협업 생태계를 구축하세요
+              </p>
+              
+              {/* 3단계 가이드 */}
+              <div className="flex flex-wrap justify-center gap-3 pt-4">
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
+                  Level 1: 기본 정보
                 </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                  팀워크의
-                  <span className="text-primary block">새로운 차원</span>
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Monday.com과 Google Workspace로 팀 협업을 혁신하고 
-                  생산성을 극대화하세요.
-                </p>
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
+                  Level 2: 주요 기능  
+                </Badge>
+                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800">
+                  Level 3: 고급 정보
+                </Badge>
               </div>
+            </div>
 
-              <div className="flex items-center justify-center gap-4">
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    무료 상담 받기
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/pricing">
-                    가격 정보
-                  </Link>
-                </Button>
+            {/* 3단계 제품 카드 그리드 */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {collaborationProducts.map((product, index) => (
+                <ProductCard3Step 
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - 강화된 디자인 */}
+      <section className="py-20 lg:py-32 relative">
+        {/* 배경 그라데이션 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-blue/5" />
+        
+        <div className="container relative">
+          <div className="max-w-4xl mx-auto text-center space-y-12">
+            <div className="space-y-6">
+              <h2 className="text-4xl lg:text-5xl font-bold">
+                협업 혁신을 시작하세요
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                전문 컨설턴트가 귀하의 팀에 최적화된 
+                협업 환경과 생산성 향상 전략을 제안합니다
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/contact">
+                  무료 상담 신청
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                <Link href="/services/consulting">
+                  컨설팅 서비스
+                </Link>
+              </Button>
+            </div>
+
+            {/* 성과 지표 */}
+            <div className="grid md:grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">300+</div>
+                <div className="text-sm text-muted-foreground">협업 도구 구축 사례</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">50%</div>
+                <div className="text-sm text-muted-foreground">업무 효율성 증대</div>
+              </div>
+              <div className="text-center space-y-2">
+                <div className="text-4xl font-bold text-primary">24/7</div>
+                <div className="text-sm text-muted-foreground">기술 지원</div>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* 솔루션 개요 */}
-        <section className="py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  왜 통합 협업 플랫폼인가?
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  흩어진 업무 도구들을 하나로 통합하여 팀의 생산성을 극대화합니다
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <UsersIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">실시간 협업</h3>
-                  <p className="text-sm text-muted-foreground">
-                    팀원들이 동시에 작업하고 실시간으로 소통할 수 있는 환경
-                  </p>
-                </Card>
-
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <RocketLaunchIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">워크플로우 자동화</h3>
-                  <p className="text-sm text-muted-foreground">
-                    반복 업무를 자동화하여 더 중요한 일에 집중
-                  </p>
-                </Card>
-
-                <Card className="text-center p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <ChartBarIcon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">성과 시각화</h3>
-                  <p className="text-sm text-muted-foreground">
-                    프로젝트 진행상황과 팀 성과를 한눈에 파악
-                  </p>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 제품 카드 섹션 */}
-        <section className="py-16 lg:py-24 bg-muted/20">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  협업 및 생산성 솔루션
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  각 제품을 클릭하여 3단계로 구성된 상세 정보를 확인하세요
-                </p>
-                <div className="flex justify-center gap-2 text-sm text-muted-foreground">
-                  <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
-                    Level 1: 기본 정보
-                  </Badge>
-                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    Level 2: 주요 기능
-                  </Badge>
-                  <Badge variant="outline" className="bg-orange-50 text-orange-600 border-orange-200">
-                    Level 3: 고급 정보
-                  </Badge>
-                </div>
-              </div>
-
-              {/* 3단계 제품 카드 그리드 */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {collaborationProducts.map((product, index) => (
-                  <ProductCard3Step 
-                    key={product.id}
-                    product={product}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
-                  팀 협업 혁신을 시작하세요
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  전문 컨설턴트가 귀하의 팀에 최적화된 협업 환경을 구축해드립니다
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    무료 상담 신청
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/services/consulting">
-                    컨설팅 서비스
-                  </Link>
-                </Button>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">150+</div>
-                  <div className="text-sm text-muted-foreground">협업 도구 구축 사례</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">30%</div>
-                  <div className="text-sm text-muted-foreground">평균 업무 효율 향상</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                  <div className="text-sm text-muted-foreground">기술 지원</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
+        </div>
+      </section>
+    </>
   )
 }

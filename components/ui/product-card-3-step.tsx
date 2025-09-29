@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { PricingModal } from '@/components/ui/pricing-modal'
 import { 
   ChevronRightIcon, 
   ChevronLeftIcon,
@@ -75,6 +76,7 @@ interface ProductCard3StepProps {
 
 export function ProductCard3Step({ product }: ProductCard3StepProps) {
   const [currentLevel, setCurrentLevel] = useState(1)
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false)
 
   const nextLevel = () => {
     if (currentLevel < 3) {
@@ -134,7 +136,8 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
   }
 
   return (
-    <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary relative overflow-hidden">
+    <>
+      <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary relative overflow-hidden">
       {/* Level 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
         <Badge className={`${getLevelBadgeColor()} text-white text-xs font-medium px-2 py-1`}>
@@ -366,7 +369,12 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           {/* CTA 버튼들 */}
           {currentLevel === 3 ? (
             <div className="grid grid-cols-3 gap-2">
-              <Button variant="outline" size="sm" className="text-xs">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="text-xs"
+                onClick={() => setIsPricingModalOpen(true)}
+              >
                 <CurrencyDollarIcon className="w-3 h-3 mr-1" />
                 가격보기
               </Button>
@@ -396,6 +404,15 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           )}
         </div>
       </CardContent>
-    </Card>
+      </Card>
+
+      {/* 가격 모달 */}
+      <PricingModal
+        isOpen={isPricingModalOpen}
+        onClose={() => setIsPricingModalOpen(false)}
+        productId={product.id}
+        productName={product.name}
+      />
+    </>
   )
 }
