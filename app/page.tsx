@@ -34,25 +34,7 @@ function SiteUpdateBanner() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="text-white hover:bg-white/20 text-sm hidden sm:inline-flex"
-            asChild
-          >
-            <Link href="/contact">
-              <Info className="h-4 w-4 mr-2" />
-              전문 컨설턴트와 상담받기
-            </Link>
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="text-white hover:bg-white/20 sm:hidden"
-            asChild
-          >
-            <Link href="/contact">상담받기</Link>
-          </Button>
+          {/* 상담 버튼 제거됨 */}
         </div>
       </div>
     </div>
