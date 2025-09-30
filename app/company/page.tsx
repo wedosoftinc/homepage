@@ -117,10 +117,10 @@ export default function CompanyPage() {
       <section className="py-16">
         <div className="container max-w-7xl text-center">
           <Badge className="mb-4">About Us</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             회사의 운명은 고객에 달려있다
           </h1>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
+          <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
             고객의 성공이 우리의 성공입니다.
             2000년부터 25년간 이어온 위두소프트의 핵심 철학으로,
             고객의 비즈니스 성공을 최우선으로 생각하며 글로벌 SaaS 솔루션을 통해

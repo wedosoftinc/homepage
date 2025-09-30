@@ -59,10 +59,10 @@ export function ServicePageLayout({
               <BadgeIcon className="w-3 h-3 mr-1" />
               {badge.text}
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
               {hero.title}
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               {hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,10 +86,10 @@ export function ServicePageLayout({
       <section className="py-12">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
               {cardsSection.title}
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               {cardsSection.subtitle}
             </p>
           </div>

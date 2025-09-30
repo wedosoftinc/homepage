@@ -6,7 +6,6 @@ import Image from "next/image"
 import {
     Bars3Icon as Menu,
     XMarkIcon as X,
-    MagnifyingGlassIcon as Search,
     ChevronDownIcon as ChevronDown,
     ChatBubbleLeftRightIcon,
     RocketLaunchIcon,
@@ -24,54 +23,12 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { SearchModal } from "@/components/ui/search-modal"
+import { SearchWithAutocomplete } from "@/components/navigation/search-with-autocomplete"
 
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
-    const [searchQuery, setSearchQuery] = React.useState("")
-    const [searchModalOpen, setSearchModalOpen] = React.useState(false)
-
-    // 검색 핸들러 - 사이트 내 콘텐츠 검색
-    const handleSearch = (e: React.FormEvent) => {
-        e.preventDefault()
-        if (searchQuery.trim()) {
-            // 검색어에 따라 적절한 페이지로 이동
-            const query = searchQuery.toLowerCase().trim()
-
-            // 솔루션/제품 관련 검색
-            if (query.includes('freshdesk omni') || query.includes('옴니채널')) {
-                window.location.href = '/products/freshdesk-omni'
-            } else if (query.includes('freshdesk') || query.includes('고객지원') || query.includes('헬프데스크')) {
-                window.location.href = '/products/freshdesk'
-            } else if (query.includes('freshcaller') || query.includes('pbx') || query.includes('통화') || query.includes('전화')) {
-                window.location.href = '/products/freshcaller'
-            } else if (query.includes('freshchat') || query.includes('채팅') || query.includes('실시간')) {
-                window.location.href = '/products/freshchat'
-            } else if (query.includes('freddy') || query.includes('ai') || query.includes('인공지능')) {
-                window.location.href = '/products/freddy-ai'
-            } else if (query.includes('freshservice') || query.includes('it서비스') || query.includes('헬프데스크')) {
-                window.location.href = '/products/freshservice'
-            } else if (query.includes('google workspace') || query.includes('구글') || query.includes('워크스페이스')) {
-                window.location.href = '/products/google-workspace'
-            } else if (query.includes('monday') || query.includes('먼데이') || query.includes('프로젝트')) {
-                window.location.href = '/products/monday-service'
-                window.location.href = '/solutions/monday'
-            } else if (query.includes('가격') || query.includes('요금') || query.includes('price') || query.includes('플랜') || query.includes('견적') || query.includes('맞춤')) {
-                window.location.href = '/pricing'
-            } else if (query.includes('상담') || query.includes('문의') || query.includes('contact')) {
-                window.location.href = '/contact'
-            } else if (query.includes('회사') || query.includes('소개') || query.includes('about')) {
-                window.location.href = '/company'
-            } else {
-                // 기본 Google 사이트 검색
-                window.open(`https://www.google.com/search?q=site:wedosoft.net ${query}`, '_blank')
-            }
-            setSearchQuery("")
-        }
-    }
 
     // 로고 렌더링: CSS로 테마별 로고 전환 (레이아웃 시프트 방지)
     const logoComponent = (
@@ -386,17 +343,10 @@ export function MainNavigation() {
                     </NavigationMenuList>
                 </NavigationMenu>
 
-                {/* 우측 검색바 및 버튼들 - 검색 기능 임시 숨김 */}
-                <div className="flex items-center space-x-2">
-                    {/* 검색 버튼 */}
-                    <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="hidden md:inline-flex"
-                        onClick={() => setSearchModalOpen(true)}
-                    >
-                        <Search className="h-5 w-5" />
-                    </Button>
+                {/* 우측 검색바 및 버튼들 */}
+                <div className="flex items-center space-x-3">
+                    {/* 자동완성 검색창 - 모든 제품 페이지 준비될 때까지 비활성화 */}
+                    {/* <SearchWithAutocomplete className="hidden lg:block" /> */}
 
                     {/* 상담신청 버튼 */}
                     <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
@@ -469,9 +419,6 @@ export function MainNavigation() {
                     </Sheet>
                 </div>
             </div>
-
-            {/* 검색 모달 */}
-            <SearchModal open={searchModalOpen} onOpenChange={setSearchModalOpen} />
         </header>
     );
 }

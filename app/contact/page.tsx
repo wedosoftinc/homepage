@@ -29,10 +29,10 @@ export default function ContactPage() {
                 <section className="py-16">
                     <div className="container max-w-7xl text-center">
                         <Badge className="mb-4">Contact Us</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                        <h1 className="text-3xl md:text-4xl font-bold mb-4">
                             문의하기
                         </h1>
-                        <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
+                        <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
                             궁금한 사항이나 상담 요청을 남겨주세요. 전문 컨설턴트가 신속하게 답변드립니다.
                         </p>
                     </div>

@@ -400,11 +400,11 @@ export default function CustomQuotePage() {
                     <Badge variant="secondary" className="mb-4">
                         맞춤 견적 시스템
                     </Badge>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
                         3분만에 받는
                         <span className="text-primary"> 맞춤 솔루션 견적</span>
                     </h1>
-                    <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
+                    <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto mb-6">
                         귀하의 비즈니스 니즈에 딱 맞는 솔루션과 실시간 원화 가격을 확인하세요
                     </p>
 
