@@ -15,8 +15,8 @@ import {
   CogIcon
 } from "@heroicons/react/24/outline"
 
-// 3단계 제품 카드 임포트
-import { ProductCard3Step } from "@/components/ui/product-card-3-step"
+// 제품 카드 임포트
+import { ProductCard3Step } from '@/components/ui/product-card-3-step'
 
 // 제품 데이터 임포트  
 import productsData from "@/data/products.json"
@@ -145,51 +145,39 @@ export default function InfrastructurePage() {
               </p>
             </div>
 
-            {/* 탭 기반 제품 필터링 */}
+            {/* 탭 기반 제품 필터링 - 용도 기준 */}
             <Tabs defaultValue="all" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12">
-                <TabsTrigger value="all">전체 보기 (2)</TabsTrigger>
-                <TabsTrigger value="freshworks">Freshworks (1)</TabsTrigger>
-                <TabsTrigger value="splashtop">Splashtop (1)</TabsTrigger>
-                <TabsTrigger value="itsm">ITSM & 헬프데스크</TabsTrigger>
+              <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 mb-12">
+                <TabsTrigger value="all">전체 (2)</TabsTrigger>
+                <TabsTrigger value="itsm">IT 서비스 관리 (1)</TabsTrigger>
+                <TabsTrigger value="remote">원격 지원 (1)</TabsTrigger>
               </TabsList>
 
               {/* 전체 보기 */}
               <TabsContent value="all" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {infrastructureProducts.map((product) => (
                     <ProductCard3Step key={product.id} product={product} />
                   ))}
                 </div>
               </TabsContent>
 
-              {/* Freshworks 제품 */}
-              <TabsContent value="freshworks" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {infrastructureProducts
-                    .filter((p) => p.vendor === "Freshworks")
-                    .map((product) => (
-                      <ProductCard3Step key={product.id} product={product} />
-                    ))}
-                </div>
-              </TabsContent>
-
-              {/* Splashtop 제품 */}
-              <TabsContent value="splashtop" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {infrastructureProducts
-                    .filter((p) => p.vendor === "Splashtop")
-                    .map((product) => (
-                      <ProductCard3Step key={product.id} product={product} />
-                    ))}
-                </div>
-              </TabsContent>
-
-              {/* ITSM & 헬프데스크 제품 */}
+              {/* IT 서비스 관리 제품 */}
               <TabsContent value="itsm" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {infrastructureProducts
                     .filter((p) => p.id === "freshservice")
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+
+              {/* 원격 지원 제품 */}
+              <TabsContent value="remote" className="mt-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {infrastructureProducts
+                    .filter((p) => p.id === "splashtop")
                     .map((product) => (
                       <ProductCard3Step key={product.id} product={product} />
                     ))}

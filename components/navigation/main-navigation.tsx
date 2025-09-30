@@ -7,7 +7,10 @@ import {
     Bars3Icon as Menu,
     XMarkIcon as X,
     MagnifyingGlassIcon as Search,
-    ChevronDownIcon as ChevronDown
+    ChevronDownIcon as ChevronDown,
+    ChatBubbleLeftRightIcon,
+    RocketLaunchIcon,
+    ServerIcon
 } from "@heroicons/react/24/outline"
 
 import { cn } from "@/lib/utils"
@@ -24,17 +27,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
-import { useTheme } from "next-themes"
 
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [searchQuery, setSearchQuery] = React.useState("")
-    const { theme, resolvedTheme } = useTheme()
-    const [mounted, setMounted] = React.useState(false)
-
-    React.useEffect(() => {
-        setMounted(true)
-    }, [])
 
     // 검색 핸들러 - 사이트 내 콘텐츠 검색
     const handleSearch = (e: React.FormEvent) => {
@@ -75,8 +71,8 @@ export function MainNavigation() {
         }
     }
 
-    // 로고 렌더링 최적화: CSS로 테마별 로고 전환
-    const logoComponent = mounted ? (
+    // 로고 렌더링: CSS로 테마별 로고 전환 (레이아웃 시프트 방지)
+    const logoComponent = (
         <div className="relative h-8 md:h-10 w-auto flex items-center">
             <Image
                 src="/logo-light.webp"
@@ -97,9 +93,6 @@ export function MainNavigation() {
                 priority
             />
         </div>
-    ) : (
-        // SSR 시 기본 로고 (빈 공간 방지)
-        <div className="h-8 md:h-10 w-[120] md:w-[140px] bg-muted animate-pulse rounded" />
     )
 
     // 3개 솔루션 카테고리 랜딩 페이지
@@ -221,14 +214,8 @@ export function MainNavigation() {
                         {/* 솔루션 메가메뉴 - 3개 카테고리 카드 */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">솔루션</NavigationMenuTrigger>
-                            <NavigationMenuContent>
+                            <NavigationMenuContent className="left-0">
                                 <div className="w-[750px] p-6">
-                                    <div className="mb-4">
-                                        <h3 className="text-lg font-semibold mb-1">솔루션 카테고리</h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            각 카테고리를 클릭하여 제품들을 확인하세요
-                                        </p>
-                                    </div>
                                     <div className="grid grid-cols-3 gap-4">
                                         {/* 고객 경험 & 세일즈 관리 카드 */}
                                         <Link
@@ -237,8 +224,8 @@ export function MainNavigation() {
                                         >
                                             <div className="space-y-3">
                                                 <div className="flex items-start justify-between">
-                                                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-2xl">
-                                                        🎯
+                                                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                                                        <ChatBubbleLeftRightIcon className="w-6 h-6 text-primary" />
                                                     </div>
                                                     <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
                                                         7개 제품
@@ -262,13 +249,13 @@ export function MainNavigation() {
 
                                         {/* 협업 및 생산성 향상 카드 */}
                                         <Link
-                                            href="/solutions/collaboration-productivity"
+                                            href="/solutions/collaboration"
                                             className="group block rounded-lg border-2 border-border/50 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:scale-[1.02]"
                                         >
                                             <div className="space-y-3">
                                                 <div className="flex items-start justify-between">
-                                                    <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-2xl">
-                                                        🚀
+                                                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                                                        <RocketLaunchIcon className="w-6 h-6 text-primary" />
                                                     </div>
                                                     <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
                                                         5개 제품
@@ -297,8 +284,8 @@ export function MainNavigation() {
                                         >
                                             <div className="space-y-3">
                                                 <div className="flex items-start justify-between">
-                                                    <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-2xl">
-                                                        🔧
+                                                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                                                        <ServerIcon className="w-6 h-6 text-primary" />
                                                     </div>
                                                     <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
                                                         2개 제품
@@ -326,7 +313,7 @@ export function MainNavigation() {
                         {/* 서비스 메가메뉴 */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">서비스</NavigationMenuTrigger>
-                            <NavigationMenuContent>
+                            <NavigationMenuContent className="left-0">
                                 <div className="w-[480px] p-4">
                                     <div className="mb-3">
                                         <div className="bg-primary/5 border border-primary/10 rounded-lg p-2.5">
@@ -615,8 +602,8 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                                 onClick={onClose}
                             >
                                 <div className="flex items-start gap-3">
-                                    <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xl flex-shrink-0">
-                                        🎯
+                                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                        <ChatBubbleLeftRightIcon className="w-5 h-5 text-primary" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2 mb-1">
@@ -632,13 +619,13 @@ function MobileNav({ onClose }: { onClose: () => void }) {
 
                             {/* 협업 및 생산성 향상 카드 */}
                             <Link
-                                href="/solutions/collaboration-productivity"
+                                href="/solutions/collaboration"
                                 className="block p-3 rounded-lg border border-border/50 hover:border-primary hover:bg-accent/30 transition-all"
                                 onClick={onClose}
                             >
                                 <div className="flex items-start gap-3">
-                                    <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-xl flex-shrink-0">
-                                        🚀
+                                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                        <RocketLaunchIcon className="w-5 h-5 text-primary" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2 mb-1">
@@ -659,8 +646,8 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                                 onClick={onClose}
                             >
                                 <div className="flex items-start gap-3">
-                                    <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-xl flex-shrink-0">
-                                        🔧
+                                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                        <ServerIcon className="w-5 h-5 text-primary" />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2 mb-1">

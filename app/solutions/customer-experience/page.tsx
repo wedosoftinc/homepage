@@ -28,6 +28,8 @@ export const metadata: Metadata = {
 export default function CustomerExperiencePage() {
   // 고객 경험 제품들
   const customerExperienceProducts = productsData["customer-experience"]
+  // 협업 제품들 (Monday Sales CRM 포함)
+  const collaborationProducts = productsData["collaboration-productivity"]
 
   return (
     <>
@@ -144,38 +146,31 @@ export default function CustomerExperiencePage() {
               </p>
             </div>
 
-            {/* 탭 기반 제품 필터링 */}
+            {/* 탭 기반 제품 필터링 - 용도 기준 */}
             <Tabs defaultValue="all" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12">
-                <TabsTrigger value="all">전체 보기 (7)</TabsTrigger>
-                <TabsTrigger value="freshworks">Freshworks (7)</TabsTrigger>
-                <TabsTrigger value="service">고객 서비스</TabsTrigger>
-                <TabsTrigger value="sales">영업 & CRM</TabsTrigger>
+              <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 mb-12">
+                <TabsTrigger value="all">전체 (7)</TabsTrigger>
+                <TabsTrigger value="service">고객 서비스 (4)</TabsTrigger>
+                <TabsTrigger value="sales">영업 & CRM (3)</TabsTrigger>
               </TabsList>
 
               {/* 전체 보기 */}
               <TabsContent value="all" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {customerExperienceProducts.map((product) => (
                     <ProductCard3Step key={product.id} product={product} />
                   ))}
-                </div>
-              </TabsContent>
-
-              {/* Freshworks 제품 */}
-              <TabsContent value="freshworks" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
-                  {customerExperienceProducts
-                    .filter((p) => p.vendor === "Freshworks")
-                    .map((product) => (
-                      <ProductCard3Step key={product.id} product={product} />
-                    ))}
+                  {/* Monday Sales CRM 추가 */}
+                  <ProductCard3Step 
+                    key="monday-sales-crm" 
+                    product={collaborationProducts.find(p => p.id === "monday-sales-crm")!} 
+                  />
                 </div>
               </TabsContent>
 
               {/* 고객 서비스 제품 */}
               <TabsContent value="service" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {customerExperienceProducts
                     .filter((p) => 
                       p.id === "freshdesk-omni" || 
@@ -191,7 +186,7 @@ export default function CustomerExperiencePage() {
 
               {/* 영업 & CRM 제품 */}
               <TabsContent value="sales" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {customerExperienceProducts
                     .filter((p) => 
                       p.id === "freshsales" || 
@@ -200,6 +195,11 @@ export default function CustomerExperiencePage() {
                     .map((product) => (
                       <ProductCard3Step key={product.id} product={product} />
                     ))}
+                  {/* Monday Sales CRM 추가 */}
+                  <ProductCard3Step 
+                    key="monday-sales-crm" 
+                    product={collaborationProducts.find(p => p.id === "monday-sales-crm")!} 
+                  />
                 </div>
               </TabsContent>
             </Tabs>

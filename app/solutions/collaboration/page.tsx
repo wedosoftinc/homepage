@@ -14,8 +14,9 @@ import {
   BoltIcon
 } from "@heroicons/react/24/outline"
 
-// 3단계 제품 카드 임포트
-import { ProductCard3Step } from "@/components/ui/product-card-3-step"
+// 제품 카드 임포트
+import { ProductCard3Step } from '@/components/ui/product-card-3-step'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // 제품 데이터 임포트
 import productsData from "@/data/products.json"
@@ -131,41 +132,62 @@ export default function CollaborationPage() {
         </div>
       </section>
 
-      {/* 제품 카드 섹션 - 개선된 디자인 */}
+      {/* 제품 카드 섹션 - 탭 기반 필터링 */}
       <section className="py-20 lg:py-32 bg-gradient-to-b from-muted/30 to-background">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center space-y-16">
-            <div className="space-y-6">
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-6">
               <h2 className="text-4xl lg:text-5xl font-bold">
                 협업 & 생산성 솔루션
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 프로젝트 관리부터 클라우드 오피스까지, 완벽한 협업 생태계를 구축하세요
               </p>
-              
-              {/* 3단계 가이드 */}
-              <div className="flex flex-wrap justify-center gap-3 pt-4">
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
-                  Level 1: 기본 정보
-                </Badge>
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
-                  Level 2: 주요 기능  
-                </Badge>
-                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800">
-                  Level 3: 고급 정보
-                </Badge>
-              </div>
             </div>
 
-            {/* 3단계 제품 카드 그리드 */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {collaborationProducts.map((product, index) => (
-                <ProductCard3Step 
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
+            {/* 탭 기반 제품 필터링 - 용도 기준 */}
+            <Tabs defaultValue="all" className="w-full">
+              <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 mb-12">
+                <TabsTrigger value="all">전체 (4)</TabsTrigger>
+                <TabsTrigger value="project">프로젝트 관리 (3)</TabsTrigger>
+                <TabsTrigger value="office">클라우드 오피스 (1)</TabsTrigger>
+              </TabsList>
+
+              {/* 전체 보기 */}
+              <TabsContent value="all" className="mt-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {collaborationProducts.map((product) => (
+                    <ProductCard3Step key={product.id} product={product} />
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* 프로젝트 관리 제품 */}
+              <TabsContent value="project" className="mt-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {collaborationProducts
+                    .filter((p) => 
+                      p.id === "monday-work-management" || 
+                      p.id === "monday-dev" || 
+                      p.id === "monday-sales-crm"
+                    )
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+
+              {/* 클라우드 오피스 제품 */}
+              <TabsContent value="office" className="mt-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {collaborationProducts
+                    .filter((p) => p.id === "google-workspace")
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>

@@ -4,20 +4,19 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import { PricingModal } from '@/components/ui/pricing-modal'
 import { 
-  ChevronRightIcon, 
+  ChevronRightIcon,
   ChevronLeftIcon,
   ArrowTopRightOnSquareIcon,
-  DocumentTextIcon,
-  CurrencyDollarIcon,
   CheckCircleIcon,
-  ShieldCheckIcon,
-  CpuChipIcon,
   CloudIcon,
-  ChatBubbleLeftRightIcon
+  CpuChipIcon,
+  ShieldCheckIcon,
+  ChatBubbleLeftRightIcon,
+  CurrencyDollarIcon
 } from '@heroicons/react/24/outline'
+import { Separator } from '@/components/ui/separator'
 
 // 제품 데이터 타입 정의
 interface ProductFeature {
@@ -91,10 +90,10 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
   const getLevelTitle = () => {
     switch (currentLevel) {
-      case 1: return '제품 개요'
+      case 1: return '주요 특징'
       case 2: return '상세 기능'
-      case 3: return '기술 사양'
-      default: return '제품 개요'
+      case 3: return '구매 안내'
+      default: return '주요 특징'
     }
   }
 
@@ -136,7 +135,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
   return (
     <>
-      <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary relative overflow-hidden">
+      <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden">
       {/* 단계 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
         <Badge className={`${getLevelBadgeColor()} text-white text-xs font-medium px-2 py-1`}>
@@ -253,12 +252,12 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
             </div>
           )}
 
-          {/* Level 3: 고급 정보 */}
+          {/* Level 3: 구매 안내 */}
           {currentLevel === 3 && (
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 dark:bg-orange-950/20 rounded-lg border border-orange-200 dark:border-orange-800">
                 <h4 className="font-semibold text-sm text-orange-900 dark:text-orange-100">
-                  고급 기술 정보 & 규정 준수
+                  제품 구매 및 도입 상담
                 </h4>
               </div>
 

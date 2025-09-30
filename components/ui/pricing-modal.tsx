@@ -164,10 +164,10 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
           </Badge>
         </div>
 
-        {/* 가격 플랜 - 데스크탑: 4개 고정, 모바일: 카로셀 */}
+        {/* 가격 플랜 - 중앙 정렬 그리드 */}
         <div className="relative">
-          {/* 데스크탑: 4열 그리드 */}
-          <div className="hidden md:grid md:grid-cols-4 md:gap-4">
+          {/* 데스크탑: 중앙 정렬된 그리드 */}
+          <div className="hidden md:flex md:justify-center md:gap-4 md:flex-wrap">
             {data.plans.map((plan) => {
               const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice
               const discount = getYearlyDiscount(plan.monthlyPrice, plan.yearlyPrice)
@@ -175,7 +175,7 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
               return (
                 <Card 
                   key={plan.id} 
-                  className={`relative ${
+                  className={`relative w-[280px] ${
                     plan.recommended 
                       ? 'border-primary border-2 ring-2 ring-primary/20' 
                       : 'border-border'
