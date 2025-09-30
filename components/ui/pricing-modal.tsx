@@ -54,14 +54,17 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
   // 제품 ID 매핑 (products.json의 ID를 pricing-data.json의 키로 변환)
   const getProductPricingKey = (productId: string): string => {
     const mappings: Record<string, string> = {
+      'freshdesk-omni': 'freshworks.freshdesk-omni',
       'freshdesk': 'freshworks.freshdesk',
       'freshsales': 'freshworks.freshsales', 
       'freshchat': 'freshworks.freshchat',
+      'freshcaller': 'freshworks.freshcaller',
       'freshservice': 'freshworks.freshservice',
       'freddy-ai': 'ai_addons.freddy-ai',
       'monday-work-management': 'monday.monday-work',
-      'monday-dev': 'monday.monday-service', // Monday Dev는 Monday Service와 유사한 가격 구조
+      'monday-dev': 'monday.monday-dev',
       'monday-sales-crm': 'monday.monday-sales',
+      'monday-service': 'monday.monday-service',
       'google-workspace': 'google.google-workspace',
       'splashtop': 'splashtop.splashtop'
     }

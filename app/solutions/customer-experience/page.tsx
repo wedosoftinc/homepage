@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import { 
   ChatBubbleLeftRightIcon, 
@@ -130,41 +131,78 @@ export default function CustomerExperiencePage() {
         </div>
       </section>
 
-      {/* 제품 카드 섹션 - 개선된 디자인 */}
+      {/* 제품 카드 섹션 - 탭 기반 필터링 */}
       <section className="py-20 lg:py-32 bg-gradient-to-b from-muted/30 to-background">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center space-y-16">
-            <div className="space-y-6">
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-6">
               <h2 className="text-4xl lg:text-5xl font-bold">
-                Freshworks 통합 솔루션
+                고객 경험 & 세일즈 관리 솔루션
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 고객 서비스부터 영업, 마케팅까지 하나의 플랫폼에서 관리하세요
               </p>
-              
-              {/* 3단계 가이드 */}
-              <div className="flex flex-wrap justify-center gap-3 pt-4">
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
-                  Level 1: 기본 정보
-                </Badge>
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
-                  Level 2: 주요 기능  
-                </Badge>
-                <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800">
-                  Level 3: 고급 정보
-                </Badge>
-              </div>
             </div>
 
-            {/* 3단계 제품 카드 그리드 */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {customerExperienceProducts.map((product, index) => (
-                <ProductCard3Step 
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
+            {/* 탭 기반 제품 필터링 */}
+            <Tabs defaultValue="all" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12">
+                <TabsTrigger value="all">전체 보기 (7)</TabsTrigger>
+                <TabsTrigger value="freshworks">Freshworks (7)</TabsTrigger>
+                <TabsTrigger value="service">고객 서비스</TabsTrigger>
+                <TabsTrigger value="sales">영업 & CRM</TabsTrigger>
+              </TabsList>
+
+              {/* 전체 보기 */}
+              <TabsContent value="all" className="mt-0">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {customerExperienceProducts.map((product) => (
+                    <ProductCard3Step key={product.id} product={product} />
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Freshworks 제품 */}
+              <TabsContent value="freshworks" className="mt-0">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {customerExperienceProducts
+                    .filter((p) => p.vendor === "Freshworks")
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+
+              {/* 고객 서비스 제품 */}
+              <TabsContent value="service" className="mt-0">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {customerExperienceProducts
+                    .filter((p) => 
+                      p.id === "freshdesk-omni" || 
+                      p.id === "freshdesk" || 
+                      p.id === "freshchat" ||
+                      p.id === "freshcaller"
+                    )
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+
+              {/* 영업 & CRM 제품 */}
+              <TabsContent value="sales" className="mt-0">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {customerExperienceProducts
+                    .filter((p) => 
+                      p.id === "freshsales" || 
+                      p.id === "freddy-ai"
+                    )
+                    .map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>

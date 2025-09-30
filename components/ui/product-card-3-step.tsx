@@ -366,14 +366,18 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                 <CurrencyDollarIcon className="w-3 h-3 mr-1" />
                 가격보기
               </Button>
-              <Button size="sm" className="text-xs">
+              <Button 
+                size="sm" 
+                className="text-xs"
+                onClick={() => window.location.href = '/contact'}
+              >
                 상담하기
               </Button>
               <Button 
                 variant="outline" 
                 size="sm" 
                 className="text-xs"
-                onClick={() => window.open(product.pricing_integration.technical_resources.documentation_url, '_blank')}
+                onClick={() => window.open(`https://docs.wedosoft.net/${product.id}`, '_blank')}
               >
                 <ArrowTopRightOnSquareIcon className="w-3 h-3 mr-1" />
                 기술문서

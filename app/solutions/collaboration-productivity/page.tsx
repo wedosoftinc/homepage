@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import Image from "next/image"
 import { 
@@ -117,39 +118,71 @@ export default function CollaborationProductivityPage() {
           </div>
         </section>
 
-        {/* 제품 카드 섹션 */}
-        <section className="py-16 lg:py-24 bg-muted/20">
+        {/* 제품 카드 섹션 - 탭 기반 필터링 */}
+        <section className="py-20 lg:py-32 bg-gradient-to-b from-muted/30 to-background">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-bold">
+            <div className="max-w-6xl mx-auto space-y-16">
+              <div className="text-center space-y-6">
+                <h2 className="text-4xl lg:text-5xl font-bold">
                   협업 및 생산성 솔루션
                 </h2>
-                <p className="text-lg text-muted-foreground">
-                  Monday.com의 직관적 프로젝트 관리와 Google Workspace의 강력한 협업 도구
-                </p>
-                <div className="flex justify-center gap-2 text-sm text-muted-foreground">
-                  <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
-                    Level 1: 기본 정보
-                  </Badge>
-                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                    Level 2: 주요 기능
-                  </Badge>
-                  <Badge variant="outline" className="bg-orange-50 text-orange-600 border-orange-200">
-                    Level 3: 고급 정보
-                  </Badge>
-                </div>
-              </div>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Monday.com의 직관적 프로젝트 관리와 Google Workspace의 강력한 협업 도구
+              </p>
+            </div>              {/* 탭 기반 제품 필터링 */}
+              <Tabs defaultValue="all" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12">
+                  <TabsTrigger value="all">전체 보기 (5)</TabsTrigger>
+                  <TabsTrigger value="monday">Monday.com (4)</TabsTrigger>
+                  <TabsTrigger value="google">Google (1)</TabsTrigger>
+                  <TabsTrigger value="project">프로젝트 관리</TabsTrigger>
+                </TabsList>
 
-              {/* 3단계 제품 카드 그리드 */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {collaborationProducts.map((product, index) => (
-                  <ProductCard3Step 
-                    key={product.id}
-                    product={product}
-                  />
-                ))}
-              </div>
+                {/* 전체 보기 */}
+                <TabsContent value="all" className="mt-0">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {collaborationProducts.map((product) => (
+                      <ProductCard3Step key={product.id} product={product} />
+                    ))}
+                  </div>
+                </TabsContent>
+
+                {/* Monday.com 제품 */}
+                <TabsContent value="monday" className="mt-0">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {collaborationProducts
+                      .filter((p) => p.vendor === "Monday.com")
+                      .map((product) => (
+                        <ProductCard3Step key={product.id} product={product} />
+                      ))}
+                  </div>
+                </TabsContent>
+
+                {/* Google 제품 */}
+                <TabsContent value="google" className="mt-0">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {collaborationProducts
+                      .filter((p) => p.vendor === "Google")
+                      .map((product) => (
+                        <ProductCard3Step key={product.id} product={product} />
+                      ))}
+                  </div>
+                </TabsContent>
+
+                {/* 프로젝트 관리 제품 */}
+                <TabsContent value="project" className="mt-0">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {collaborationProducts
+                      .filter((p) => 
+                        p.id === "monday-work-management" || 
+                        p.id === "monday-dev"
+                      )
+                      .map((product) => (
+                        <ProductCard3Step key={product.id} product={product} />
+                      ))}
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
         </section>
