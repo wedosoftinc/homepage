@@ -218,62 +218,106 @@ export function MainNavigation() {
                 {/* 가운데 데스크톱 네비게이션 */}
                 <NavigationMenu className="hidden md:flex">
                     <NavigationMenuList>
-                        {/* 솔루션 메가메뉴 */}
+                        {/* 솔루션 메가메뉴 - 3개 카테고리 카드 */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="h-10 px-4 py-2 text-base font-medium">솔루션</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <div className="w-[650px] p-4">
+                                <div className="w-[750px] p-6">
+                                    <div className="mb-4">
+                                        <h3 className="text-lg font-semibold mb-1">솔루션 카테고리</h3>
+                                        <p className="text-sm text-muted-foreground">
+                                            각 카테고리를 클릭하여 제품들을 확인하세요
+                                        </p>
+                                    </div>
                                     <div className="grid grid-cols-3 gap-4">
-                                        {Object.entries(solutionsByCategory).map(([category, products]) => (
-                                            <div key={category} className="space-y-2">
-                                                {/* 범주 헤더 - 링크 제거하여 단순 표시용으로 변경 */}
-                                                <div className="block bg-primary/5 border border-primary/10 rounded-lg p-2.5">
-                                                    <div className="flex items-center space-x-2 mb-1">
-                                                        <div className="w-2 h-2 rounded-full bg-primary/60"></div>
-                                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
-                                                            {category}
-                                                        </h4>
+                                        {/* 고객 경험 & 세일즈 관리 카드 */}
+                                        <Link
+                                            href="/solutions/customer-experience"
+                                            className="group block rounded-lg border-2 border-border/50 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:scale-[1.02]"
+                                        >
+                                            <div className="space-y-3">
+                                                <div className="flex items-start justify-between">
+                                                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-2xl">
+                                                        🎯
                                                     </div>
-                                                    <p className="text-sm text-muted-foreground leading-tight">
-                                                        {category === "고객 경험 관리" && "고객 지원부터 영업까지"}
-                                                        {category === "협업 및 생산성 향상" && "팀워크와 효율성 극대화"}
-                                                        {category === "IT 인프라 최적화" && "안전하고 유연한 IT 환경"}
+                                                    <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
+                                                        7개 제품
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
+                                                        고객 경험 관리
+                                                    </h4>
+                                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                                        Freshworks로 고객 지원부터 영업까지 완벽한 경험 제공
                                                     </p>
                                                 </div>
-                                                {/* 제품 리스트 - 컴팩트한 스타일 */}
-                                                <div className="space-y-0.5">
-                                                    {products.map((product) => (
-                                                        <NavigationMenuLink
-                                                            key={product.name}
-                                                            asChild
-                                                        >
-                                                            <Link
-                                                                href={product.href}
-                                                                className={cn(
-                                                                    "group block select-none rounded-md px-2 py-2 text-sm leading-tight no-underline outline-none transition-all duration-150",
-                                                                    "hover:bg-accent/80 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                                                    "border border-transparent hover:border-border/30"
-                                                                )}
-                                                            >
-                                                                <div className="flex items-center justify-between">
-                                                                    <div className="flex-1 min-w-0">
-                                                                        <div className="font-medium text-foreground text-sm group-hover:text-primary transition-colors truncate">
-                                                                            {product.name}
-                                                                        </div>
-                                                                        <p className="text-sm text-muted-foreground leading-tight mt-0.5 truncate">
-                                                                            {product.description}
-                                                                        </p>
-                                                                    </div>
-                                                                    <div className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                                        <div className="w-1 h-1 rounded-full bg-primary"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </Link>
-                                                        </NavigationMenuLink>
-                                                    ))}
+                                                <div className="flex flex-wrap gap-1">
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Freshdesk</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Freshsales</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">+5</span>
                                                 </div>
                                             </div>
-                                        ))}
+                                        </Link>
+
+                                        {/* 협업 및 생산성 향상 카드 */}
+                                        <Link
+                                            href="/solutions/collaboration-productivity"
+                                            className="group block rounded-lg border-2 border-border/50 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:scale-[1.02]"
+                                        >
+                                            <div className="space-y-3">
+                                                <div className="flex items-start justify-between">
+                                                    <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-2xl">
+                                                        🚀
+                                                    </div>
+                                                    <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
+                                                        5개 제품
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
+                                                        협업 및 생산성
+                                                    </h4>
+                                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                                        Google, Monday로 팀워크와 효율성을 극대화
+                                                    </p>
+                                                </div>
+                                                <div className="flex flex-wrap gap-1">
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Google</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Monday</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">+3</span>
+                                                </div>
+                                            </div>
+                                        </Link>
+
+                                        {/* IT 인프라 관리 카드 */}
+                                        <Link
+                                            href="/solutions/infrastructure"
+                                            className="group block rounded-lg border-2 border-border/50 p-4 transition-all duration-300 hover:border-primary hover:shadow-lg hover:scale-[1.02]"
+                                        >
+                                            <div className="space-y-3">
+                                                <div className="flex items-start justify-between">
+                                                    <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-2xl">
+                                                        🔧
+                                                    </div>
+                                                    <div className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
+                                                        2개 제품
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-base mb-1 group-hover:text-primary transition-colors">
+                                                        IT 인프라 관리
+                                                    </h4>
+                                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                                        안전하고 유연한 IT 서비스 및 원격 지원
+                                                    </p>
+                                                </div>
+                                                <div className="flex flex-wrap gap-1">
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Freshservice</span>
+                                                    <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">Splashtop</span>
+                                                </div>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </NavigationMenuContent>
@@ -563,27 +607,72 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                             : 'opacity-0 scale-y-0 max-h-0'
                             } origin-top overflow-hidden`}
                     >
-                        <div className="space-y-3 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
-                            {Object.entries(solutionsByCategory).map(([category, products]) => (
-                                <div key={category} className="space-y-1">
-                                    <h4 className="text-sm font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
-                                        {category}
-                                    </h4>
-                                    <div className="space-y-0.5">
-                                        {products.map((product) => (
-                                            <Link
-                                                key={product.name}
-                                                href={product.href}
-                                                className="block py-1.5 px-2 text-sm hover:bg-accent/50 rounded-md transition-colors"
-                                                onClick={onClose}
-                                            >
-                                                <div className="font-medium text-foreground text-sm">{product.name}</div>
-                                                <div className="text-sm text-muted-foreground leading-tight">{product.description}</div>
-                                            </Link>
-                                        ))}
+                        <div className="space-y-2 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
+                            {/* 고객 경험 & 세일즈 관리 카드 */}
+                            <Link
+                                href="/solutions/customer-experience"
+                                className="block p-3 rounded-lg border border-border/50 hover:border-primary hover:bg-accent/30 transition-all"
+                                onClick={onClose}
+                            >
+                                <div className="flex items-start gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xl flex-shrink-0">
+                                        🎯
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h4 className="font-semibold text-sm">고객 경험 관리</h4>
+                                            <span className="text-xs text-muted-foreground">7개</span>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground leading-relaxed">
+                                            고객 지원부터 영업까지
+                                        </p>
                                     </div>
                                 </div>
-                            ))}
+                            </Link>
+
+                            {/* 협업 및 생산성 향상 카드 */}
+                            <Link
+                                href="/solutions/collaboration-productivity"
+                                className="block p-3 rounded-lg border border-border/50 hover:border-primary hover:bg-accent/30 transition-all"
+                                onClick={onClose}
+                            >
+                                <div className="flex items-start gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-xl flex-shrink-0">
+                                        🚀
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h4 className="font-semibold text-sm">협업 및 생산성</h4>
+                                            <span className="text-xs text-muted-foreground">5개</span>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground leading-relaxed">
+                                            팀워크와 효율성 극대화
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+
+                            {/* IT 인프라 관리 카드 */}
+                            <Link
+                                href="/solutions/infrastructure"
+                                className="block p-3 rounded-lg border border-border/50 hover:border-primary hover:bg-accent/30 transition-all"
+                                onClick={onClose}
+                            >
+                                <div className="flex items-start gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-xl flex-shrink-0">
+                                        🔧
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h4 className="font-semibold text-sm">IT 인프라 관리</h4>
+                                            <span className="text-xs text-muted-foreground">2개</span>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground leading-relaxed">
+                                            안전하고 유연한 IT 환경
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

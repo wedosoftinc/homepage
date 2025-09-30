@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -92,10 +91,10 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
   const getLevelTitle = () => {
     switch (currentLevel) {
-      case 1: return '기본 정보'
-      case 2: return '주요 기능'
-      case 3: return '고급 정보'
-      default: return '기본 정보'
+      case 1: return '제품 개요'
+      case 2: return '상세 기능'
+      case 3: return '기술 사양'
+      default: return '제품 개요'
     }
   }
 
@@ -138,36 +137,25 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
   return (
     <>
       <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary relative overflow-hidden">
-      {/* Level 표시 배지 */}
+      {/* 단계 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
         <Badge className={`${getLevelBadgeColor()} text-white text-xs font-medium px-2 py-1`}>
-          Level {currentLevel}. {getLevelTitle()}
+          {getLevelTitle()}
         </Badge>
       </div>
 
       {/* 헤더 - 고정 */}
       <CardHeader className="pb-4 pr-20">
-        <div className="flex items-start gap-4">
-          <div className="relative w-12 h-12 flex-shrink-0">
-            <Image
-              src={product.logo}
-              alt={`${product.name} 로고`}
-              width={48}
-              height={48}
-              className="rounded-lg"
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-xl text-foreground mb-1">
-              {product.name}
-            </h3>
-            <p className="text-sm text-muted-foreground mb-2">
-              {product.vendor} 제품
-            </p>
-            <p className="text-sm text-muted-foreground italic">
-              "{product.subtitle}"
-            </p>
-          </div>
+        <div className="flex flex-col gap-2">
+          <h3 className="font-bold text-xl text-foreground">
+            {product.name}
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            {product.vendor} 제품
+          </p>
+          <p className="text-sm text-muted-foreground italic">
+            "{product.subtitle}"
+          </p>
         </div>
       </CardHeader>
 
