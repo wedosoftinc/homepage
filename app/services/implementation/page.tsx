@@ -40,7 +40,7 @@ export default function ImplementationPage() {
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               기술적인 설정은<br />
-              <span className="text-primary">우리 몫입니다</span>
+              <span className="text-foreground">우리 몫입니다</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               매뉴얼만 보고 설정하면 90%는 실패합니다.<br />
@@ -69,7 +69,7 @@ export default function ImplementationPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               실패 없는 구축을 위한
-              <span className="text-primary"> 실전 노하우</span>
+              <span className="text-foreground"> 실전 노하우</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               12개 제품 각각의 구축 함정과 해결법을 알고 있기 때문에<br />
@@ -78,10 +78,10 @@ export default function ImplementationPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Server className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Server className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">첫 설정부터 올바르게</CardTitle>
                 <CardDescription>
@@ -91,29 +91,29 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     한국 환경 최적화 설정
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     확장성 고려한 초기 구조
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     실무진이 알아야 할 숨겨진 옵션들
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     나중에 바꾸기 어려운 설정 미리 고려
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300 ">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Database className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Database className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">기존 시스템 연동</CardTitle>
                 <CardDescription>
@@ -123,29 +123,29 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Excel, CSV 데이터 깔끔하게 정리
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     기존 이메일 계정 연동
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Active Directory 연결
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     API 연동 및 자동화 설정
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300 ">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Code className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Code className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">제품간 연동 최적화</CardTitle>
                 <CardDescription>
@@ -155,19 +155,19 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Freshworks ↔ Google Workspace 연동
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Monday.com ↔ Freshdesk 티켓 연결
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Splashtop 원격지원 통합 설정
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Zapier/Make.com 자동화 구축
                   </li>
                 </ul>
@@ -175,10 +175,10 @@ export default function ImplementationPage() {
             </Card>
 
             {/* 추가 카드들 */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300 ">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Settings className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Settings className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">사용자 권한 체계</CardTitle>
                 <CardDescription>
@@ -188,29 +188,29 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     역할별 권한 매트릭스 설계
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     Single Sign-On (SSO) 구축
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     2단계 인증 설정
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     외부 협력사 계정 관리
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300 ">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <MessageSquare className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <MessageSquare className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">워크플로우 자동화</CardTitle>
                 <CardDescription>
@@ -220,29 +220,29 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     티켓 자동 분류 및 배정
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     프로젝트 상태 자동 업데이트
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     정기 리포트 자동 생성
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     알림 및 에스컬레이션 규칙
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <Card className="group hover:shadow-lg transition-all duration-300 ">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <Database className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Database className="h-6 w-6 text-foreground" />
                 </div>
                 <CardTitle className="text-xl">테스트 및 검수</CardTitle>
                 <CardDescription>
@@ -252,19 +252,19 @@ export default function ImplementationPage() {
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     실무 시나리오 테스트
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     성능 및 안정성 검증
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     사용자 피드백 반영
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-muted-foreground" />
                     문서화 및 인수인계
                   </li>
                 </ul>
@@ -281,7 +281,7 @@ export default function ImplementationPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 왜 우리 구축이<br />
-                <span className="text-primary">한번에 성공할까요?</span>
+                <span className="text-foreground">한번에 성공할까요?</span>
               </h2>
             </div>
 
@@ -289,8 +289,8 @@ export default function ImplementationPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Settings className="h-5 w-5 text-primary" />
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                      <Settings className="h-5 w-5 text-foreground" />
                     </div>
                     <CardTitle className="text-xl">실패 사례를 알고 있습니다</CardTitle>
                   </div>
@@ -311,8 +311,8 @@ export default function ImplementationPage() {
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <CheckCircle className="h-5 w-5 text-primary" />
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                      <CheckCircle className="h-5 w-5 text-foreground" />
                     </div>
                     <CardTitle className="text-xl">검증된 템플릿 사용</CardTitle>
                   </div>
@@ -324,11 +324,11 @@ export default function ImplementationPage() {
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="font-semibold text-2xl text-primary">7일</div>
+                      <div className="font-semibold text-2xl text-foreground">7일</div>
                       <div className="text-muted-foreground">평균 구축 기간</div>
                     </div>
                     <div>
-                      <div className="font-semibold text-2xl text-primary">99%</div>
+                      <div className="font-semibold text-2xl text-foreground">99%</div>
                       <div className="text-muted-foreground">첫 구축 성공률</div>
                     </div>
                   </div>

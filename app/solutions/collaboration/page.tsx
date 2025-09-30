@@ -96,8 +96,8 @@ export default function CollaborationPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple/10 to-purple/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <UsersIcon className="w-8 h-8 text-purple-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <UsersIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">팀 시너지 극대화</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -107,8 +107,8 @@ export default function CollaborationPage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue/10 to-blue/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <RocketLaunchIcon className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <RocketLaunchIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">생산성 혁명</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -118,8 +118,8 @@ export default function CollaborationPage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-green/10 to-green/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ChartBarIcon className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChartBarIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">데이터 기반 인사이트</h3>
                 <p className="text-muted-foreground leading-relaxed">

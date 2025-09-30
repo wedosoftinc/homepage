@@ -96,8 +96,8 @@ export default function InfrastructurePage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-500/10 to-slate-500/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ServerIcon className="w-8 h-8 text-slate-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ServerIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">ITIL 기반 관리</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -107,8 +107,8 @@ export default function InfrastructurePage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-red-500/10 to-red-500/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ShieldCheckIcon className="w-8 h-8 text-red-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ShieldCheckIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">보안 우선 설계</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -118,8 +118,8 @@ export default function InfrastructurePage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/10 to-blue-500/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <CpuChipIcon className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <CpuChipIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">AI 기반 자동화</h3>
                 <p className="text-muted-foreground leading-relaxed">

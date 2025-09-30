@@ -27,10 +27,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { SearchModal } from "@/components/ui/search-modal"
 
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [searchQuery, setSearchQuery] = React.useState("")
+    const [searchModalOpen, setSearchModalOpen] = React.useState(false)
 
     // 검색 핸들러 - 사이트 내 콘텐츠 검색
     const handleSearch = (e: React.FormEvent) => {
@@ -386,7 +388,15 @@ export function MainNavigation() {
 
                 {/* 우측 검색바 및 버튼들 - 검색 기능 임시 숨김 */}
                 <div className="flex items-center space-x-2">
-                    {/* 검색 기능 임시 숨김 - 추후 복원 예정 */}
+                    {/* 검색 버튼 */}
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="hidden md:inline-flex"
+                        onClick={() => setSearchModalOpen(true)}
+                    >
+                        <Search className="h-5 w-5" />
+                    </Button>
 
                     {/* 상담신청 버튼 */}
                     <Button variant="default" size="sm" asChild className="hidden md:inline-flex">
@@ -459,6 +469,9 @@ export function MainNavigation() {
                     </Sheet>
                 </div>
             </div>
+
+            {/* 검색 모달 */}
+            <SearchModal open={searchModalOpen} onOpenChange={setSearchModalOpen} />
         </header>
     );
 }

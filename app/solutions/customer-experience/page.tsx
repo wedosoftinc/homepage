@@ -97,8 +97,8 @@ export default function CustomerExperiencePage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ChatBubbleLeftRightIcon className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChatBubbleLeftRightIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">옴니채널 소통</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -108,8 +108,8 @@ export default function CustomerExperiencePage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <SparklesIcon className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <SparklesIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">AI 기반 자동화</h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -119,8 +119,8 @@ export default function CustomerExperiencePage() {
               </Card>
 
               <Card className="text-center p-8 border-2 hover:border-primary/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <ChartBarIcon className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-gradient-to-br from-muted/50 to-muted/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <ChartBarIcon className="w-8 h-8 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">데이터 기반 인사이트</h3>
                 <p className="text-muted-foreground leading-relaxed">
