@@ -5,6 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Switch } from "@/components/ui/switch"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { CurrencyConverter } from "@/components/ui/currency-converter"
 import { Breadcrumb } from "@/components/common/breadcrumb"
 import {
@@ -96,6 +100,12 @@ export default function CustomQuotePage() {
         selectedPlans: {},
         billingCycle: 'monthly'
     })
+    
+    // 이메일 모달 상태
+    const [isEmailModalOpen, setIsEmailModalOpen] = useState(false)
+    const [userEmail, setUserEmail] = useState('')
+    const [isSendingEmail, setIsSendingEmail] = useState(false)
+    const [emailSent, setEmailSent] = useState(false)
 
     // 1단계: 비즈니스 니즈 파악 (12개 제품 분석 기반 6개 핵심 니즈)
     const businessNeeds = [
@@ -324,6 +334,238 @@ export default function CustomQuotePage() {
     // 다음/이전 단계 (7단계로 확장)
     const nextStep = () => setCurrentStep(Math.min(currentStep + 1, 7))
     const prevStep = () => setCurrentStep(Math.max(currentStep - 1, 1))
+    
+    // 이메일로 견적서 전송
+    const handleSendQuoteEmail = async () => {
+        if (!userEmail || !userEmail.includes('@')) {
+            alert('올바른 이메일 주소를 입력해주세요.')
+            return
+        }
+        
+        setIsSendingEmail(true)
+        
+        try {
+            // 견적 정보 구성
+            const quoteDetails = {
+                products: Object.entries(quoteData.selectedPlans).map(([productId, planId]) => {
+                    const product = productDatabase[productId]
+                    const plan = product?.plans.find(p => p.id === planId)
+                    return {
+                        name: product?.name,
+                        plan: plan?.name,
+                        monthlyPrice: plan?.customPricing ? null : 
+                                     plan?.sessionPricing ? 29 : 
+                                     (quoteData.billingCycle === 'yearly' ? plan?.yearlyPrice : plan?.monthlyPrice),
+                        isCustom: plan?.customPricing || false,
+                        isSession: plan?.sessionPricing || false
+                    }
+                }),
+                userCount: quoteData.userCount,
+                billingCycle: quoteData.billingCycle,
+                totalPrice: calculateTotalPrice(),
+                yearlyTotal: quoteData.billingCycle === 'yearly' ? calculateYearlyTotal() : null
+            }
+            
+            // 볼륨 할인 계산
+            let volumeDiscount = 0
+            if (quoteData.userCount >= 200) volumeDiscount = 0.2
+            else if (quoteData.userCount >= 100) volumeDiscount = 0.15
+            else if (quoteData.userCount >= 50) volumeDiscount = 0.1
+            
+            // 환율 가져오기 (실시간 환율)
+            let exchangeRate = 1400 // 기본 환율
+            try {
+                const rateResponse = await fetch('https://api.exchangerate-api.com/v4/latest/USD')
+                const rateData = await rateResponse.json()
+                exchangeRate = Math.round(rateData.rates.KRW)
+            } catch {
+                // 환율 API 실패 시 기본값 사용
+            }
+            
+            const totalKRW = Math.round(quoteDetails.totalPrice * exchangeRate)
+            const yearlyTotalKRW = quoteDetails.yearlyTotal ? Math.round(quoteDetails.yearlyTotal * exchangeRate) : null
+            
+            // 현재 시간
+            const now = new Date()
+            const quoteDate = now.toLocaleDateString('ko-KR', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                weekday: 'long'
+            })
+            
+            // HTML 이메일 템플릿
+            const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 650px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; }
+        .content { background: white; padding: 30px; border: 1px solid #e5e7eb; }
+        .info-box { background: #f9fafb; border-left: 4px solid #667eea; padding: 15px; margin: 20px 0; }
+        .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+        .info-row:last-child { border-bottom: none; }
+        .label { font-weight: 600; color: #6b7280; }
+        .value { color: #111827; text-align: right; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #f3f4f6; padding: 12px; text-align: left; font-weight: 600; color: #374151; border-bottom: 2px solid #d1d5db; }
+        td { padding: 12px; border-bottom: 1px solid #e5e7eb; }
+        .price-cell { text-align: right; font-weight: 600; color: #667eea; }
+        .total-row { background: #fef3c7; font-weight: 700; font-size: 16px; }
+        .total-row td { border-top: 2px solid #fbbf24; padding: 15px 12px; }
+        .footer { background: #f9fafb; padding: 20px; text-align: center; border-radius: 0 0 8px 8px; border: 1px solid #e5e7eb; border-top: none; }
+        .footer p { margin: 5px 0; font-size: 13px; color: #6b7280; }
+        .highlight { color: #667eea; font-weight: 600; }
+        .discount-badge { background: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 맞춤 견적서</h1>
+            <p>SaaS 솔루션 도입 견적</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-box">
+                <div class="info-row">
+                    <span class="label">발신</span>
+                    <span class="value">(주)위두소프트</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">수신</span>
+                    <span class="value">${userEmail}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">발행일</span>
+                    <span class="value">${quoteDate}</span>
+                </div>
+            </div>
+            
+            <h2 style="color: #111827; margin-top: 30px;">선택하신 솔루션</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>제품명</th>
+                        <th>플랜</th>
+                        <th style="text-align: right;">단가 (월)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${quoteDetails.products.map(p => `
+                        <tr>
+                            <td>${p.name}</td>
+                            <td>${p.plan}</td>
+                            <td class="price-cell">${p.isCustom ? '맞춤 견적' : p.isSession ? '세션 기반' : `$${p.monthlyPrice}`}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            
+            <h2 style="color: #111827; margin-top: 30px;">비용 구조</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>사용자 수</td>
+                        <td class="price-cell">${quoteDetails.userCount}명</td>
+                    </tr>
+                    <tr>
+                        <td>결제 주기</td>
+                        <td class="price-cell">
+                            ${quoteDetails.billingCycle === 'yearly' ? '<span class="discount-badge">연간 결제</span>' : '월간 결제'}
+                        </td>
+                    </tr>
+                    ${volumeDiscount > 0 ? `
+                    <tr>
+                        <td>볼륨 할인 <span class="discount-badge">${Math.round(volumeDiscount * 100)}%</span></td>
+                        <td class="price-cell" style="color: #10b981;">적용됨</td>
+                    </tr>
+                    ` : ''}
+                    <tr class="total-row">
+                        <td><strong>월간 예상 비용 (USD)</strong></td>
+                        <td class="price-cell" style="color: #dc2626;">$${quoteDetails.totalPrice.toLocaleString()}</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>월간 예상 비용 (KRW)</strong></td>
+                        <td class="price-cell" style="color: #dc2626;">₩${totalKRW.toLocaleString()}</td>
+                    </tr>
+                    ${quoteDetails.yearlyTotal ? `
+                    <tr>
+                        <td>연간 예상 비용 (USD)</td>
+                        <td class="price-cell">$${quoteDetails.yearlyTotal.toLocaleString()}</td>
+                    </tr>
+                    <tr>
+                        <td>연간 예상 비용 (KRW)</td>
+                        <td class="price-cell">₩${yearlyTotalKRW?.toLocaleString()}</td>
+                    </tr>
+                    ` : ''}
+                    <tr>
+                        <td colspan="2" style="padding-top: 15px; font-size: 13px; color: #6b7280;">
+                            * 환율: $1 = ₩${exchangeRate.toLocaleString()} (${now.toLocaleDateString('ko-KR')}) 기준
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 20px; margin: 30px 0; border-radius: 4px;">
+                <h3 style="margin: 0 0 10px 0; color: #1e40af;">💡 다음 단계</h3>
+                <p style="margin: 5px 0; color: #1e3a8a;">
+                    • 전문 컨설턴트가 영업일 기준 1일 내 연락드립니다<br>
+                    • 상세한 제품 데모 및 도입 상담이 제공됩니다<br>
+                    • 기업 규모에 따른 추가 할인 혜택이 있습니다
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>(주)위두소프트</strong></p>
+            <p>서울시 마포구 양화로 186, 5층</p>
+            <p>Tel: 02-2135-3071 | Email: support@wedosoft.net</p>
+            <p>Web: www.wedosoft.net</p>
+            <p style="margin-top: 15px; color: #9ca3af; font-size: 12px;">
+                본 견적서는 ${now.toLocaleString('ko-KR')}에 자동 생성되었습니다.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+            `.trim()
+            
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userEmail,
+                    subject: `[위두소프트] ${quoteDate} 맞춤 견적서`,
+                    message: htmlContent,
+                    type: 'quote'
+                }),
+            })
+            
+            if (response.ok) {
+                setEmailSent(true)
+                setTimeout(() => {
+                    setIsEmailModalOpen(false)
+                    setEmailSent(false)
+                    setUserEmail('')
+                }, 2000)
+            } else {
+                alert('전송에 실패했습니다. 다시 시도해주세요.')
+            }
+        } catch (error) {
+            console.error('Email send error:', error)
+            alert('전송 중 오류가 발생했습니다.')
+        } finally {
+            setIsSendingEmail(false)
+        }
+    }
 
     // 추천 제품 계산
     const getRecommendedProducts = () => {
@@ -350,7 +592,7 @@ export default function CustomQuotePage() {
                         totalPerUserUSD += 29
                     } else {
                         const price = quoteData.billingCycle === 'yearly' 
-                            ? (plan.yearlyPrice || 0) / 12 
+                            ? (plan.yearlyPrice || 0) 
                             : (plan.monthlyPrice || 0)
                         totalPerUserUSD += price
                     }
@@ -378,8 +620,8 @@ export default function CustomQuotePage() {
         return calculateTotalPrice() * 12
     }
 
-    // 진행률 계산 (7단계로 변경)
-    const getProgress = () => (currentStep / 7) * 100
+    // 진행률 계산 (5단계로 변경)
+    const getProgress = () => (currentStep / 5) * 100
 
     const breadcrumbItems = [
         { title: '맞춤 견적' }
@@ -416,7 +658,7 @@ export default function CustomQuotePage() {
                         />
                     </div>
                     <p className="text-sm text-muted-foreground">
-                        {currentStep}/7 단계 완료
+                        {currentStep}/5 단계 완료
                     </p>
                 </div>
             </section>
@@ -631,6 +873,31 @@ export default function CustomQuotePage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-8">
+                                {/* 월간/연간 결제 토글 */}
+                                <div className="flex items-center justify-center gap-4 py-6">
+                                    <span className={`text-sm ${quoteData.billingCycle === 'monthly' ? 'font-semibold' : 'text-muted-foreground'}`}>
+                                        월간 결제
+                                    </span>
+                                    <Switch
+                                        checked={quoteData.billingCycle === 'yearly'}
+                                        onCheckedChange={(checked) => setQuoteData({ ...quoteData, billingCycle: checked ? 'yearly' : 'monthly' })}
+                                        className="data-[state=checked]:bg-primary"
+                                    />
+                                    <span className={`text-sm ${quoteData.billingCycle === 'yearly' ? 'font-semibold' : 'text-muted-foreground'}`}>
+                                        연간 결제
+                                    </span>
+                                    <Badge 
+                                        variant="secondary" 
+                                        className={`transition-colors duration-300 ${
+                                            quoteData.billingCycle === 'yearly'
+                                                ? 'bg-green-50 text-green-700 border-green-200 shadow-sm' 
+                                                : 'bg-muted text-muted-foreground border-muted'
+                                        }`}
+                                    >
+                                        최대 20% 할인
+                                    </Badge>
+                                </div>
+
                                 {/* 선택된 제품별 플랜 선택 */}
                                 <div className="space-y-8">
                                     {quoteData.selectedProducts.map(productId => {
@@ -673,11 +940,16 @@ export default function CustomQuotePage() {
                                                                                 </div>
                                                                             ) : (
                                                                                 <>
-                                                                                    ${quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)}
-                                                                                    <span className="text-sm font-normal text-muted-foreground">/월</span>
-                                                                                    {quoteData.billingCycle === 'yearly' && (
-                                                                                        <div className="text-xs text-green-600 mt-1">
-                                                                                            (연간: ${plan.yearlyPrice || 0})
+                                                                                    <div className="text-3xl font-bold text-primary">
+                                                                                        ${quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)}
+                                                                                    </div>
+                                                                                    <div className="text-sm font-normal text-muted-foreground mt-1">
+                                                                                        /월 · {quoteData.billingCycle === 'yearly' ? '연간 결제' : '월간 결제'}
+                                                                                    </div>
+                                                                                    {quoteData.billingCycle === 'yearly' && plan.monthlyPrice && plan.yearlyPrice && plan.monthlyPrice > plan.yearlyPrice && (
+                                                                                        <div className="text-xs text-green-600 mt-2 flex items-center justify-center gap-1">
+                                                                                            <span className="line-through text-muted-foreground">${plan.monthlyPrice}</span>
+                                                                                            <span>→ ${plan.yearlyPrice} 절약!</span>
                                                                                         </div>
                                                                                     )}
                                                                                 </>
@@ -856,307 +1128,8 @@ export default function CustomQuotePage() {
                         </Card>
                     )}
 
-                    {/* 5단계: 결제 주기 선택 */}
+                    {/* 5단계: 최종 견적서 */}
                     {currentStep === 5 && (
-                        <Card className="p-8">
-                            <CardHeader className="text-center pb-8">
-                                <CardTitle className="text-2xl">결제 주기를 선택해주세요</CardTitle>
-                                <CardDescription className="text-base">
-                                    연간 결제 시 최대 20% 할인 혜택을 받을 수 있습니다
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                                    {billingCycles.map((cycle) => {
-                                        const isSelected = quoteData.billingCycle === cycle.id
-                                        return (
-                                            <Card
-                                                key={cycle.id}
-                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md relative ${isSelected
-                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
-                                                    : 'border border-border hover:border-primary/50'
-                                                    }`}
-                                                onClick={() => handleBillingCycleSelect(cycle.id)}
-                                            >
-                                                {cycle.id === 'yearly' && (
-                                                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                                        <Badge className="bg-green-500 text-white">인기</Badge>
-                                                    </div>
-                                                )}
-                                                <CardContent className="p-6 text-center">
-                                                    <Calendar className={`h-8 w-8 mx-auto mb-3 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
-                                                    <h3 className="font-semibold text-lg mb-2">{cycle.label}</h3>
-                                                    {cycle.discount > 0 && (
-                                                        <div className="mb-2">
-                                                            <Badge variant="secondary" className="bg-green-50 text-green-700">
-                                                                {Math.round(cycle.discount * 100)}% 할인
-                                                            </Badge>
-                                                        </div>
-                                                    )}
-                                                    <p className="text-sm text-muted-foreground mb-4">
-                                                        {cycle.description}
-                                                    </p>
-                                                    {isSelected && (
-                                                        <div className="flex items-center justify-center text-sm text-primary">
-                                                            <CheckCircle className="h-4 w-4 mr-1" />
-                                                            선택됨
-                                                        </div>
-                                                    )}
-                                                </CardContent>
-                                            </Card>
-                                        )
-                                    })}
-                                </div>
-
-                                <div className="flex justify-between mt-8">
-                                    <Button variant="outline" onClick={prevStep} size="lg">
-                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
-                                    </Button>
-                                    <Button onClick={nextStep} size="lg">
-                                        제품 보기 <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-
-                    {/* 6단계: 추천 솔루션 확인 */}
-                    {currentStep === 6 && (
-                        <Card className="p-8">
-                            <CardHeader className="text-center pb-8">
-                                <CardTitle className="text-2xl">추천 솔루션을 확인하세요</CardTitle>
-                                <CardDescription className="text-base">
-                                    선택하신 니즈에 맞는 제품들입니다. 필요한 제품을 선택해주세요
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="space-y-4">
-                                    {getRecommendedProducts().map((productId) => {
-                                        const product = productDatabase[productId]
-                                        if (!product) return null
-
-                                        const isSelected = quoteData.selectedProducts.includes(productId)
-                                        return (
-                                            <Card
-                                                key={productId}
-                                                className={`cursor-pointer transition-all duration-200 hover:shadow-md ${isSelected
-                                                    ? 'border-2 border-primary bg-primary/5 shadow-lg'
-                                                    : 'border border-border hover:border-primary/50'
-                                                    }`}
-                                                onClick={() => {
-                                                    if (isSelected) {
-                                                        // 제품 제거
-                                                        const updatedProducts = quoteData.selectedProducts.filter(id => id !== productId)
-                                                        const updatedPlans = { ...quoteData.selectedPlans }
-                                                        delete updatedPlans[productId]
-                                                        setQuoteData({
-                                                            ...quoteData,
-                                                            selectedProducts: updatedProducts,
-                                                            selectedPlans: updatedPlans
-                                                        })
-                                                    } else {
-                                                        // 제품 추가 (기본 플랜 자동 선택)
-                                                        const updatedProducts = [...quoteData.selectedProducts, productId]
-                                                        const recommendedPlan = product.plans.find(p => p.recommended) || product.plans[0]
-                                                        const updatedPlans = {
-                                                            ...quoteData.selectedPlans,
-                                                            [productId]: recommendedPlan.id
-                                                        }
-                                                        setQuoteData({
-                                                            ...quoteData,
-                                                            selectedProducts: updatedProducts,
-                                                            selectedPlans: updatedPlans
-                                                        })
-                                                    }
-                                                }}
-                                            >
-                                                <CardContent className="p-6">
-                                                    <div className="flex items-center justify-between">
-                                                        <div className="flex items-center space-x-4">
-                                                            <div className={`p-3 rounded-lg ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                                                                <Zap className="h-5 w-5" />
-                                                            </div>
-                                                            <div>
-                                                                <h3 className="font-semibold text-lg">{product.name}</h3>
-                                                                <p className="text-muted-foreground">
-                                                                    {product.description}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        {isSelected && (
-                                                            <CheckCircle className="h-6 w-6 text-primary" />
-                                                        )}
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        )
-                                    })}
-                                </div>
-
-                                <div className="flex justify-between mt-8">
-                                    <Button variant="outline" onClick={prevStep} size="lg">
-                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
-                                    </Button>
-                                    <Button
-                                        onClick={nextStep}
-                                        disabled={quoteData.selectedProducts.length === 0}
-                                        size="lg"
-                                    >
-                                        사용자 수 입력하기 <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-
-                    {/* 4단계: 사용자 수 설정 */}
-                    {currentStep === 4 && (
-                        <Card className="p-8">
-                            <CardHeader className="text-center pb-8">
-                                <CardTitle className="text-2xl flex items-center justify-center gap-2">
-                                    <Users className="h-6 w-6" />
-                                    사용자 수를 입력하세요
-                                </CardTitle>
-                                <CardDescription className="text-base">
-                                    조직의 예상 사용자 수에 따라 최적의 가격을 제안해드립니다
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="max-w-md mx-auto space-y-6">
-                                    <div className="space-y-4">
-                                        <label className="text-sm font-medium">사용자 수</label>
-                                        <input
-                                            type="number"
-                                            min="1"
-                                            max="1000"
-                                            value={quoteData.userCount}
-                                            onChange={(e) => setQuoteData({ ...quoteData, userCount: parseInt(e.target.value) || 1 })}
-                                            className="w-full p-4 text-lg border rounded-lg text-center focus:ring-2 focus:ring-primary focus:border-transparent"
-                                            placeholder="사용자 수를 입력하세요"
-                                        />
-                                        <p className="text-sm text-muted-foreground text-center">
-                                            {quoteData.userCount >= 200 ? '200명 이상: 20% 볼륨 할인' :
-                                                quoteData.userCount >= 100 ? '100명 이상: 15% 볼륨 할인' :
-                                                    quoteData.userCount >= 50 ? '50명 이상: 10% 볼륨 할인' :
-                                                        '50명 이상부터 볼륨 할인이 적용됩니다'}
-                                        </p>
-                                    </div>
-
-                                    {/* 자주 선택되는 사용자 수 버튼들 */}
-                                    <div className="grid grid-cols-2 gap-3">
-                                        {[10, 25, 50, 100, 200, 500].map(count => (
-                                            <Button
-                                                key={count}
-                                                variant={quoteData.userCount === count ? "default" : "outline"}
-                                                onClick={() => setQuoteData({ ...quoteData, userCount: count })}
-                                                className="h-12"
-                                            >
-                                                {count}명
-                                                {count >= 50 && (
-                                                    <span className="ml-1 text-xs text-green-600">
-                                                        -{count >= 200 ? '20' : count >= 100 ? '15' : '10'}%
-                                                    </span>
-                                                )}
-                                            </Button>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-between mt-8">
-                                    <Button variant="outline" onClick={prevStep} size="lg">
-                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
-                                    </Button>
-                                    <Button onClick={nextStep} size="lg">
-                                        플랜 선택하기 <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-
-                    {/* 5단계: 플랜 선택 */}
-                    {currentStep === 5 && (
-                        <Card className="p-8">
-                            <CardHeader className="text-center pb-8">
-                                <CardTitle className="text-2xl flex items-center justify-center gap-2">
-                                    <Zap className="h-6 w-6" />
-                                    플랜을 선택하세요
-                                </CardTitle>
-                                <CardDescription className="text-base">
-                                    각 제품별로 적합한 플랜을 선택해주세요
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="space-y-8">
-                                    {quoteData.selectedProducts.map(productId => {
-                                        const product = productDatabase[productId]
-                                        const selectedPlanId = quoteData.selectedPlans[productId]
-
-                                        return (
-                                            <div key={productId} className="space-y-4">
-                                                <h3 className="text-lg font-semibold">{product.name}</h3>
-                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                    {product.plans.map(plan => (
-                                                        <Card
-                                                            key={plan.id}
-                                                            className={`cursor-pointer transition-all duration-200 hover:shadow-md ${selectedPlanId === plan.id
-                                                                ? 'border-2 border-primary bg-primary/5 shadow-lg'
-                                                                : 'border border-border hover:border-primary/50'
-                                                                } ${plan.recommended ? 'ring-2 ring-primary/20' : ''}`}
-                                                            onClick={() => {
-                                                                setQuoteData({
-                                                                    ...quoteData,
-                                                                    selectedPlans: {
-                                                                        ...quoteData.selectedPlans,
-                                                                        [productId]: plan.id
-                                                                    }
-                                                                })
-                                                            }}
-                                                        >
-                                                            <CardContent className="p-4">
-                                                                <div className="space-y-3">
-                                                                    <div className="flex items-center justify-between">
-                                                                        <h4 className="font-semibold">{plan.name}</h4>
-                                                                        {plan.recommended && (
-                                                                            <Badge variant="default" className="text-xs">추천</Badge>
-                                                                        )}
-                                                                    </div>
-                                                                    <div className="text-2xl font-bold">
-                                                                        ${plan.price}
-                                                                        <span className="text-sm font-normal text-muted-foreground">/월</span>
-                                                                    </div>
-                                                                    <ul className="space-y-1 text-sm">
-                                                                        {plan.features.map((feature, idx) => (
-                                                                            <li key={idx} className="flex items-center gap-2">
-                                                                                <CheckCircle className="h-3 w-3 text-green-600" />
-                                                                                {feature}
-                                                                            </li>
-                                                                        ))}
-                                                                    </ul>
-                                                                </div>
-                                                            </CardContent>
-                                                        </Card>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-
-                                <div className="flex justify-between mt-8">
-                                    <Button variant="outline" onClick={prevStep} size="lg">
-                                        <ArrowLeft className="mr-2 h-4 w-4" /> 이전 단계
-                                    </Button>
-                                    <Button onClick={nextStep} size="lg">
-                                        결제 주기 선택 <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-
-                    {/* 7단계: 최종 견적서 */}
-                    {currentStep === 7 && (
                         <div className="space-y-6">
                             <Card className="p-8">
                                 <CardHeader className="text-center pb-8">
@@ -1169,37 +1142,6 @@ export default function CustomQuotePage() {
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-8">
-                                    {/* 결제 주기 선택 */}
-                                    <div>
-                                        <h3 className="font-semibold mb-4">결제 주기를 선택하세요</h3>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {billingCycles.map(cycle => (
-                                                <Card
-                                                    key={cycle.id}
-                                                    className={`cursor-pointer transition-all duration-200 hover:shadow-md ${quoteData.billingCycle === cycle.id
-                                                        ? 'border-2 border-primary bg-primary/5 shadow-lg'
-                                                        : 'border border-border hover:border-primary/50'
-                                                        }`}
-                                                    onClick={() => setQuoteData({ ...quoteData, billingCycle: cycle.id })}
-                                                >
-                                                    <CardContent className="p-4">
-                                                        <div className="flex items-center justify-between">
-                                                            <div>
-                                                                <h4 className="font-semibold">{cycle.label}</h4>
-                                                                <p className="text-sm text-muted-foreground">{cycle.description}</p>
-                                                            </div>
-                                                            {cycle.discount > 0 && (
-                                                                <Badge variant="secondary" className="bg-green-100 text-green-700">
-                                                                    -{Math.round(cycle.discount * 100)}%
-                                                                </Badge>
-                                                            )}
-                                                        </div>
-                                                    </CardContent>
-                                                </Card>
-                                            ))}
-                                        </div>
-                                    </div>
-
                                     {/* 선택된 제품들 */}
                                     <div>
                                         <h3 className="font-semibold mb-4">선택된 제품</h3>
@@ -1214,7 +1156,7 @@ export default function CustomQuotePage() {
                                                             <span className="text-sm text-muted-foreground ml-2">({plan?.name})</span>
                                                         </div>
                                                         <Badge variant="secondary">
-                                                            {plan?.customPricing ? '맞춤 견적' : plan?.sessionPricing ? '세션 기반' : `$${quoteData.billingCycle === 'yearly' ? (plan?.yearlyPrice || 0) / 12 : (plan?.monthlyPrice || 0)}/월`}
+                                                            {plan?.customPricing ? '맞춤 견적' : plan?.sessionPricing ? '세션 기반' : `$${quoteData.billingCycle === 'yearly' ? (plan?.yearlyPrice || 0) : (plan?.monthlyPrice || 0)}/월`}
                                                         </Badge>
                                                     </div>
                                                 )
@@ -1234,9 +1176,9 @@ export default function CustomQuotePage() {
                                                 if (!plan) return sum
                                                 if (plan.customPricing) return sum
                                                 if (plan.sessionPricing) return sum + 29 // Freddy AI Copilot 기본 가격
-                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                 return sum + price
-                                            }, 0)}</span>
+                                            }, 0).toFixed(2)}</span>
                                         </div>
                                         <div className="flex justify-between">
                                             <span>사용자 수</span>
@@ -1250,22 +1192,22 @@ export default function CustomQuotePage() {
                                                 if (!plan) return sum
                                                 if (plan.customPricing) return sum
                                                 if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
-                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                 return sum + (price * quoteData.userCount)
-                                            }, 0)}</span>
+                                            }, 0).toFixed(2)}</span>
                                         </div>
                                         {quoteData.userCount >= 50 && (
                                             <div className="flex justify-between text-green-600">
                                                 <span>볼륨 할인 ({quoteData.userCount >= 200 ? '20' : quoteData.userCount >= 100 ? '15' : '10'}%)</span>
-                                                <span className="font-mono">-${Math.round((Object.entries(quoteData.selectedPlans).reduce((sum, [productId, planId]) => {
+                                                <span className="font-mono">-${(Object.entries(quoteData.selectedPlans).reduce((sum, [productId, planId]) => {
                                                     const product = productDatabase[productId]
                                                     const plan = product?.plans.find(p => p.id === planId)
                                                     if (!plan) return sum
                                                     if (plan.customPricing) return sum
                                                     if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
-                                                    const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0)
+                                                    const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                     return sum + (price * quoteData.userCount)
-                                                }, 0)) * (quoteData.userCount >= 200 ? 0.2 : quoteData.userCount >= 100 ? 0.15 : 0.1))}</span>
+                                                }, 0) * (quoteData.userCount >= 200 ? 0.2 : quoteData.userCount >= 100 ? 0.15 : 0.1)).toFixed(2)}</span>
                                             </div>
                                         )}
                                         {quoteData.billingCycle === 'yearly' && (
@@ -1303,33 +1245,7 @@ export default function CustomQuotePage() {
                                             <Button 
                                                 variant="outline" 
                                                 size="lg"
-                                                onClick={() => {
-                                                    // 메일로 견적서 받기 기능 구현
-                                                    const subject = encodeURIComponent("맞춤 견적서 요청 - 위두소프트")
-                                                    const body = encodeURIComponent(`
-안녕하세요,
-
-다음과 같은 솔루션에 대한 상세 견적서를 이메일로 받고 싶습니다:
-
-=== 선택된 제품 ===
-${Object.entries(quoteData.selectedPlans).map(([productId, planId]) => {
-    const product = productDatabase[productId]
-    const plan = product?.plans.find(p => p.id === planId)
-    return `• ${product?.name} (${plan?.name})`
-}).join('\n')}
-
-=== 사용 조건 ===
-• 사용자 수: ${quoteData.userCount}명
-• 결제 주기: ${quoteData.billingCycle === 'yearly' ? '연간 결제' : '월간 결제'}
-• 예상 월간 비용: $${calculateTotalPrice()}
-${quoteData.billingCycle === 'yearly' ? `• 예상 연간 비용: $${calculateYearlyTotal()}` : ''}
-
-상세한 견적서와 함께 도입 상담을 받고 싶습니다.
-
-감사합니다.
-                                                    `)
-                                                    window.location.href = `mailto:support@wedosoft.net?subject=${subject}&body=${body}`
-                                                }}
+                                                onClick={() => setIsEmailModalOpen(true)}
                                             >
                                                 <Mail className="mr-2 h-4 w-4" />
                                                 견적서 메일로 받기
@@ -1355,6 +1271,78 @@ ${quoteData.billingCycle === 'yearly' ? `• 예상 연간 비용: $${calculateY
                     )}
                 </div>
             </section>
+            
+            {/* 이메일 전송 모달 */}
+            <Dialog open={isEmailModalOpen} onOpenChange={setIsEmailModalOpen}>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <DialogTitle>견적서 이메일로 받기</DialogTitle>
+                        <DialogDescription>
+                            이메일 주소를 입력하시면 상세 견적서를 보내드립니다.
+                        </DialogDescription>
+                    </DialogHeader>
+                    
+                    {!emailSent ? (
+                        <div className="space-y-4 py-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="email">이메일 주소</Label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    value={userEmail}
+                                    onChange={(e) => setUserEmail(e.target.value)}
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handleSendQuoteEmail()
+                                        }
+                                    }}
+                                />
+                            </div>
+                            
+                            <div className="bg-muted/50 p-4 rounded-lg space-y-2 text-sm">
+                                <div className="font-medium">견적 요약</div>
+                                <div className="text-muted-foreground">
+                                    • 제품 수: {Object.keys(quoteData.selectedPlans).length}개
+                                </div>
+                                <div className="text-muted-foreground">
+                                    • 사용자: {quoteData.userCount}명
+                                </div>
+                                <div className="text-muted-foreground">
+                                    • 예상 비용: ${calculateTotalPrice()}/월
+                                </div>
+                            </div>
+                            
+                            <div className="flex justify-end gap-2">
+                                <Button 
+                                    variant="outline" 
+                                    onClick={() => setIsEmailModalOpen(false)}
+                                >
+                                    취소
+                                </Button>
+                                <Button 
+                                    onClick={handleSendQuoteEmail}
+                                    disabled={isSendingEmail || !userEmail}
+                                >
+                                    {isSendingEmail ? '전송 중...' : '전송하기'}
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="py-8 text-center space-y-4">
+                            <div className="flex justify-center">
+                                <CheckCircle className="h-16 w-16 text-green-500" />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-lg mb-2">전송 완료!</h3>
+                                <p className="text-sm text-muted-foreground">
+                                    {userEmail}로 견적서가 전송되었습니다.
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
         </div>
     )
 }

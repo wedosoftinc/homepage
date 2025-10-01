@@ -15,6 +15,14 @@ const contactSchema = z.object({
     message: z.string().min(10, '문의 내용은 최소 10글자 이상 입력해주세요'),
 })
 
+// 견적서 전송용 간단한 스키마
+const quoteSchema = z.object({
+    email: z.string().email('올바른 이메일 주소를 입력해주세요'),
+    subject: z.string().min(1, '제목을 입력해주세요'),
+    message: z.string().min(10, '내용은 최소 10글자 이상 입력해주세요'),
+    type: z.literal('quote').optional(),
+})
+
 // Gmail SMTP 설정 - 환경변수 검증 포함
 function createTransporter() {
     const gmailUser = process.env.GMAIL_USER
@@ -44,7 +52,44 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
 
-        // 데이터 검증
+        // 견적서 전송인지 일반 문의인지 확인
+        if (body.type === 'quote') {
+            // 견적서 전송 처리
+            const validatedData = quoteSchema.parse(body)
+            
+            if (process.env.NODE_ENV === 'development') {
+                console.log('=== Quote Email Submission ===')
+                console.log('To:', validatedData.email)
+                console.log('Subject:', validatedData.subject)
+                console.log('=== End of Email Info ===')
+            }
+
+            const transporter = createTransporter()
+
+            // 고객에게 견적서 전송 (HTML)
+            await transporter.sendMail({
+                from: `"위두소프트" <${process.env.GMAIL_USER}>`,
+                to: validatedData.email,
+                subject: validatedData.subject,
+                html: validatedData.message, // HTML 콘텐츠 직접 사용
+            })
+
+            // 내부 팀에도 알림 (HTML)
+            await transporter.sendMail({
+                from: `"위두소프트 견적 시스템" <${process.env.GMAIL_USER}>`,
+                to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
+                subject: `[견적 요청] ${validatedData.email}`,
+                html: validatedData.message, // 동일한 HTML 견적서 전송
+                replyTo: validatedData.email,
+            })
+
+            return NextResponse.json({
+                success: true,
+                message: '견적서가 성공적으로 전송되었습니다.'
+            })
+        }
+
+        // 일반 문의 처리
         const validatedData = contactSchema.parse(body)
 
         // 이메일 내용 구성

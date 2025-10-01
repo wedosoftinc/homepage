@@ -166,8 +166,13 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
 
         {/* 가격 플랜 - 중앙 정렬 그리드 */}
         <div className="relative">
-          {/* 데스크탑: 4컬럼 그리드 */}
-          <div className="hidden md:grid md:grid-cols-4 md:gap-4">
+          {/* 데스크탑: 동적 그리드 (플랜 개수에 따라 조정) */}
+          <div className={`hidden md:grid md:gap-4 ${
+            data.plans.length === 1 ? 'md:grid-cols-1 max-w-md mx-auto' :
+            data.plans.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' :
+            data.plans.length === 3 ? 'md:grid-cols-3 max-w-5xl mx-auto' :
+            'md:grid-cols-4'
+          }`}>
             {data.plans.map((plan) => {
               const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice
               const discount = getYearlyDiscount(plan.monthlyPrice, plan.yearlyPrice)
