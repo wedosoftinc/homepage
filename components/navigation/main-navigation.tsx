@@ -327,12 +327,12 @@ export function MainNavigation() {
                                 맞춤 견적
                             </NavigationMenuLink>
                         </NavigationMenuItem>
-                        {/* 블로그 메뉴 - 임시 숨김 */}
-                        {/* <NavigationMenuItem>
-                            <NavigationMenuLink href="/blog" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
+                        {/* 블로그 메뉴 - 비활성화 */}
+                        <NavigationMenuItem>
+                            <span className={cn(navigationMenuTriggerStyle(), "text-base font-medium opacity-40 cursor-not-allowed pointer-events-none")}>
                                 블로그
-                            </NavigationMenuLink>
-                        </NavigationMenuItem> */}
+                            </span>
+                        </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/company" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 회사소개
@@ -367,7 +367,7 @@ export function MainNavigation() {
                                 <span className="sr-only">메뉴</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-80 max-w-[85vw] p-0 overflow-y-auto">
+                        <SheetContent side="right" className="w-72 max-w-[65vw] p-0 overflow-y-auto">
                             <SheetHeader className="border-b p-4 sm:p-6 sticky top-0 bg-background z-10">
                                 <SheetTitle className="text-left flex items-center justify-between">
                                     {/* 왼쪽: 재미있는 문구 */}
@@ -504,32 +504,32 @@ function MobileNav({ onClose }: { onClose: () => void }) {
     }
 
     // 서비스 메뉴 데이터 (데스크톱과 동일하게 동기화)
-    const servicesByCategory = {
-        "컨설팅 & 전략": [
-            {
-                name: "컨설팅",
-                href: "/services/consulting",
-                description: "도입 전에 물어야 할 질문들을, 대신 생각해드립니다"
-            },
-            {
-                name: "구축",
-                href: "/services/implementation",
-                description: "기술적인 설정은 우리 몫입니다"
-            }
-        ],
-        "교육 & 지원": [
-            {
-                name: "교육",
-                href: "/services/training",
-                description: "잘 도입했다면, 잘 쓰게 만들어야죠"
-            },
-            {
-                name: "운영지원",
-                href: "/services/maintenance",
-                description: "도입 이후에도 계속 곁에 있습니다"
-            }
-        ]
-    }
+    const services = [
+        {
+            name: "컨설팅",
+            href: "/services/consulting",
+            description: "공식 파트너십 기반 SaaS 도입 전략 컨설팅",
+            icon: "🎯"
+        },
+        {
+            name: "구축",
+            href: "/services/implementation",
+            description: "API 통합, SSO 구성 등 기술적 구현",
+            icon: "⚙️"
+        },
+        {
+            name: "마이그레이션",
+            href: "/services/migration",
+            description: "Help Desk Migration 공식 파트너",
+            icon: "✈️ "
+        },
+        {
+            name: "운영지원",
+            href: "/services/maintenance",
+            description: "지속적인 기술 지원 및 최적화",
+            icon: "🤝"
+        }
+    ]
 
     return (
         <div className="flex flex-col py-4">
@@ -639,26 +639,24 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                             : 'opacity-0 scale-y-0 max-h-0'
                             } origin-top overflow-hidden`}
                     >
-                        <div className="space-y-3 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
-                            {Object.entries(servicesByCategory).map(([category, services]) => (
-                                <div key={category} className="space-y-1">
-                                    <h4 className="text-sm font-medium text-primary px-2 py-1 bg-primary/5 rounded-md">
-                                        {category}
-                                    </h4>
-                                    <div className="space-y-0.5">
-                                        {services.map((service) => (
-                                            <Link
-                                                key={service.name}
-                                                href={service.href}
-                                                className="block py-1.5 px-2 text-sm hover:bg-accent/50 rounded-md transition-colors"
-                                                onClick={onClose}
-                                            >
-                                                <div className="font-medium text-foreground text-sm">{service.name}</div>
-                                                <div className="text-sm text-muted-foreground leading-tight">{service.description}</div>
-                                            </Link>
-                                        ))}
+                        <div className="space-y-1 pl-4 border-l-2 border-primary/20 pt-2 pb-2">
+                            {services.map((service) => (
+                                <Link
+                                    key={service.name}
+                                    href={service.href}
+                                    className="block py-2 px-3 text-sm hover:bg-accent/50 rounded-md transition-colors"
+                                    onClick={onClose}
+                                >
+                                    <div className="flex items-start space-x-2">
+                                        <div className="text-sm opacity-50 mt-0.5">
+                                            {service.icon}
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="font-medium text-foreground text-sm">{service.name}</div>
+                                            <div className="text-sm text-muted-foreground leading-tight">{service.description}</div>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -673,14 +671,10 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     맞춤 견적
                 </Link>
 
-                {/* 블로그 메뉴 - 임시 숨김 */}
-                {/* <Link
-                    href="/blog"
-                    className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
-                    onClick={onClose}
-                >
+                {/* 블로그 메뉴 - 비활성화 */}
+                <span className="block py-3 px-3 font-medium text-foreground opacity-40 cursor-not-allowed rounded-md">
                     블로그
-                </Link> */}
+                </span>
 
                 {/* 회사소개 메뉴 */}
                 <Link

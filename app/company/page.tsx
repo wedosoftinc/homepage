@@ -95,7 +95,7 @@ const ceoProfile = {
   title: "대표이사 & CTO",
   company: "위두소프트",
   experience: "25년 경험",
-  description: "대기업 IT 인프라 구축 25년 · 글로벌 SaaS 전문 컨설턴트"
+  description: "IT 인프라 구축 25년 · 글로벌 SaaS 전문 컨설턴트"
 }
 
 export default function CompanyPage() {
