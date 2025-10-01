@@ -41,7 +41,7 @@ export function CTASection() {
                         <CTAButtonGroup
                             buttons={[
                                 {
-                                    text: "무료 상담 신청",
+                                    text: "상담 신청",
                                     variant: "default",
                                     size: "lg",
                                     href: "/contact"

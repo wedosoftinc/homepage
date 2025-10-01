@@ -51,7 +51,7 @@ export default function CustomerExperiencePage() {
           </>
         }
         buttons={{
-          primary: { text: "무료 상담 받기", href: "/contact", icon: HeartIcon },
+          primary: { text: "상담 신청", href: "/contact", icon: HeartIcon },
           secondary: { text: "가격 정보", href: "/pricing", icon: TrophyIcon }
         }}
         className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden"
@@ -175,7 +175,7 @@ export default function CustomerExperiencePage() {
           </>
         }
         buttons={{
-          primary: { text: "무료 상담 신청", href: "/contact" },
+          primary: { text: "상담 신청", href: "/contact" },
           secondary: { text: "컨설팅 서비스", href: "/services/consulting" }
         }}
         background="accent"

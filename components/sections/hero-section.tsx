@@ -73,7 +73,7 @@ export function HeroSection() {
                                         SaaS는 도입보다,
                                     </span>
                                     <br />
-                                    그 이후가 더 중요합니다
+                                    이후가 더 중요합니다
                                 </h1>
                                 <p className="text-xl text-muted-foreground max-w-2xl">
                                     툴보다 일하는 방식을 바꾸는 파트너. Google Workspace, Freshworks, Monday.com 등
@@ -96,17 +96,16 @@ export function HeroSection() {
                             <CTAButtonGroup
                                 buttons={[
                                     {
-                                        text: "무료 상담 신청",
+                                        text: "상담 신청",
                                         variant: "default",
                                         iconPosition: "right",
                                         href: "/contact"
                                     },
                                     {
-                                        text: "성공사례 보기",
+                                        text: "주요 솔루션 보기",
                                         variant: "outline",
-                                        icon: Play,
-                                        iconPosition: "left",
-                                        href: "/company"
+                                        iconPosition: "right",
+                                        href: "/solutions"
                                     }
                                 ]}
                             />

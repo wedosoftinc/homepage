@@ -353,46 +353,34 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
             </Button>
           </div>
 
-          {/* CTA 버튼들 */}
-          {currentLevel === 3 ? (
-            <div className="grid grid-cols-3 gap-2">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="text-xs"
-                onClick={() => setIsPricingModalOpen(true)}
-              >
-                <CurrencyDollarIcon className="w-3 h-3 mr-1" />
-                가격보기
-              </Button>
-              <Button 
-                size="sm" 
-                className="text-xs"
-                onClick={() => window.location.href = '/contact'}
-              >
-                상담하기
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="text-xs"
-                onClick={() => window.open(`https://docs.wedosoft.net/${product.id}`, '_blank')}
-              >
-                <ArrowTopRightOnSquareIcon className="w-3 h-3 mr-1" />
-                기술문서
-              </Button>
-            </div>
-          ) : (
-            <Button
-              variant="default"
-              size="sm"
-              onClick={nextLevel}
-              className="w-full text-xs"
+          {/* CTA 버튼들 - 항상 3개 버튼 표시 */}
+          <div className="grid grid-cols-3 gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-xs"
+              onClick={() => setIsPricingModalOpen(true)}
             >
-              더 알아보기
-              <ChevronRightIcon className="w-4 h-4 ml-1" />
+              <CurrencyDollarIcon className="w-3 h-3 mr-1" />
+              가격보기
             </Button>
-          )}
+            <Button 
+              size="sm" 
+              className="text-xs"
+              onClick={currentLevel === 3 ? () => window.location.href = '/contact' : nextLevel}
+            >
+              {currentLevel === 3 ? '상담하기' : '더 알아보기'}
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-xs"
+              onClick={() => window.open(`https://docs.wedosoft.net/${product.id}`, '_blank')}
+            >
+              <ArrowTopRightOnSquareIcon className="w-3 h-3 mr-1" />
+              기술문서
+            </Button>
+          </div>
         </div>
       </CardContent>
       </Card>

@@ -119,15 +119,7 @@ export default function CustomerExperiencePage() {
             {customerExperienceProducts.map((product, index) => (
               <ProductCard3Step
                 key={index}
-                name={product.name}
-                subtitle={product.subtitle}
-                description={product.description}
-                category={product.category}
-                vendor={product.vendor}
-                features={product.features}
-                href={product.href}
-                trialDays={product.trialDays}
-                learnMoreHref={product.learnMoreHref}
+                product={product}
               />
             ))}
             {collaborationProducts
@@ -135,15 +127,7 @@ export default function CustomerExperiencePage() {
               .map((product, index) => (
                 <ProductCard3Step
                   key={`monday-${index}`}
-                  name={product.name}
-                  subtitle={product.subtitle}
-                  description={product.description}
-                  category={product.category}
-                  vendor={product.vendor}
-                  features={product.features}
-                  href={product.href}
-                  trialDays={product.trialDays}
-                  learnMoreHref={product.learnMoreHref}
+                  product={product}
                 />
               ))}
           </TabsContent>
@@ -154,15 +138,7 @@ export default function CustomerExperiencePage() {
               .map((product, index) => (
                 <ProductCard3Step
                   key={index}
-                  name={product.name}
-                  subtitle={product.subtitle}
-                  description={product.description}
-                  category={product.category}
-                  vendor={product.vendor}
-                  features={product.features}
-                  href={product.href}
-                  trialDays={product.trialDays}
-                  learnMoreHref={product.learnMoreHref}
+                  product={product}
                 />
               ))}
           </TabsContent>
@@ -173,15 +149,7 @@ export default function CustomerExperiencePage() {
               .map((product, index) => (
                 <ProductCard3Step
                   key={index}
-                  name={product.name}
-                  subtitle={product.subtitle}
-                  description={product.description}
-                  category={product.category}
-                  vendor={product.vendor}
-                  features={product.features}
-                  href={product.href}
-                  trialDays={product.trialDays}
-                  learnMoreHref={product.learnMoreHref}
+                  product={product}
                 />
               ))}
             {collaborationProducts
@@ -189,15 +157,7 @@ export default function CustomerExperiencePage() {
               .map((product, index) => (
                 <ProductCard3Step
                   key={`monday-${index}`}
-                  name={product.name}
-                  subtitle={product.subtitle}
-                  description={product.description}
-                  category={product.category}
-                  vendor={product.vendor}
-                  features={product.features}
-                  href={product.href}
-                  trialDays={product.trialDays}
-                  learnMoreHref={product.learnMoreHref}
+                  product={product}
                 />
               ))}
           </TabsContent>

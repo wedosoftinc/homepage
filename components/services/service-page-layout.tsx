@@ -72,11 +72,6 @@ export function ServicePageLayout({
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/pricing">
-                  서비스 가격 보기
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
@@ -113,13 +108,8 @@ export function ServicePageLayout({
             <div className="button-group">
               <Button size="lg" asChild>
                 <Link href="/contact">
-                  무료 상담 신청하기
+                  상담 신청
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href={`/services/${serviceSlug}`}>
-                  자세히 알아보기
                 </Link>
               </Button>
             </div>

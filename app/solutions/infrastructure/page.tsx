@@ -49,7 +49,7 @@ export default function InfrastructurePage() {
           </>
         }
         buttons={{
-          primary: { text: "무료 상담 받기", href: "/contact", icon: CommandLineIcon },
+          primary: { text: "상담 신청", href: "/contact", icon: CommandLineIcon },
           secondary: { text: "가격 정보", href: "/pricing", icon: CogIcon }
         }}
         className="relative bg-gradient-to-br from-slate-500/5 via-background to-gray-500/5 overflow-hidden"
@@ -175,7 +175,7 @@ export default function InfrastructurePage() {
           </>
         }
         buttons={{
-          primary: { text: "무료 상담 신청", href: "/contact" },
+          primary: { text: "상담 신청", href: "/contact" },
           secondary: { text: "컨설팅 서비스", href: "/services/consulting" }
         }}
         background="accent"
