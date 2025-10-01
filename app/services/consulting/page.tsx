@@ -3,22 +3,22 @@
 import { ServicePageLayout } from "@/components/services/service-page-layout"
 import { ServiceCard } from "@/components/services/service-card"
 import {
-  FlagIcon as Target,
+  TrophyIcon as Award,
   ChartBarIcon as BarChart3,
-  CogIcon as Settings,
-  ArrowTrendingUpIcon as TrendingUp,
-  ShieldCheckIcon as Shield,
-  ClockIcon as Clock
+  FlagIcon as Target,
+  CurrencyDollarIcon as DollarSign,
+  UsersIcon as Users,
+  DocumentTextIcon as FileText
 } from "@heroicons/react/24/outline"
 import servicesData from "@/data/services.json"
 
 const iconMap = {
+  Award,
   BarChart3,
-  Settings,
   Target,
-  TrendingUp,
-  Shield,
-  Clock
+  DollarSign,
+  Users,
+  FileText
 }
 
 export default function ConsultingPage() {

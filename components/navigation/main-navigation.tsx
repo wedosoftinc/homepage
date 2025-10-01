@@ -32,13 +32,13 @@ export function MainNavigation() {
 
     // 로고 렌더링: CSS로 테마별 로고 전환 (레이아웃 시프트 방지)
     const logoComponent = (
-        <div className="relative h-8 md:h-10 w-auto flex items-center">
+        <div className="relative h-5 md:h-9 w-auto flex items-center">
             <Image
                 src="/logo-light.webp"
                 alt="WeDoSoft"
                 width={140}
                 height={40}
-                className="h-8 md:h-10 w-auto dark:hidden"
+                className="h-5 md:h-9 w-auto dark:hidden"
                 style={{ height: "auto" }}
                 priority
             />
@@ -47,7 +47,7 @@ export function MainNavigation() {
                 alt="WeDoSoft"
                 width={140}
                 height={40}
-                className="h-8 md:h-10 w-auto hidden dark:block"
+                className="h-5 md:h-9 w-auto hidden dark:block"
                 style={{ height: "auto" }}
                 priority
             />
@@ -129,30 +129,30 @@ export function MainNavigation() {
         ]
     }
 
-    // 서비스 메뉴 구조 (원본 사이트 기준으로 간소화)
+    // 서비스 메뉴 구조 (팩트 기반 전문 서비스)
     const services = [
         {
             name: "컨설팅",
             href: "/services/consulting",
-            description: "도입 전에 물어야 할 질문들을, 대신 생각해드립니다",
+            description: "공식 파트너십 기반 SaaS 도입 전략 컨설팅",
             icon: "🎯"
         },
         {
             name: "구축",
             href: "/services/implementation",
-            description: "기술적인 설정은 우리 몫입니다",
+            description: "API 통합, SSO 구성 등 기술적 구현",
             icon: "⚙️"
         },
         {
-            name: "교육",
-            href: "/services/training",
-            description: "잘 도입했다면, 잘 쓰게 만들어야죠",
-            icon: "📚"
+            name: "마이그레이션",
+            href: "/services/migration",
+            description: "Help Desk Migration 공식 파트너",
+            icon: "✈️ "
         },
         {
             name: "운영지원",
             href: "/services/maintenance",
-            description: "도입 이후에도 계속 곁에 있습니다",
+            description: "지속적인 기술 지원 및 최적화",
             icon: "🤝"
         }
     ]
@@ -362,10 +362,10 @@ export function MainNavigation() {
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="md:hidden"
+                                className="md:hidden h-10 w-10"
                                 aria-label="메뉴 열기"
                             >
-                                <Menu className="h-5 w-5" />
+                                <Menu className="h-6 w-6" />
                                 <span className="sr-only">메뉴</span>
                             </Button>
                         </SheetTrigger>

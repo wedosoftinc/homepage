@@ -51,21 +51,21 @@ export function ServicePageLayout({
         </div>
       </div>
 
-      {/* Hero Section - 새 디자인 토큰 적용 */}
-      <section className="hero-spacing section-bg-primary">
-        <div className="section-container">
-          <div className="text-center max-w-4xl mx-auto space-y-8">
+      {/* Hero Section */}
+      <section className="py-12 bg-background">
+        <div className="container">
+          <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
               <BadgeIcon className="w-3 h-3 mr-1" />
               {badge.text}
             </Badge>
-            <h1 className="heading-hero">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
               {hero.title}
             </h1>
-            <p className="text-body-large max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               {hero.subtitle}
             </p>
-            <div className="button-group">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/contact">
                   {serviceName} 상담
@@ -82,35 +82,35 @@ export function ServicePageLayout({
         </div>
       </section>
 
-      {/* Cards Section - 새 디자인 토큰 적용 */}
-      <section className="section-spacing section-bg-primary">
-        <div className="section-container">
-          <div className="text-center section-container-narrow mb-16">
-            <h2 className="heading-section mb-6">
+      {/* Cards Section */}
+      <section className="py-12">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
               {cardsSection.title}
             </h2>
-            <p className="text-body-large">
+            <p className="text-lg md:text-xl text-muted-foreground">
               {cardsSection.subtitle}
             </p>
           </div>
 
-          <div className="card-grid-3">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cardsSection.children}
           </div>
         </div>
       </section>
 
-      {/* CTA Section - 새 디자인 토큰 적용 */}
+      {/* CTA Section */}
       {cta && (
-        <section className="section-spacing section-bg-muted">
-          <div className="section-container text-center">
-            <h2 className="heading-section mb-6">
+        <section className="py-12 bg-muted/20">
+          <div className="container text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {cta.title}
             </h2>
-            <p className="text-body-large max-w-2xl mx-auto mb-8">
+            <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
               {cta.description}
             </p>
-            <div className="button-group">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/contact">
                   무료 상담 신청하기

@@ -248,6 +248,14 @@ export default function CompanyPage() {
                     <div className="text-center mb-3">
                       <p className="text-sm text-muted-foreground">{ceoProfile.description}</p>
                     </div>
+
+                    {/* 핵심 메시지 */}
+                    <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                      <p className="text-base text-foreground leading-relaxed">
+                        <span className="font-semibold">25년간 도입하고, 운영하고, 실패도 해봤습니다.</span><br />
+                        <span className="text-muted-foreground">그래서 진짜 필요한 걸 압니다.</span>
+                      </p>
+                    </div>
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6">

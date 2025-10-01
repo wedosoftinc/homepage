@@ -381,11 +381,6 @@ export function ProductsSection() {
                                             바꾸는 파트너입니다.
                                         </h3>
 
-                                        <p className="text-lg text-primary-foreground/85 dark:text-white/90 max-w-2xl mx-auto leading-relaxed">
-                                            25년간 도입하고, 운영하고, 실패도 해봤습니다.<br />
-                                            그래서 진짜 필요한 걸 압니다.
-                                        </p>
-
                                         <div className="pt-3">
                                             <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg">
                                                 회사소개 보기

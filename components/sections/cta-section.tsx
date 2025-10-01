@@ -6,10 +6,7 @@ import {
     ArrowRightIcon as ArrowRight,
     PhoneIcon as Phone,
     EnvelopeIcon as Mail,
-    ChatBubbleLeftRightIcon as MessageCircle,
-    ClockIcon as Clock,
-    UsersIcon as Users,
-    ArrowTrendingUpIcon as TrendingUp
+    ChatBubbleLeftRightIcon as MessageCircle
 } from "@heroicons/react/24/outline"
 import {
     MetricCard,
@@ -57,34 +54,7 @@ export function CTASection() {
                                 }
                             ]}
                             align="center"
-                            className="mb-12"
                         />
-                    </div>
-
-                    {/* 추가 정보 */}
-                    <div className="grid md:grid-cols-4 gap-6 text-center">
-                        <div className="space-y-2">
-                            <Clock className="h-8 w-8 mx-auto text-primary" />
-                            <h4 className="font-semibold">빠른 구축</h4>
-                            <p className="text-sm text-muted-foreground">평균 2주 내 구축 완료</p>
-                        </div>
-                        <div className="space-y-2">
-                            <Users className="h-8 w-8 mx-auto text-primary" />
-                            <h4 className="font-semibold">전문 지원</h4>
-                            <p className="text-sm text-muted-foreground">인증된 전문가 팀</p>
-                        </div>
-                        <div className="space-y-2">
-                            <TrendingUp className="h-8 w-8 mx-auto text-primary" />
-                            <h4 className="font-semibold">성과 보장</h4>
-                            <p className="text-sm text-muted-foreground">평균 40% 효율성 향상</p>
-                        </div>
-                        <div className="space-y-2">
-                            <svg className="h-8 w-8 mx-auto text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <h4 className="font-semibold">25년 경험</h4>
-                            <p className="text-sm text-muted-foreground">축적된 노하우와 신뢰</p>
-                        </div>
                     </div>
                 </div>
             </div>
