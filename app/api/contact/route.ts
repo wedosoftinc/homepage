@@ -28,6 +28,13 @@ function createTransporter() {
     const gmailUser = process.env.GMAIL_USER
     const gmailPassword = process.env.GMAIL_APP_PASSWORD
     
+    console.log('Environment check:', {
+        NODE_ENV: process.env.NODE_ENV,
+        GMAIL_USER: gmailUser ? `${gmailUser.substring(0, 3)}***${gmailUser.substring(gmailUser.length - 3)}` : 'missing',
+        GMAIL_PASSWORD: gmailPassword ? `***${gmailPassword.substring(gmailPassword.length - 4)}` : 'missing',
+        CONTACT_EMAIL_TO: process.env.CONTACT_EMAIL_TO ? 'present' : 'missing'
+    })
+    
     if (!gmailUser || !gmailPassword) {
         console.error('Gmail credentials missing:', {
             user: gmailUser ? 'present' : 'missing',
@@ -45,6 +52,8 @@ function createTransporter() {
             user: gmailUser,
             pass: gmailPassword,
         },
+        debug: true, // Gmail 디버그 모드 활성화
+        logger: true // 로그 활성화
     })
 }
 
@@ -57,36 +66,66 @@ export async function POST(request: NextRequest) {
             // 견적서 전송 처리
             const validatedData = quoteSchema.parse(body)
             
-            if (process.env.NODE_ENV === 'development') {
-                console.log('=== Quote Email Submission ===')
-                console.log('To:', validatedData.email)
-                console.log('Subject:', validatedData.subject)
-                console.log('=== End of Email Info ===')
+            console.log('=== Quote Email Submission ===')
+            console.log('To:', validatedData.email)
+            console.log('Subject:', validatedData.subject)
+            console.log('Content length:', validatedData.message.length)
+            console.log('=== End of Email Info ===')
+
+            try {
+                const transporter = createTransporter()
+
+                // 고객에게 견적서 전송 (HTML)
+                console.log('Sending email to customer...')
+                await transporter.sendMail({
+                    from: `"위두소프트" <${process.env.GMAIL_USER}>`,
+                    to: validatedData.email,
+                    subject: validatedData.subject,
+                    html: validatedData.message, // HTML 콘텐츠 직접 사용
+                })
+                console.log('Customer email sent successfully')
+
+                // 내부 팀에도 알림 (HTML)
+                console.log('Sending internal notification...')
+                await transporter.sendMail({
+                    from: `"위두소프트 견적 시스템" <${process.env.GMAIL_USER}>`,
+                    to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
+                    subject: `[견적 요청] ${validatedData.email}`,
+                    html: validatedData.message, // 동일한 HTML 견적서 전송
+                    replyTo: validatedData.email,
+                })
+                console.log('Internal notification sent successfully')
+
+                return NextResponse.json({
+                    success: true,
+                    message: '견적서가 성공적으로 전송되었습니다.'
+                })
+            } catch (emailError: any) {
+                console.error('Quote email send error:', emailError)
+                console.error('Error details:', {
+                    name: emailError?.name,
+                    message: emailError?.message,
+                    code: emailError?.code,
+                    errno: emailError?.errno,
+                    response: emailError?.response,
+                    responseCode: emailError?.responseCode
+                })
+                
+                // 구체적인 에러 메시지 제공
+                let errorMessage = '견적서 전송 중 오류가 발생했습니다.'
+                if (emailError?.code === 'EAUTH' || emailError?.responseCode === 535) {
+                    errorMessage = 'Gmail 인증에 실패했습니다. 관리자에게 문의해주세요.'
+                } else if (emailError?.code === 'ENOTFOUND') {
+                    errorMessage = '네트워크 연결에 문제가 있습니다.'
+                } else if (emailError?.responseCode >= 400) {
+                    errorMessage = `메일 서버 오류: ${emailError?.response || emailError?.message}`
+                }
+                
+                return NextResponse.json(
+                    { success: false, message: errorMessage },
+                    { status: 500 }
+                )
             }
-
-            const transporter = createTransporter()
-
-            // 고객에게 견적서 전송 (HTML)
-            await transporter.sendMail({
-                from: `"위두소프트" <${process.env.GMAIL_USER}>`,
-                to: validatedData.email,
-                subject: validatedData.subject,
-                html: validatedData.message, // HTML 콘텐츠 직접 사용
-            })
-
-            // 내부 팀에도 알림 (HTML)
-            await transporter.sendMail({
-                from: `"위두소프트 견적 시스템" <${process.env.GMAIL_USER}>`,
-                to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
-                subject: `[견적 요청] ${validatedData.email}`,
-                html: validatedData.message, // 동일한 HTML 견적서 전송
-                replyTo: validatedData.email,
-            })
-
-            return NextResponse.json({
-                success: true,
-                message: '견적서가 성공적으로 전송되었습니다.'
-            })
         }
 
         // 일반 문의 처리

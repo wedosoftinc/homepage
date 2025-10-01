@@ -549,7 +549,9 @@ export default function CustomQuotePage() {
                 }),
             })
             
-            if (response.ok) {
+            const responseData = await response.json()
+            
+            if (response.ok && responseData.success) {
                 setEmailSent(true)
                 setTimeout(() => {
                     setIsEmailModalOpen(false)
@@ -557,7 +559,8 @@ export default function CustomQuotePage() {
                     setUserEmail('')
                 }, 2000)
             } else {
-                alert('전송에 실패했습니다. 다시 시도해주세요.')
+                console.error('Email send failed:', responseData)
+                alert(responseData.message || '전송에 실패했습니다. 다시 시도해주세요.')
             }
         } catch (error) {
             console.error('Email send error:', error)
@@ -1250,7 +1253,7 @@ export default function CustomQuotePage() {
                                                 <Mail className="mr-2 h-4 w-4" />
                                                 견적서 메일로 받기
                                             </Button>
-                                            <Button size="lg">
+                                            <Button size="lg" onClick={() => window.location.href = '/contact'}>
                                                 상담 신청하기
                                             </Button>
                                         </div>
