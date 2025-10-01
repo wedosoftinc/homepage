@@ -83,10 +83,10 @@ export function Footer() {
                                     솔루션 구축
                                 </Link>
                                 <Link
-                                    href="/services/training"
+                                    href="/services/migration"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
-                                    교육
+                                    마이그레이션
                                 </Link>
                                 <Link
                                     href="/services/support"
