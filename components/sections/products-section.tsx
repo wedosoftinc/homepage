@@ -409,10 +409,12 @@ export function ProductsSection() {
                                         </p>
 
                                         <div className="pt-3">
-                                            <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg">
-                                                회사소개 보기
-                                                <ArrowRight className="h-4 w-4" />
-                                            </button>
+                                            <Link href="/company">
+                                                <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg">
+                                                    회사소개 보기
+                                                    <ArrowRight className="h-4 w-4" />
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
