@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { PricingModal } from '@/components/ui/pricing-modal'
+import { FeatureDetailModal } from '@/components/ui/feature-detail-modal'
 import { 
   ChevronRightIcon,
   ChevronLeftIcon,
@@ -75,6 +76,8 @@ interface ProductCard3StepProps {
 export function ProductCard3Step({ product }: ProductCard3StepProps) {
   const [currentLevel, setCurrentLevel] = useState(1)
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false)
+  const [selectedFeature, setSelectedFeature] = useState<ProductFeature | null>(null)
+  const [isFeatureModalOpen, setIsFeatureModalOpen] = useState(false)
 
   const nextLevel = () => {
     if (currentLevel < 3) {
@@ -135,7 +138,10 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
   return (
     <>
-      <Card className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+      <Card 
+        id={product.id} 
+        className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden scroll-mt-24"
+      >
       {/* 단계 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
         <Badge className={`${getLevelBadgeColor()} text-white text-xs font-medium px-2 py-1`}>
@@ -149,12 +155,6 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           <h3 className="font-bold text-xl text-foreground">
             {product.name}
           </h3>
-          <p className="text-sm text-muted-foreground">
-            {product.vendor} 제품
-          </p>
-          <p className="text-sm text-muted-foreground italic">
-            "{product.subtitle}"
-          </p>
         </div>
       </CardHeader>
 
@@ -170,13 +170,13 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                    <span className="text-sm font-medium text-foreground">대상 사용자</span>
+                    <CheckCircleIcon className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-foreground">주요 활용 분야</span>
                   </div>
-                  <div className="ml-6 space-y-1">
+                  <div className="ml-1 space-y-1">
                     {product.basic_info.target_users.slice(0, 3).map((user, index) => (
                       <div key={index} className="text-sm text-muted-foreground">
                         • {user}
@@ -185,17 +185,20 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                   </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <CloudIcon className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-medium text-foreground">배포 방식</span>
+                    <CloudIcon className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-foreground">도입 효과</span>
                   </div>
-                  <div className="ml-6">
+                  <div className="ml-1 space-y-1">
                     <div className="text-sm text-muted-foreground">
-                      {product.basic_info.deployment}
+                      • 업무 생산성 향상
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">
-                      {product.basic_info.languages}
+                    <div className="text-sm text-muted-foreground">
+                      • 운영 비용 절감
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      • {product.basic_info.languages}
                     </div>
                   </div>
                 </div>
@@ -204,16 +207,23 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               <Separator />
 
               <div>
-                <h4 className="font-semibold text-sm mb-2 text-foreground">
+                <h4 className="font-semibold text-sm mb-3 text-foreground">
                   핵심 가치 제안
                 </h4>
-                <div className="grid gap-2">
+                <div className="grid gap-3">
                   {product.key_features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-sm text-foreground font-medium">
-                        {feature.title}
-                      </span>
+                    <div key={index} className="space-y-1">
+                      <div className="flex items-start gap-2">
+                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-1.5"></div>
+                        <div className="flex-1 min-w-0">
+                          <span className="text-sm text-foreground font-semibold block">
+                            {feature.title}
+                          </span>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -224,15 +234,16 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           {/* Level 2: 주요 기능 */}
           {currentLevel === 2 && (
             <div className="space-y-4">
-              <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
-                <h4 className="font-semibold text-sm mb-3 text-green-900 dark:text-green-100">
-                  상세 기능 목록 ({product.key_features.length}개)
-                </h4>
-              </div>
-
-              <div className="grid gap-3 max-h-[300px] overflow-y-auto">
+              <div className="grid gap-3 max-h-[380px] overflow-y-auto">
                 {product.key_features.map((feature, index) => (
-                  <div key={index} className="p-3 bg-muted/50 rounded-lg border">
+                  <div 
+                    key={index} 
+                    className="p-3 bg-muted/50 rounded-lg border cursor-pointer hover:bg-muted/80 hover:border-primary/50 transition-all"
+                    onClick={() => {
+                      setSelectedFeature(feature)
+                      setIsFeatureModalOpen(true)
+                    }}
+                  >
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <CheckCircleIcon className="w-4 h-4 text-primary" />
@@ -241,14 +252,18 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                         <h5 className="font-medium text-sm text-foreground mb-1">
                           {feature.title}
                         </h5>
-                        <p className="text-xs text-muted-foreground leading-relaxed">
+                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                           {feature.description}
                         </p>
                       </div>
+                      <ChevronRightIcon className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                     </div>
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground text-center pt-2">
+                각 기능을 클릭하여 자세한 내용을 확인하세요
+              </p>
             </div>
           )}
 
@@ -391,6 +406,13 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
         onClose={() => setIsPricingModalOpen(false)}
         productId={product.id}
         productName={product.name}
+      />
+
+      {/* 기능 상세 모달 */}
+      <FeatureDetailModal
+        isOpen={isFeatureModalOpen}
+        onClose={() => setIsFeatureModalOpen(false)}
+        feature={selectedFeature}
       />
     </>
   )

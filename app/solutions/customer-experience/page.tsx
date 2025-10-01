@@ -1,4 +1,6 @@
-import { Metadata } from "next"
+'use client'
+
+import { useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
@@ -19,14 +21,22 @@ import { ProductCard3Step } from "@/components/ui/product-card-3-step"
 // 제품 데이터
 import productsData from "@/data/products.json"
 
-export const metadata: Metadata = {
-  title: "고객 경험 & 세일즈 관리 솔루션 | We Do Soft",
-  description: "Freshworks 통합 플랫폼으로 고객 서비스, 영업, 마케팅을 혁신하세요. AI 기반 고객 경험 관리 솔루션을 제공합니다.",
-}
-
 export default function CustomerExperiencePage() {
   const customerExperienceProducts = productsData["customer-experience"]
   const collaborationProducts = productsData["collaboration-productivity"]
+
+  // 해시 기반 스크롤 처리
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 300)
+    }
+  }, [])
 
   return (
     <>
@@ -62,7 +72,7 @@ export default function CustomerExperiencePage() {
         title="왜 고객 경험이 중요할까요?"
         subtitle="뛰어난 고객 경험은 단순한 서비스를 넘어 브랜드 가치와 매출 성장의 핵심입니다"
         spacing="default"
-        containerWidth="narrow"
+        containerWidth="wide"
       >
         <div className="card-grid-3">
           <Card className="text-center p-8 card-bordered card-hover group">

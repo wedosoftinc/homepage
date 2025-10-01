@@ -150,25 +150,25 @@ export function ProductsSection() {
                                 title: "고객 경험 혁신의 완성",
                                 description: "고객 지원, 영업, IT 서비스를 통합한 완벽한 고객 경험 관리로 A.I 기반 자동화를 통해 더 나은 서비스를 제공합니다.",
                                 logo: <FreshworksLogo className="h-20 w-auto" />,
-                                link: "/solutions/customer-experience"
+                                link: "/solutions/customer-experience#freshdesk-omni"
                             },
                             {
                                 title: "클라우드 협업의 새로운 기준",
                                 description: "실시간 문서 협업, 화상 회의, 클라우드 저장소가 하나로 연결된 업무 환경. 언제 어디서나 팀과 함께 효율적으로 일할 수 있습니다.",
                                 logo: <GoogleWorkspaceLogo className="h-14 w-auto" />,
-                                link: "/solutions/collaboration"
+                                link: "/solutions/collaboration#google-workspace"
                             },
                             {
                                 title: "프로젝트 관리의 혁신",
                                 description: "직관적인 워크플로우로 복잡한 프로젝트를 명확하게 관리. 실시간 진행 상황 파악과 팀 협업으로 업무 완수율을 높입니다.",
                                 logo: <MondayLogo className="h-14 w-auto" />,
-                                link: "/solutions/collaboration"
+                                link: "/solutions/collaboration#monday-work-management"
                             },
                             {
                                 title: "안전한 원격 업무 솔루션",
                                 description: "강력한 보안과 고성능 원격 접속으로 어디서나 업무 연속성 보장. 재택근무와 하이브리드 업무 환경에 최적화되었습니다.",
                                 logo: <SplashtopLogo className="h-18 w-auto" />,
-                                link: "/solutions/infrastructure"
+                                link: "/solutions/infrastructure#splashtop"
                             }
                         ]
 

@@ -15,7 +15,7 @@ export function Footer() {
                             <h3 className="text-base font-medium text-foreground/80">PRODUCT</h3>
                             <nav className="space-y-2">
                                 <Link
-                                    href="/products/freshdesk"
+                                    href="/solutions/customer-experience"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     Freshworks
@@ -27,13 +27,13 @@ export function Footer() {
                                     Google Workspace
                                 </Link>
                                 <Link
-                                    href="/products/monday-service"
+                                    href="/solutions/collaboration"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     Monday.com
                                 </Link>
                                 <Link
-                                    href="/products"
+                                    href="/products/splashtop"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     Splashtop
@@ -46,19 +46,19 @@ export function Footer() {
                             <h3 className="text-base font-medium text-foreground/80">SOLUTIONS</h3>
                             <nav className="space-y-2">
                                 <Link
-                                    href="/products/freshdesk-omni"
+                                    href="/solutions/customer-experience"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     고객 경험 관리
                                 </Link>
                                 <Link
-                                    href="/products/google-workspace"
+                                    href="/solutions/collaboration"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     업무 생산성
                                 </Link>
                                 <Link
-                                    href="/products/freshservice"
+                                    href="/solutions/infrastructure"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     IT 인프라 관리
@@ -71,25 +71,25 @@ export function Footer() {
                             <h3 className="text-base font-medium text-foreground/80">SERVICES</h3>
                             <nav className="space-y-2">
                                 <Link
-                                    href="/contact"
+                                    href="/services/consulting"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     컨설팅
                                 </Link>
                                 <Link
-                                    href="/contact"
+                                    href="/services/implementation"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     솔루션 구축
                                 </Link>
                                 <Link
-                                    href="/contact"
+                                    href="/services/training"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     교육
                                 </Link>
                                 <Link
-                                    href="/contact"
+                                    href="/services/support"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     유지보수
@@ -107,7 +107,7 @@ export function Footer() {
                                     rel="noopener noreferrer"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
-                                    고객센터
+                                    고객 센터
                                 </a>
                                 <a
                                     href="https://docs.wedosoft.net"

@@ -1,4 +1,6 @@
-import { Metadata } from "next"
+'use client'
+
+import { useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
@@ -18,13 +20,21 @@ import { ProductCard3Step } from "@/components/ui/product-card-3-step"
 // 제품 데이터
 import productsData from "@/data/products.json"
 
-export const metadata: Metadata = {
-  title: "IT 인프라 관리 솔루션 | We Do Soft",
-  description: "Freshservice와 Splashtop으로 IT 인프라를 효율적으로 관리하세요. ITSM부터 원격 접속까지 통합 IT 솔루션을 제공합니다.",
-}
-
 export default function InfrastructurePage() {
   const infrastructureProducts = productsData["it-infrastructure"]
+
+  // 해시 기반 스크롤 처리
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 300)
+    }
+  }, [])
 
   return (
     <>
@@ -60,7 +70,7 @@ export default function InfrastructurePage() {
         title="왜 통합 IT 인프라 관리가 필요할까요?"
         subtitle="복잡한 IT 환경에서 체계적인 관리와 안전한 원격 지원은 비즈니스 연속성의 핵심입니다"
         spacing="default"
-        containerWidth="narrow"
+        containerWidth="wide"
       >
         <div className="card-grid-3">
           <Card className="text-center p-8 card-bordered card-hover group">

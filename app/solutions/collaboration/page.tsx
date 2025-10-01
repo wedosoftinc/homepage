@@ -1,4 +1,6 @@
-import { Metadata } from "next"
+'use client'
+
+import { useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
@@ -18,13 +20,21 @@ import { ProductCard3Step } from "@/components/ui/product-card-3-step"
 // 제품 데이터
 import productsData from "@/data/products.json"
 
-export const metadata: Metadata = {
-  title: "협업 및 생산성 향상 솔루션 | We Do Soft",
-  description: "Monday.com과 Google Workspace로 팀 협업과 생산성을 혁신하세요. 프로젝트 관리부터 클라우드 오피스까지 통합 솔루션을 제공합니다.",
-}
-
 export default function CollaborationPage() {
   const collaborationProducts = productsData["collaboration-productivity"]
+
+  // 해시 기반 스크롤 처리
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 300)
+    }
+  }, [])
 
   return (
     <>
@@ -60,7 +70,7 @@ export default function CollaborationPage() {
         title="왜 협업 플랫폼이 필요할까요?"
         subtitle="원격근무와 하이브리드 업무 환경에서 효율적인 협업은 필수가 되었습니다"
         spacing="default"
-        containerWidth="narrow"
+        containerWidth="wide"
       >
         <div className="card-grid-3">
           <Card className="text-center p-8 card-bordered card-hover group">

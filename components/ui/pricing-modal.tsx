@@ -131,7 +131,7 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">{productName} 가격 플랜</DialogTitle>
           <DialogDescription>
@@ -166,8 +166,8 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
 
         {/* 가격 플랜 - 중앙 정렬 그리드 */}
         <div className="relative">
-          {/* 데스크탑: 중앙 정렬된 그리드 */}
-          <div className="hidden md:flex md:justify-center md:gap-4 md:flex-wrap">
+          {/* 데스크탑: 4컬럼 그리드 */}
+          <div className="hidden md:grid md:grid-cols-4 md:gap-4">
             {data.plans.map((plan) => {
               const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice
               const discount = getYearlyDiscount(plan.monthlyPrice, plan.yearlyPrice)
@@ -175,7 +175,7 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
               return (
                 <Card 
                   key={plan.id} 
-                  className={`relative w-[280px] ${
+                  className={`relative ${
                     plan.recommended 
                       ? 'border-primary border-2 ring-2 ring-primary/20' 
                       : 'border-border'
@@ -269,8 +269,7 @@ export function PricingModal({ isOpen, onClose, productId, productName }: Pricin
         {/* 추가 정보 */}
         <div className="mt-6 p-4 bg-muted/50 rounded-lg">
           <div className="text-sm text-muted-foreground text-center space-y-2">
-            <p>• 모든 플랜에는 30일 무료 체험이 포함됩니다</p>
-            <p>• 언제든지 플랜을 업그레이드하거나 다운그레이드할 수 있습니다</p>
+            <p>• 모든 플랜에는 14일 무료 체험이 포함됩니다</p>
             <p>• 연간 결제 시 추가 할인 혜택을 받으실 수 있습니다</p>
           </div>
         </div>
