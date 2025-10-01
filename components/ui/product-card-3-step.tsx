@@ -193,7 +193,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
     <>
       <Card 
         id={product.id} 
-        className="min-h-[500px] md:min-h-[600px] lg:min-h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden scroll-mt-24"
+        className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden scroll-mt-24"
       >
       {/* 단계 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
@@ -203,7 +203,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
       </div>
 
       {/* 헤더 - 고정 */}
-      <CardHeader className="pb-4 pr-20">
+      <CardHeader className="pb-4 pr-20 flex-shrink-0">
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-xl md:text-2xl text-foreground">
             {product.name}
@@ -212,8 +212,8 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
       </CardHeader>
 
       {/* 동적 콘텐츠 영역 */}
-      <CardContent className="flex-1 flex flex-col">
-        <div className="flex-1 min-h-0">
+      <CardContent className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 overflow-y-auto pr-2">
           {/* Level 1: 기본 정보 */}
           {currentLevel === 1 && (
             <div className="space-y-4">
@@ -352,7 +352,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                 <div className="flex items-center gap-2">
                   <ChatBubbleLeftRightIcon className="w-5 h-5 text-purple-500" />
                   <span className="text-base font-medium text-foreground">
-                    통합 생태계 ({product.pricing_integration.integrations.length}개+)
+                    통합 생태계 (200+)
                   </span>
                 </div>
                 <div className="ml-1 grid grid-cols-2 gap-1">
@@ -401,7 +401,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
         </div>
 
         {/* 액션 버튼 영역 - 하단 고정 */}
-        <div className="pt-4 mt-auto border-t">
+        <div className="pt-4 mt-4 border-t flex-shrink-0">
           {/* 레벨 내비게이션 */}
           <div className="flex items-center justify-between mb-3">
             <Button

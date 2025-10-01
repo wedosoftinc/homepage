@@ -56,7 +56,7 @@ export function ProductsSection() {
                 "자산 관리 자동화",
                 "보안 & 모니터링"
             ],
-            link: "/solutions/it-infrastructure"
+            link: "/solutions/infrastructure"
         }
     ]
 
