@@ -93,11 +93,11 @@ export function ProductsSection() {
                                             {solution.icon}
                                         </div>
 
-                                        <CardTitle className="text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                                        <CardTitle className="text-xl md:text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
                                             {solution.title}
                                         </CardTitle>
 
-                                        <CardDescription className="text-muted-foreground leading-relaxed">
+                                        <CardDescription className="text-base text-muted-foreground leading-relaxed">
                                             {solution.description}
                                         </CardDescription>
                                     </CardHeader>
@@ -106,8 +106,8 @@ export function ProductsSection() {
                                         {/* 주요 기능 */}
                                         <div className="space-y-3">
                                             {solution.features.map((feature, featureIndex) => (
-                                                <div key={featureIndex} className="flex items-center gap-3 text-sm">
-                                                    <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                                                <div key={featureIndex} className="flex items-center gap-3 text-base">
+                                                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                                                     <span className="text-foreground">{feature}</span>
                                                 </div>
                                             ))}
@@ -182,10 +182,10 @@ export function ProductsSection() {
                                     >
                                         {/* 상단 텍스트 */}
                                         <div className="pr-2">
-                                            <h3 className="text-lg font-bold mb-4 text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
+                                            <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-sm text-muted-foreground leading-relaxed max-w-[520px]">
+                                            <p className="text-base text-muted-foreground leading-relaxed max-w-[520px]">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -279,13 +279,13 @@ export function ProductsSection() {
                                                 </div>
                                             </div>
                                             <div className="flex-1">
-                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
                                                     컨설팅
                                                 </h3>
-                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                <p className="text-base font-medium text-foreground mb-3 leading-relaxed">
                                                     도입 전에 물어야 할 질문들을, 대신 생각해드립니다.
                                                 </p>
-                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
                                                     우리 팀에 맞는 툴은 뭘까? 예산 안에서 가능한 최선은 뭘까? 업무 흐름과 니즈를 분석해, 실제로 잘 맞는 SaaS 조합을 제안합니다.
                                                 </p>
                                             </div>
@@ -301,13 +301,13 @@ export function ProductsSection() {
                                                 </div>
                                             </div>
                                             <div className="flex-1">
-                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
                                                     구축
                                                 </h3>
-                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                <p className="text-base font-medium text-foreground mb-3 leading-relaxed">
                                                     기술적인 설정은 우리 몫입니다.
                                                 </p>
-                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
                                                     계정 생성, 데이터 마이그레이션, SSO 연동, 자동화 설정 등 빠르고 오류 없이 시작할 수 있도록 환경을 완성해드립니다.
                                                 </p>
                                             </div>
@@ -323,13 +323,13 @@ export function ProductsSection() {
                                                 </div>
                                             </div>
                                             <div className="flex-1">
-                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
                                                     교육
                                                 </h3>
-                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                <p className="text-base font-medium text-foreground mb-3 leading-relaxed">
                                                     잘 도입했다면, 잘 쓰게 만들어야죠.
                                                 </p>
-                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
                                                     관리자와 사용자 대상 맞춤형 교육을 제공하고, 필요하면 영상, 문서, 실습 자료까지 준비해드립니다. 모두가 제대로 쓸 수 있어야 진짜 도입입니다.
                                                 </p>
                                             </div>
@@ -345,13 +345,13 @@ export function ProductsSection() {
                                                 </div>
                                             </div>
                                             <div className="flex-1">
-                                                <h3 className="text-lg font-bold mb-2 text-foreground">
+                                                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
                                                     운영지원
                                                 </h3>
-                                                <p className="text-sm font-medium text-foreground mb-3 leading-relaxed">
+                                                <p className="text-base font-medium text-foreground mb-3 leading-relaxed">
                                                     도입 이후에도 계속 곁에 있습니다.
                                                 </p>
-                                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
                                                     계정 변경, 정책 수정, 오류 대응, 신규 기능 안내까지 운영팀이 없어도 괜찮도록 지속적인 지원 체계를 제공합니다.
                                                 </p>
                                             </div>

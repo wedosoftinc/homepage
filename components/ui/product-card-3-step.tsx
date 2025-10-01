@@ -193,7 +193,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
     <>
       <Card 
         id={product.id} 
-        className="h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden scroll-mt-24"
+        className="min-h-[500px] md:min-h-[600px] lg:min-h-[650px] flex flex-col group hover:shadow-lg transition-all duration-300 relative overflow-hidden scroll-mt-24"
       >
       {/* 단계 표시 배지 */}
       <div className="absolute top-4 right-4 z-10">
@@ -205,7 +205,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
       {/* 헤더 - 고정 */}
       <CardHeader className="pb-4 pr-20">
         <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-xl text-foreground">
+          <h3 className="font-bold text-xl md:text-2xl text-foreground">
             {product.name}
           </h3>
         </div>
@@ -218,7 +218,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           {currentLevel === 1 && (
             <div className="space-y-4">
               <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                <p className="text-sm text-blue-900 dark:text-blue-100 leading-relaxed font-medium">
+                <p className="text-base text-blue-900 dark:text-blue-100 leading-relaxed font-medium">
                   {product.basic_info.description}
                 </p>
               </div>
@@ -226,12 +226,12 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <CheckCircleIcon className="w-4 h-4 text-green-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-foreground">주요 활용 분야</span>
+                    <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-base font-medium text-foreground">주요 활용 분야</span>
                   </div>
                   <div className="ml-1 space-y-1">
                     {product.basic_info.target_users.slice(0, 3).map((user, index) => (
-                      <div key={index} className="text-sm text-muted-foreground">
+                      <div key={index} className="text-base text-muted-foreground">
                         • {user}
                       </div>
                     ))}
@@ -240,17 +240,17 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <CloudIcon className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-foreground">도입 효과</span>
+                    <CloudIcon className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                    <span className="text-base font-medium text-foreground">도입 효과</span>
                   </div>
                   <div className="ml-1 space-y-1">
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-base text-muted-foreground">
                       • 업무 생산성 향상
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-base text-muted-foreground">
                       • 운영 비용 절감
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-base text-muted-foreground">
                       • {product.basic_info.languages}
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               <Separator />
 
               <div>
-                <h4 className="font-semibold text-sm mb-3 text-foreground">
+                <h4 className="font-semibold text-base mb-3 text-foreground">
                   핵심 가치 제안
                 </h4>
                 <div className="grid gap-3">
@@ -269,10 +269,10 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                       <div className="flex items-start gap-2">
                         <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-1.5"></div>
                         <div className="flex-1 min-w-0">
-                          <span className="text-sm text-foreground font-semibold block">
+                          <span className="text-base text-foreground font-semibold block">
                             {feature.title}
                           </span>
-                          <p className="text-xs text-muted-foreground leading-relaxed">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
                             {feature.description}
                           </p>
                         </div>
@@ -287,7 +287,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
           {/* Level 2: 주요 기능 */}
           {currentLevel === 2 && (
             <div className="space-y-4">
-              <div className="grid gap-3 max-h-[380px] overflow-y-auto">
+              <div className="grid gap-3 max-h-[300px] md:max-h-[400px] lg:max-h-[450px] overflow-y-auto">
                 {product.key_features.map((feature, index) => (
                   <div 
                     key={index} 
@@ -299,22 +299,22 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                   >
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <CheckCircleIcon className="w-4 h-4 text-primary" />
+                        <CheckCircleIcon className="w-5 h-5 text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h5 className="font-medium text-sm text-foreground mb-1">
+                        <h5 className="font-medium text-base text-foreground mb-1">
                           {feature.title}
                         </h5>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                           {feature.description}
                         </p>
                       </div>
-                      <ChevronRightIcon className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                      <ChevronRightIcon className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground text-center pt-2">
+              <p className="text-sm text-muted-foreground text-center pt-2">
                 각 기능을 클릭하여 자세한 내용을 확인하세요
               </p>
             </div>
@@ -326,21 +326,21 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               {/* 검증된 도입 성과 */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 mb-3">
-                  <ChartBarIcon className="w-4 h-4 text-blue-500" />
-                  <span className="text-sm font-medium text-foreground">검증된 도입 성과</span>
+                  <ChartBarIcon className="w-5 h-5 text-blue-500" />
+                  <span className="text-base font-medium text-foreground">검증된 도입 성과</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="text-center p-2 bg-muted/50 rounded-lg">
                     <div className="text-lg font-bold text-primary">{successMetrics.companies}</div>
-                    <div className="text-xs text-muted-foreground">도입 기업</div>
+                    <div className="text-sm text-muted-foreground">도입 기업</div>
                   </div>
                   <div className="text-center p-2 bg-muted/50 rounded-lg">
                     <div className="text-lg font-bold text-primary">{successMetrics.metric_value}</div>
-                    <div className="text-xs text-muted-foreground">{successMetrics.metric_label}</div>
+                    <div className="text-sm text-muted-foreground">{successMetrics.metric_label}</div>
                   </div>
                   <div className="text-center p-2 bg-muted/50 rounded-lg">
                     <div className="text-lg font-bold text-primary">{successMetrics.satisfaction}</div>
-                    <div className="text-xs text-muted-foreground">고객 만족도</div>
+                    <div className="text-sm text-muted-foreground">고객 만족도</div>
                   </div>
                 </div>
               </div>
@@ -350,14 +350,14 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               {/* 통합 가능 서비스 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <ChatBubbleLeftRightIcon className="w-4 h-4 text-purple-500" />
-                  <span className="text-sm font-medium text-foreground">
+                  <ChatBubbleLeftRightIcon className="w-5 h-5 text-purple-500" />
+                  <span className="text-base font-medium text-foreground">
                     통합 생태계 ({product.pricing_integration.integrations.length}개+)
                   </span>
                 </div>
                 <div className="ml-1 grid grid-cols-2 gap-1">
                   {product.pricing_integration.integrations.slice(0, 6).map((integration, index) => (
-                    <div key={index} className="text-xs text-muted-foreground">
+                    <div key={index} className="text-sm text-muted-foreground">
                       • {integration}
                     </div>
                   ))}
@@ -369,29 +369,29 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
               {/* 전문 지원 서비스 */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2 mb-2">
-                  <UserGroupIcon className="w-4 h-4 text-green-500" />
-                  <span className="text-sm font-medium text-foreground">전문 지원 서비스</span>
+                  <UserGroupIcon className="w-5 h-5 text-green-500" />
+                  <span className="text-base font-medium text-foreground">전문 지원 서비스</span>
                 </div>
                 <div className="ml-1 space-y-2">
                   <div className="flex items-start gap-2">
-                    <CheckCircleIcon className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-foreground">한국어 전담 지원팀</div>
-                      <div className="text-xs text-muted-foreground">풍부한 경험의 상담사가 기술 지원</div>
+                      <div className="text-base font-medium text-foreground">한국어 전담 지원팀</div>
+                      <div className="text-sm text-muted-foreground">풍부한 경험의 상담사가 기술 지원</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <AcademicCapIcon className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <AcademicCapIcon className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-foreground">온보딩 교육</div>
-                      <div className="text-xs text-muted-foreground">전문가 맞춤 교육 제공</div>
+                      <div className="text-base font-medium text-foreground">온보딩 교육</div>
+                      <div className="text-sm text-muted-foreground">전문가 맞춤 교육 제공</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <ArrowTopRightOnSquareIcon className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                    <ArrowTopRightOnSquareIcon className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-foreground">데이터 마이그레이션</div>
-                      <div className="text-xs text-muted-foreground">안전한 데이터 이전 지원</div>
+                      <div className="text-base font-medium text-foreground">데이터 마이그레이션</div>
+                      <div className="text-sm text-muted-foreground">안전한 데이터 이전 지원</div>
                     </div>
                   </div>
                 </div>
