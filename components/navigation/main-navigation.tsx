@@ -30,25 +30,23 @@ import { SearchWithAutocomplete } from "@/components/navigation/search-with-auto
 export function MainNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
 
-    // 로고 렌더링: CSS로 테마별 로고 전환 (레이아웃 시프트 방지)
+    // 로고 렌더링: 간단하고 일관된 크기 (CSS만 사용)
     const logoComponent = (
-        <div className="relative h-5 md:h-9 w-auto flex items-center">
+        <div className="flex items-center">
             <Image
                 src="/logo-light.webp"
                 alt="WeDoSoft"
-                width={140}
-                height={40}
-                className="h-5 md:h-9 w-auto dark:hidden"
-                style={{ height: "auto" }}
+                width={160}
+                height={45}
+                className="h-8 md:h-10 w-auto dark:hidden"
                 priority
             />
             <Image
                 src="/logo-dark.webp"
                 alt="WeDoSoft"
-                width={140}
-                height={40}
-                className="h-5 md:h-9 w-auto hidden dark:block"
-                style={{ height: "auto" }}
+                width={160}
+                height={45}
+                className="h-8 md:h-10 w-auto hidden dark:block"
                 priority
             />
         </div>
