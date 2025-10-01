@@ -61,11 +61,11 @@ export function ProductsSection() {
     ]
 
     return (
-        <section className="py-20 bg-muted/20">
+        <section className="py-16 md:py-20 bg-muted/20">
             <div className="container">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12 md:mb-16">
                         <h2 className="text-2xl md:text-3xl font-bold mb-6">
                             당신의 비즈니스에
                             <span className="text-primary"> 꼭 맞는 솔루션</span>
@@ -76,7 +76,7 @@ export function ProductsSection() {
                     </div>
 
                     {/* 솔루션 카드 그리드 */}
-                    <div className="grid gap-8 md:grid-cols-3">
+                    <div className="grid gap-6 md:gap-10 md:grid-cols-3">
                         {solutions.map((solution, index) => (
                             <Link 
                                 key={index} 
@@ -130,10 +130,10 @@ export function ProductsSection() {
             </div>
 
             {/* 업계별 글로벌 SaaS 솔루션 포트폴리오 섹션 */}
-            <div className="container pt-20 pb-20">
+            <div className="container pt-16 md:pt-20 pb-16 md:pb-20">
                 <div className="max-w-7xl mx-auto">
                     {/* 섹션 헤더 */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12 md:mb-16">
                         <h3 className="text-2xl md:text-3xl font-bold mb-4">
                             업계별 글로벌 SaaS 솔루션 포트폴리오
                         </h3>
@@ -173,7 +173,7 @@ export function ProductsSection() {
                         ]
 
                         return (
-                            <div className="grid gap-10 md:grid-cols-2">
+                            <div className="grid gap-6 md:gap-10 md:grid-cols-2">
                                 {brandSolutions.map((item, i) => (
                                     <Link
                                         key={i}
@@ -213,11 +213,11 @@ export function ProductsSection() {
             </div>
 
             {/* SaaS 도입부터 운영까지 섹션 - 원본 사이트와 동일 */}
-            <div className="bg-muted/40 py-24">
+            <div className="bg-muted/40 py-16 md:py-20">
                 <div className="container">
                     <div className="max-w-7xl mx-auto">
                         {/* 섹션 헤더 */}
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-12 md:mb-16">
                             <h2 className="text-2xl md:text-3xl font-bold mb-6">
                                 SaaS 도입부터 운영까지
                             </h2>

@@ -28,7 +28,7 @@ import { DashboardCard } from "@/components/dashboard"
 export function HeroSection() {
 
     return (
-        <section className="relative overflow-visible bg-background py-8 sm:py-12">
+        <section className="relative overflow-visible bg-background py-12 sm:py-16 md:py-20">
             {/* 3D 그리드 배경 */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />

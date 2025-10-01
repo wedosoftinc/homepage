@@ -17,11 +17,11 @@ import {
 
 export function CTASection() {
     return (
-        <section className="pb-24 bg-muted/20">
+        <section className="py-16 md:py-20 bg-muted/20">
             <div className="container">
                 <div className="max-w-6xl mx-auto">
                     {/* 메인 CTA */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12 md:mb-16">
                         <BadgeGroup
                             badges={[{ text: "지금 시작하세요", variant: "secondary" }]}
                             layout="horizontal"
