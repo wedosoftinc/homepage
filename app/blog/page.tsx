@@ -29,8 +29,8 @@ export default async function BlogPage({
 
     // 카테고리 필터링 적용
     const allPosts = selectedCategory
-        ? require('@/lib/blog').getPostsByCategory(selectedCategory)
-        : require('@/lib/blog').getAllPosts()
+        ? await require('@/lib/blog').getPostsByCategory(selectedCategory)
+        : await require('@/lib/blog').getAllPosts()
 
     const totalPosts = allPosts.length
     const postsPerPage = 12
@@ -39,7 +39,7 @@ export default async function BlogPage({
     const endIndex = startIndex + postsPerPage
     const posts = allPosts.slice(startIndex, endIndex)
 
-    const categories = getAllCategories()
+    const categories = await getAllCategories()
 
     return (
         <div className="min-h-screen bg-background">

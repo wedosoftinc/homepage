@@ -1,0 +1,157 @@
+/**
+ * Contentful Content Model 자동 생성 스크립트
+ *
+ * 실행 방법:
+ * npx tsx scripts/setup-contentful.ts
+ */
+
+import { createClient } from 'contentful-management'
+import * as dotenv from 'dotenv'
+import { resolve } from 'path'
+
+// 환경 변수 로드
+dotenv.config({ path: resolve(process.cwd(), '.env.local') })
+
+const SPACE_ID = process.env.CONTENTFUL_SPACE_ID!
+const MANAGEMENT_TOKEN = process.env.CONTENTFUL_MANAGEMENT_TOKEN!
+const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || 'master'
+
+async function setupContentModel() {
+  console.log('🚀 Contentful Content Model 생성 시작...\n')
+
+  // 1. Management Client 생성
+  const client = createClient({
+    accessToken: MANAGEMENT_TOKEN,
+  })
+
+  try {
+    // 2. Space와 Environment 가져오기
+    const space = await client.getSpace(SPACE_ID)
+    console.log(`✅ Space 연결: ${space.name}`)
+
+    const environment = await space.getEnvironment(ENVIRONMENT)
+    console.log(`✅ Environment 연결: ${ENVIRONMENT}\n`)
+
+    // 3. Blog Post Content Type 생성
+    console.log('📝 Blog Post Content Type 생성 중...')
+
+    const blogPostContentType = await environment.createContentTypeWithId('blogPost', {
+      name: 'Blog Post',
+      displayField: 'title',
+      description: '블로그 포스트',
+      fields: [
+        {
+          id: 'title',
+          name: '제목',
+          type: 'Text',
+          required: true,
+          localized: false,
+          validations: [
+            {
+              size: { min: 1, max: 200 }
+            }
+          ]
+        },
+        {
+          id: 'slug',
+          name: '슬러그',
+          type: 'Symbol',
+          required: true,
+          localized: false,
+          validations: [
+            {
+              unique: true
+            },
+            {
+              regexp: {
+                pattern: '^[a-zA-Z0-9-_]+$'
+              }
+            }
+          ]
+        },
+        {
+          id: 'content',
+          name: '본문',
+          type: 'Text',
+          required: true,
+          localized: false
+        },
+        {
+          id: 'publishedAt',
+          name: '발행일',
+          type: 'Date',
+          required: true,
+          localized: false
+        },
+        {
+          id: 'author',
+          name: '작성자',
+          type: 'Symbol',
+          required: false,
+          localized: false
+        },
+        {
+          id: 'thumbnail',
+          name: '썸네일 URL',
+          type: 'Symbol',
+          required: false,
+          localized: false
+        },
+        {
+          id: 'originalCategory',
+          name: '원본 카테고리',
+          type: 'Symbol',
+          required: false,
+          localized: false
+        },
+        {
+          id: 'categories',
+          name: '카테고리',
+          type: 'Array',
+          required: false,
+          localized: false,
+          items: {
+            type: 'Symbol',
+            validations: []
+          }
+        },
+        {
+          id: 'originalId',
+          name: '원본 ID',
+          type: 'Symbol',
+          required: false,
+          localized: false
+        }
+      ]
+    })
+
+    console.log('✅ Blog Post Content Type 생성 완료')
+
+    // 4. Content Type 발행
+    console.log('📤 Content Type 발행 중...')
+    await blogPostContentType.publish()
+    console.log('✅ Content Type 발행 완료\n')
+
+    console.log('🎉 Contentful Content Model 설정 완료!')
+    console.log('\n다음 단계:')
+    console.log('1. Contentful 웹 UI에서 Content Model 확인')
+    console.log('   https://app.contentful.com/spaces/' + SPACE_ID + '/content_types')
+    console.log('2. 마이그레이션 스크립트 실행')
+    console.log('   npx tsx scripts/migrate-to-contentful.ts\n')
+
+  } catch (error: any) {
+    if (error.message?.includes('already exists')) {
+      console.log('ℹ️  Content Type이 이미 존재합니다.')
+      console.log('   기존 Content Type을 사용하거나, Contentful UI에서 삭제 후 다시 실행하세요.')
+    } else {
+      console.error('❌ 오류 발생:', error.message)
+      throw error
+    }
+  }
+}
+
+// 실행
+setupContentModel().catch((error) => {
+  console.error('스크립트 실행 실패:', error)
+  process.exit(1)
+})

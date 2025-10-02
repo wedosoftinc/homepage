@@ -1,0 +1,224 @@
+/**
+ * MDX 파일을 Contentful로 마이그레이션하는 스크립트
+ *
+ * 실행 방법:
+ * npx tsx scripts/migrate-to-contentful.ts
+ *
+ * 옵션:
+ * --dry-run : 실제 업로드 없이 미리보기
+ * --limit=10 : 처음 N개만 마이그레이션
+ */
+
+import { createClient } from 'contentful-management'
+import * as dotenv from 'dotenv'
+import { resolve } from 'path'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+
+// 환경 변수 로드
+dotenv.config({ path: resolve(process.cwd(), '.env.local') })
+
+const SPACE_ID = process.env.CONTENTFUL_SPACE_ID!
+const MANAGEMENT_TOKEN = process.env.CONTENTFUL_MANAGEMENT_TOKEN!
+const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || 'master'
+
+// CLI 인자 파싱
+const args = process.argv.slice(2)
+const isDryRun = args.includes('--dry-run')
+const limitArg = args.find((arg) => arg.startsWith('--limit='))
+const limit = limitArg ? parseInt(limitArg.split('=')[1]) : undefined
+
+interface BlogPost {
+  slug: string
+  title: string
+  content: string
+  publishedAt: string
+  author?: string
+  thumbnail?: string | null
+  originalCategory?: string
+  categories?: string[]
+  originalId?: string
+  filePath: string
+}
+
+// 날짜 문자열을 ISO 8601 형식으로 변환
+function parseDate(dateStr: string): string {
+  if (!dateStr) return new Date().toISOString()
+
+  // 이미 ISO 형식인 경우
+  if (dateStr.includes('T') && dateStr.includes('Z')) {
+    return dateStr
+  }
+
+  // "2024-11-01 18:00:20" 형식 처리
+  const parsed = new Date(dateStr)
+  if (!isNaN(parsed.getTime())) {
+    return parsed.toISOString()
+  }
+
+  // 파싱 실패 시 현재 시간
+  return new Date().toISOString()
+}
+
+// MDX 파일 읽기 및 파싱
+function readMdxFiles(dir: string): BlogPost[] {
+  const files = fs.readdirSync(dir)
+  const posts: BlogPost[] = []
+
+  for (const file of files) {
+    if (!file.endsWith('.mdx') && !file.endsWith('.md')) continue
+
+    const filePath = path.join(dir, file)
+    const fileContent = fs.readFileSync(filePath, 'utf-8')
+    const { data, content } = matter(fileContent)
+
+    posts.push({
+      slug: data.slug || path.basename(file, path.extname(file)),
+      title: data.title || 'Untitled',
+      content: content.trim(),
+      publishedAt: parseDate(data.publishedAt),
+      author: data.author || 'We Do Soft',
+      thumbnail: data.thumbnail || null,
+      originalCategory: data.originalCategory || '',
+      categories: data.categories || [],
+      originalId: data.meta?.originalId || data.slug,
+      filePath,
+    })
+  }
+
+  return posts
+}
+
+// Contentful에 포스트 업로드
+async function uploadToContentful(posts: BlogPost[]) {
+  const client = createClient({
+    accessToken: MANAGEMENT_TOKEN,
+  })
+
+  const space = await client.getSpace(SPACE_ID)
+  const environment = await space.getEnvironment(ENVIRONMENT)
+
+  let successCount = 0
+  let skipCount = 0
+  let errorCount = 0
+
+  for (const [index, post] of posts.entries()) {
+    try {
+      console.log(`\n[${index + 1}/${posts.length}] 처리 중: ${post.title}`)
+      console.log(`  Slug: ${post.slug}`)
+      console.log(`  파일: ${path.basename(post.filePath)}`)
+
+      if (isDryRun) {
+        console.log('  ✓ [DRY RUN] 업로드 스킵')
+        continue
+      }
+
+      // 기존 엔트리 확인 (slug로 검색)
+      const existingEntries = await environment.getEntries({
+        content_type: 'blogPost',
+        'fields.slug': post.slug,
+        limit: 1,
+      })
+
+      if (existingEntries.items.length > 0) {
+        console.log('  ⚠️  이미 존재하는 포스트 (스킵)')
+        skipCount++
+        continue
+      }
+
+      // 새 엔트리 생성
+      const entry = await environment.createEntry('blogPost', {
+        fields: {
+          title: { 'en-US': post.title },
+          slug: { 'en-US': post.slug },
+          content: { 'en-US': post.content },
+          publishedAt: { 'en-US': post.publishedAt },
+          author: { 'en-US': post.author || 'We Do Soft' },
+          thumbnail: post.thumbnail ? { 'en-US': post.thumbnail } : undefined,
+          originalCategory: post.originalCategory
+            ? { 'en-US': post.originalCategory }
+            : undefined,
+          categories: post.categories?.length
+            ? { 'en-US': post.categories }
+            : undefined,
+          originalId: post.originalId ? { 'en-US': post.originalId } : undefined,
+        },
+      })
+
+      // 발행
+      await entry.publish()
+      console.log('  ✅ 업로드 및 발행 완료')
+      successCount++
+
+      // Rate limit 방지 (1초 대기)
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    } catch (error: any) {
+      console.error(`  ❌ 오류: ${error.message}`)
+      errorCount++
+    }
+  }
+
+  return { successCount, skipCount, errorCount }
+}
+
+// 메인 실행
+async function main() {
+  console.log('🚀 MDX → Contentful 마이그레이션 시작\n')
+  console.log('설정:')
+  console.log(`  Space ID: ${SPACE_ID}`)
+  console.log(`  Environment: ${ENVIRONMENT}`)
+  console.log(`  Dry Run: ${isDryRun ? 'YES' : 'NO'}`)
+  console.log(`  Limit: ${limit || '전체'}`)
+  console.log('')
+
+  // 1. MDX 파일 읽기
+  const contentDir = resolve(process.cwd(), 'content/blog')
+  console.log(`📂 디렉토리: ${contentDir}`)
+
+  if (!fs.existsSync(contentDir)) {
+    console.error('❌ content/blog 디렉토리를 찾을 수 없습니다.')
+    process.exit(1)
+  }
+
+  let posts = readMdxFiles(contentDir)
+  console.log(`📝 발견된 포스트: ${posts.length}개\n`)
+
+  // Limit 적용
+  if (limit) {
+    posts = posts.slice(0, limit)
+    console.log(`⚡ 처음 ${limit}개만 처리합니다.\n`)
+  }
+
+  if (posts.length === 0) {
+    console.log('처리할 포스트가 없습니다.')
+    return
+  }
+
+  // 2. Contentful 업로드
+  const { successCount, skipCount, errorCount } = await uploadToContentful(posts)
+
+  // 3. 결과 요약
+  console.log('\n' + '='.repeat(50))
+  console.log('📊 마이그레이션 완료')
+  console.log('='.repeat(50))
+  console.log(`✅ 성공: ${successCount}개`)
+  console.log(`⚠️  스킵: ${skipCount}개`)
+  console.log(`❌ 실패: ${errorCount}개`)
+  console.log(`📦 전체: ${posts.length}개`)
+  console.log('='.repeat(50))
+
+  if (!isDryRun) {
+    console.log('\n다음 단계:')
+    console.log('1. Contentful 웹 UI에서 확인')
+    console.log(`   https://app.contentful.com/spaces/${SPACE_ID}/entries`)
+    console.log('2. 블로그 페이지 API 연동')
+    console.log('   app/blog/page.tsx 수정')
+  }
+}
+
+// 실행
+main().catch((error) => {
+  console.error('스크립트 실행 실패:', error)
+  process.exit(1)
+})
