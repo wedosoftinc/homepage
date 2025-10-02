@@ -117,9 +117,12 @@ export function Footer() {
                                 >
                                     문서 포털
                                 </a>
-                                <span className="block text-base text-muted-foreground/50 cursor-not-allowed">
-                                    블로그 (준비중)
-                                </span>
+                                <Link
+                                    href="/blog"
+                                    className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                >
+                                    블로그
+                                </Link>
                                 <a
                                     href="https://developers.freshworks.com/"
                                     target="_blank"

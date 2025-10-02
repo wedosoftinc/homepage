@@ -284,7 +284,7 @@ export default function CompanyPage() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 transition-colors"
               >
-                무료 상담 신청
+                상담 신청
                 <TrendingUp className="ml-2 h-4 w-4" />
               </a>
               <a

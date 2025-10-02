@@ -1,0 +1,27 @@
+﻿제품명,플랜명,월간 가격,연간 가격,주요 기능,사용자 수
+Freshdesk,Free,$0,$0 (연간 결제),"티켓팅, 지식베이스, 사전 구축 리포트, 24x5 지원",최대 2명 에이전트
+Freshdesk,Growth,$18,$12 (연간 결제),"티켓팅, 공유 받은편지함, 스레드/작업, 고객 포털, 다국어 대화",에이전트당
+Freshdesk,Pro,$59,$35 (연간 결제),"Growth 기능 + 5,000 협력자, Freddy AI Agent (500세션 포함)",에이전트당
+Freshdesk,Pro + AI Copilot Bundle,$70,$58 (연간 결제),"Pro 기능 + Freddy AI Copilot, Freddy AI Insights 포함",에이전트당
+Freshdesk,Enterprise,$72,$60 (연간 결제),"Pro 기능 + 고급 보안, 감사 로그, 승인 워크플로",에이전트당
+Freshdesk Omni,Growth,$35/월 (월간결제),$29 (연간 결제),"옴니채널 참여, 지능형 챗봇, 웹/SMS/메시징/이메일",에이전트당
+Freshdesk Omni,Pro,$83/월 (월간결제),$69 (연간 결제),"Growth 기능 + 맞춤형 지원 포털, 맞춤 객체, 고급 티켓팅, 맞춤 리포트",에이전트당
+Freshdesk Omni,Enterprise,$131/월 (월간결제),$109 (연간 결제),"Pro 기능 + 감사 로그, 승인 워크플로, 스킬 기반 할당, 추가 보안 기능",에이전트당
+Freshchat,Free,$0,$0 (Free forever),"웹사이트 라이브 채팅, 이메일, 통합 에이전트 작업공간",최대 10명 에이전트
+Freshchat,Growth,$23/월 (월간결제),$19 (연간 결제),"Free 기능 + WhatsApp, Facebook Messenger, 실시간 대시보드, SMS",에이전트당
+Freshchat,Pro,$59/월 (월간결제),$49 (연간 결제),"Growth 기능 + 맞춤 대시보드, 효과적인 라우팅, 다중 SLA 정책",에이전트당
+Freshchat,Enterprise,$95/월 (월간결제),$79 (연간 결제),"Pro 기능 + 스킬 기반 할당, 추가 보안 기능",에이전트당
+Freshcaller,Free,$0 + 통화료,$0 + 통화료,"무료 분 없음, 로컬/수신자 부담 번호 구매, 인바운드 발신자 ID, 데스크톱 알림, 통화 메모",에이전트당 + 통화료
+Freshcaller,Growth,$18/월 (월간결제),$15 + 통화료 (연간 결제),"Free 기능 + 월 2,000분 포함, 번호 포팅, 기본 통화 대기열, 음성메일, 통화 녹음",에이전트당 + 통화료
+Freshcaller,Pro,$47/월 (월간결제),$39 + 통화료 (연간 결제),"Growth 기능 + 월 3,000분 포함, 휴일 라우팅, 고급 통화 지표, 통화 감시, IVR",에이전트당 + 통화료
+Freshcaller,Enterprise,$83/월 (월간결제),$69 + 통화료 (연간 결제),"Pro 기능 + 월 5,000분 포함, 음성 지원 IVR, 포기된 통화 지표, 서비스 수준 모니터링",에이전트당 + 통화료
+Freshservice,Starter,$23/월 (월간결제),$19 (연간 결제),"인시던트 관리(티켓팅), 기본 자산 관리, 기본 보고서, 24x5 지원",에이전트당
+Freshservice,Growth,$59/월 (월간결제),$49 (연간 결제),"Starter 기능 + 변경 관리, 문제 관리, 기본 워크플로, 맞춤 필드",에이전트당
+Freshservice,Pro,$119/월 (월간결제),$99 (연간 결제),"Growth 기능 + 고급 워크플로, 맞춤 보고서, 자동화, SLA 관리, 자산 관리",에이전트당
+Freshservice,Enterprise,Custom pricing,Custom pricing,"Pro 기능 + 감사 로그, 고급 보안, 승인 워크플로, 스킬 기반 라우팅, Freddy AI Agent (1,200 세션/년)",에이전트당
+Freshsales,Free,$0,$0 (최대 3명 사용자),"기본 CRM, 연락처/거래/계정 관리, 이메일 템플릿, 모바일 앱, 24x5 지원",최대 3명 사용자
+Freshsales,Growth,$11/월 (월간결제),$9 (연간 결제),"칸반 뷰, 연락처 라이프사이클, 내장 채팅/이메일/전화, 제품 카탈로그, 기본 워크플로",사용자당
+Freshsales,Pro,$47/월 (월간결제),$39 (연간 결제),"Growth 기능 + Freddy AI 연락처 스코어링, 판매 시퀀스, Freddy AI 판매 이메일, 고급 워크플로, 영역 관리",사용자당
+Freshsales,Enterprise,$71/월 (월간결제),$59 (연간 결제),"Pro 기능 + 필드 레벨 권한, 맞춤 모듈, Freddy AI 예측 인사이트, 샌드박스, 감사 로그",사용자당
+Freddy AI,Copilot (월간),$35,$29 (연간 결제),"티켓 요약 생성기, 도움말 문서 생성기, 응답 제안, 대화형 서비스 데스크 작업, 톤 향상기, 텍스트 향상기",에이전트당
+Freddy AI,Agent (세션),"$100 per 1,000 sessions","$80 per 1,000 sessions","완전 자동화된 티켓 해결, 이메일/음성/채팅 봇 응답, 24/7 고객 참여",세션당 (Pro/Enterprise 플랜에서 500 세션 무료 포함)

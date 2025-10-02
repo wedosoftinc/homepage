@@ -75,26 +75,16 @@ export async function POST(request: NextRequest) {
             try {
                 const transporter = createTransporter()
 
-                // 고객에게 견적서 전송 (HTML)
-                console.log('Sending email to customer...')
+                // 고객에게 견적서 전송 (HTML) + BCC로 내부 팀에도 전송
+                console.log('Sending email to customer with BCC to internal team...')
                 await transporter.sendMail({
                     from: `"위두소프트" <${process.env.GMAIL_USER}>`,
                     to: validatedData.email,
+                    bcc: 'support@wedosoft.net', // 내부 팀에 숨은참조로 전송
                     subject: validatedData.subject,
                     html: validatedData.message, // HTML 콘텐츠 직접 사용
                 })
-                console.log('Customer email sent successfully')
-
-                // 내부 팀에도 알림 (HTML)
-                console.log('Sending internal notification...')
-                await transporter.sendMail({
-                    from: `"위두소프트 견적 시스템" <${process.env.GMAIL_USER}>`,
-                    to: process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER,
-                    subject: `[견적 요청] ${validatedData.email}`,
-                    html: validatedData.message, // 동일한 HTML 견적서 전송
-                    replyTo: validatedData.email,
-                })
-                console.log('Internal notification sent successfully')
+                console.log('Customer email sent successfully (with BCC to support@wedosoft.net)')
 
                 return NextResponse.json({
                     success: true,

@@ -28,155 +28,169 @@ export default function QuotePreviewPage() {
   })
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f3f4f6', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '750px', margin: '0 auto', marginBottom: '20px', padding: '20px', backgroundColor: 'white', borderRadius: '8px' }}>
-        <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px', color: '#111827' }}>견적서 이메일 미리보기</h1>
-        <p style={{ color: '#6b7280', marginBottom: '0' }}>실제 고객에게 전송되는 이메일 디자인입니다.</p>
+    <div style={{ padding: '20px', backgroundColor: '#fafafa', minHeight: '100vh' }}>
+      <div style={{ maxWidth: '750px', margin: '0 auto', marginBottom: '20px', padding: '20px', backgroundColor: 'white', border: '1px solid #e5e7eb', borderRadius: '8px' }}>
+        <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px', color: '#0a0a0a' }}>견적서 이메일 미리보기</h1>
+        <p style={{ color: '#737373', marginBottom: '0' }}>실제 고객에게 전송되는 이메일 디자인입니다.</p>
       </div>
 
       {/* 실제 이메일 컨텐츠 - DOCTYPE 제거 */}
       <div dangerouslySetInnerHTML={{ __html: `
     <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Pretendard', sans-serif; 
-            line-height: 1.6; 
-            color: #1f2937; 
-            background-color: #f9fafb;
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: hsl(222, 84%, 5%);
+            background-color: #ffffff;
             margin: 0;
             padding: 0;
         }
-        .container { 
-            max-width: 750px; 
-            margin: 40px auto; 
+        .container {
+            max-width: 750px;
+            margin: 40px auto;
             background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid hsl(214, 32%, 91%);
             margin-bottom: 40px;
         }
-        .header { 
-            background: #ffffff; 
-            border-bottom: 2px solid #111827;
+        .header {
+            background: #ffffff;
+            border-bottom: 2px solid #3284D6;
             padding: 35px 30px 25px 30px;
         }
-        .header h1 { 
-            margin: 0 0 6px 0; 
-            font-size: 28px; 
+        .header h1 {
+            margin: 0 0 6px 0;
+            font-size: 28px;
             font-weight: 700;
-            color: #111827;
+            color: hsl(222, 84%, 5%);
             letter-spacing: -0.5px;
         }
-        .header p { 
-            margin: 0; 
-            color: #6b7280;
+        .header p {
+            margin: 0;
+            color: hsl(215, 20%, 35%);
             font-size: 14px;
             font-weight: 500;
         }
-        .content { 
-            background: #ffffff; 
-            padding: 25px 30px; 
+        .content {
+            background: #ffffff;
+            padding: 25px 30px;
         }
-        .info-box { 
-            background: #f9fafb; 
-            border: 1px solid #e5e7eb;
-            padding: 16px 20px; 
-            margin: 0 0 25px 0; 
+        .info-box {
+            background: hsl(210, 40%, 96%);
+            border: 1px solid hsl(214, 32%, 91%);
+            padding: 16px 20px;
+            margin: 0 0 25px 0;
         }
-        .info-row { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 8px 0; 
-            border-bottom: 1px solid #e5e7eb; 
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid hsl(214, 32%, 91%);
         }
         .info-row:last-child { border-bottom: none; }
-        .info-row .label { 
-            font-weight: 600; 
-            color: #374151;
+        .info-row .label {
+            font-weight: 600;
+            color: hsl(215, 20%, 35%);
             font-size: 14px;
             width: 28%;
             flex-shrink: 0;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
-        .info-row .value { 
-            color: #111827; 
+        .info-row .value {
+            color: hsl(222, 84%, 5%);
             text-align: right;
             font-size: 14px;
             width: 72%;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
         .section-title {
             font-size: 16px;
             font-weight: 700;
-            color: #111827;
+            color: hsl(222, 84%, 5%);
             margin: 25px 0 12px 0;
             padding-bottom: 8px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 2px solid #3284D6;
         }
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin: 12px 0 20px 0; 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 20px 0;
         }
-        th { 
-            background: #f9fafb; 
-            padding: 10px 15px; 
-            text-align: left; 
-            font-weight: 600; 
-            color: #374151;
+        th {
+            background: hsl(210, 40%, 96%);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: hsl(215, 20%, 35%);
             font-size: 13px;
-            border-bottom: 2px solid #e5e7eb;
+            border-top: 1px solid hsl(214, 32%, 91%);
+            border-bottom: 1px solid hsl(214, 32%, 91%);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            vertical-align: middle;
         }
-        td { 
-            padding: 10px 15px; 
-            border-bottom: 1px solid #f3f4f6;
+        th:last-child {
+            text-align: right;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid hsl(210, 40%, 94%);
             font-size: 14px;
-            color: #1f2937;
+            color: hsl(222, 84%, 5%);
+            vertical-align: middle;
         }
-        .price-cell { 
-            text-align: right; 
-            font-weight: 600; 
-            color: #111827;
-            font-family: 'SF Mono', 'Monaco', monospace;
+        .price-cell {
+            text-align: right;
+            font-weight: 600;
+            color: hsl(222, 84%, 5%);
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
         }
-        .total-row { 
-            background: #f9fafb; 
-            font-weight: 700; 
-            font-size: 15px; 
+        .total-row {
+            background: hsl(210, 40%, 96%);
+            font-weight: 700;
+            font-size: 15px;
         }
-        .total-row td { 
-            border-top: 2px solid #d1d5db; 
-            border-bottom: 2px solid #d1d5db;
-            padding: 12px 15px; 
-            color: #111827;
+        .total-row td {
+            border-top: 2px solid #3284D6;
+            border-bottom: 1px solid hsl(214, 32%, 91%);
+            padding: 14px 15px;
+            color: hsl(222, 84%, 5%);
         }
-        .footer { 
-            background: #f9fafb; 
-            padding: 20px 30px; 
-            text-align: center; 
-            border-top: 1px solid #e5e7eb;
+        .footer {
+            background: #ffffff;
+            padding: 25px 30px;
+            text-align: center;
+            border-top: 2px solid hsl(214, 32%, 91%);
         }
-        .footer p { 
-            margin: 4px 0; 
-            font-size: 12px; 
-            color: #6b7280;
-            line-height: 1.4;
+        .footer p {
+            margin: 4px 0;
+            font-size: 12px;
+            color: hsl(215, 20%, 35%);
+            line-height: 1.5;
         }
         .footer strong {
-            color: #111827;
+            color: hsl(222, 84%, 5%);
             font-weight: 600;
             font-size: 13px;
         }
-        .discount-badge { 
-            background: #111827; 
-            color: #ffffff; 
-            padding: 4px 10px; 
-            border-radius: 3px; 
-            font-size: 11px; 
+        .discount-badge {
+            background: #3284D6;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .note-box {
-            background: #f9fafb;
-            border-left: 3px solid #111827;
+            background: hsl(210, 40%, 96%);
+            border-left: 3px solid #3284D6;
             padding: 14px 18px;
             margin: 20px 0 0 0;
         }
@@ -184,12 +198,12 @@ export default function QuotePreviewPage() {
             margin: 0 0 6px 0;
             font-size: 14px;
             font-weight: 600;
-            color: #111827;
+            color: hsl(222, 84%, 5%);
         }
         .note-box p {
             margin: 0;
             font-size: 13px;
-            color: #4b5563;
+            color: hsl(215, 20%, 35%);
             line-height: 1.7;
         }
         .note-box ul {
@@ -198,7 +212,7 @@ export default function QuotePreviewPage() {
         }
         .note-box li {
             margin: 3px 0;
-            color: #4b5563;
+            color: hsl(215, 20%, 35%);
             font-size: 12px;
             line-height: 1.5;
         }

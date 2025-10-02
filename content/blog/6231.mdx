@@ -1,0 +1,249 @@
+---
+title: "Freshchat-카카오톡 연동 개발 완료"
+slug: "6231"
+publishedAt: "2023-05-31 11:24:05"
+author: "We Do Soft"
+thumbnail: "/blog/images/post-6231-1759372077486-hrzyke.png"
+originalCategory: "Freshchat"
+categories: []
+meta:
+  originalId: "6231"
+---
+
+최근에 Freshchat과 카카오톡 연동이 개발 완료 되었습니다. Freshchat용 카카오톡 앱을 사용하면 고객 서비스 담당자가 카카오톡을 통해 고객과 소통할 수 있습니다.
+
+***카카오톡 비즈니스 채널을 개설하여 Freshdesk omnichannel에서 이용해보세요!***
+
+Freshdesk Omnichannel 평가판 신청하기
+***특징**
+
+아래 표는 지원되는 모든 메시지 유형, 자동화, 구조화된 메시지 형식, 메시지 이벤트 및 소비자 프로필에 대한 개요를 제공합니다. 
+
+**카테고리**
+**포맷**
+**메세지 방향**
+**지원 여부**
+
+메세지 유형
+Text
+Incoming
+Yes
+
+Outgoing
+Yes
+
+Image
+Incoming
+Yes
+
+Outgoing
+Yes
+
+Video
+Incoming
+TBD
+
+Outgoing
+TBD
+
+Audio
+Incoming
+TBD
+
+Outgoing
+TBD
+
+Files
+Incoming
+TBD
+
+Outgoing
+TBD
+
+Emoji
+Incoming
+TBD
+
+Outgoing
+TBD
+
+GIFs
+Incoming
+TBD
+
+Outgoing
+TBD
+
+Stickers
+Incoming
+No
+
+Outgoing
+No
+
+자동화
+Bots
+
+No
+
+구조화 된 메세지 형식
+Articles
+Bot to user
+No
+
+Carousel
+Bot to user
+No
+
+Buttons
+Bot to user
+No
+
+Dropdown List
+Bot to user
+No
+
+메시지 이벤트
+Delivered
+Incoming
+No
+
+Outgoing
+No
+
+Read
+Incoming
+No
+
+Outgoing
+No
+
+Typing
+Incoming
+No
+
+Outgoing
+No
+
+사용자 프로필
+User Name
+No
+
+User Image
+
+No
+
+***구성**
+
+**비즈니스 채널**
+
+카카오 비즈니스를 이용하기 위해서는 카카오 비즈니스 계정이 필요합니다. 다음 단계에 따라 비즈니스 채널을 만들어보세요!
+
+1.  [카카오 for Business 가입 페이지](https://accounts.kakao.com/login/kakaoforbusiness)로  이동하여  가입합니다. 채널을 만들기 전에 개인 카카오톡 계정이 있어야 합니다  . 
+
+![](/blog/images/post-6231-1759372077486-hrzyke.png)
+
+2.  채널의 세부 정보를 입력하고 고유한 검색 ID를 만듭니다.
+
+![](/blog/images/post-6231-1759372077706-r0tsp2.png)
+
+![](/blog/images/post-6231-1759372077947-vike3n.png)
+
+채널에 표시된 정보가 문서의 정보와 일치하는지 확인하세요!  그렇지 않으면 신청이 거부될 수 있습니다. 승인에는 일반적으로 영업일 기준 3~5일이 소요되며 세부 정보는 등록된 이메일 주소로 전송됩니다. 
+
+**비즈니스 메시지 채널 등록**
+
+발신 프로필 키(sender_key)를 받으려면 발신 프로필을 등록해야 합니다. 다음 연동은 아래 내용을 참고해주세요.
+
+![](/blog/images/post-6231-1759372078202-ho2zgb.png)
+
+![](/blog/images/post-6231-1759372078434-z0nw85.png)
+
+![](/blog/images/post-6231-1759372078699-m03d8t.png)
+
+등록이 완료되면 카카오에 확인 요청을 제출해야 합니다.
+
+![](/blog/images/post-6231-1759372078934-ngh9co.png)
+
+템플릿이 확인되면 발신 프로필 키 및 템플릿 코드와의 통합을 테스트할 수 있습니다. 
+
+![](/blog/images/post-6231-1759372079206-3gtzwd.png)
+
+앱을 구성하는 동안 설치 매개변수를 입력할 수 있도록 다음 자격 증명을 가까이에 두십시오. 
+
+프로필 이름
+예: 프로필 이름
+
+UUID
+예: @yourchannelname
+
+Sender_key
+예: 3fd538ef7218a14a63e51ba47e83c76e1ff523dd
+
+클라이언트 ID
+예: cFUbwXGTIfLLesd4
+
+클라이언트 비밀
+예 : BRUlWlSJXi
+
+**Freshchat 카카오 앱 설치**
+
+[Freshworks 마켓플레이스](https://www.freshworks.com/apps/freshchat/kakaotalk/)에서 앱을 설치하면  앱 사용을 시작하기 위해 자격 증명을 입력해야 하는 설치 페이지로 이동합니다. 이 설치 페이지는 3단계로 나뉩니다.
+
+1단계-Freshchat 자격 증명 입력
+
+2단계-KakaoTalk 자격 증명 입력
+
+3단계-설치를 진행 전 Freshchat 채널 및 그룹 선택
+
+**설치를 위한 Freshchat 자격 증명 페이지**** **
+
+Freshchat 구성 페이지에서 API 키 및 앱 ID와 함께 지정된 형식으로 Freshchat 도메인 주소를 입력해야 합니다. 
+
+관리자 설정-&gt;채팅 채널-&gt;모바일 SDK로 이동하여 앱 ID를 찾을 수 있습니다.
+
+![](/blog/images/post-6231-1759372079424-aeizg8.png)
+
+![](/blog/images/post-6231-1759372079701-zu53rv.png)
+
+**설치를 위한 카카오톡 자격 증명 페이지:**
+
+카카오톡 채널을 연결하려면 아래 표와 같이 채널 등록 시 받은 자격 증명을 입력해야 합니다.
+
+**IMPARAT**
+**Kakao Param**
+**설명**
+
+카카오_클라이언트_ID
+HT-클라이언트-Id
+카카오 클라이언트용 아이디입니다. 나: IA2drtaL5KP3ezci
+
+카카오_클라이언트_시크릿
+HT-클라이언트-비밀
+카카오 클라이언트의 비밀. 예: JT7zqnVY6I
+
+카카오_계정_아이디
+UUID
+카카오의 비즈니스 채널 ID입니다. 예: @10. 
+카카오 비즈니스 계정 채널을 설정할 때 기업이 스스로 선택할 수 있는 아이디입니다.
+
+Cocoa_Sender_Key
+Sender_key
+카카오채널 채팅 주체/사용자의 아이디입니다.
+예: 5759a63c620431c819b3987029b9cf56adb7d250
+
+![](/blog/images/post-6231-1759372079927-m1z1eo.png)
+
+**목록에서 채널 및 그룹을 선택합니다.**
+
+다음 단계에서 Freshchat 주제를 선택하여 카카오의 모든 대화를 라우팅할 수 있습니다.
+
+![](/blog/images/post-6231-1759372080143-6md7hk.png)
+
+설치 버튼을 클릭하여 카카오톡 연동을 시작하세요.
+
+**가격**
+
+*카카오톡 가격 정보는 헬프데스크로 문의주세요! *
+
+T : 02-2135-3071 / W : support.wedosoft.net / E : support@wedosoft.net

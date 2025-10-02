@@ -1,150 +1,173 @@
 import { Metadata } from 'next'
 import { MainNavigation } from '@/components/navigation/main-navigation'
 import { Footer } from '@/components/layout/footer'
-import { Button } from '@/components/ui/button'
+import { PageHero } from '@/components/sections/page-hero'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { 
-    RocketLaunchIcon as Rocket,
-    EnvelopeIcon as Mail,
-    BellIcon as Bell,
-    ClockIcon as Clock,
-    DocumentTextIcon as FileText
-} from '@heroicons/react/24/outline'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
+import { getPaginatedPosts, getAllCategories, BlogPost } from '@/lib/blog'
+import { format } from 'date-fns'
+import { ko } from 'date-fns/locale'
+import { ChevronLeftIcon, ChevronRightIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-    title: '블로그 | 위두소프트 - SaaS 인사이트 & 업계 동향',
-    description: 'SaaS 도입 성공 사례, 업계 트렌드, 실무 노하우를 공유하는 위두소프트 블로그입니다.',
+    title: '블로그 | 위두소프트',
+    description: 'SaaS 솔루션과 디지털 전환에 대한 인사이트를 공유합니다.',
     keywords: 'SaaS, 디지털전환, Freshworks, Google Workspace, Monday.com, 기업솔루션',
 }
 
-export default function BlogPage() {
+export default async function BlogPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ page?: string; category?: string }>
+}) {
+    const params = await searchParams
+    const currentPage = Number(params.page) || 1
+    const selectedCategory = params.category || null
+
+    // 카테고리 필터링 적용
+    const allPosts = selectedCategory
+        ? require('@/lib/blog').getPostsByCategory(selectedCategory)
+        : require('@/lib/blog').getAllPosts()
+
+    const totalPosts = allPosts.length
+    const postsPerPage = 12
+    const totalPages = Math.ceil(totalPosts / postsPerPage)
+    const startIndex = (currentPage - 1) * postsPerPage
+    const endIndex = startIndex + postsPerPage
+    const posts = allPosts.slice(startIndex, endIndex)
+
+    const categories = getAllCategories()
+
     return (
         <div className="min-h-screen bg-background">
             <MainNavigation />
-            <main className="container py-16">
-                {/* Hero Section */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
-                        <Rocket className="h-4 w-4" />
-                        곧 오픈됩니다
+
+            <PageHero
+                title="블로그"
+                subtitle="SaaS 솔루션과 디지털 전환에 대한 인사이트를 공유합니다"
+            />
+
+            <main className="container pb-16">
+                {/* Categories - 세련된 탭 스타일 */}
+                {categories.length > 0 && (
+                    <div className="mb-12 overflow-x-auto">
+                        <div className="flex gap-2 pb-2 min-w-max">
+                            <Link href="/blog">
+                                <Button
+                                    variant={selectedCategory === null ? "default" : "ghost"}
+                                    size="sm"
+                                    className="rounded-full"
+                                >
+                                    전체
+                                </Button>
+                            </Link>
+                            {categories.slice(0, 10).map((category) => (
+                                <Link key={category} href={`/blog?category=${encodeURIComponent(category)}`}>
+                                    <Button
+                                        variant={selectedCategory === category ? "default" : "ghost"}
+                                        size="sm"
+                                        className="rounded-full"
+                                    >
+                                        {category}
+                                    </Button>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                        SaaS 인사이트 &<br />
-                        <span className="text-primary">실무 노하우 블로그</span>
-                    </h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-                        25년 실무 경험을 바탕으로 한 SaaS 도입 성공 사례, 업계 동향, 
-                        실전 팁을 공유할 예정입니다.
-                    </p>
+                )}
+
+                {/* Blog Posts Grid - 더 넓은 카드 */}
+                <div className="grid gap-8 md:grid-cols-2">
+                    {posts.map((post: BlogPost) => (
+                        <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                            <article className="h-full flex flex-col md:flex-row gap-6 p-6 rounded-lg border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-md bg-card">
+                                {/* 썸네일 이미지 */}
+                                {post.thumbnail && (
+                                    <div className="relative w-full md:w-48 h-48 md:h-auto flex-shrink-0 bg-muted rounded-lg overflow-hidden">
+                                        <Image
+                                            src={post.thumbnail}
+                                            alt={post.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            sizes="(max-width: 768px) 100vw, 200px"
+                                        />
+                                    </div>
+                                )}
+
+                                {/* 콘텐츠 */}
+                                <div className="flex-1 flex flex-col">
+                                    {post.originalCategory && (
+                                        <Badge variant="secondary" className="w-fit mb-3 text-xs">
+                                            {post.originalCategory}
+                                        </Badge>
+                                    )}
+                                    <h3 className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1">
+                                        {post.excerpt}
+                                    </p>
+                                    <time className="text-xs text-muted-foreground" dateTime={post.publishedAt}>
+                                        {format(new Date(post.publishedAt), 'yyyy년 MM월 dd일', { locale: ko })}
+                                    </time>
+                                </div>
+                            </article>
+                        </Link>
+                    ))}
                 </div>
 
-                {/* 예상 콘텐츠 미리보기 */}
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-                    <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
-                        <CardHeader>
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <FileText className="h-6 w-6 text-primary" />
-                            </div>
-                            <Badge variant="secondary" className="w-fit">성공 사례</Badge>
-                            <CardTitle className="text-xl">SaaS 도입 성공 스토리</CardTitle>
-                            <CardDescription>
-                                실제 고객사의 디지털 전환 과정과 성과를 상세하게 공유
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2 text-sm text-muted-foreground">
-                                <li>• 중소기업 Freshdesk 도입 사례</li>
-                                <li>• 스타트업 Google Workspace 전환기</li>
-                                <li>• 제조업 Monday.com 프로젝트 관리</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-
-                    <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-green-500">
-                        <CardHeader>
-                            <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Bell className="h-6 w-6 text-green-500" />
-                            </div>
-                            <Badge variant="secondary" className="w-fit">업계 동향</Badge>
-                            <CardTitle className="text-xl">SaaS 트렌드 & 인사이트</CardTitle>
-                            <CardDescription>
-                                글로벌 SaaS 시장 동향과 새로운 기술 트렌드 분석
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2 text-sm text-muted-foreground">
-                                <li>• AI 기반 고객 서비스 혁신</li>
-                                <li>• 하이브리드 워크 솔루션 동향</li>
-                                <li>• 2025 SaaS 시장 전망</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-
-                    <Card className="group hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500">
-                        <CardHeader>
-                            <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Clock className="h-6 w-6 text-blue-500" />
-                            </div>
-                            <Badge variant="secondary" className="w-fit">실무 가이드</Badge>
-                            <CardTitle className="text-xl">실전 도입 가이드</CardTitle>
-                            <CardDescription>
-                                단계별 도입 프로세스와 실무에서 겪는 문제 해결법
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2 text-sm text-muted-foreground">
-                                <li>• SaaS 선택 체크리스트</li>
-                                <li>• 데이터 마이그레이션 노하우</li>
-                                <li>• 사용자 교육 전략</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                {/* 이메일 구독 섹션 */}
-                <Card className="max-w-2xl mx-auto">
-                    <CardHeader className="text-center">
-                        <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
-                        <CardTitle className="text-2xl">블로그 오픈 알림 받기</CardTitle>
-                        <CardDescription>
-                            새로운 블로그 포스트와 SaaS 인사이트를 가장 먼저 받아보세요
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <form className="flex flex-col sm:flex-row gap-4">
-                            <Input 
-                                type="email" 
-                                placeholder="이메일 주소를 입력하세요" 
-                                className="flex-1"
-                            />
-                            <Button type="submit" className="sm:w-auto">
-                                구독 신청
+                {/* Pagination */}
+                {totalPages > 1 && (
+                    <div className="mt-12 flex justify-center items-center gap-2">
+                        <Link href={`/blog?page=${currentPage - 1}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}`}>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                disabled={currentPage === 1}
+                                className="gap-1"
+                            >
+                                <ChevronLeftIcon className="h-4 w-4" />
+                                이전
                             </Button>
-                        </form>
-                        <p className="text-sm text-muted-foreground mt-4 text-center">
-                            언제든지 구독을 취소할 수 있습니다. 스팸 메일은 절대 보내지 않습니다.
-                        </p>
-                    </CardContent>
-                </Card>
+                        </Link>
 
-                {/* 임시 연락처 CTA */}
-                <div className="text-center mt-16 p-8 bg-muted/50 rounded-lg">
-                    <h3 className="text-xl font-semibold mb-4">지금 당장 도움이 필요하신가요?</h3>
-                    <p className="text-muted-foreground mb-6">
-                        블로그를 기다리지 마시고, 바로 전문 컨설턴트와 상담받으세요
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild>
-                            <Link href="/contact">무료 상담 신청</Link>
-                        </Button>
-                        <Button variant="outline" asChild>
-                            <Link href="/products">솔루션 둘러보기</Link>
-                        </Button>
+                        <div className="flex items-center gap-1">
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                <Link key={page} href={`/blog?page=${page}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}`}>
+                                    <Button
+                                        variant={currentPage === page ? 'default' : 'ghost'}
+                                        size="sm"
+                                        className="w-10"
+                                    >
+                                        {page}
+                                    </Button>
+                                </Link>
+                            ))}
+                        </div>
+
+                        <Link href={`/blog?page=${currentPage + 1}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}`}>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                disabled={currentPage === totalPages}
+                                className="gap-1"
+                            >
+                                다음
+                                <ChevronRightIcon className="h-4 w-4" />
+                            </Button>
+                        </Link>
                     </div>
-                </div>
+                )}
+
+                {/* Empty State */}
+                {posts.length === 0 && (
+                    <div className="text-center py-16">
+                        <p className="text-muted-foreground">포스트가 아직 없습니다.</p>
+                    </div>
+                )}
             </main>
             <Footer />
         </div>

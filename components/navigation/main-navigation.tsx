@@ -327,11 +327,11 @@ export function MainNavigation() {
                                 맞춤 견적
                             </NavigationMenuLink>
                         </NavigationMenuItem>
-                        {/* 블로그 메뉴 - 비활성화 */}
+                        {/* 블로그 메뉴 */}
                         <NavigationMenuItem>
-                            <span className={cn(navigationMenuTriggerStyle(), "text-base font-medium opacity-40 cursor-not-allowed pointer-events-none")}>
+                            <NavigationMenuLink href="/blog" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
                                 블로그
-                            </span>
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/company" className={cn(navigationMenuTriggerStyle(), "text-base font-medium")}>
@@ -671,10 +671,14 @@ function MobileNav({ onClose }: { onClose: () => void }) {
                     맞춤 견적
                 </Link>
 
-                {/* 블로그 메뉴 - 비활성화 */}
-                <span className="block py-3 px-3 font-medium text-foreground opacity-40 cursor-not-allowed rounded-md">
+                {/* 블로그 메뉴 */}
+                <Link
+                    href="/blog"
+                    className="block py-3 px-3 font-medium text-foreground hover:bg-accent/50 rounded-md transition-colors"
+                    onClick={onClose}
+                >
                     블로그
-                </span>
+                </Link>
 
                 {/* 회사소개 메뉴 */}
                 <Link
