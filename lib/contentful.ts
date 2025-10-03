@@ -4,20 +4,16 @@
 
 import { createClient } from 'contentful'
 
-if (!process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID) {
-  throw new Error('NEXT_PUBLIC_CONTENTFUL_SPACE_ID is not defined')
-}
+const hasContentfulConfig =
+  process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID &&
+  process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 
-if (!process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN) {
-  throw new Error('NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN is not defined')
-}
-
-// Contentful 클라이언트 생성
-export const contentfulClient = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+// Contentful 클라이언트 생성 (환경 변수가 있을 때만)
+export const contentfulClient = hasContentfulConfig ? createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID!,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN!,
   environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-})
+}) : null
 
 // Contentful Entry 타입
 export interface ContentfulBlogPostFields {
@@ -78,6 +74,11 @@ function mapContentfulPost(entry: any): BlogPost {
 
 // 모든 포스트 가져오기
 export async function getAllPosts(): Promise<BlogPost[]> {
+  if (!contentfulClient) {
+    console.warn('Contentful client not configured')
+    return []
+  }
+
   try {
     const response = await contentfulClient.getEntries<ContentfulBlogPost>({
       content_type: 'blogPost',
@@ -103,6 +104,15 @@ export async function getPaginatedPosts(
   currentPage: number
   totalPosts: number
 }> {
+  if (!contentfulClient) {
+    return {
+      posts: [],
+      totalPages: 0,
+      currentPage: page,
+      totalPosts: 0,
+    }
+  }
+
   try {
     const skip = (page - 1) * perPage
 
@@ -136,6 +146,10 @@ export async function getPaginatedPosts(
 
 // 특정 포스트 가져오기 (slug로 검색)
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  if (!contentfulClient) {
+    return null
+  }
+
   try {
     const response = await contentfulClient.getEntries<ContentfulBlogPost>({
       content_type: 'blogPost',
@@ -157,6 +171,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
 // 카테고리별 포스트 가져오기
 export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+  if (!contentfulClient) {
+    return []
+  }
+
   try {
     const response = await contentfulClient.getEntries<ContentfulBlogPost>({
       content_type: 'blogPost',
@@ -176,6 +194,10 @@ export async function getPostsByCategory(category: string): Promise<BlogPost[]> 
 
 // 모든 카테고리 가져오기
 export async function getAllCategories(): Promise<string[]> {
+  if (!contentfulClient) {
+    return []
+  }
+
   try {
     const allPosts = await getAllPosts()
     const categories = new Set<string>()
@@ -199,6 +221,10 @@ export async function getAdjacentPosts(slug: string): Promise<{
   prev: BlogPost | null
   next: BlogPost | null
 }> {
+  if (!contentfulClient) {
+    return { prev: null, next: null }
+  }
+
   try {
     const allPosts = await getAllPosts()
     const currentIndex = allPosts.findIndex((post) => post.slug === slug)
