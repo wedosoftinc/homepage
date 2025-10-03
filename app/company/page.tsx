@@ -225,13 +225,13 @@ export default function CompanyPage() {
                 {/* CEO Profile Photo */}
                 <div className="flex justify-center mb-8">
                   <div className="relative">
-                    <div className="w-72 h-80 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-white p-2">
+                    <div className="w-72 h-80 rounded-2xl overflow-hidden border-4 border-border shadow-2xl bg-muted/50 p-2">
                       <Image
-                        src="/ceo-profile-2.png"
+                        src="/ceo-profile.png"
                         alt="위두소프트 대표이사"
                         width={288}
                         height={384}
-                        className="w-full h-full object-contain object-center rounded-lg"
+                        className="w-full h-full object-cover object-center rounded-lg scale-110"
                         priority
                       />
                     </div>
