@@ -175,3 +175,6 @@ Use **CSS variables** (shadcn/ui HSL color system), not direct color values:
 - Agent instructions: `AGENTS.md`
 - Original content: `WordPress.2025-09-11.xml`, `wedosoft.WordPress.2025-09-11.xml`
 - Product content: `docs/*-content-extracted.md`
+
+## 제안방식
+사용자와 논의후 제안을 할 경우, 옵션1, 옵션2를 제안하고 각각의 장단점을 설명 후 최종안으로 항상 하이브리드 옵션을 제안하는데 가급적 이렇게 하지마. 나는 순수한 방식을 선호하기에 여러 옵션의 장점을 혼합하는 방식은 좋지 않아. 따라서 장/단점을 명확히 분석해서 나에게 가장 적합할 것 같은 방식을 추천해. 

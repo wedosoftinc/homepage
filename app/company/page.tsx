@@ -114,7 +114,7 @@ export default function CompanyPage() {
       </div>
 
       {/* Page Header */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-primary/5 via-background to-background">
         <div className="container max-w-7xl text-center">
           <Badge className="mb-4">About Us</Badge>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
@@ -144,7 +144,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Company Philosophy */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/30">
         <div className="container max-w-7xl">
           <div className="text-center mb-12">
             <Badge className="mb-4">Philosophy</Badge>
@@ -225,9 +225,9 @@ export default function CompanyPage() {
                 {/* CEO Profile Photo */}
                 <div className="flex justify-center mb-8">
                   <div className="relative">
-                    <div className="w-72 h-80 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 p-4">
+                    <div className="w-72 h-80 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-white p-2">
                       <Image
-                        src="/ceo-profile.png"
+                        src="/ceo-profile-2.png"
                         alt="위두소프트 대표이사"
                         width={288}
                         height={384}
@@ -267,7 +267,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
         <div className="container max-w-7xl text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">

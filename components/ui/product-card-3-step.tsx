@@ -25,6 +25,8 @@ interface ProductFeature {
   title: string
   description: string
   icon: string
+  detailed_content?: string
+  benefits?: string[]
 }
 
 interface PricingTier {
@@ -69,11 +71,7 @@ interface ProductData {
     languages: string
   }
   key_features: ProductFeature[]
-  pricing_integration: {
-    pricing_tiers: PricingTier[]
-    integrations: string[]
-    technical_resources: TechnicalResources
-  }
+  integrations: string[]
   advanced_info?: AdvancedInfo
   success_metrics?: SuccessMetrics
 }
@@ -141,7 +139,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
         'SOC 2',
         '개인정보보호법'
       ],
-      integrations_count: product.pricing_integration.integrations.length
+      integrations_count: product.integrations.length
     }
   }
 
@@ -356,7 +354,7 @@ export function ProductCard3Step({ product }: ProductCard3StepProps) {
                   </span>
                 </div>
                 <div className="ml-1 grid grid-cols-2 gap-1">
-                  {product.pricing_integration.integrations.slice(0, 6).map((integration, index) => (
+                  {product.integrations.slice(0, 6).map((integration, index) => (
                     <div key={index} className="text-sm text-muted-foreground">
                       • {integration}
                     </div>

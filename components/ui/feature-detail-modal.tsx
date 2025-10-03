@@ -13,6 +13,8 @@ interface ProductFeature {
   title: string
   description: string
   icon: string
+  detailed_content?: string
+  benefits?: string[]
 }
 
 interface FeatureDetailModalProps {
@@ -40,21 +42,30 @@ export function FeatureDetailModal({ isOpen, onClose, feature }: FeatureDetailMo
         </DialogHeader>
         
         <div className="space-y-4 pt-4">
-          <div className="p-4 bg-muted/50 rounded-lg">
-            <h4 className="font-semibold text-sm mb-2">주요 기능</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {feature.description}
-            </p>
-          </div>
+          {feature.detailed_content && (
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold text-sm mb-2">상세 설명</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                {feature.detailed_content}
+              </p>
+            </div>
+          )}
 
-          <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-            <h4 className="font-semibold text-sm mb-2 text-blue-900 dark:text-blue-100">
-              활용 방법
-            </h4>
-            <p className="text-sm text-blue-800 dark:text-blue-200 leading-relaxed">
-              이 기능을 통해 업무 프로세스를 효율화하고 팀 협업을 개선할 수 있습니다.
-            </p>
-          </div>
+          {feature.benefits && feature.benefits.length > 0 && (
+            <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <h4 className="font-semibold text-sm mb-2 text-blue-900 dark:text-blue-100">
+                주요 이점
+              </h4>
+              <ul className="space-y-2">
+                {feature.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm text-blue-800 dark:text-blue-200">
+                    <CheckCircleIcon className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>

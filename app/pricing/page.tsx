@@ -216,7 +216,7 @@ export default function CustomQuotePage() {
                 ...pricingData.freshworks.freshservice,
                 plans: pricingData.freshworks.freshservice.plans.map(plan => ({
                     ...plan,
-                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                    price: (plan as any).customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
                 }))
             },
             'freshsales': {
@@ -233,7 +233,7 @@ export default function CustomQuotePage() {
                 ...pricingData.google["google-workspace"],
                 plans: pricingData.google["google-workspace"].plans.map(plan => ({
                     ...plan,
-                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                    price: (plan as any).customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
                 }))
             },
             // Monday.com 제품군
@@ -242,7 +242,7 @@ export default function CustomQuotePage() {
                 ...pricingData.monday["monday-work"],
                 plans: pricingData.monday["monday-work"].plans.map(plan => ({
                     ...plan,
-                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                    price: (plan as any).customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
                 }))
             },
             'monday-service': {
@@ -267,7 +267,7 @@ export default function CustomQuotePage() {
                 ...pricingData.splashtop.splashtop,
                 plans: pricingData.splashtop.splashtop.plans.map(plan => ({
                     ...plan,
-                    price: plan.customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
+                    price: (plan as any).customPricing ? 0 : (quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) / 12 : (plan.monthlyPrice || 0))
                 }))
             },
             // AI 애드온
@@ -729,10 +729,10 @@ export default function CustomQuotePage() {
             if (product) {
                 const plan = product.plans.find(p => p.id === planId)
                 if (plan) {
-                    if (plan.customPricing) {
+                    if ((plan as any).customPricing) {
                         // 커스텀 가격은 0으로 처리하고 견적 문의 안내
                         totalPerUserUSD += 0
-                    } else if (plan.sessionPricing) {
+                    } else if ((plan as any).sessionPricing) {
                         // 세션 기반 가격은 기본 가격으로 처리
                         totalPerUserUSD += 29
                     } else {
@@ -1076,12 +1076,12 @@ export default function CustomQuotePage() {
                                                                             )}
                                                                         </div>
                                                                         <div className="text-2xl font-bold">
-                                                                            {plan.customPricing ? (
+                                                                            {(plan as any).customPricing ? (
                                                                                 <span className="text-lg">맞춤 견적</span>
-                                                                            ) : plan.sessionPricing ? (
+                                                                            ) : (plan as any).sessionPricing ? (
                                                                                 <div>
-                                                                                    <div className="text-base">무료 {plan.sessionPricing.freeIncluded} 세션</div>
-                                                                                    <div className="text-sm text-muted-foreground">추가: ${plan.sessionPricing.additionalPrice}/{plan.sessionPricing.unit}</div>
+                                                                                    <div className="text-base">무료 {(plan as any).sessionPricing.freeIncluded} 세션</div>
+                                                                                    <div className="text-sm text-muted-foreground">추가: ${(plan as any).sessionPricing.additionalPrice}/{(plan as any).sessionPricing.unit}</div>
                                                                                 </div>
                                                                             ) : (
                                                                                 <>
@@ -1319,8 +1319,8 @@ export default function CustomQuotePage() {
                                                 const product = productDatabase[productId]
                                                 const plan = product?.plans.find(p => p.id === planId)
                                                 if (!plan) return sum
-                                                if (plan.customPricing) return sum
-                                                if (plan.sessionPricing) return sum + 29 // Freddy AI Copilot 기본 가격
+                                                if ((plan as any).customPricing) return sum
+                                                if ((plan as any).sessionPricing) return sum + 29 // Freddy AI Copilot 기본 가격
                                                 const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                 return sum + price
                                             }, 0).toFixed(2)}</span>
@@ -1335,8 +1335,8 @@ export default function CustomQuotePage() {
                                                 const product = productDatabase[productId]
                                                 const plan = product?.plans.find(p => p.id === planId)
                                                 if (!plan) return sum
-                                                if (plan.customPricing) return sum
-                                                if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
+                                                if ((plan as any).customPricing) return sum
+                                                if ((plan as any).sessionPricing) return sum + (29 * quoteData.userCount)
                                                 const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                 return sum + (price * quoteData.userCount)
                                             }, 0).toFixed(2)}</span>
@@ -1348,8 +1348,8 @@ export default function CustomQuotePage() {
                                                     const product = productDatabase[productId]
                                                     const plan = product?.plans.find(p => p.id === planId)
                                                     if (!plan) return sum
-                                                    if (plan.customPricing) return sum
-                                                    if (plan.sessionPricing) return sum + (29 * quoteData.userCount)
+                                                    if ((plan as any).customPricing) return sum
+                                                    if ((plan as any).sessionPricing) return sum + (29 * quoteData.userCount)
                                                     const price = quoteData.billingCycle === 'yearly' ? (plan.yearlyPrice || 0) : (plan.monthlyPrice || 0)
                                                     return sum + (price * quoteData.userCount)
                                                 }, 0) * (quoteData.userCount >= 200 ? 0.2 : quoteData.userCount >= 100 ? 0.15 : 0.1)).toFixed(2)}</span>

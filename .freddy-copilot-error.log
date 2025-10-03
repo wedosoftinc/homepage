@@ -1,0 +1,16 @@
+
+      --------------------------------------
+      Error Stack:: "AxiosError: Request failed with status code 401\n    at Oe (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.7.1/dist/extension.js:2:326899)\n    at IncomingMessage.<anonymous> (/Users/alan/.vscode/extensions/freshworksmarketplace.freddy-copilot-2.7.1/dist/extension.js:2:338769)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1698:12)\n    at processTicksAndRejections (node:internal/process/task_queues:90:21)"
+      Error Message:: "Request failed with status code 401"
+      Error Name:: "AxiosError"
+      Request ID:: a1d1c74f-7500-4aa1-900b-834bcd46ae34
+      
+      Env:: release
+      API Route:: /api/v1/copilot/migration_scope
+      API Response Message:: Invalid token
+      API Response Error Type:: unauthorized
+
+      Timestamp:: Fri, 03 Oct 2025 10:54:48 GMT
+      Extension Version:: 2.7.1
+      --------------------------------------
+    
