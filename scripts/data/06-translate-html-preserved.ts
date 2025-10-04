@@ -53,7 +53,7 @@ ${html}
 
   const message = await anthropic.messages.create({
     model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 16000,  // HTML이 길 수 있으므로 충분히 할당
+    max_tokens: 8000,  // Claude 3.5 Sonnet 최대 출력 제한에 맞춤
     temperature: 0.3,
     messages: [{
       role: 'user',
