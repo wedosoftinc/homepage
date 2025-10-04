@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 log/fdk.log
+
+# data files (CSV with sensitive data)
+data/
+/tmp/*.log
