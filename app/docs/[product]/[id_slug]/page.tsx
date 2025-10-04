@@ -43,9 +43,23 @@ async function getDocument(product: string, idSlug: string): Promise<DocumentWit
   return data as DocumentWithRelations
 }
 
+async function getRelatedDocuments(folderId: string, currentDocId: string) {
+  const { data, error } = await supabase
+    .from('documents')
+    .select('id, csv_id, title_ko, title_en, short_slug, view_count')
+    .eq('folder_id', folderId)
+    .eq('published', true)
+    .neq('id', currentDocId)
+    .order('view_count', { ascending: false })
+    .limit(10)
+
+  if (error || !data) return []
+  return data
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { product, id_slug } = await params
-  const doc = await getDocument(product, id_slug)
+  const resolvedParams = await params
+  const doc = await getDocument(resolvedParams.product, resolvedParams.id_slug)
 
   if (!doc) {
     return {
@@ -66,7 +80,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function DocumentPage({ params }: PageProps) {
-  const { product, id_slug } = await params
+  const resolvedParams = await params
+  const { product, id_slug } = resolvedParams
   const doc = await getDocument(product, id_slug)
 
   if (!doc) {
@@ -81,31 +96,37 @@ export default async function DocumentPage({ params }: PageProps) {
   // Increment view count (fire and forget)
   supabase.rpc('increment_view_count', { doc_id: doc.id }).then()
 
+  // Get related documents
+  const relatedDocs = doc.folder_id ? await getRelatedDocuments(doc.folder_id, doc.id) : []
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
-        {/* Breadcrumb */}
-        <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/docs" className="hover:text-foreground transition-colors">
-            문서
-          </Link>
-          <span>/</span>
-          <Link href={`/docs/${doc.product}`} className="hover:text-foreground transition-colors capitalize">
-            {doc.product}
-          </Link>
-          {doc.category && (
-            <>
+      <div className="container mx-auto max-w-7xl px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-1">
+            {/* Breadcrumb */}
+            <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+              <Link href="/docs" className="hover:text-foreground transition-colors">
+                문서
+              </Link>
               <span>/</span>
-              <span className="text-foreground">{doc.category.name_ko || doc.category.name_en}</span>
-            </>
-          )}
-          {doc.folder && (
-            <>
-              <span>/</span>
-              <span className="text-foreground">{doc.folder.name_ko || doc.folder.name_en}</span>
-            </>
-          )}
-        </nav>
+              <Link href={`/docs/${doc.product}`} className="hover:text-foreground transition-colors capitalize">
+                {doc.product}
+              </Link>
+              {doc.category && (
+                <>
+                  <span>/</span>
+                  <span className="text-foreground">{doc.category.name_ko || doc.category.name_en}</span>
+                </>
+              )}
+              {doc.folder && (
+                <>
+                  <span>/</span>
+                  <span className="text-foreground">{doc.folder.name_ko || doc.folder.name_en}</span>
+                </>
+              )}
+            </nav>
 
         {/* Header */}
         <header className="mb-8 border-b pb-6">
@@ -170,18 +191,67 @@ export default async function DocumentPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Related Documents */}
-        {doc.category_id && (
-          <div className="mt-12 border-t pt-8">
-            <h2 className="heading-card mb-4 flex items-center gap-2">
-              <BookOpenIcon className="h-5 w-5" />
-              관련 문서
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              같은 카테고리의 다른 문서들을 확인해보세요.
-            </p>
           </div>
-        )}
+
+          {/* Sidebar */}
+          <aside className="lg:col-span-1">
+            <div className="sticky top-8 space-y-6">
+              {/* Document Info */}
+              <div className="rounded-lg border bg-card p-4">
+                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                  <BookOpenIcon className="h-4 w-4" />
+                  문서 정보
+                </h3>
+                <dl className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <dt className="text-muted-foreground">조회수</dt>
+                    <dd className="font-medium">{doc.view_count.toLocaleString()}</dd>
+                  </div>
+                  <div className="flex justify-between">
+                    <dt className="text-muted-foreground">업데이트</dt>
+                    <dd className="font-medium">
+                      {new Date(doc.updated_at).toLocaleDateString('ko-KR')}
+                    </dd>
+                  </div>
+                  {doc.folder && (
+                    <div className="flex justify-between">
+                      <dt className="text-muted-foreground">폴더</dt>
+                      <dd className="font-medium text-right">
+                        {doc.folder.name_ko || doc.folder.name_en}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+
+              {/* Related Documents */}
+              {relatedDocs.length > 0 && (
+                <div className="rounded-lg border bg-card p-4">
+                  <h3 className="font-semibold mb-3 flex items-center gap-2">
+                    <FolderIcon className="h-4 w-4" />
+                    같은 폴더의 문서
+                  </h3>
+                  <nav className="space-y-1">
+                    {relatedDocs.map((relatedDoc) => (
+                      <Link
+                        key={relatedDoc.id}
+                        href={`/docs/${product}/${relatedDoc.csv_id}-${relatedDoc.short_slug}`}
+                        className="block px-3 py-2 rounded-md text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium line-clamp-2">
+                          {relatedDoc.title_ko || relatedDoc.title_en}
+                        </div>
+                        <div className="text-xs text-muted-foreground mt-1">
+                          {relatedDoc.view_count.toLocaleString()} 조회
+                        </div>
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              )}
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   )
