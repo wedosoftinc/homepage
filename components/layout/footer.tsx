@@ -109,14 +109,12 @@ export function Footer() {
                                 >
                                     고객 센터
                                 </a>
-                                <a
-                                    href="https://docs.wedosoft.net"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    href="/docs"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     문서 포털
-                                </a>
+                                </Link>
                                 <Link
                                     href="/blog"
                                     className="block text-base text-muted-foreground hover:text-foreground transition-colors cursor-pointer"

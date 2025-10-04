@@ -8,7 +8,14 @@
     "lint": "next lint",
     "start": "next start",
     "migrate": "tsx scripts/migrate-wordpress.ts",
-    "migrate:v2": "tsx scripts/migrate-wordpress-v2.ts"
+    "migrate:v2": "tsx scripts/migrate-wordpress-v2.ts",
+    "pilot:extract": "tsx scripts/pilot/01-extract-pilot-data.ts",
+    "pilot:import": "tsx scripts/pilot/02-import-to-supabase.ts",
+    "pilot:translate": "tsx scripts/pilot/03-translate-documents.ts",
+    "pilot:embeddings": "tsx scripts/pilot/04-generate-embeddings.ts",
+    "pilot:test": "tsx scripts/pilot/05-test-pilot.ts",
+    "pilot:short-slugs": "tsx scripts/pilot/06-generate-short-slugs.ts",
+    "pilot:all": "npm run pilot:extract && npm run pilot:import && npm run pilot:translate && npm run pilot:embeddings && npm run pilot:test"
   },
   "repository": {
     "type": "git",
@@ -59,7 +66,12 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.1.11"
+    "zod": "^3.23.8",
+    "@supabase/supabase-js": "^2.48.0",
+    "@anthropic-ai/sdk": "^0.32.1",
+    "openai": "^4.83.0",
+    "papaparse": "^5.4.1",
+    "p-limit": "^6.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
@@ -71,6 +83,7 @@
     "postcss": "^8.5.6",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "@types/papaparse": "^5.3.15"
   }
 }

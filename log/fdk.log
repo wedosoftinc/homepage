@@ -26,3 +26,19 @@ Require stack:
 2025-10-03 19:54:50.082 +0900 [debug] (logger.js) Starting FDK in node v22.16.0 on darwin
 2025-10-03 19:54:50.082 +0900 [debug] (sequelize.js) setting up sqilite at "/Users/alan/GitHub/homepage/.fdk/store.sqlite"
 2025-10-03 19:54:50.083 +0900 [error] [31m[ERROR][0m  Node.js version of 18.x.x is required to run this SDK. v22.16.0 found.
+2025-10-04 09:38:11.126 +0900 [debug] (configs.js) loaded default configs as "{"updates":{"manifest_url":"https://cdn.freshdev.io/assets/fdk/updates.json","period":24},"log":{"level":"info"},"javascript":{"ecma_version":2020},"request":{"timeout":15000},"global_apps":{"enabled":false},"easel":{"enabled":false},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.126 +0900 [debug] (configs.js) loaded global configs as "{"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.127 +0900 [debug] (configs.js) loaded local configs as "{"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.127 +0900 [debug] (configs.js) loaded env configs as "{"updates":{},"log":{},"javascript":{},"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.127 +0900 [debug] (configs.js) loaded resolved configs as "{"updates":{"manifest_url":"https://cdn.freshdev.io/assets/fdk/updates.json","period":24},"log":{"level":"info"},"javascript":{"ecma_version":2020},"request":{"timeout":15000},"global_apps":{"enabled":false},"easel":{"enabled":false},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.127 +0900 [debug] (logger.js) Starting FDK in node v22.16.0 on darwin
+2025-10-04 09:38:11.127 +0900 [debug] (sequelize.js) setting up sqilite at "/Users/alan/GitHub/homepage/.fdk/store.sqlite"
+2025-10-04 09:38:11.127 +0900 [error] [31m[ERROR][0m  Node.js version of 18.x.x is required to run this SDK. v22.16.0 found.
+2025-10-04 09:38:11.935 +0900 [debug] (configs.js) loaded default configs as "{"updates":{"manifest_url":"https://cdn.freshdev.io/assets/fdk/updates.json","period":24},"log":{"level":"info"},"javascript":{"ecma_version":2020},"request":{"timeout":15000},"global_apps":{"enabled":false},"easel":{"enabled":false},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.935 +0900 [debug] (configs.js) loaded global configs as "{"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.936 +0900 [debug] (configs.js) loaded local configs as "{"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.936 +0900 [debug] (configs.js) loaded env configs as "{"updates":{},"log":{},"javascript":{},"request":{"timeout":15000},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.936 +0900 [debug] (configs.js) loaded resolved configs as "{"updates":{"manifest_url":"https://cdn.freshdev.io/assets/fdk/updates.json","period":24},"log":{"level":"info"},"javascript":{"ecma_version":2020},"request":{"timeout":15000},"global_apps":{"enabled":false},"easel":{"enabled":false},"job":{"timeout":120000}}"
+2025-10-04 09:38:11.936 +0900 [debug] (logger.js) Starting FDK in node v22.16.0 on darwin
+2025-10-04 09:38:11.936 +0900 [debug] (sequelize.js) setting up sqilite at "/Users/alan/GitHub/homepage/.fdk/store.sqlite"
+2025-10-04 09:38:11.936 +0900 [error] [31m[ERROR][0m  Node.js version of 18.x.x is required to run this SDK. v22.16.0 found.
