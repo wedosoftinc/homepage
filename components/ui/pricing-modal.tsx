@@ -303,13 +303,18 @@ interface MobilePricingCarouselProps {
   getYearlyDiscount: (monthlyPrice: number | null, yearlyPrice: number | null) => number
 }
 
-function MobilePricingCarousel({ 
-  plans, 
-  isYearly, 
-  formatPrice, 
-  getYearlyDiscount 
+function MobilePricingCarousel({
+  plans,
+  isYearly,
+  formatPrice,
+  getYearlyDiscount
 }: MobilePricingCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+
+  // 스와이프 최소 거리 (픽셀)
+  const minSwipeDistance = 50
 
   const nextPlan = () => {
     setCurrentIndex((prev) => (prev + 1) % plans.length)
@@ -319,6 +324,29 @@ function MobilePricingCarousel({
     setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length)
   }
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      nextPlan()
+    } else if (isRightSwipe) {
+      prevPlan()
+    }
+  }
+
   const plan = plans[currentIndex]
   const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice
   const discount = getYearlyDiscount(plan.monthlyPrice, plan.yearlyPrice)
@@ -326,11 +354,16 @@ function MobilePricingCarousel({
   return (
     <div className="md:hidden">
       {/* 카로셀 컨테이너 */}
-      <div className="relative">
-        <Card 
+      <div
+        className="relative"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <Card
           className={`relative ${
-            plan.recommended 
-              ? 'border-primary border-2 ring-2 ring-primary/20' 
+            plan.recommended
+              ? 'border-primary border-2 ring-2 ring-primary/20'
               : 'border-border'
           }`}
         >
@@ -342,7 +375,7 @@ function MobilePricingCarousel({
               </Badge>
             </div>
           )}
-          
+
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-xl">{plan.name}</CardTitle>
             <div className="space-y-2">
@@ -370,7 +403,7 @@ function MobilePricingCarousel({
 
           <CardContent className="space-y-4">
             <Separator />
-            
+
             {/* 기능 목록 */}
             <div className="space-y-2">
               {plan.features.map((feature, index) => (
@@ -393,8 +426,8 @@ function MobilePricingCarousel({
                   </Link>
                 </Button>
               ) : (
-                <Button 
-                  variant={plan.recommended ? "default" : "outline"} 
+                <Button
+                  variant={plan.recommended ? "default" : "outline"}
                   className="w-full"
                   asChild
                 >
@@ -408,37 +441,57 @@ function MobilePricingCarousel({
         </Card>
 
         {/* 이전/다음 버튼 */}
-        <button
-          onClick={prevPlan}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background border border-border rounded-full p-2 shadow-lg hover:bg-muted transition-colors"
-          aria-label="이전 플랜"
-        >
-          <ChevronLeftIcon className="w-5 h-5" />
-        </button>
-        <button
-          onClick={nextPlan}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background border border-border rounded-full p-2 shadow-lg hover:bg-muted transition-colors"
-          aria-label="다음 플랜"
-        >
-          <ChevronRightIcon className="w-5 h-5" />
-        </button>
+        {plans.length > 1 && (
+          <>
+            <button
+              onClick={prevPlan}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-background border border-border rounded-full p-2 shadow-lg hover:bg-muted transition-colors z-10"
+              aria-label="이전 플랜"
+            >
+              <ChevronLeftIcon className="w-5 h-5" />
+            </button>
+            <button
+              onClick={nextPlan}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-background border border-border rounded-full p-2 shadow-lg hover:bg-muted transition-colors z-10"
+              aria-label="다음 플랜"
+            >
+              <ChevronRightIcon className="w-5 h-5" />
+            </button>
+          </>
+        )}
       </div>
 
-      {/* 인디케이터 */}
-      <div className="flex justify-center gap-2 mt-4">
-        {plans.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-2 rounded-full transition-all ${
-              index === currentIndex 
-                ? 'w-8 bg-primary' 
-                : 'w-2 bg-muted-foreground/30'
-            }`}
-            aria-label={`플랜 ${index + 1}`}
-          />
-        ))}
-      </div>
+      {/* 인디케이터 및 스와이프 힌트 */}
+      {plans.length > 1 && (
+        <div className="mt-6 space-y-2">
+          {/* 스와이프 힌트 */}
+          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span>좌우로 스와이프</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+
+          {/* 인디케이터 */}
+          <div className="flex justify-center gap-2">
+            {plans.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all ${
+                  index === currentIndex
+                    ? 'w-8 bg-primary'
+                    : 'w-2 bg-muted-foreground/30'
+                }`}
+                aria-label={`플랜 ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

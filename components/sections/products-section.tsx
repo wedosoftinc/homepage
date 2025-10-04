@@ -11,7 +11,7 @@ import {
     CheckCircleIcon as CheckCircle2,
     LightBulbIcon as Lightbulb,
     CogIcon as Settings,
-    AcademicCapIcon as GraduationCap,
+    CircleStackIcon as Database,
     WrenchScrewdriverIcon as Wrench
 } from "@heroicons/react/24/outline"
 import { FreshworksLogo } from "@/components/logos/freshworks-logo"
@@ -314,23 +314,23 @@ export function ProductsSection() {
                                         </div>
                                     </div>
 
-                                    {/* 교육 */}
+                                    {/* 마이그레이션 */}
                                     <div className="group p-6 rounded-lg hover:bg-muted/30 transition-colors duration-300">
                                         <div className="flex items-start space-x-4">
                                             <div className="flex-shrink-0">
                                                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-300">
-                                                    <GraduationCap className="h-6 w-6 text-primary" />
+                                                    <Database className="h-6 w-6 text-primary" />
                                                 </div>
                                             </div>
                                             <div className="flex-1">
                                                 <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
-                                                    교육
+                                                    마이그레이션
                                                 </h3>
                                                 <p className="text-base font-medium text-foreground mb-3 leading-relaxed">
-                                                    잘 도입했다면, 잘 쓰게 만들어야죠.
+                                                    기존 데이터를 안전하게 이전합니다.
                                                 </p>
                                                 <p className="text-sm text-muted-foreground leading-relaxed">
-                                                    관리자와 사용자 대상 맞춤형 교육을 제공하고, 필요하면 영상, 문서, 실습 자료까지 준비해드립니다. 모두가 제대로 쓸 수 있어야 진짜 도입입니다.
+                                                    Help Desk Migration 공식 파트너로서 검증된 플랫폼을 통해 티켓, 연락처, 지식베이스를 안전하게 이전하고, 다운타임을 최소화합니다.
                                                 </p>
                                             </div>
                                         </div>
