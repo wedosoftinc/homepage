@@ -21,13 +21,29 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ suggestions: [] })
     }
 
-    // Call the PostgreSQL autocomplete function
-    const { data, error } = await supabase
-      .rpc('autocomplete_suggestions', {
-        search_query: query,
-        product_filter: product,
-        limit_count: limit
+    // Build autocomplete query
+    let dbQuery = supabase
+      .from('documents')
+      .select(`
+        title_ko,
+        title_en,
+        product,
+        content_text_ko,
+        category:categories(name_ko)
+      `)
+      .eq('published', true)
+      .textSearch('search_vector_ko', query.trim(), {
+        type: 'plain',
+        config: 'simple'
       })
+      .limit(limit)
+
+    // Add product filter if specified
+    if (product) {
+      dbQuery = dbQuery.eq('product', product)
+    }
+
+    const { data, error } = await dbQuery
 
     if (error) {
       console.error('Autocomplete error:', error)
@@ -37,8 +53,16 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    // Format suggestions
+    const suggestions = (data || []).map(doc => ({
+      title: doc.title_ko || doc.title_en,
+      product: doc.product,
+      category: doc.category?.name_ko || '',
+      preview: doc.content_text_ko?.substring(0, 100) || ''
+    }))
+
     return NextResponse.json({
-      suggestions: data as AutocompleteSuggestion[],
+      suggestions,
       query
     })
 

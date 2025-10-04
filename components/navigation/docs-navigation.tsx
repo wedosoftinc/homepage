@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { SearchDialog } from "@/components/search/search-dialog"
 
 // Freshworks 제품 목록 (문서가 있는 제품만)
 const FRESHWORKS_PRODUCTS = [
@@ -31,6 +32,7 @@ const FRESHWORKS_PRODUCTS = [
 export function DocsNavigation() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [searchQuery, setSearchQuery] = React.useState('')
+    const [searchOpen, setSearchOpen] = React.useState(false)
     const pathname = usePathname()
 
     // 현재 선택된 제품 파악
@@ -63,16 +65,15 @@ export function DocsNavigation() {
 
                 {/* 중앙: 검색창 */}
                 <div className="hidden md:flex flex-1 max-w-md mx-auto">
-                    <div className="relative w-full">
-                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                        <input
-                            type="text"
-                            placeholder="문서 검색..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full rounded-lg border bg-background/50 py-2 pl-10 pr-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                        />
-                    </div>
+                    <button
+                        onClick={() => setSearchOpen(true)}
+                        className="relative w-full"
+                    >
+                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+                        <div className="w-full rounded-lg border bg-background/50 py-2 pl-10 pr-4 text-sm text-left text-muted-foreground hover:border-primary hover:bg-background transition-all cursor-pointer">
+                            문서 검색...
+                        </div>
+                    </button>
                 </div>
 
                 {/* 우측: Family 네비게이션 + 테마 토글 */}
@@ -127,6 +128,7 @@ export function DocsNavigation() {
                         size="icon"
                         className="h-9 w-9"
                         aria-label="검색"
+                        onClick={() => setSearchOpen(true)}
                     >
                         <Search className="h-5 w-5" />
                     </Button>
@@ -166,29 +168,41 @@ export function DocsNavigation() {
                                 <MobileDocsNav
                                     onClose={() => setIsOpen(false)}
                                     currentProduct={currentProduct?.id}
+                                    onSearchClick={() => setSearchOpen(true)}
                                 />
                             </div>
                         </SheetContent>
                     </Sheet>
                 </div>
             </div>
+
+            {/* Search Dialog */}
+            <SearchDialog
+                open={searchOpen}
+                onOpenChange={setSearchOpen}
+                productFilter={currentProduct?.id}
+            />
         </header>
     )
 }
 
-function MobileDocsNav({ onClose, currentProduct }: { onClose: () => void; currentProduct?: string }) {
+function MobileDocsNav({ onClose, currentProduct, onSearchClick }: { onClose: () => void; currentProduct?: string; onSearchClick: () => void }) {
     return (
         <div className="flex flex-col py-4 space-y-2">
             {/* 검색 */}
             <div className="px-3 pb-2">
-                <div className="relative">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <input
-                        type="text"
-                        placeholder="문서 검색..."
-                        className="w-full rounded-lg border bg-background py-2 pl-10 pr-4 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    />
-                </div>
+                <button
+                    onClick={() => {
+                        onSearchClick()
+                        onClose()
+                    }}
+                    className="relative w-full"
+                >
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+                    <div className="w-full rounded-lg border bg-background py-2 pl-10 pr-4 text-sm text-left text-muted-foreground hover:border-primary transition-all cursor-pointer">
+                        문서 검색...
+                    </div>
+                </button>
             </div>
 
             {/* Family 사이트 링크 */}

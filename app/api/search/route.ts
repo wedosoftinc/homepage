@@ -30,13 +30,33 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    // Call the PostgreSQL search function
-    const { data, error } = await supabase
-      .rpc('search_documents', {
-        search_query: query,
-        product_filter: product,
-        limit_count: limit
+    // Build search query
+    let dbQuery = supabase
+      .from('documents')
+      .select(`
+        id,
+        csv_id,
+        title_ko,
+        title_en,
+        content_text_ko,
+        short_slug,
+        product,
+        category:categories(name_ko),
+        folder:folders(name_ko)
+      `)
+      .eq('published', true)
+      .textSearch('search_vector_ko', query.trim(), {
+        type: 'plain',
+        config: 'simple'
       })
+      .limit(limit)
+
+    // Add product filter if specified
+    if (product) {
+      dbQuery = dbQuery.eq('product', product)
+    }
+
+    const { data, error } = await dbQuery
 
     if (error) {
       console.error('Search error:', error)
@@ -46,10 +66,24 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    // Format results
+    const results = (data || []).map(doc => ({
+      id: doc.id,
+      csv_id: doc.csv_id,
+      title_ko: doc.title_ko,
+      title_en: doc.title_en,
+      content_preview: doc.content_text_ko?.substring(0, 200) || '',
+      short_slug: doc.short_slug,
+      product: doc.product,
+      category_name: doc.category?.name_ko || '',
+      folder_name: doc.folder?.name_ko || '',
+      rank: 1.0 // Default rank for now
+    }))
+
     return NextResponse.json({
-      results: data as SearchResult[],
+      results,
       query,
-      count: data?.length || 0
+      count: results.length
     })
 
   } catch (error: any) {

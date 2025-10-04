@@ -22,6 +22,7 @@
     "url": "git+https://github.com/wedosoft/homepage.git"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -43,6 +44,8 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@radix-ui/react-visually-hidden": "^1.2.3",
+    "@supabase/supabase-js": "^2.48.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/nodemailer": "^7.0.1",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
@@ -58,23 +61,23 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.6",
     "nodemailer": "^7.0.6",
+    "openai": "^4.104.0",
+    "p-limit": "^6.1.0",
+    "papaparse": "^5.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.63.0",
+    "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8",
-    "@supabase/supabase-js": "^2.48.0",
-    "@anthropic-ai/sdk": "^0.32.1",
-    "openai": "^4.83.0",
-    "papaparse": "^5.4.1",
-    "p-limit": "^6.1.0"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "@types/papaparse": "^5.3.15",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "autoprefixer": "^10.4.21",
@@ -83,7 +86,6 @@
     "postcss": "^8.5.6",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2",
-    "@types/papaparse": "^5.3.15"
+    "typescript": "^5.9.2"
   }
 }
