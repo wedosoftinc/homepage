@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { SolutionsDialog } from "@/components/ui/solutions-dialog"
 import {
     ArrowRightIcon as ArrowRight,
     PlayIcon as Play,
@@ -26,6 +28,7 @@ import {
 import { DashboardCard } from "@/components/dashboard"
 
 export function HeroSection() {
+    const [solutionsDialogOpen, setSolutionsDialogOpen] = useState(false)
 
     return (
         <section className="relative overflow-visible bg-background py-0 sm:py-2 md:py-3">
@@ -93,21 +96,28 @@ export function HeroSection() {
                             />
 
                             {/* CTA 버튼들 */}
-                            <CTAButtonGroup
-                                buttons={[
-                                    {
-                                        text: "상담 신청",
-                                        variant: "default",
-                                        iconPosition: "right",
-                                        href: "/contact"
-                                    },
-                                    {
-                                        text: "주요 솔루션 보기",
-                                        variant: "outline",
-                                        iconPosition: "right",
-                                        href: "/solutions"
-                                    }
-                                ]}
+                            <div className="flex flex-wrap gap-3">
+                                <Button variant="default" size="lg" asChild>
+                                    <a href="/contact" className="gap-2">
+                                        상담 신청
+                                        <ArrowRight className="h-4 w-4" />
+                                    </a>
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="lg"
+                                    onClick={() => setSolutionsDialogOpen(true)}
+                                    className="gap-2"
+                                >
+                                    제품 둘러보기
+                                    <ArrowRight className="h-4 w-4" />
+                                </Button>
+                            </div>
+
+                            {/* 솔루션 모달 */}
+                            <SolutionsDialog
+                                open={solutionsDialogOpen}
+                                onOpenChange={setSolutionsDialogOpen}
                             />
                         </div>
 
